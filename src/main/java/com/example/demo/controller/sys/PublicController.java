@@ -67,9 +67,9 @@ public class PublicController {
      *
      * @return
      */
-    @GetMapping("/legend")
+    @GetMapping("/group")
     public String legend() {
-        return "legend";
+        return "ay/group";
     }
 
     /**
@@ -77,9 +77,9 @@ public class PublicController {
      *
      * @return
      */
-    @GetMapping("/story")
+    @GetMapping("/info")
     public String story() {
-        return "story";
+        return "ay/info";
     }
 
     /**
