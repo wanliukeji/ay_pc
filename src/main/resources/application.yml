@@ -1,0 +1,109 @@
+#服务配置
+server:
+  port: 7171
+  tomcat:
+    uri-encoding: UTF-8
+  error:
+    path: /error
+spring:
+    #数据配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/public_poject?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: false
+      connection-timeout: 30000
+      idle-timeout: 25000
+      login-timeout: 5
+      max-lifetime: 30000
+      read-only: false
+      validation-timeout: 3000
+      maximum-pool-size: 15
+      minimum-idle: 10
+      data-source-properties:
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      useLocalSessionState: true
+      rewriteBatchedStatements: true
+      cacheResultSetMetadata: true
+      cacheServerConfiguration: true
+      elideSetAutoCommits: true
+      maintainTimeStats: false
+      #静态文件
+  mvc:
+    throw-exception-if-no-handler-found: true
+#    static-path-pattern: /static/**
+    favicon:
+      enabled: true
+    servlet:
+      path: /
+  thymeleaf:
+    check-template: false
+    cache: false
+    suffix: .html
+    prefix: classpath:/static/html/
+    mode: LEGACYHTML5
+    enabled: true
+    check-template-location: true
+    encoding: UTF-8
+  resoursces:
+    static-locations: classpath:/
+#    static-locations: classpath:/resources/,classpath:/static/,classpath:/static/css/,classpath:/static/js/,classpath:/templates/
+ #启动对@AspectJ注解的支持
+  aop:
+    proxy-target-class: true
+
+# Redis 开启缓存配置详情
+# Redis服务器地址 localhost
+# Redis服务器连接端口 6379
+# Redis服务器连接密码（默认为空）
+# 连接池最大连接数（使用负值表示没有限制）
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+# 连接池中的最大空闲连接
+# 连接池中的最小空闲连接
+# 连接超时时间（毫秒）
+  redis:
+    host: localhost
+    database: 0
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 1
+        max-idle: 8
+        min-idle: 0
+    timeout: 0
+
+#  jackson:
+#    mapper: true
+jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+#mybatis插件
+mybatis-plus:
+  mapper-locations: classpath:com/example/demo/dao/mapper/*Mapper.xml
+  type-aliases-package: com.example.demo.entity
+  executor-type: reuse
+  configuration:
+    map-underscore-to-camel-case: false
+    cache-enabled: false
+#    引用mybatis配置文件
+#  config-location: classpath:mybatis-config.xml
+#分页插件插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+#debug: true
+logging.level.org.springframework.boot.autoconfigure: ERROR
+trace: false
+#引用日志配置文件
+logging:
+  config: classpath:logback-spring.xml

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.SysUserMapper">
+
+   <!--<sql id="Base_Column_List">-->
+        <!--id, account, password, salt, email, phone, sex, avatar,-->
+        <!--deptId, locked, enable,remark, createTime, updateTime,-->
+        <!--createBy, updateBy, delState, businessId, userType,roleId-->
+    <!--</sql>-->
+
+    <select id="list" resultType="com.example.demo.entity.SysUser" >
+        SELECT
+            t.id,
+            t.account,
+            t.`password`,
+            t.salt,
+            t.`name`,
+            t.email,
+            t.phone,
+            t.sex,
+            t.avatar,
+            t.deptId,
+            t.locked,
+            t.`enable`,
+            t.remark,
+            t.createTime,
+            t.updateTime,
+            t.createBy,
+            t.updateBy,
+            t.delState,
+            t.businessId,
+            t.userType,
+            t.roleId
+            FROM
+            tb_sys_user as t
+    </select>
+</mapper>
