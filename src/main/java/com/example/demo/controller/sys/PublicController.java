@@ -117,9 +117,19 @@ public class PublicController {
      *
      * @return
      */
-    @GetMapping("/release")
-    public String inform() {
-        return "ay/release";
+    @GetMapping("/release_a")
+    public String release_a() {
+        return "ay/release_a";
+    }
+
+    @GetMapping("/release_b")
+    public String release_b() {
+        return "ay/release_b";
+    }
+
+    @GetMapping("/release_c")
+    public String release_c() {
+        return "ay/release_c";
     }
 
     /**
