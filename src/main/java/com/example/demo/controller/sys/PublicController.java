@@ -25,7 +25,7 @@ public class PublicController {
     }
 
     /**
-     * 注册
+     * 登录
      *
      * @return
      */
@@ -35,7 +35,7 @@ public class PublicController {
     }
 
     /**
-     * 登录
+     * 注册
      *
      * @return
      */
@@ -45,7 +45,7 @@ public class PublicController {
     }
 
     /*
-     *视频
+     *首页
      */
     @GetMapping("/home")
     public String blog() {
@@ -53,7 +53,7 @@ public class PublicController {
     }
 
     /**
-     * 档案
+     * 广告滑动页
      *
      * @return
      */
@@ -73,7 +73,7 @@ public class PublicController {
     }
 
     /**
-     * 故事
+     * 公司详情
      *
      * @return
      */
@@ -93,13 +93,13 @@ public class PublicController {
     }
 
     /**
-     * 正文
+     * 企业
      *
      * @return
      */
-    @GetMapping("/article")
-    public String article() {
-        return "article";
+    @GetMapping("/company")
+    public String company() {
+        return "ay/company";
     }
 
     /**
@@ -113,13 +113,13 @@ public class PublicController {
     }
 
     /**
-     * 通知
+     * 发布信息
      *
      * @return
      */
-    @GetMapping("/inform")
+    @GetMapping("/release")
     public String inform() {
-        return "inform";
+        return "ay/release";
     }
 
     /**
