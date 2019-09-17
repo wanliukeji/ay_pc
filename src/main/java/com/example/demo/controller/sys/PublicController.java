@@ -137,9 +137,9 @@ public class PublicController {
      *
      * @return
      */
-    @GetMapping("/friends")
-    public String friends() {
-        return "friends";
+    @GetMapping("/master")
+    public String master() {
+        return "ay/master";
     }
 
     /**
