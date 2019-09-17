@@ -47,12 +47,14 @@
     <!--<div class="col-xl-12"></div>-->
 <!--</div>-->
 <div style="width: 100%; height: 100px; margin-bottom: 10px;">
-
+    <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
+        margin-top: -90px;">
 </div>
 
 <p style="height: 10px; width: 100%; background-color: #48c964;"></p>
 
-<div class="content-page" style="margin: 0 auto; text-align: center;">
+<div class="content-page" style="margin: 0 auto; text-align: center; padding-right: 10%;
+        padding-left: 10%;">
     <div class="content">
 
         <!-- Start Content-->
@@ -62,8 +64,8 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title mb-3">填写信息</h4>
-
+                            <h4 class="header-title font-22">填写信息</h4>
+                            <br>
                             <form>
                                 <div id="progressbarwizard">
 
@@ -95,22 +97,46 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label" for="userName1">User name</label>
+                                                        <label class="col-md-3 col-form-label" for="userName1">标题：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName1" name="userName1" value="Coderthemes">
+                                                            <input type="text" class="form-control" id="userName1" name="userName1" value="">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label" for="password1"> Password</label>
-                                                        <div class="col-md-9">
-                                                            <input type="password" id="password1" name="password1" class="form-control" value="123456789">
+                                                        <label class="col-md-3 col-form-label"> 服务类型：</label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="inlineCheckbox1" value="option1" checked="">
+                                                                <label for="inlineCheckbox1">铝合金</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="inlineCheckbox2" value="option1" checked="">
+                                                                <label for="inlineCheckbox2">塑钢</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="inlineCheckbox3" value="option1" checked="">
+                                                                <label for="inlineCheckbox3">断桥铝</label>
+                                                            </div>
+
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label" for="confirm1">Re Password</label>
-                                                        <div class="col-md-9">
-                                                            <input type="password" id="confirm1" name="confirm1" class="form-control" value="123456789">
+                                                        <label class="col-md-3 col-form-label">服务范围</label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="inlineCheckbox4" value="option1" checked="">
+                                                                <label for="inlineCheckbox4">海曙区</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="inlineCheckbox5" value="option1" checked="">
+                                                                <label for="inlineCheckbox5">北仑区</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="inlineCheckbox6" value="option1" checked="">
+                                                                <label for="inlineCheckbox6">镇海区</label>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div> <!-- end col -->
@@ -166,10 +192,10 @@
 
                                         <ul class="list-inline mb-0 wizard">
                                             <li class="previous list-inline-item float-left">
-                                                <a href="javascript: void(0);" class="btn btn-secondary">Previous</a>
+                                                <a href="javascript: void(0);" class="btn btn-secondary">上一步</a>
                                             </li>
                                             <li class="next list-inline-item float-right">
-                                                <a href="javascript: void(0);" class="btn btn-secondary">Next</a>
+                                                <a href="javascript: void(0);" class="btn btn-secondary">下一步</a>
                                             </li>
                                         </ul>
 
