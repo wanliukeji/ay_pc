@@ -117,19 +117,9 @@ public class PublicController {
      *
      * @return
      */
-    @GetMapping("/release_a")
+    @GetMapping("/release")
     public String release_a() {
-        return "ay/release_a";
-    }
-
-    @GetMapping("/release_b")
-    public String release_b() {
-        return "ay/release_b";
-    }
-
-    @GetMapping("/release_c")
-    public String release_c() {
-        return "ay/release_c";
+        return "ay/release";
     }
 
     /**
@@ -146,9 +136,9 @@ public class PublicController {
      * 测试
      * @return
      */
-    @GetMapping("/boxed")
+    @GetMapping("/mine")
     public String boxed() {
-        return "boxed";
+        return "ay/mine";
     }
 
     /**
