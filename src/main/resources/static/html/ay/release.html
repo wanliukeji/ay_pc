@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
 <head>
     <title>安义门窗网</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -16,6 +16,8 @@
     <link href="/static/ui/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
+
     <style type="text/css">
         * {
 
@@ -313,11 +315,11 @@
                                         </div>
                                         <ul class="list-inline mb-0 wizard">
                                             <li class="previous list-inline-item float-left">
-                                                <a ng-click="show()"
+                                                <a ng-click="prve()" ng-show="show_num_next > 0"
                                                    class="btn btn-secondary border-0 text-white" style="background: #48c964;">{{info.prv}}</a>
                                             </li>
                                             <li class="next list-inline-item float-right">
-                                                <a href="javascript: void(0);"
+                                                <a ng-click="next()"
                                                    class="btn btn-secondary border-0 text-white" style="background: #48c964;">{{info.next}}</a>
                                             </li>
                                         </ul>
@@ -403,6 +405,7 @@ var search_type = "shenghuo";</script>
 <script src="/static/js/fileinput.min.js"></script>
 <script src="/static/js/file-upload-zh.js"></script>
 <script src="/static/anguarl/angular.min.js"></script>
+<link href="/static/ui/js/angular-toastr.min.js" rel="stylesheet">
 <script src="/static/html/anguarl/release.js"></script>
 
 </body>
