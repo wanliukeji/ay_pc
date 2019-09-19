@@ -6,7 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="Keywords" content="安义门窗网-免费发布信息"/>
     <meta name="Description" content="安义门窗网-免费发布信息"/>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/css/fileinput.min.css">
 
     <link href="/static/css/dropzone.min.css" rel="stylesheet" type="text/css"/>
@@ -38,7 +39,7 @@
     <div class="content">
 
         <!-- Start Content-->
-        <div class="container-fluid">
+        <div class="container-fluid" ng-app="myApp" ng-controller="relCtrl">
 
             <div class="row">
                 <div class="col-xl-12">
@@ -46,7 +47,7 @@
                         <div class="card-body">
                             <h4 class="header-title font-22">填写信息</h4>
                             <br>
-                            <form>
+                            <div>
                                 <div id="progressbarwizard">
 
                                     <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
@@ -83,7 +84,8 @@
                                                                for="headline">标题：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="headline"
-                                                                   name="headline" value="" placeholder="请输入标题"/>
+                                                                   name="headline" ng-model="headline" value=""
+                                                                   placeholder="请输入标题"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -135,7 +137,8 @@
                                                                for="user_qq">QQ：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="user_qq"
-                                                                   name="user_qq" value="" placeholder="请输入您的QQ"></input>
+                                                                   name="user_qq" ng-model="user_qq" value=""
+                                                                   placeholder="请输入您的QQ"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -143,7 +146,8 @@
                                                                for="user_wx">微信：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="user_wx"
-                                                                   name="user_wx" value="" placeholder="请输入您的微信"></input>
+                                                                   name="user_wx" ng-model="user_wx" value=""
+                                                                   placeholder="请输入您的微信"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -151,7 +155,8 @@
                                                                for="phone">手机：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="phone"
-                                                                   name="phone" value="" placeholder="请输入您的手机"></input>
+                                                                   name="phone" ng-model="phone" value=""
+                                                                   placeholder="请输入您的手机"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -159,7 +164,8 @@
                                                                for="link">联系人：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="link"
-                                                                   name="link" value="" placeholder="请输入联系人"/>
+                                                                   name="link" ng-model="link" value=""
+                                                                   placeholder="请输入联系人"/>
                                                         </div>
                                                     </div>
 
@@ -176,7 +182,8 @@
                                                                for="company_name">公司名称：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="company_name"
-                                                                   name="company_name" value="" placeholder="请输入公司名称">
+                                                                   name="company_name" ng-model="company_name" value=""
+                                                                   placeholder="请输入公司名称">
                                                         </div>
                                                     </div>
 
@@ -185,6 +192,7 @@
                                                             公司地址</label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="procode"
+                                                                    ng-model="procode"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择省份</option>
                                                                 <option value="2">江西</option>
@@ -198,6 +206,7 @@
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="citycode"
+                                                                    ng-model="citycode"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择城市</option>
                                                                 <option value="1">浙江</option>
@@ -212,6 +221,7 @@
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="countycode"
+                                                                    ng-model="countycode"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择区域</option>
                                                                 <option value="1">浙江</option>
@@ -223,9 +233,21 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label" for="video_url">视频链接</label>
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="address">详细地址</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" id="address" name="address"
+                                                                   ng-model="address"
+                                                                   class="form-control" placeholder="请输入详细地址..."/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="video_url">视频链接</label>
                                                         <div class="col-md-9">
                                                             <input type="text" id="video_url" name="video_url"
+                                                                   ng-model="video_url"
                                                                    class="form-control" placeholder="请输入视频链接"/>
                                                         </div>
                                                     </div>
@@ -233,7 +255,8 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label" for="gg_src">广告图片</label>
                                                         <div class="col-md-9">
-                                                            <input type="file" id="gg_src" name="gg_src" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="gg_src" name="gg_src" class="dropify"
+                                                                   ng-model="gg_src" data-max-file-size="1M">
                                                         </div>
                                                     </div>
                                                 </div> <!-- end col -->
@@ -246,26 +269,32 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">作品图片</label>
                                                         <div class="col-md-3">
-                                                            <input type="file" id="z_a_img" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="z_a_img" class="dropify"
+                                                                   ng-model="z_a_img" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" id="z_b_img" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="z_b_img" class="dropify"
+                                                                   ng-model="z_b_img" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" id="z_c_img" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="z_c_img" class="dropify"
+                                                                   ng-model="z_c_img" data-max-file-size="1M">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">案例图片</label>
                                                         <div class="col-md-3">
-                                                            <input type="file" id="a_a_img" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="a_a_img" class="dropify"
+                                                                   ng-model="a_a_img" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" id="a_b_img" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="a_b_img" class="dropify"
+                                                                   ng-model="a_b_img" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" id="a_c_img" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="a_c_img" class="dropify"
+                                                                   ng-model="a_c_img" data-max-file-size="1M">
                                                         </div>
                                                     </div>
 
@@ -275,7 +304,8 @@
                                                         <div class="col-md-9">
                                                             <textarea type="text" rows="5" class="form-control"
                                                                       id="details"
-                                                                      name="details" value="" placeholder="请输入服务详情..."></textarea>
+                                                                      name="details" value="" ng-model="details"
+                                                                      placeholder="请输入服务详情..."></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -283,15 +313,17 @@
                                         </div>
                                         <ul class="list-inline mb-0 wizard">
                                             <li class="previous list-inline-item float-left">
-                                                <a href="javascript: void(0);" class="btn btn-secondary">上一步</a>
+                                                <a ng-click="show()"
+                                                   class="btn btn-secondary border-0 text-white" style="background: #48c964;">{{info.prv}}</a>
                                             </li>
                                             <li class="next list-inline-item float-right">
-                                                <a href="javascript: void(0);" class="btn btn-secondary">发布</a>
+                                                <a href="javascript: void(0);"
+                                                   class="btn btn-secondary border-0 text-white" style="background: #48c964;">{{info.next}}</a>
                                             </li>
                                         </ul>
                                     </div> <!-- tab-content -->
                                 </div> <!-- end #progressbarwizard-->
-                            </form>
+                            </div>
                         </div> <!-- end card-body -->
                     </div> <!-- end card-->
                 </div> <!-- end col -->
@@ -370,6 +402,8 @@ var search_type = "shenghuo";</script>
 <script src="/static/js/wizard.min.js"></script>
 <script src="/static/js/fileinput.min.js"></script>
 <script src="/static/js/file-upload-zh.js"></script>
+<script src="/static/anguarl/angular.min.js"></script>
+<script src="/static/html/anguarl/release.js"></script>
 
 </body>
 </html>
