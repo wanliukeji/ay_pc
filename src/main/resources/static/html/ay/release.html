@@ -6,15 +6,23 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="Keywords" content="安义门窗网-免费发布信息"/>
     <meta name="Description" content="安义门窗网-免费发布信息"/>
-    <link href="/static/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="/static/css/fileinput.min.css">
+
     <link href="/static/css/dropzone.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/dropify.min.css" rel="stylesheet" type="text/css"/>
     <!-- App css -->
     <link href="/static/ui/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        * {
+
+        }
+    </style>
 </head>
 <body>
-<div style="width: 100%; height: 100px; margin-bottom: 10px;">
+<div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
     <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
         margin-top: -90px;">
 </div>
@@ -40,7 +48,7 @@
                                     <ul class="nav nav-pills bg-light nav-justified form-wizard-header mb-3">
                                         <li class="nav-item">
                                             <a href="#account-2" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
-                                                <span class="d-none d-sm-inline">分类</span>
+                                                <span class="d-none d-sm-inline">服务</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
@@ -117,14 +125,6 @@
 
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"
-                                                               for="userName2">公司名称：</label>
-                                                        <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName2"
-                                                                   name="userName1" value="">
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
@@ -168,31 +168,53 @@
                                                 <div class="col-12">
 
                                                     <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="userName2">公司名称：</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" id="userName2"
+                                                                   name="userName1" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">
                                                             公司地址</label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect"
-                                                                    class="form-control col-3 d-inline-block float-left">
-                                                                <option value="1">浙江</option>
+                                                                    class="form-control d-inline-block float-left">
+                                                                <option value="">请选择省份</option>
                                                                 <option value="2">江西</option>
                                                                 <option value="3" disabled="">湖北</option>
                                                                 <option value="4">湖南</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"></label>
+                                                        <div class="col-md-9">
                                                             <select data-plugin="customselect"
-                                                                    class="form-control col-3 d-inline-block float-left">
+                                                                    class="form-control d-inline-block float-left">
+                                                                <option value="">请选择城市</option>
                                                                 <option value="1">浙江</option>
                                                                 <option value="2">江西</option>
                                                                 <option value="3" disabled="">湖北</option>
                                                                 <option value="4">湖南</option>
                                                             </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"></label>
+                                                        <div class="col-md-9">
                                                             <select data-plugin="customselect"
-                                                                    class="form-control col-3 d-inline-block float-left">
+                                                                    class="form-control d-inline-block float-left">
+                                                                <option value="">请选择区域</option>
                                                                 <option value="1">浙江</option>
                                                                 <option value="2">江西</option>
                                                                 <option value="3" disabled="">湖北</option>
                                                                 <option value="4">湖南</option>
                                                             </select>
-                                                            <input class="form-control col-3 d-inline-block float-left"/>
                                                         </div>
                                                     </div>
 
@@ -200,18 +222,16 @@
                                                         <label class="col-md-3 col-form-label" for="name1">视频链接</label>
                                                         <div class="col-md-9">
                                                             <input type="text" id="name1" name="name1"
-                                                                   class="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"
-                                                               for="userName3">描述：</label>
-                                                        <div class="col-md-9">
-                                                            <textarea type="text" class="form-control" id="userName3"
-                                                                      name="userName1" value=""></textarea>
+                                                                   class="form-control" />
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label">图片</label>
+                                                        <div class="col-md-9">
+                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                        </div>
+                                                    </div>
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
                                         </div>
@@ -219,23 +239,18 @@
                                         <div class="tab-pane" id="finish-2">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class="text-center">
-
-
-                                                        <div class="mb-3">
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" class="custom-control-input"
-                                                                       id="customCheck3">
-                                                                <label class="custom-control-label" for="customCheck3">
-                                                                    
-                                                                </label>
-                                                            </div>
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="userName3">描述：</label>
+                                                        <div class="col-md-9">
+                                                            <textarea type="text" rows="5" class="form-control"
+                                                                      id="userName3"
+                                                                      name="userName1" value=""></textarea>
                                                         </div>
                                                     </div>
-                                                </div> <!-- end col -->
+                                                </div>
                                             </div> <!-- end row -->
                                         </div>
-
                                         <ul class="list-inline mb-0 wizard">
                                             <li class="previous list-inline-item float-left">
                                                 <a href="javascript: void(0);" class="btn btn-secondary">上一步</a>
@@ -244,18 +259,14 @@
                                                 <a href="javascript: void(0);" class="btn btn-secondary">下一步</a>
                                             </li>
                                         </ul>
-
                                     </div> <!-- tab-content -->
                                 </div> <!-- end #progressbarwizard-->
                             </form>
-
                         </div> <!-- end card-body -->
                     </div> <!-- end card-->
                 </div> <!-- end col -->
             </div>
-
         </div>
-
     </div> <!-- content -->
 
     <!-- Footer Start -->
@@ -310,8 +321,14 @@ var search_type = "shenghuo";</script>
     })();
 </script>
 
+
 <!-- Vendor js -->
 <script src="/static/ui/js/vendor.min.js"></script>
+
+
+<script src="/static/js/dropify.min.js"></script>
+<script src="/static/js/dropzone.min.js"></script>
+<script src="/static/js/form-fileuploads.init.js"></script>
 
 <!-- App js -->
 <script src="/static/ui/js/app.min.js"></script>
@@ -319,11 +336,10 @@ var search_type = "shenghuo";</script>
 
 <!-- Plugins js-->
 <script src="/static/js/wizard.init.js"></script>
-<script src="/static/js/dropify.min.js"></script>
-<script src="/static/js/dropzone.min.js"></script>
-
 <!-- Init js-->
 <script src="/static/js/wizard.min.js"></script>
+<script src="/static/js/fileinput.min.js"></script>
+<script src="/static/js/file-upload-zh.js"></script>
 
 </body>
 </html>
