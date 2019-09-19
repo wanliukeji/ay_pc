@@ -80,10 +80,10 @@
                                                 <div class="col-12">
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName1">标题：</label>
+                                                               for="headline">标题：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName1"
-                                                                   name="userName1" value=""/>
+                                                            <input type="text" class="form-control" id="headline"
+                                                                   name="headline" value="" placeholder="请输入标题"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -132,34 +132,34 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName4">QQ：</label>
+                                                               for="user_qq">QQ：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName4"
-                                                                   name="userName1" value=""></input>
+                                                            <input type="text" class="form-control" id="user_qq"
+                                                                   name="user_qq" value="" placeholder="请输入您的QQ"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName4">微信：</label>
+                                                               for="user_wx">微信：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName5"
-                                                                   name="userName5" value=""></input>
+                                                            <input type="text" class="form-control" id="user_wx"
+                                                                   name="user_wx" value="" placeholder="请输入您的微信"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName4">手机：</label>
+                                                               for="phone">手机：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName6"
-                                                                   name="userName6" value=""></input>
+                                                            <input type="text" class="form-control" id="phone"
+                                                                   name="phone" value="" placeholder="请输入您的手机"></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName4">联系人：</label>
+                                                               for="link">联系人：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName7"
-                                                                   name="userName7" value=""></input>
+                                                            <input type="text" class="form-control" id="link"
+                                                                   name="link" value="" placeholder="请输入联系人"/>
                                                         </div>
                                                     </div>
 
@@ -173,10 +173,10 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName2">公司名称：</label>
+                                                               for="company_name">公司名称：</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" class="form-control" id="userName2"
-                                                                   name="userName1" value="">
+                                                            <input type="text" class="form-control" id="company_name"
+                                                                   name="company_name" value="" placeholder="请输入公司名称">
                                                         </div>
                                                     </div>
 
@@ -184,7 +184,7 @@
                                                         <label class="col-md-3 col-form-label">
                                                             公司地址</label>
                                                         <div class="col-md-9">
-                                                            <select data-plugin="customselect"
+                                                            <select data-plugin="customselect" id="procode"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择省份</option>
                                                                 <option value="2">江西</option>
@@ -197,7 +197,7 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
-                                                            <select data-plugin="customselect"
+                                                            <select data-plugin="customselect" id="citycode"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择城市</option>
                                                                 <option value="1">浙江</option>
@@ -211,7 +211,7 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
-                                                            <select data-plugin="customselect"
+                                                            <select data-plugin="customselect" id="countycode"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择区域</option>
                                                                 <option value="1">浙江</option>
@@ -223,17 +223,17 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label" for="name1">视频链接</label>
+                                                        <label class="col-md-3 col-form-label" for="video_url">视频链接</label>
                                                         <div class="col-md-9">
-                                                            <input type="text" id="name1" name="name1"
-                                                                   class="form-control"/>
+                                                            <input type="text" id="video_url" name="video_url"
+                                                                   class="form-control" placeholder="请输入视频链接"/>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">广告图片</label>
+                                                        <label class="col-md-3 col-form-label" for="gg_src">广告图片</label>
                                                         <div class="col-md-9">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="gg_src" name="gg_src" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                     </div>
                                                 </div> <!-- end col -->
@@ -243,40 +243,39 @@
                                         <div class="tab-pane" id="finish-2">
                                             <div class="row">
                                                 <div class="col-12">
-
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">作品图片</label>
                                                         <div class="col-md-3">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="z_a_img" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="z_b_img" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="z_c_img" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">案例图片</label>
                                                         <div class="col-md-3">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="a_a_img" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="a_b_img" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <input type="file" class="dropify" data-max-file-size="1M">
+                                                            <input type="file" id="a_c_img" class="dropify" data-max-file-size="1M">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="userName3">服务描述：</label>
+                                                               for="details">服务描述：</label>
                                                         <div class="col-md-9">
                                                             <textarea type="text" rows="5" class="form-control"
-                                                                      id="userName3"
-                                                                      name="userName1" value=""></textarea>
+                                                                      id="details"
+                                                                      name="details" value="" placeholder="请输入服务详情..."></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
