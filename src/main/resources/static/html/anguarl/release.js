@@ -21,8 +21,7 @@ app.controller('relCtrl', function ($scope, $http) {
 
         if($scope.show_num_next == 1){
            if (!$scope.headline) {
-               // this.message('1111111111111');
-               // toastr.error('不能为空');
+
            }
 
         }
@@ -30,6 +29,7 @@ app.controller('relCtrl', function ($scope, $http) {
 
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
+            $scope.show_num_next = 0;
         }
     }
 });
