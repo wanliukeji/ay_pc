@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/css/fileinput.min.css">
-
+    <link rel="shortcut icon" href="/static/ico/favicon%2064.ico"/>
     <link href="/static/css/dropzone.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/css/dropify.min.css" rel="stylesheet" type="text/css"/>
     <!-- App css -->
@@ -18,11 +18,6 @@
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
 
-    <style type="text/css">
-        * {
-
-        }
-    </style>
 </head>
 <body>
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
@@ -71,7 +66,7 @@
                                         </li>
                                     </ul>
 
-                                    <div class="tab-content b-0 mb-0">
+                                    <div class="tab-content b-0 mb-0" name="myForm" novalidate>
 
                                         <div id="bar" class="progress mb-3" style="height: 7px;">
                                             <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-success"
@@ -316,11 +311,13 @@
                                         <ul class="list-inline mb-0 wizard">
                                             <li class="previous list-inline-item float-left">
                                                 <a ng-click="prve()" ng-show="show_num_next > 0"
-                                                   class="btn btn-secondary border-0 text-white" style="background: #48c964;">{{info.prv}}</a>
+                                                   class="btn btn-secondary border-0 text-white"
+                                                   style="background: #48c964;">{{info.prv}}</a>
                                             </li>
                                             <li class="next list-inline-item float-right">
                                                 <a ng-click="next()"
-                                                   class="btn btn-secondary border-0 text-white" style="background: #48c964;">{{info.next}}</a>
+                                                   class="btn btn-secondary border-0 text-white"
+                                                   style="background: #48c964;">{{info.next}}</a>
                                             </li>
                                         </ul>
                                     </div> <!-- tab-content -->
@@ -405,6 +402,7 @@ var search_type = "shenghuo";</script>
 <script src="/static/js/fileinput.min.js"></script>
 <script src="/static/js/file-upload-zh.js"></script>
 <script src="/static/anguarl/angular.min.js"></script>
+<!--<script src="https://cdn.bootcss.com/angular-toastr/2.1.1/angular-toastr.tpls.min.js" type="text/javascript"/>-->
 <link href="/static/ui/js/angular-toastr.min.js" rel="stylesheet">
 <script src="/static/html/anguarl/release.js"></script>
 

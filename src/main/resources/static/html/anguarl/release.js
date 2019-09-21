@@ -19,17 +19,19 @@ app.controller('relCtrl', function ($scope, $http) {
     $scope.next = function () {
         $scope.show_num_next += 1;
 
-        if($scope.show_num_next == 1){
-           if (!$scope.headline) {
-
-           }
-
+        if ($scope.show_num_next == 1) {
+            if (!$scope.headline) {
+                return;
+            }
         }
 
 
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
-            $scope.show_num_next = 0;
+            if ($scope.show_num_next > 3) {
+                $scope.show_num_next = 0;
+            }
         }
     }
 });
+
