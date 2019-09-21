@@ -82,7 +82,7 @@
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="headline"
                                                                    name="headline" ng-model="headline" value=""
-                                                                   placeholder="请输入标题" />
+                                                                   placeholder="请输入标题" required/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -153,7 +153,7 @@
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="phone"
                                                                    name="phone" ng-model="phone" value=""
-                                                                   placeholder="请输入您的手机"></input>
+                                                                   placeholder="请输入您的手机" required></input>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row mb-3">
@@ -162,7 +162,7 @@
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="link"
                                                                    name="link" ng-model="link" value=""
-                                                                   placeholder="请输入联系人"/>
+                                                                   placeholder="请输入联系人" required/>
                                                         </div>
                                                     </div>
 
@@ -180,7 +180,7 @@
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="company_name"
                                                                    name="company_name" ng-model="company_name" value=""
-                                                                   placeholder="请输入公司名称">
+                                                                   placeholder="请输入公司名称" required>
                                                         </div>
                                                     </div>
 
@@ -189,7 +189,7 @@
                                                             公司地址</label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="procode"
-                                                                    ng-model="procode"
+                                                                    ng-model="procode" required
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择省份</option>
                                                                 <option value="2">江西</option>
@@ -203,7 +203,7 @@
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="citycode"
-                                                                    ng-model="citycode"
+                                                                    ng-model="citycode" required
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择城市</option>
                                                                 <option value="1">浙江</option>
@@ -218,7 +218,7 @@
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="countycode"
-                                                                    ng-model="countycode"
+                                                                    ng-model="countycode" required
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择区域</option>
                                                                 <option value="1">浙江</option>
@@ -234,7 +234,7 @@
                                                                for="address">详细地址</label>
                                                         <div class="col-md-9">
                                                             <input type="text" id="address" name="address"
-                                                                   ng-model="address"
+                                                                   ng-model="address" required
                                                                    class="form-control" placeholder="请输入详细地址..."/>
                                                         </div>
                                                     </div>
@@ -300,7 +300,7 @@
                                                                for="details">服务描述：</label>
                                                         <div class="col-md-9">
                                                             <textarea type="text" rows="5" class="form-control"
-                                                                      id="details"
+                                                                      id="details" required
                                                                       name="details" value="" ng-model="details"
                                                                       placeholder="请输入服务详情..."></textarea>
                                                         </div>

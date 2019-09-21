@@ -19,15 +19,11 @@ app.controller('relCtrl', function ($scope, $http) {
     $scope.next = function () {
         $scope.show_num_next += 1;
 
-        if ($scope.show_num_next == 1) {
-            if (!$scope.headline) {
-                return;
-            }
-        }
 
-
+        //提交
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
+
             if ($scope.show_num_next > 3) {
                 $scope.show_num_next = 0;
             }
