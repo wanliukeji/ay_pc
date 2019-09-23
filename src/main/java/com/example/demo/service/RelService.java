@@ -1,7 +1,8 @@
 package com.example.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.dao.fiedMapper;
+import com.example.demo.dao.FiedMapper;
+import com.example.demo.dao.FileMapper;
 import com.example.demo.entity.Classified;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,6 @@ import java.io.Serializable;
  * @describe 用于实现接口返回规范的类  所有接口返回值都由该类封装
  */
 @Service
-public class RelService extends ServiceImpl<fiedMapper, Classified> implements Serializable {
+public class RelService extends ServiceImpl<FiedMapper, Classified> implements Serializable {
 
 }

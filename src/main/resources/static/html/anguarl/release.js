@@ -45,7 +45,6 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         //提交
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
-
             if ($scope.show_num_next == 3) {
                 let def = $q.defer();
                 $http({
@@ -62,12 +61,37 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                 }).error(function (err, status, header, config) {
                     console.log(JSON.stringify(res, header, config, status));
                 });
-            }
-            ;
+
+                var form = new FormData();
+                var file = angular.element("#gg_src")[0].files[0];//取文件。用angular.element("#file")一定要引入jQuery。
+
+                user = {
+                    name : 'CEHNY',
+                    age : 18
+                }
+
+                form.append("gg_src", file);
+                form.append("user", JSON.stringify(user));//toJson将json对象转成字符串,放入实体
+                var uploadUrl = '/uploadfile';
+                $http.post(uploadUrl, form, {
+                    transformRequest: angular.identity,
+                    headers: {
+                        'Content-Type': undefined
+                    },
+                }).success(function (res, status, header, config) {
+                    console.log(JSON.stringify(config));
+                }).error(function (err, status, header, config) {
+                    console.log(err);
+                });
+            };
+
             if ($scope.show_num_next > 3) {
                 $scope.show_num_next = 0;
             }
         }
     }
+
+    //上传文件
+
 });
 
