@@ -1,6 +1,7 @@
 package com.example.demo.controller.sys;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -82,16 +83,6 @@ public class PublicController {
     @GetMapping("/info")
     public String story() {
         return "ay/info";
-    }
-
-    /**
-     * 音频
-     *
-     * @return
-     */
-    @GetMapping("/audio")
-    public String audio() {
-        return "audio";
     }
 
     /**
@@ -190,6 +181,7 @@ public class PublicController {
     public String admin() {
         return "model/html/admin-404";
     }
+
 
 
 }

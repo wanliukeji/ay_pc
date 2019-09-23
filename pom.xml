@@ -197,6 +197,12 @@
             <version>2.1.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <!--SpringBoot 开发工具 免去重启项目-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>

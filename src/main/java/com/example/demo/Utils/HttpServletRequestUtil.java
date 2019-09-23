@@ -1,5 +1,4 @@
 package com.example.demo.Utils;
-import com.example.demo.entity.SysUser;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -28,14 +27,14 @@ public class HttpServletRequestUtil {
      * 获取作用域中存入的对象
      * @return
      */
-    public static SysUser getSessionUser(){
-        HttpServletRequest request = getRequest();
-        HttpSession session = request.getSession();
-        SysUser user = (SysUser) session.getAttribute("user");
-        if (null != user){
-            return user;
-        }else {
-            return null;
-        }
-    }
+//    public static SysUser getSessionUser(){
+//        HttpServletRequest request = getRequest();
+//        HttpSession session = request.getSession();
+//        SysUser user = (SysUser) session.getAttribute("user");
+//        if (null != user){
+//            return user;
+//        }else {
+//            return null;
+//        }
+//    }
 }
