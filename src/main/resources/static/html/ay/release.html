@@ -32,11 +32,11 @@
 <p style="height: 10px; width: 100%; background-color: #48c964;"></p>
 
 <div class="content-page" style="margin: 0 auto; text-align: center; padding-right: 10%;
-        padding-left: 10%;">
+        padding-left: 10%; min-width: 1200px;">
     <div class="content">
 
         <!-- Start Content-->
-        <div class="container-fluid" ng-app="myApp" ng-controller="relCtrl">
+        <div class="container-fluid" ng-app="myRel" ng-controller="relCtrl">
 
             <div class="row">
                 <div class="col-xl-12">
@@ -81,7 +81,7 @@
                                                                for="headline">标题：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="headline"
-                                                                   name="headline" ng-model="headline" value=""
+                                                                   name="headline" ng-model="entity.headline" value=""
                                                                    placeholder="请输入标题" required/>
                                                         </div>
                                                     </div>
@@ -134,7 +134,7 @@
                                                                for="user_qq">QQ：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="user_qq"
-                                                                   name="user_qq" ng-model="user_qq" value=""
+                                                                   name="user_qq" ng-model="entity.user_qq" value=""
                                                                    placeholder="请输入您的QQ"></input>
                                                         </div>
                                                     </div>
@@ -143,7 +143,7 @@
                                                                for="user_wx">微信：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="user_wx"
-                                                                   name="user_wx" ng-model="user_wx" value=""
+                                                                   name="user_wx" ng-model="entity.user_wx" value=""
                                                                    placeholder="请输入您的微信"></input>
                                                         </div>
                                                     </div>
@@ -152,7 +152,7 @@
                                                                for="phone">手机：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="phone"
-                                                                   name="phone" ng-model="phone" value=""
+                                                                   name="phone" ng-model="entity.phone" value=""
                                                                    placeholder="请输入您的手机" required></input>
                                                         </div>
                                                     </div>
@@ -161,7 +161,7 @@
                                                                for="link">联系人：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="link"
-                                                                   name="link" ng-model="link" value=""
+                                                                   name="link" ng-model="entity.link" value=""
                                                                    placeholder="请输入联系人" required/>
                                                         </div>
                                                     </div>
@@ -179,7 +179,7 @@
                                                                for="company_name">公司名称：</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="company_name"
-                                                                   name="company_name" ng-model="company_name" value=""
+                                                                   name="company_name" ng-model="entity.company_name" value=""
                                                                    placeholder="请输入公司名称" required>
                                                         </div>
                                                     </div>
@@ -188,13 +188,14 @@
                                                         <label class="col-md-3 col-form-label">
                                                             公司地址</label>
                                                         <div class="col-md-9">
-                                                            <select data-plugin="customselect" id="procode"
-                                                                    ng-model="procode" required
+                                                            <select data-plugin="customselect" id="entity.procode"
+                                                                    ng-model="entity.procode" required
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择省份</option>
-                                                                <option value="2">江西</option>
-                                                                <option value="3" disabled="">湖北</option>
-                                                                <option value="4">湖南</option>
+                                                                <option value="101">北京</option>
+                                                                <option value="102">江西</option>
+                                                                <option value="103">湖北</option>
+                                                                <option value="104">湖南</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -202,14 +203,14 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
-                                                            <select data-plugin="customselect" id="citycode"
-                                                                    ng-model="citycode" required
+                                                            <select data-plugin="customselect" id="entity.citycode"
+                                                                    ng-model="entity.citycode" required
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择城市</option>
-                                                                <option value="1">浙江</option>
-                                                                <option value="2">江西</option>
-                                                                <option value="3" disabled="">湖北</option>
-                                                                <option value="4">湖南</option>
+                                                                <option value="201">南昌</option>
+                                                                <option value="202">赣州</option>
+                                                                <option value="203">九江</option>
+                                                                <option value="204">上饶</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -218,13 +219,13 @@
                                                         <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="countycode"
-                                                                    ng-model="countycode" required
+                                                                    ng-model="entity.countycode" required
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择区域</option>
-                                                                <option value="1">浙江</option>
-                                                                <option value="2">江西</option>
-                                                                <option value="3" disabled="">湖北</option>
-                                                                <option value="4">湖南</option>
+                                                                <option value="301">安义</option>
+                                                                <option value="302">新建</option>
+                                                                <option value="303">静安</option>
+                                                                <option value="304">万年</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -234,7 +235,7 @@
                                                                for="address">详细地址</label>
                                                         <div class="col-md-9">
                                                             <input type="text" id="address" name="address"
-                                                                   ng-model="address" required
+                                                                   ng-model="entity.address" required
                                                                    class="form-control" placeholder="请输入详细地址..."/>
                                                         </div>
                                                     </div>
@@ -244,16 +245,16 @@
                                                                for="video_url">视频链接</label>
                                                         <div class="col-md-9">
                                                             <input type="text" id="video_url" name="video_url"
-                                                                   ng-model="video_url"
+                                                                   ng-model="entity.video_url"
                                                                    class="form-control" placeholder="请输入视频链接"/>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label" for="gg_src">广告图片</label>
+                                                        <label class="col-md-3 col-form-label">广告图片</label>
                                                         <div class="col-md-9">
                                                             <input type="file" id="gg_src" name="gg_src" class="dropify"
-                                                                   ng-model="gg_src" data-max-file-size="1M">
+                                                                   ng-model="entity.gg_src" data-max-file-size="1M">
                                                         </div>
                                                     </div>
                                                 </div> <!-- end col -->
@@ -267,15 +268,15 @@
                                                         <label class="col-md-3 col-form-label">作品图片</label>
                                                         <div class="col-md-3">
                                                             <input type="file" id="z_a_img" class="dropify"
-                                                                   ng-model="z_a_img" data-max-file-size="1M">
+                                                                   ng-model="entity.z_a_img" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <input type="file" id="z_b_img" class="dropify"
-                                                                   ng-model="z_b_img" data-max-file-size="1M">
+                                                                   ng-model="entity.z_b_img" data-max-file-size="1M">
                                                         </div>
                                                         <div class="col-md-3">
                                                             <input type="file" id="z_c_img" class="dropify"
-                                                                   ng-model="z_c_img" data-max-file-size="1M">
+                                                                   ng-model="entity.z_c_img" data-max-file-size="1M">
                                                         </div>
                                                     </div>
 
@@ -301,7 +302,7 @@
                                                         <div class="col-md-9">
                                                             <textarea type="text" rows="5" class="form-control"
                                                                       id="details" required
-                                                                      name="details" value="" ng-model="details"
+                                                                      name="details" value="" ng-model="entity.details"
                                                                       placeholder="请输入服务详情..."></textarea>
                                                         </div>
                                                     </div>

@@ -66,7 +66,7 @@ public class PublicController {
     }
 
     /**
-     * 传说
+     * 筛选页
      *
      * @return
      */
@@ -76,7 +76,7 @@ public class PublicController {
     }
 
     /**
-     * 公司详情
+     * 服务内容页
      *
      * @return
      */
@@ -93,6 +93,16 @@ public class PublicController {
     @GetMapping("/company")
     public String company() {
         return "ay/company";
+    }
+
+    /**
+     * 信息发布页
+     *
+     * @return
+     */
+    @GetMapping("/release")
+    public String release() {
+        return "ay/release";
     }
 
 }
