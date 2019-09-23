@@ -1,5 +1,6 @@
 package com.example.demo.controller.sys;
 
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @address http://106.12.38.131:8011
  * @describe 控制器 页面切换控制器
  */
+@Api(value = "检查模板操作", description = "检查模板操作")
 @Controller
 public class PublicController {
 

@@ -1,0 +1,4253 @@
+[
+  {
+    "swagger": "2.0",
+    "info": {
+      "description": "Api Documentation",
+      "version": "1.0",
+      "title": "Api Documentation",
+      "termsOfService": "urn:tos",
+      "contact": {},
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0"
+      }
+    },
+    "host": "localhost:7171",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "audio-controller",
+        "description": "Audio Controller"
+      },
+      {
+        "name": "basic-error-controller",
+        "description": "Basic Error Controller"
+      },
+      {
+        "name": "demo-controller",
+        "description": "Demo Controller"
+      },
+      {
+        "name": "error-controller",
+        "description": "Error Controller"
+      },
+      {
+        "name": "legend-controller",
+        "description": "Legend Controller"
+      },
+      {
+        "name": "login-controller",
+        "description": "Login Controller"
+      },
+      {
+        "name": "public-controller",
+        "description": "检查模板操作"
+      },
+      {
+        "name": "record-controller",
+        "description": "Record Controller"
+      },
+      {
+        "name": "register-controller",
+        "description": "Register Controller"
+      },
+      {
+        "name": "story-controller",
+        "description": "Story Controller"
+      },
+      {
+        "name": "sys-user-controller",
+        "description": "Sys User Controller"
+      },
+      {
+        "name": "upload-controller",
+        "description": "Upload Controller"
+      },
+      {
+        "name": "vaudio-controller",
+        "description": "Vaudio Controller"
+      },
+      {
+        "name": "vfile-controller",
+        "description": "Vfile Controller"
+      },
+      {
+        "name": "video-controller",
+        "description": "Video Controller"
+      }
+    ],
+    "paths": {
+      "/": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "index",
+          "operationId": "indexUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/admin-table": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "admin",
+          "operationId": "adminUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/audio/delete": {
+        "post": {
+          "tags": [
+            "audio-controller"
+          ],
+          "summary": "delete",
+          "operationId": "deleteUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Audio»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/audio/edit": {
+        "post": {
+          "tags": [
+            "audio-controller"
+          ],
+          "summary": "edit",
+          "operationId": "editUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "entity",
+              "description": "entity",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Audio"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Audio»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/audio/getInfo": {
+        "get": {
+          "tags": [
+            "audio-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Audio»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/audio/getPage": {
+        "post": {
+          "tags": [
+            "audio-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Audio»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/audio/list": {
+        "post": {
+          "tags": [
+            "audio-controller"
+          ],
+          "summary": "getVideoList",
+          "operationId": "getVideoListUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Audio»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/audio/save": {
+        "post": {
+          "tags": [
+            "audio-controller"
+          ],
+          "summary": "save",
+          "operationId": "saveUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Audio"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/getUsers": {
+        "post": {
+          "tags": [
+            "sys-user-controller"
+          ],
+          "summary": "getUsers",
+          "operationId": "getUsersUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«SysUser»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/legend/delete": {
+        "post": {
+          "tags": [
+            "legend-controller"
+          ],
+          "summary": "delete",
+          "operationId": "deleteUsingPOST_1",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Legend»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/legend/edit": {
+        "post": {
+          "tags": [
+            "legend-controller"
+          ],
+          "summary": "edit",
+          "operationId": "editUsingPOST_1",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "entity",
+              "description": "entity",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Legend"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Legend»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/legend/getInfo": {
+        "get": {
+          "tags": [
+            "legend-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET_1",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Legend»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/legend/getPage": {
+        "post": {
+          "tags": [
+            "legend-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST_1",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Legend»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/legend/list": {
+        "post": {
+          "tags": [
+            "legend-controller"
+          ],
+          "summary": "getVideoList",
+          "operationId": "getVideoListUsingPOST_1",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Legend»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/legend/save": {
+        "post": {
+          "tags": [
+            "legend-controller"
+          ],
+          "summary": "save",
+          "operationId": "saveUsingPOST_1",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Legend"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/login": {
+        "post": {
+          "tags": [
+            "login-controller"
+          ],
+          "summary": "login",
+          "operationId": "loginUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SysUser"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/record/delete": {
+        "post": {
+          "tags": [
+            "record-controller"
+          ],
+          "summary": "delete",
+          "operationId": "deleteUsingPOST_2",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Record»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/record/edit": {
+        "post": {
+          "tags": [
+            "record-controller"
+          ],
+          "summary": "edit",
+          "operationId": "editUsingPOST_2",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "entity",
+              "description": "entity",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Record"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Record»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/record/getInfo": {
+        "get": {
+          "tags": [
+            "record-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET_2",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Record»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/record/getPage": {
+        "post": {
+          "tags": [
+            "record-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST_2",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Record»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/record/list": {
+        "post": {
+          "tags": [
+            "record-controller"
+          ],
+          "summary": "getVideoList",
+          "operationId": "getVideoListUsingPOST_2",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Record»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/record/save": {
+        "post": {
+          "tags": [
+            "record-controller"
+          ],
+          "summary": "save",
+          "operationId": "saveUsingPOST_2",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Record"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/register": {
+        "post": {
+          "tags": [
+            "register-controller"
+          ],
+          "summary": "register",
+          "operationId": "registerUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SysUser"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/story/delete": {
+        "post": {
+          "tags": [
+            "story-controller"
+          ],
+          "summary": "delete",
+          "operationId": "deleteUsingPOST_3",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Story»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/story/edit": {
+        "post": {
+          "tags": [
+            "story-controller"
+          ],
+          "summary": "edit",
+          "operationId": "editUsingPOST_3",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "entity",
+              "description": "entity",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Story"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Story»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/story/getInfo": {
+        "get": {
+          "tags": [
+            "story-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET_3",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Story»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/story/getPage": {
+        "post": {
+          "tags": [
+            "story-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST_3",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Story»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/story/list": {
+        "post": {
+          "tags": [
+            "story-controller"
+          ],
+          "summary": "getVideoList",
+          "operationId": "getVideoListUsingPOST_3",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Story»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/story/save": {
+        "post": {
+          "tags": [
+            "story-controller"
+          ],
+          "summary": "save",
+          "operationId": "saveUsingPOST_3",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Story"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/user": {
+        "get": {
+          "tags": [
+            "sys-user-controller"
+          ],
+          "summary": "getUser",
+          "operationId": "getUserUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«SysUser»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/vaudio/getInfo": {
+        "get": {
+          "tags": [
+            "vaudio-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET_4",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Vaudio»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/vaudio/getPage": {
+        "post": {
+          "tags": [
+            "vaudio-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST_4",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Vaudio»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/vaudio/list": {
+        "post": {
+          "tags": [
+            "vaudio-controller"
+          ],
+          "summary": "getVaudioList",
+          "operationId": "getVaudioListUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Vaudio»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/vfile/getInfo": {
+        "get": {
+          "tags": [
+            "vfile-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET_5",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Vfile»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/vfile/getPage": {
+        "post": {
+          "tags": [
+            "vfile-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST_5",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Vfile»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/vfile/list": {
+        "post": {
+          "tags": [
+            "vfile-controller"
+          ],
+          "summary": "getvfileList",
+          "operationId": "getvfileListUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Vfile»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/delete": {
+        "post": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "delete",
+          "operationId": "deleteUsingPOST_4",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/deletes": {
+        "post": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "delete",
+          "operationId": "deleteUsingPOST_5",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/edit": {
+        "post": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "edit",
+          "operationId": "editUsingPOST_4",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "video",
+              "description": "video",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Video"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/getInfo": {
+        "get": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "getInfo",
+          "operationId": "getInfoUsingGET_6",
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "id",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«Video»"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/getPage": {
+        "post": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "getPage",
+          "operationId": "getPageUsingPOST_6",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "param",
+              "description": "param",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ReqParam"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«IPage«Video»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/list": {
+        "post": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "getVideoList",
+          "operationId": "getVideoListUsingPOST_4",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "query",
+              "description": "ids",
+              "required": true,
+              "type": "array",
+              "items": {
+                "type": "object"
+              },
+              "collectionFormat": "multi"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«List«Video»»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/api/video/save": {
+        "post": {
+          "tags": [
+            "video-controller"
+          ],
+          "summary": "save",
+          "operationId": "saveUsingPOST_4",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "info",
+              "description": "info",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Video"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«boolean»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/atable": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "atable",
+          "operationId": "atableUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/audio": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "audio",
+          "operationId": "audioUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/company": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "company",
+          "operationId": "companyUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/error": {
+        "get": {
+          "tags": [
+            "error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingGET_1",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ModelAndView"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "head": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingHEAD",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingPUT",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingDELETE",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "options": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingOPTIONS",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "basic-error-controller"
+          ],
+          "summary": "error",
+          "operationId": "errorUsingPATCH",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object"
+                }
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            }
+          }
+        }
+      },
+      "/group": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "legend",
+          "operationId": "legendUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/home": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "blog",
+          "operationId": "blogUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/img": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "record",
+          "operationId": "recordUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/info": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "story",
+          "operationId": "storyUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/login": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "login",
+          "operationId": "loginUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/ltable": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "ltable",
+          "operationId": "ltableUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/master": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "master",
+          "operationId": "masterUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/message": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "message",
+          "operationId": "messageUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/mine": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "boxed",
+          "operationId": "boxedUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/register": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "register",
+          "operationId": "registerUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/release": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "release_a",
+          "operationId": "release_aUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/rtable": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "rtable",
+          "operationId": "rtableUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/stable": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "satable",
+          "operationId": "satableUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/test": {
+        "post": {
+          "tags": [
+            "demo-controller"
+          ],
+          "summary": "demoTest",
+          "operationId": "demoTestUsingPOST",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/upload_audio": {
+        "post": {
+          "tags": [
+            "upload-controller"
+          ],
+          "summary": "upload_audio",
+          "operationId": "upload_audioUsingPOST",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "a_file",
+              "in": "formData",
+              "description": "a_file",
+              "required": false,
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«FileEntity»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/upload_img": {
+        "post": {
+          "tags": [
+            "upload-controller"
+          ],
+          "summary": "upload_img",
+          "operationId": "upload_imgUsingPOST",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "p_file",
+              "in": "formData",
+              "description": "p_file",
+              "required": false,
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«FileEntity»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/upload_video": {
+        "post": {
+          "tags": [
+            "upload-controller"
+          ],
+          "summary": "upload_video",
+          "operationId": "upload_videoUsingPOST",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "parameters": [
+            {
+              "name": "v_file",
+              "in": "formData",
+              "description": "v_file",
+              "required": false,
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/ResultJSON«FileEntity»"
+              }
+            },
+            "201": {
+              "description": "Created"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      },
+      "/vtable": {
+        "get": {
+          "tags": [
+            "public-controller"
+          ],
+          "summary": "vtable",
+          "operationId": "vtableUsingGET",
+          "produces": [
+            "*/*"
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "string"
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "404": {
+              "description": "Not Found"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Audio": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "direct": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lge": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Audio"
+      },
+      "FileEntity": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nfileName": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "uploadTime": {
+            "$ref": "#/definitions/Timestamp"
+          }
+        },
+        "title": "FileEntity"
+      },
+      "IPage«Audio»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Audio"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Audio»"
+      },
+      "IPage«Legend»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Legend"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Legend»"
+      },
+      "IPage«Record»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Record"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Record»"
+      },
+      "IPage«Story»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Story"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Story»"
+      },
+      "IPage«Vaudio»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Vaudio"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Vaudio»"
+      },
+      "IPage«Vfile»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Vfile"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Vfile»"
+      },
+      "IPage«Video»": {
+        "type": "object",
+        "properties": {
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Video"
+            }
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "IPage«Video»"
+      },
+      "Legend": {
+        "type": "object",
+        "properties": {
+          "answer": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "question": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Legend"
+      },
+      "ModelAndView": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "model": {
+            "type": "object"
+          },
+          "modelMap": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "reference": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "100 CONTINUE",
+              "101 SWITCHING_PROTOCOLS",
+              "102 PROCESSING",
+              "103 CHECKPOINT",
+              "200 OK",
+              "201 CREATED",
+              "202 ACCEPTED",
+              "203 NON_AUTHORITATIVE_INFORMATION",
+              "204 NO_CONTENT",
+              "205 RESET_CONTENT",
+              "206 PARTIAL_CONTENT",
+              "207 MULTI_STATUS",
+              "208 ALREADY_REPORTED",
+              "226 IM_USED",
+              "300 MULTIPLE_CHOICES",
+              "301 MOVED_PERMANENTLY",
+              "302 FOUND",
+              "302 MOVED_TEMPORARILY",
+              "303 SEE_OTHER",
+              "304 NOT_MODIFIED",
+              "305 USE_PROXY",
+              "307 TEMPORARY_REDIRECT",
+              "308 PERMANENT_REDIRECT",
+              "400 BAD_REQUEST",
+              "401 UNAUTHORIZED",
+              "402 PAYMENT_REQUIRED",
+              "403 FORBIDDEN",
+              "404 NOT_FOUND",
+              "405 METHOD_NOT_ALLOWED",
+              "406 NOT_ACCEPTABLE",
+              "407 PROXY_AUTHENTICATION_REQUIRED",
+              "408 REQUEST_TIMEOUT",
+              "409 CONFLICT",
+              "410 GONE",
+              "411 LENGTH_REQUIRED",
+              "412 PRECONDITION_FAILED",
+              "413 PAYLOAD_TOO_LARGE",
+              "413 REQUEST_ENTITY_TOO_LARGE",
+              "414 URI_TOO_LONG",
+              "414 REQUEST_URI_TOO_LONG",
+              "415 UNSUPPORTED_MEDIA_TYPE",
+              "416 REQUESTED_RANGE_NOT_SATISFIABLE",
+              "417 EXPECTATION_FAILED",
+              "418 I_AM_A_TEAPOT",
+              "419 INSUFFICIENT_SPACE_ON_RESOURCE",
+              "420 METHOD_FAILURE",
+              "421 DESTINATION_LOCKED",
+              "422 UNPROCESSABLE_ENTITY",
+              "423 LOCKED",
+              "424 FAILED_DEPENDENCY",
+              "426 UPGRADE_REQUIRED",
+              "428 PRECONDITION_REQUIRED",
+              "429 TOO_MANY_REQUESTS",
+              "431 REQUEST_HEADER_FIELDS_TOO_LARGE",
+              "451 UNAVAILABLE_FOR_LEGAL_REASONS",
+              "500 INTERNAL_SERVER_ERROR",
+              "501 NOT_IMPLEMENTED",
+              "502 BAD_GATEWAY",
+              "503 SERVICE_UNAVAILABLE",
+              "504 GATEWAY_TIMEOUT",
+              "505 HTTP_VERSION_NOT_SUPPORTED",
+              "506 VARIANT_ALSO_NEGOTIATES",
+              "507 INSUFFICIENT_STORAGE",
+              "508 LOOP_DETECTED",
+              "509 BANDWIDTH_LIMIT_EXCEEDED",
+              "510 NOT_EXTENDED",
+              "511 NETWORK_AUTHENTICATION_REQUIRED"
+            ]
+          },
+          "view": {
+            "$ref": "#/definitions/View"
+          },
+          "viewName": {
+            "type": "string"
+          }
+        },
+        "title": "ModelAndView"
+      },
+      "Record": {
+        "type": "object",
+        "properties": {
+          "author": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "url": {
+            "type": "string"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Record"
+      },
+      "ReqParam": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "string"
+          },
+          "pageNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "ReqParam"
+      },
+      "ResultJSON«Audio»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Audio"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Audio»"
+      },
+      "ResultJSON«FileEntity»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/FileEntity"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«FileEntity»"
+      },
+      "ResultJSON«IPage«Audio»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Audio»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Audio»»"
+      },
+      "ResultJSON«IPage«Legend»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Legend»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Legend»»"
+      },
+      "ResultJSON«IPage«Record»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Record»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Record»»"
+      },
+      "ResultJSON«IPage«Story»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Story»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Story»»"
+      },
+      "ResultJSON«IPage«Vaudio»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Vaudio»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Vaudio»»"
+      },
+      "ResultJSON«IPage«Vfile»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Vfile»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Vfile»»"
+      },
+      "ResultJSON«IPage«Video»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/IPage«Video»"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«IPage«Video»»"
+      },
+      "ResultJSON«Legend»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Legend"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Legend»"
+      },
+      "ResultJSON«List«Audio»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Audio"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Audio»»"
+      },
+      "ResultJSON«List«Legend»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Legend"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Legend»»"
+      },
+      "ResultJSON«List«Record»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Record"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Record»»"
+      },
+      "ResultJSON«List«Story»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Story"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Story»»"
+      },
+      "ResultJSON«List«SysUser»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/SysUser"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«SysUser»»"
+      },
+      "ResultJSON«List«Vaudio»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Vaudio"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Vaudio»»"
+      },
+      "ResultJSON«List«Vfile»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Vfile"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Vfile»»"
+      },
+      "ResultJSON«List«Video»»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Video"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«List«Video»»"
+      },
+      "ResultJSON«Record»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Record"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Record»"
+      },
+      "ResultJSON«Story»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Story"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Story»"
+      },
+      "ResultJSON«SysUser»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/SysUser"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«SysUser»"
+      },
+      "ResultJSON«Vaudio»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Vaudio"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Vaudio»"
+      },
+      "ResultJSON«Vfile»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Vfile"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Vfile»"
+      },
+      "ResultJSON«Video»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "$ref": "#/definitions/Video"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«Video»"
+      },
+      "ResultJSON«boolean»": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "data": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ResultJSON«boolean»"
+      },
+      "Story": {
+        "type": "object",
+        "properties": {
+          "author": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Story"
+      },
+      "SysUser": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "businessId": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "deptId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "email": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "locked": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "salt": {
+            "type": "string"
+          },
+          "sex": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userType": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "SysUser"
+      },
+      "Timestamp": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "minutes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "month": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nanos": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "seconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "time": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "timezoneOffset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "Timestamp"
+      },
+      "Vaudio": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "direct": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lge": {
+            "type": "string"
+          },
+          "nfileName": {
+            "type": "string"
+          },
+          "p_path": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uploadTime": {
+            "$ref": "#/definitions/Timestamp"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "v_path": {
+            "type": "string"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Vaudio"
+      },
+      "Vfile": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "direct": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fileName": {
+            "type": "string"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lge": {
+            "type": "string"
+          },
+          "nfileName": {
+            "type": "string"
+          },
+          "p_path": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "uploadTime": {
+            "$ref": "#/definitions/Timestamp"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "v_path": {
+            "type": "string"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Vfile"
+      },
+      "Video": {
+        "type": "object",
+        "properties": {
+          "actor": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "context": {
+            "type": "string"
+          },
+          "createTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "direct": {
+            "type": "string"
+          },
+          "enable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "grade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "img_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "issueTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lge": {
+            "type": "string"
+          },
+          "updateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userid": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "video_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vlike": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "vname": {
+            "type": "string"
+          },
+          "vshare": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "Video"
+      },
+      "View": {
+        "type": "object",
+        "properties": {
+          "contentType": {
+            "type": "string"
+          }
+        },
+        "title": "View"
+      }
+    }
+  }
+]
