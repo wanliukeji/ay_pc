@@ -22,6 +22,7 @@
 // */
 //@RestController
 //@Slf4j
+//@Api(value = "上传模块", description = "上传接口")
 //public class UploadController {
 //
 //    @Autowired

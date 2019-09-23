@@ -1,6 +1,7 @@
 package com.example.demo.controller.sys;
 
 import com.example.demo.Utils.HttpServletRequestUtil;
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * @describe 异常控制器
  */
 @Controller
+@Api(value = "异常模块", description = "异常接口")
 public class ErrorController {
 
     @GetMapping("/error")

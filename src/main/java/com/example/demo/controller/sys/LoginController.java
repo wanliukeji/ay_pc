@@ -1,5 +1,6 @@
 package com.example.demo.controller.sys;
 import com.example.demo.api.LoginApi;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
+@Api(value = "登录模块", description = "登录接口")
 public class LoginController implements LoginApi {
 
 //    @Autowired

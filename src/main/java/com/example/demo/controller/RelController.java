@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
+@Api(value = "发布信息模块", description = "发布信息接口")
 public class RelController implements RelApi {
 
     @Autowired

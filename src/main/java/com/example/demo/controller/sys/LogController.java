@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @Slf4j
+@Api(value = "日志模块", description = "日志接口")
 public class logController {
 
     @GetMapping("/login")

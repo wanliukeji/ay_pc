@@ -24,7 +24,6 @@ public class RoleAction implements RoleApi {
 
     @Override
     public void inseRole(String name) throws Exception {
-
         Role entity = new Role();
         entity.setName(name);
         entity.setCreateDate(new Date());
