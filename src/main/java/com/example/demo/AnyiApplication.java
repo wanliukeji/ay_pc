@@ -22,15 +22,15 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan(basePackages = {
         "com.example.demo.*"})
 @EnableSwagger2
-public class DemoApplication {
+public class AnyiApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(AnyiApplication.class, args);
     };
 
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(DemoApplication.class);
+        return application.sources(AnyiApplication.class);
     };
 
 }

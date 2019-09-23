@@ -1,10 +1,13 @@
 var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $http, $q) {
     $scope.entity = {
-        headline: '承接门窗加工',
+        head_line: '承接门窗加工',
+        sercode: '',
+        coverage: '',
         user_qq: '789878',
         user_wx: 'jiangxilaoer',
         phone: '1327878909',
         link: 'CHENYI',
+        createDate: new Date(),
         company_name: '宁波阿拉',
         procode: '101',
         citycode: '201',
@@ -12,7 +15,13 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         address: '大榭开发区',
         video_url: 'http://www.baidu.com',
         gg_src: 'demo.jpg',
-        details: '专业加工不锈钢，塑钢，铝合金门窗'
+        details: '专业加工不锈钢，塑钢，铝合金门窗',
+        z_a_img: '',
+        z_b_img: '',
+        z_c_img: '',
+        a_a_img: '',
+        a_b_img: '',
+        a_c_img: ''
     }
 
     $scope.show_num_prv = 0;
@@ -58,14 +67,36 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                 url: '/api/saveRel',
                 type: "POST",
                 data: {
-                    // $scope.entity
+                    head_line: '承接门窗加工',
+                    sercode: '',
+                    coverage: '',
+                    user_qq: '789878',
+                    user_wx: 'jiangxilaoer',
+                    phone: '1327878909',
+                    link: 'CHENYI',
+                    createDate: new Date(),
+                    company_name: '宁波阿拉',
+                    procode: '101',
+                    citycode: '201',
+                    countycode: '301',
+                    address: '大榭开发区',
+                    video_url: 'http://www.baidu.com',
+                    gg_src: 'demo.jpg',
+                    details: '专业加工不锈钢，塑钢，铝合金门窗',
+                    z_a_img: '',
+                    z_b_img: '',
+                    z_c_img: '',
+                    a_a_img: '',
+                    a_b_img: '',
+                    a_c_img: ''
                 },
-                dataType : 'JSON',
+                dataType: 'JSON',
+                async:false,
                 contentType: "application/json;charset=UTF-8",
-                success:function (res) {
+                success: function (res) {
                     console.log(res);
                 },
-                error:function (err) {
+                error: function (err) {
                     console.log(err);
                 }
 

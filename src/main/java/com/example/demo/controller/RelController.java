@@ -26,8 +26,9 @@ public class RelController implements RelApi {
     private RelService relService;
 
     @Override
-    public Boolean saveRel(Classified fied) {
-        return relService.save(fied);
+    public void saveRel(Classified fied) throws Exception {
+        relService.save(fied);
+        int i = 0;
     }
 }
 
