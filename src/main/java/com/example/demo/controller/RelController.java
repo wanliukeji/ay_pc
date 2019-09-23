@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.api.RelApi;
 import com.example.demo.entity.Classified;
+import com.example.demo.json.ApiJSON;
+import com.example.demo.json.ResultJSON;
 import com.example.demo.service.RelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,9 +29,10 @@ public class RelController implements RelApi {
     private RelService relService;
 
     @Override
-    public void saveRel(Classified fied) throws Exception {
-        relService.save(fied);
-        int i = 0;
+    public ApiJSON saveRel(Classified fied) throws Exception {
+       boolean flag = relService.save(fied);
+       int i = 0;
+       return ApiJSON.data(flag);
     }
 }
 

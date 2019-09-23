@@ -1,6 +1,7 @@
 package com.example.demo.api;
 
 import com.example.demo.entity.Classified;
+import com.example.demo.json.ApiJSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -21,5 +22,5 @@ public interface RelApi {
 
     @PostMapping(value = "/api/saveRel", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "信息发布保存数据接口", notes = "信息发布保存数据接口")
-    public void saveRel(@RequestBody Classified entity) throws Exception;
+    public ApiJSON saveRel(@RequestBody Classified entity) throws Exception;
 }

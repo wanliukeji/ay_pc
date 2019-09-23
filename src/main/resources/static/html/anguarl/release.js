@@ -1,8 +1,8 @@
 var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $http, $q) {
     $scope.entity = {
         head_line: '承接门窗加工',
-        sercode: '',
-        coverage: '',
+        sercode: '1001',
+        coverage: '1002',
         user_qq: '789878',
         user_wx: 'jiangxilaoer',
         phone: '1327878909',
@@ -16,12 +16,12 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         video_url: 'http://www.baidu.com',
         gg_src: 'demo.jpg',
         details: '专业加工不锈钢，塑钢，铝合金门窗',
-        z_a_img: '',
-        z_b_img: '',
-        z_c_img: '',
-        a_a_img: '',
-        a_b_img: '',
-        a_c_img: ''
+        z_a_img: '/staus/images/100.jpg',
+        z_b_img: '/staus/images/200.jpg',
+        z_c_img: '/staus/images/300.jpg',
+        a_a_img: '/staus/images/400.jpg',
+        a_b_img: '/staus/images/500.jpg',
+        a_c_img: '/staus/images/600.jpg'
     }
 
     $scope.show_num_prv = 0;
@@ -46,61 +46,27 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
 
-            // if ($scope.show_num_next == 3) {
-            //     let def = $q.defer();
-            //     console.dir($scope.entity);
-            //     $http.post({
-            //         url: '/api/saveRel',
-            //         // method: "POST",
-            //         data: $scope.info,
-            //         // headers: {"Content-Type": "application/json;charset=utf-8"}
-            //     }).success(function (res, status, header, config, statusText) {
-            //         console.log(JSON.stringify(res, status, header, config, statusText));
-            //     }).error(function (err, status, header, config) {
-            //         console.log(JSON.stringify(res, header, config, status));
-            //     });
-            // }
+            if ($scope.show_num_next == 3) {
+                let def = $q.defer();
+                $http({
+                    url: '/api/saveRel',
+                    method: "POST",
+                    data: $scope.entity,
+                    headers: {"Content-Type": "application/json;charset=utf-8"}
+                }).success(function (res, status, header, config) {
+                    if (status == 200) {
+                        console.log(config.data);
+                    } else {
+                        console.log(JSON.stringify(status));
+                    }
+                }).error(function (err, status, header, config) {
+                    console.log(JSON.stringify(res, header, config, status));
+                });
+            }
+            ;
             if ($scope.show_num_next > 3) {
                 $scope.show_num_next = 0;
             }
-            $.ajax({
-                url: '/api/saveRel',
-                type: "POST",
-                data: {
-                    head_line: '承接门窗加工',
-                    sercode: '',
-                    coverage: '',
-                    user_qq: '789878',
-                    user_wx: 'jiangxilaoer',
-                    phone: '1327878909',
-                    link: 'CHENYI',
-                    createDate: new Date(),
-                    company_name: '宁波阿拉',
-                    procode: '101',
-                    citycode: '201',
-                    countycode: '301',
-                    address: '大榭开发区',
-                    video_url: 'http://www.baidu.com',
-                    gg_src: 'demo.jpg',
-                    details: '专业加工不锈钢，塑钢，铝合金门窗',
-                    z_a_img: '',
-                    z_b_img: '',
-                    z_c_img: '',
-                    a_a_img: '',
-                    a_b_img: '',
-                    a_c_img: ''
-                },
-                dataType: 'JSON',
-                async:false,
-                contentType: "application/json;charset=UTF-8",
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (err) {
-                    console.log(err);
-                }
-
-            });
         }
     }
 });
