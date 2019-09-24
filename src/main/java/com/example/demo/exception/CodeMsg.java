@@ -31,6 +31,7 @@ public class CodeMsg {
     public static CodeMsg SESSION_ERROR = new CodeMsg(102,"没有SESSION！"); /*用占位符 传入一个参数*/
     public static CodeMsg REQUEST_ERROR = new CodeMsg(103,"非法请求！"); /*用占位符 传入一个参数*/
     public static CodeMsg REQUEST_OVER_LIMIT = new CodeMsg(104,"请求次数过多！"); /*用占位符 传入一个参数*/
+    public static CodeMsg LOGIN_ERROR = new CodeMsg(105,"登录失败"); /*用占位符 传入一个参数*/
 
     private CodeMsg( ) {
     }

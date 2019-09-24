@@ -16,7 +16,7 @@
 </head>
 
 <body class="authentication-bg authentication-bg-pattern"
- style="background:url(/static/bg/sc.jpg) no-repeat; background-size: cover;"  >
+ style="background:url(/static/bg/sc.jpg) no-repeat; background-size: cover;" ng-app="myLogin" ng-controller="loginCtrl" >
 <div class="account-pages mt-5 mb-5 w-25 left" style="margin-right: 20px;
 min-width: 360px;
     float: right;">
@@ -29,24 +29,21 @@ min-width: 360px;
 
                         <div class="text-center m-auto">
                             <a href="index.html">
-                                <!--<span><img src="assets/images/logo-dark.png" alt="" height="22"></span>-->
                             </a>
                             <h3 class="title">登录</h3>
-                            <!--<p class="text-muted mb-4 mt-3">Enter your email address and password to access admin-->
-                                <!--panel.</p>-->
                         </div>
 
-                        <div action="#">
+                        <div action="#" >
 
                             <div class="form-group mb-3">
-                                <label for="emailaddress">账户：</label>
-                                <input class="form-control" type="email" id="emailaddress" required=""
+                                <label for="username">账户：</label>
+                                <input class="form-control" type="text" ng-model="account" id="username" required=""
                                        placeholder="请输入您的账户">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="password">密码：</label>
-                                <input class="form-control" type="password" required="" id="password"
+                                <input class="form-control" type="password" required="" ng-model="password" id="password"
                                        placeholder="请输入您的密码">
                             </div>
 
@@ -62,9 +59,8 @@ min-width: 360px;
                             </div>
 
                             <div class="form-group mb-0 text-center">
-                                <a href="/static/html/ay/home.html"><button class="btn btn-block" style="background-color: #48c964;
-                                    border-color: #48c964;" type="button"> 登录
-                                </button></a>
+                                <button class="btn btn-block" style="background-color: #48c964;" type="button" ng-click="submit()"> 登录
+                                </button>
                             </div>
                         </div>
 
@@ -89,6 +85,8 @@ min-width: 360px;
 
 <!-- App js -->
 <script src="/static/ui/js/app.min.js"></script>
+<script src="/static/anguarl/angular.min.js"></script>
+<script src="/static/html/anguarl/login.js"></script>
 
 </body>
 </html>

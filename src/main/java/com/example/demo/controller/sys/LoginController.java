@@ -1,6 +1,17 @@
 package com.example.demo.controller.sys;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.demo.Utils.EncryptUtil;
+import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.api.LoginApi;
+import com.example.demo.entity.SysUser;
+import com.example.demo.exception.CodeMsg;
+import com.example.demo.json.ResultJSON;
+import com.example.demo.service.SysUserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,40 +26,35 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-@Api(value = "登录模块", description = "登录接口")
 public class LoginController implements LoginApi {
 
-//    @Autowired
-//    private SysUserService sysUserService;
+    @Autowired
+    private SysUserService sysUserService;
 
-    /**
-     * 登录口
-     * @param info
-     * @return
-     */
-//    @Override
-//    public ResultJSON<Boolean> login(SysUser info) {
-//        boolean flag = false;
-//        try {
-//            if (null != info){
-//                SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account",info.getAccount()).eq("password",info.getPassword()));
-//                if (null != user ){
-//                    //解密
-//                    //String pwd = EncryptUtil.Base64Decode(user.getPassword());
-//                    if ( info.getPassword().equalsIgnoreCase(user.getPassword())){
-//                        HttpServletRequestUtil.getRequest().getSession().setAttribute("user",user);
-//                        return ResultJSON.success(true);
+
+
+    public ResultJSON<Boolean> login(String account,String password) {
+        boolean flag = false;
+        try {
+            if (null != account && password != null) {
+                SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account", account).eq("password", password));
+                if (null != user) {
+                    //解密
+//                    String pwd = EncryptUtil.Base64Decode(user.getPassword());
+//                    if (password.equalsIgnoreCase(user.getPassword())) {
+                        HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
+                        return ResultJSON.success(true);
 //                    }
-//                }else {
-//                    return ResultJSON.error(CodeMsg.SERVER_ERROR);
-//                }
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            log.error(ex.getMessage());
-//            return ResultJSON.error(CodeMsg.SERVER_ERROR);
-//        }
-//        return ResultJSON.error(CodeMsg.SERVER_ERROR);
-//    }
+                } else {
+                    return ResultJSON.error(CodeMsg.LOGIN_ERROR);
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            log.error(ex.getMessage());
+            return ResultJSON.error(CodeMsg.SERVER_ERROR);
+        }
+        return ResultJSON.error(CodeMsg.SERVER_ERROR);
+    }
 
 }
