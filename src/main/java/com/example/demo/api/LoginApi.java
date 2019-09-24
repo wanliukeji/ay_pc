@@ -6,10 +6,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
@@ -25,9 +27,8 @@ public interface LoginApi extends Serializable {
 
     /**
      * 登录
-     *
-     * @param
-     * @return
+     * @param account
+     * @param account
      */
     @ApiOperation(value = "登录接口", notes = "登录接口")
     @ApiImplicitParams({
@@ -35,7 +36,7 @@ public interface LoginApi extends Serializable {
             @ApiImplicitParam(name = "password", value = "密码")
     })
     @PostMapping(value = "/api/login", produces = {"application/json;charset=UTF-8"})
-    public ResultJSON<Boolean> login(@RequestParam(value = "account", required = true) String account,
-                                     @RequestParam(value = "password", required = true) String password);
+    public ResultJSON<Boolean> login(@RequestParam(value = "account", required = false) String account,
+                                     @RequestParam(value = "password", required = false) String password);
 
 }
