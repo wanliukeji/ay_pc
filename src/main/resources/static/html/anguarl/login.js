@@ -1,8 +1,5 @@
 var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope, $http, $q, $window) {
 
-    $scope.account = 'chenyu';
-    $scope.password = '222222';
-
     $scope.submit = function () {
         // $http({
         //     url: '/api/login',
@@ -27,15 +24,15 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
             url: '/api/login',
             method: 'POST',
             data: {
-                'account': 'chenyu',
-                'password': '222222'
+                'account': $scope.account,
+                'password': $scope.password
             },
             success: function (res) {
                 if (res.code == 200) {
                     console.log(res.message);
                     localStorage.setItem('user', {
-                        'account': 'chenyu',
-                        'password': '222222'
+                        'account': $scope.account,
+                        'password': $scope.password
                     })
                     window.location.href = '/home'
                 }

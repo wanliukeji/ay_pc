@@ -2,6 +2,7 @@ package com.example.demo.controller.sys;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Utils.EncryptUtil;
+import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.api.RegisterApi;
 import com.example.demo.entity.SysUser;
@@ -60,6 +61,10 @@ public class RegisterController implements RegisterApi {
 
         boolean flag = service.save(user);
 
-        return ResultJSON.success(flag);
+        if (flag) {
+            HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
+            return ResultJSON.success(flag);
+        }
+        return ResultJSON.error(CodeMsg.REG_ERROR);
     }
 }

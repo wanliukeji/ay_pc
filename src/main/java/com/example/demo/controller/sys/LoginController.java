@@ -1,6 +1,7 @@
 package com.example.demo.controller.sys;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.demo.Utils.EncryptUtil;
 import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.api.LoginApi;
 import com.example.demo.entity.SysUser;
@@ -28,12 +29,14 @@ public class LoginController implements LoginApi {
 
     public ResultJSON<Boolean> login(String account,String password) {
         boolean flag = false;
+        //解密
+        password = EncryptUtil.Base64Decode(password);
+        password = EncryptUtil.Base64Encode(password);
         try {
             if (null != account && password != null) {
                 SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account", account).eq("password", password));
                 if (null != user) {
                     //解密
-                    // String pwd = EncryptUtil.Base64Decode(user.getPassword());
                     // if (password.equalsIgnoreCase(user.getPassword())) {
                         HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
                         return ResultJSON.success(true);

@@ -48,6 +48,8 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
             success: function (res) {
                 if (res.code == 200) {
                     console.log(res.message);
+                    localStorage.setItem('user', $scope.entity);
+                    window.location.href = '/home'
                 } else {
                     console.log(res.message);
                 }
