@@ -42,9 +42,9 @@ public class LoginController implements LoginApi {
                     return ResultJSON.error(CodeMsg.LOGIN_ERROR);
                 }
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            log.error(ex.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
             return ResultJSON.error(CodeMsg.SERVER_ERROR);
         }
         return ResultJSON.error(CodeMsg.SERVER_ERROR);

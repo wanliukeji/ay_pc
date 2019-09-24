@@ -36,7 +36,7 @@ public interface LoginApi extends Serializable {
             @ApiImplicitParam(name = "password", value = "密码")
     })
     @PostMapping(value = "/api/login", produces = {"application/json;charset=UTF-8"})
-    public ResultJSON<Boolean> login(@RequestParam(value = "account", required = false) String account,
-                                     @RequestParam(value = "password", required = false) String password);
+    public ResultJSON<Boolean> login(@RequestParam("account") String account,
+                                     @RequestParam("password") String password);
 
 }
