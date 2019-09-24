@@ -70,13 +70,12 @@ public class FileUploadTool {
             String fileEnd = this.getFileExt(fileName);
             String logoPathDir = logoPathDir(fileEnd);
             //保存本地项目
-            String logoRealPathDir = "D:/Work/public_project/src/main/resources/static" + logoPathDir;
+            String logoRealPathDir = "\\src\\main\\resources\\static\\" + logoPathDir;
             File logoSaveFile = new File(logoRealPathDir);
+
             if (!logoSaveFile.exists()) {
                 logoSaveFile.mkdirs();
             }
-            System.out.println("文件名称：" + name);
-
             // 绝对路径
             String fileNamedirs = logoRealPathDir + File.separator + newFileName + fileEnd;
             System.out.println("保存的绝对路径：" + fileNamedirs);

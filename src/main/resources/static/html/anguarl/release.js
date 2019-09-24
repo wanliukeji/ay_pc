@@ -29,7 +29,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     $scope.info = {
         prv: '上一步',
         next: '下一步'
-    }
+    };
 
     $scope.prve = function () {
         $scope.show_num_next -= 1;
@@ -37,7 +37,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         if ($scope.show_num_next < 3) {
             $scope.info.next = '下一步';
         }
-    }
+    };
 
     $scope.next = function () {
         $scope.show_num_next += 1;
@@ -54,6 +54,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
                     if (status == 200) {
+                        $scope.upload_gg();
                         console.log(config.data);
                     } else {
                         console.log(JSON.stringify(status));
@@ -62,28 +63,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     console.log(JSON.stringify(res, header, config, status));
                 });
 
-                var form = new FormData();
-                var file = angular.element("#gg_src")[0].files[0];//取文件。用angular.element("#file")一定要引入jQuery。
-
-                user = {
-                    name : 'CEHNY',
-                    age : 18
-                }
-
-                form.append("gg_src", file);
-                form.append("user", JSON.stringify(user));//toJson将json对象转成字符串,放入实体
-                var uploadUrl = '/uploadfile';
-                $http.post(uploadUrl, form, {
-                    transformRequest: angular.identity,
-                    headers: {
-                        'Content-Type': undefined
-                    },
-                }).success(function (res, status, header, config) {
-                    console.log(JSON.stringify(config));
-                }).error(function (err, status, header, config) {
-                    console.log(err);
-                });
-            };
+            }
+            ;
 
             if ($scope.show_num_next > 3) {
                 $scope.show_num_next = 0;
@@ -92,6 +73,27 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     //上传文件
+    // $scope.upload = function () {
+    //     alert(1);
+    // };
+
+    $scope.upload_gg = function () {
+        var form = new FormData();
+        var file = document.getElementById("gg_src").files[0];
+        form.append('fileName', file);
+        $http({
+            method: 'POST',
+            url: '/upload_img',
+            data: form,
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).success(function (data) {
+            console.log('upload success');
+        }).error(function (data) {
+            console.log('upload fail');
+        })
+    }
+
 
 });
 

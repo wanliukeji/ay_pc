@@ -1,6 +1,7 @@
 package com.example.demo.controller.sys;
 
 import com.example.demo.Utils.FileUploadTool;
+import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.entity.FileEntity;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
@@ -32,13 +33,12 @@ public class UploadController {
     /**
      * 上传视频
      * @param multipartFile
-     * @param request
      */
     @PostMapping(value = "/uploadfile")
     @ResponseBody
-    public ResultJSON<FileEntity> upload_video(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,
-                                   HttpServletRequest request) {
+    public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
         FileEntity entity = new FileEntity();
+        HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
@@ -61,7 +61,7 @@ public class UploadController {
      */
     @PostMapping(value = "/upload_img")
     @ResponseBody
-    public ResultJSON<FileEntity> upload_img(@RequestParam(value = "p_file", required = false) MultipartFile multipartFile,
+    public ResultJSON<FileEntity> upload_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,
                              HttpServletRequest request) {
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
