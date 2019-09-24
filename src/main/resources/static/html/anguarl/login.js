@@ -11,6 +11,7 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
                 'account': $scope.account,
                 'password': $scope.password
             },
+            headers: {"Content-Type": "application/json;charset=utf-8"}
         }).success(function (res, status, header, config) {
             if (status == 200) {
                 console.log(config.data);

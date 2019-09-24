@@ -40,11 +40,11 @@ public class LoginController implements LoginApi {
                 SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account", account).eq("password", password));
                 if (null != user) {
                     //解密
-//                    String pwd = EncryptUtil.Base64Decode(user.getPassword());
-//                    if (password.equalsIgnoreCase(user.getPassword())) {
+                    // String pwd = EncryptUtil.Base64Decode(user.getPassword());
+                    // if (password.equalsIgnoreCase(user.getPassword())) {
                         HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
                         return ResultJSON.success(true);
-//                    }
+                    // }
                 } else {
                     return ResultJSON.error(CodeMsg.LOGIN_ERROR);
                 }
