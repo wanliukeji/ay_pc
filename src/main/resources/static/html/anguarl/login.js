@@ -33,7 +33,7 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
                     localStorage.setItem('user', {
                         'account': $scope.account,
                         'password': $scope.password
-                    })
+                    }.toString())
                     window.location.href = '/home'
                 }
             },
