@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface RegisterApi {
 
     @PostMapping(value = "/api/register", produces = {"application/json;charset=UTF-8"})
-    @ApiOperation(value = "角色保存数据接口", notes = "角色保存数据接口")
+    @ApiOperation(value = "注册接口", notes = "注册接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "mobile", value = "手机号码", required = true, dataType = "String")
+            @ApiImplicitParam(name = "account", value = "账号", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
     })
-    ResultJSON<?> send(@RequestParam String mobile);
+    ResultJSON<?> register(@RequestParam String account, @RequestParam String email, @RequestParam String password) throws Exception;
 }

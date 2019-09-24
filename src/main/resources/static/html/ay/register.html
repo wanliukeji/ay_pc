@@ -16,7 +16,7 @@
 </head>
 
 <body class="authentication-bg authentication-bg-pattern"
-      style="background:url(/static/bg/fz.jpg) no-repeat; background-size: cover; overflow-y: hidden; overflow-x: hidden;"  >
+      style="background:url(/static/bg/fz.jpg) no-repeat; background-size: cover; overflow-y: hidden; overflow-x: hidden;" ng-app="myReg" ng-controller="regCtrl">
 <div class="account-pages mt-5 mb-5 w-25 left" style="margin-right: 20px;
 min-width: 360px; margin-top: -10px;
     float: right;">
@@ -28,37 +28,32 @@ min-width: 360px; margin-top: -10px;
                     <div class="card-body p-4">
 
                         <div class="text-center m-auto">
-                            <a href="index.html">
-                                <!--<span><img src="assets/images/logo-dark.png" alt="" height="22"></span>-->
-                            </a>
                             <h3 class="title">注册</h3>
-                            <!--<p class="text-muted mb-4 mt-3">Enter your email address and password to access admin-->
-                            <!--panel.</p>-->
                         </div>
 
                         <form action="#">
 
                             <div class="form-group mb-3">
                                 <label for="username">账户：</label>
-                                <input class="form-control" type="text" id="username" required=""
-                                       placeholder="请输入您的账户">
+                                <input class="form-control" type="text" id="username" required="required"
+                                       placeholder="请输入您的账户" ng-model="entity.account">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="emailaddress">电子邮箱：</label>
-                                <input class="form-control" type="email" id="emailaddress" required=""
-                                       placeholder="请输入您的账户">
+                                <input class="form-control" type="email" id="emailaddress" required="required"
+                                       placeholder="请输入您的账户" ng-model="entity.email">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label for="password">密码：</label>
                                 <input class="form-control" type="password" required="" id="password"
-                                       placeholder="请输入您的密码">
+                                       placeholder="请输入您的密码" ng-model="entity.password">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="password2">确认密码：</label>
                                 <input class="form-control" type="password" required="" id="password2"
-                                       placeholder="请再次输入您的密码">
+                                       placeholder="请再次输入您的密码" ng-model="password2">
                             </div>
 
 
@@ -75,8 +70,7 @@ min-width: 360px; margin-top: -10px;
 
                             <div class="form-group mb-0 text-center">
                                 <button class="btn btn-block" style="background-color: #48c964;
-                                    border-color: #48c964;" type="submit"> 注册
-                                </button>
+                                    border-color: #48c964;" type="button" ng-click="register()"> 注册 </button>
                             </div>
                         </form>
 
@@ -101,6 +95,9 @@ min-width: 360px; margin-top: -10px;
 
 <!-- App js -->
 <script src="/static/ui/js/app.min.js"></script>
+<script src="/static/anguarl/angular.min.js"></script>
+
+<script src="/static/html/anguarl/register.js"></script>
 
 </body>
 </html>

@@ -280,7 +280,7 @@ public class EncryptUtil {
      * @param res 密文
      * @return
      */
-    public String Base64Encode(String res) {
+    public static String Base64Encode(String res) {
         return Base64.encode(res.getBytes());
     }
 
