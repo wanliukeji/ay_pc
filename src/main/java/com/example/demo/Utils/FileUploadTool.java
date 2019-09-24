@@ -70,7 +70,7 @@ public class FileUploadTool {
             String fileEnd = this.getFileExt(fileName);
             String logoPathDir = logoPathDir(fileEnd);
             //保存本地项目
-            String logoRealPathDir = "\\src\\main\\resources\\static\\" + logoPathDir;
+            String logoRealPathDir = "D:\\Work\\ay_pc\\src\\main\\resources\\static" + logoPathDir;
             File logoSaveFile = new File(logoRealPathDir);
 
             if (!logoSaveFile.exists()) {
@@ -78,7 +78,6 @@ public class FileUploadTool {
             }
             // 绝对路径
             String fileNamedirs = logoRealPathDir + File.separator + newFileName + fileEnd;
-            System.out.println("保存的绝对路径：" + fileNamedirs);
             File filedirs = new File(fileNamedirs);
             // 上传文件
             try {
@@ -246,14 +245,14 @@ public class FileUploadTool {
         //判断文件属于什么类型
         if (fileEnd.contains("jpg") || fileEnd.contains("png") ||
                 fileEnd.contains("gif") || fileEnd.contains("jpeg")){
-            logoPathDir = "/image/";
+            logoPathDir = "\\upload";
         }else if (fileEnd.contains("mp4") || fileEnd.contains("rmvb") ||
                 fileEnd.contains("avi") || fileEnd.contains("flv")){
-            logoPathDir = "/video/";
+            logoPathDir = "\\video";
         }else if (fileEnd.contains("mp3") || fileEnd.contains("ogg")){
-            logoPathDir = "/audio/";
+            logoPathDir = "\\audio";
         }else {
-            logoPathDir = "/file/";
+            logoPathDir = "\\file\\";
         }
         return logoPathDir;
     }

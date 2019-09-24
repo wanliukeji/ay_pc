@@ -73,18 +73,21 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     //上传文件
-    // $scope.upload = function () {
-    //     alert(1);
-    // };
-
     $scope.upload_gg = function () {
+        var user = {
+            name: 'chenyi',
+            email: '101',
+            phone: '13289890099'
+        };
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
+        form.append('user', user);
+        console.log(form);
         $http({
             method: 'POST',
-            url: '/upload_img',
-            data: form,
+            url: '/uploadfile',
+            data: form ,
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).success(function (data) {
