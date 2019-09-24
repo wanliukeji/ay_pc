@@ -30,17 +30,16 @@ public class LoginController implements LoginApi {
     public ResultJSON<Boolean> login(String account,String password) {
         boolean flag = false;
         //解密
-        password = EncryptUtil.Base64Decode(password);
-        password = EncryptUtil.Base64Encode(password);
         try {
             if (null != account && password != null) {
-                SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account", account).eq("password", password));
+                SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account", account));
                 if (null != user) {
                     //解密
-                    // if (password.equalsIgnoreCase(user.getPassword())) {
+                    String pwd = EncryptUtil.Base64Decode(user.getPassword());
+                     if (password.equalsIgnoreCase(password)) {
                         HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
                         return ResultJSON.success(true);
-                    // }
+                     }
                 } else {
                     return ResultJSON.error(CodeMsg.LOGIN_ERROR);
                 }
