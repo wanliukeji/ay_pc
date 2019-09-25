@@ -1,14 +1,10 @@
 var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, $http, $q, $window) {
 
-    var user = localStorage.getItem('user');
-    if (null != user) {
-        var user = typeof user == 'string' ? JSON.parse(user) : user ;
-        $scope.user = user;
-    }
+    $scope.user = getUser();
 
-    $scope.out = function () {
-        localStorage.removeItem("user");
-        window.location.href = '/login';
+    $scope.outlogin = function () {
+        removeUser("user");
+        href('/login');
     }
 
 });
