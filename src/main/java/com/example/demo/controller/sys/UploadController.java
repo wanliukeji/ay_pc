@@ -9,6 +9,7 @@ import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 //import com.example.demo.service.FileService;
 import com.example.demo.service.FileService;
+import com.example.demo.service.SysUserService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UploadController {
      * 上传广告图片
      * @param multipartFile
      */
-    @PostMapping(value = "/uploadfile")
+    @PostMapping(value = "/uploadfile_g_img")
     @ResponseBody
     public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
@@ -45,10 +46,14 @@ public class UploadController {
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
-            if (entity != null) {
+            SysUser user = HttpServletRequestUtil.getSessionUser();
+            if (null != user && entity != null) {
+                entity.setUserId(user.getId());
+                entity.setType("G");
                 fileService.save(entity);
                 return ResultJSON.success(entity);
             }
+
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +74,37 @@ public class UploadController {
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
-            if (entity != null) {
+            SysUser user = HttpServletRequestUtil.getSessionUser();
+            if (null != user && entity != null) {
+                entity.setUserId(user.getId());
+                entity.setType("Z");
+                fileService.save(entity);
+                return ResultJSON.success(entity);
+            }
+            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info(e.getMessage());
+            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        }
+    }
+
+    /**
+     * 上传案例图片
+     * @param multipartFile
+     */
+    @PostMapping(value = "/uploadfile_a_img")
+    @ResponseBody
+    public ResultJSON<FileEntity> uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+        HttpServletRequest request = HttpServletRequestUtil.getRequest();
+        FileEntity entity = new FileEntity();
+        FileUploadTool fileUploadTool = new FileUploadTool();
+        try {
+            entity = fileUploadTool.createFile(multipartFile, request);
+            SysUser user = HttpServletRequestUtil.getSessionUser();
+            if (null != user && entity != null) {
+                entity.setUserId(user.getId());
+                entity.setType("A");
                 fileService.save(entity);
                 return ResultJSON.success(entity);
             }

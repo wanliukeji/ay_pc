@@ -58,3 +58,23 @@ function ajax_http(url, method, data) {
     });
     return msg;
 }
+
+//通用文件上传
+function upload(url, method, file) {
+    var form = new FormData();
+    form.append("fileName", file);
+    $.ajax({
+        url: url,
+        method: method,
+        data: form,
+        dataType: 'JSON',
+        processData : false, // 使数据不做处理
+        contentType : false, // 不要设置Content-Type请求头
+        success: function (res) {
+            console.log(res);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}

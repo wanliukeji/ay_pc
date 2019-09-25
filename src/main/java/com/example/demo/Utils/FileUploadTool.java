@@ -245,12 +245,12 @@ public class FileUploadTool {
         //判断文件属于什么类型
         if (fileEnd.contains("jpg") || fileEnd.contains("png") ||
                 fileEnd.contains("gif") || fileEnd.contains("jpeg")){
-            logoPathDir = "\\upload";
+            logoPathDir = "\\upload/";
         }else if (fileEnd.contains("mp4") || fileEnd.contains("rmvb") ||
                 fileEnd.contains("avi") || fileEnd.contains("flv")){
-            logoPathDir = "\\video";
+            logoPathDir = "\\video\\";
         }else if (fileEnd.contains("mp3") || fileEnd.contains("ogg")){
-            logoPathDir = "\\audio";
+            logoPathDir = "\\audio\\";
         }else {
             logoPathDir = "\\file\\";
         }

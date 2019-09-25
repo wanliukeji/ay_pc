@@ -25,7 +25,7 @@ public class FileEntity {
     @Column
     private Long id;
     /**
-     * 类型
+     * 类型 (G 广告/ Z作品 /A 案例)
      */
     private String type;
 
@@ -53,4 +53,10 @@ public class FileEntity {
      * 上传时间
      */
     private Timestamp uploadTime;
+
+    /**
+     * 用户
+     */
+    private String userId;
+
 }

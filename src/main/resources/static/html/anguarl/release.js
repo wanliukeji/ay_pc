@@ -1,4 +1,7 @@
 var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $http, $q) {
+
+    $scope.user = getUser();
+
     $scope.entity = {
         head_line: '承接门窗加工',
         sercode: '1001',
@@ -54,8 +57,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
                     if (status == 200) {
-                        // $scope.upload_gg_img();
-                        $scope.upload_z_img();
+                        upload_g_img();
+                        upload_z_img();
+                        upload_a_img();
                     } else {
                         console.log(JSON.stringify(status));
                     }
@@ -73,74 +77,43 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     //上传广告图片
-    $scope.upload_gg_img = function () {
+    function upload_g_img() {
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
-        $http({
-            method: 'POST',
-            url: '/uploadfile',
-            data: form,
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        }).success(function (data) {
-            console.log('upload success');
-        }).error(function (data) {
-            console.log('upload fail');
-        })
-    }
-
-    //上传作品图片
-    $scope.upload_z_img = function () {
-        var nodes = [];
-        nodes = document.getElementsByName("z_img");
-
-        for (let i = 0; i < nodes.length; i++) {
-            var node = nodes[i];
-            var file = nodes[i].files[i];
-            if (null != file){
-                ajax_upload_z_img(node);
-            }
-
+        var url = 'uploadfile_g_img';
+        if (null != file) {
+            upload(url, method_post, file);
         }
     }
 
 
-    function ajax_upload_z_img(node) {
+    //上传作品图片
+    function upload_z_img(node) {
         var form = new FormData();
-        form.append('fileName', node.files[0]);
-        $http({
-            method: 'POST',
-            url: '/uploadfile_z_img',
-            data: form,
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        }).success(function (data) {
-            console.log(data);
-        }).error(function (data) {
-            console.log('上传失败');
-        })
+        var url = '/uploadfile_z_img';
+        var nodes = document.getElementsByName("z_img");
+        for (let i = 0; i < nodes.length; i++) {
+            var file = nodes[i].files[i];
+            if (null != file) {
+                upload(url, method_post, file);
+            }
+        }
     }
 
 
     //上传案例图片
-    $scope.upload_a_img = function () {
+    function upload_a_img() {
         var form = new FormData();
-        var file = document.getElementsByName("a_img").files[0];
-        form.append('fileName', file);
-        $http({
-            method: 'POST',
-            url: '/uploadfile',
-            data: form,
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        }).success(function (data) {
-            console.log('upload success');
-        }).error(function (data) {
-            console.log('upload fail');
-        })
+        var url = '/uploadfile_a_img';
+        var nodes = document.getElementsByName("a_img");
+        for (let i = 0; i < nodes.length; i++) {
+            var file = nodes[i].files[i];
+            if (null != file) {
+                upload(url, method_post, file);
+            }
+        }
     }
-
 
 });
 
