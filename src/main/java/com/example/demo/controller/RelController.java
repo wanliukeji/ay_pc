@@ -1,14 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.api.RelApi;
-import com.example.demo.entity.Classified;
+import com.example.demo.entity.Fied;
 import com.example.demo.json.ApiJSON;
-import com.example.demo.json.ResultJSON;
 import com.example.demo.service.RelService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +26,7 @@ public class RelController implements RelApi {
     private RelService relService;
 
     @Override
-    public ApiJSON saveRel(Classified fied) throws Exception {
+    public ApiJSON saveRel(Fied fied) throws Exception {
        boolean flag = relService.save(fied);
        int i = 0;
        return ApiJSON.data(flag);

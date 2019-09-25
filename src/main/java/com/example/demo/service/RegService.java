@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.dao.FiedMapper;
 import com.example.demo.dao.RegMapper;
-import com.example.demo.entity.Classified;
 import com.example.demo.entity.SysUser;
 import org.springframework.stereotype.Service;
 

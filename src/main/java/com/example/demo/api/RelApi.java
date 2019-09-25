@@ -1,13 +1,11 @@
 package com.example.demo.api;
 
-import com.example.demo.entity.Classified;
+import com.example.demo.entity.Fied;
 import com.example.demo.json.ApiJSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Chenny
@@ -22,5 +20,5 @@ public interface RelApi {
 
     @PostMapping(value = "/api/saveRel", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "信息发布保存数据接口", notes = "信息发布保存数据接口")
-    public ApiJSON saveRel(@RequestBody Classified entity) throws Exception;
+    public ApiJSON saveRel(@RequestBody Fied entity) throws Exception;
 }
