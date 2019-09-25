@@ -60,11 +60,12 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                         upload_g_img();
                         upload_z_img();
                         upload_a_img();
+                        console.log(res);
                     } else {
-                        console.log(JSON.stringify(status));
+                        console.log(res);
                     }
-                }).error(function (err, status, header, config) {
-                    console.log(JSON.stringify(res, header, config, status));
+                }).error(function (err) {
+                    console.log(err);
                 });
 
             }
