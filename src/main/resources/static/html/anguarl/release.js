@@ -54,8 +54,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
                     if (status == 200) {
-                        $scope.upload_gg();
-                        console.log(config.data);
+                        // $scope.upload_gg_img();
+                        $scope.upload_z_img();
                     } else {
                         console.log(JSON.stringify(status));
                     }
@@ -72,22 +72,66 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         }
     }
 
-    //上传文件
-    $scope.upload_gg = function () {
-        var user = {
-            name: 'chenyi',
-            email: '101',
-            phone: '13289890099'
-        };
+    //上传广告图片
+    $scope.upload_gg_img = function () {
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
-        form.append('user', user);
-        console.log(form);
         $http({
             method: 'POST',
             url: '/uploadfile',
-            data: form ,
+            data: form,
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).success(function (data) {
+            console.log('upload success');
+        }).error(function (data) {
+            console.log('upload fail');
+        })
+    }
+
+    //上传作品图片
+    $scope.upload_z_img = function () {
+        var nodes = [];
+        nodes = document.getElementsByName("z_img");
+
+        for (let i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            var file = nodes[i].files[i];
+            if (null != file){
+                ajax_upload_z_img(node);
+            }
+
+        }
+    }
+
+
+    function ajax_upload_z_img(node) {
+        var form = new FormData();
+        form.append('fileName', node.files[0]);
+        $http({
+            method: 'POST',
+            url: '/uploadfile_z_img',
+            data: form,
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }).success(function (data) {
+            console.log(data);
+        }).error(function (data) {
+            console.log('上传失败');
+        })
+    }
+
+
+    //上传案例图片
+    $scope.upload_a_img = function () {
+        var form = new FormData();
+        var file = document.getElementsByName("a_img").files[0];
+        form.append('fileName', file);
+        $http({
+            method: 'POST',
+            url: '/uploadfile',
+            data: form,
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         }).success(function (data) {

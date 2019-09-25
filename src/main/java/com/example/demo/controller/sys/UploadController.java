@@ -34,12 +34,36 @@ public class UploadController {
     private FileService fileService;
 
     /**
-     * 上传图片
+     * 上传广告图片
      * @param multipartFile
      */
     @PostMapping(value = "/uploadfile")
     @ResponseBody
     public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+        HttpServletRequest request = HttpServletRequestUtil.getRequest();
+        FileEntity entity = new FileEntity();
+        FileUploadTool fileUploadTool = new FileUploadTool();
+        try {
+            entity = fileUploadTool.createFile(multipartFile, request);
+            if (entity != null) {
+                fileService.save(entity);
+                return ResultJSON.success(entity);
+            }
+            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info(e.getMessage());
+            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        }
+    }
+
+    /**
+     * 上传作品图片
+     * @param multipartFile
+     */
+    @PostMapping(value = "/uploadfile_z_img")
+    @ResponseBody
+    public ResultJSON<FileEntity> uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
