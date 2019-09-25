@@ -60,9 +60,7 @@ function ajax_http(url, method, data) {
 }
 
 //通用文件上传
-function upload(url, method, file) {
-    var form = new FormData();
-    form.append("fileName", file);
+function upload(url, method, form) {
     $.ajax({
         url: url,
         method: method,

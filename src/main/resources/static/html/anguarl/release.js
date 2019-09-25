@@ -57,9 +57,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
                     if (status == 200) {
-                        upload_g_img();
+                        // upload_g_img();
                         upload_z_img();
-                        upload_a_img();
+                        // upload_a_img();
                         console.log(res);
                     } else {
                         console.log(res);
@@ -94,12 +94,19 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var form = new FormData();
         var url = '/uploadfile_z_img';
         var nodes = document.getElementsByName("z_img");
+        var files = [];
         for (let i = 0; i < nodes.length; i++) {
             var file = nodes[i].files[i];
             if (null != file) {
-                upload(url, method_post, file);
+                files.push(file);
             }
         }
+        console.log(files);
+
+        form.append("fileName", files);
+
+        upload(url, method_post, form);
+
     }
 
 
