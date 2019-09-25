@@ -8,7 +8,6 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
 
     $scope.password2 = '';
 
-
     $scope.register = function () {
 
         if (angular.equals('', $scope.entity.account)) {
