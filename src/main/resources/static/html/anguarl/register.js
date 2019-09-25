@@ -8,7 +8,6 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
 
     $scope.password2 = '';
 
-    var reg_email = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
 
     $scope.register = function () {
 
@@ -30,8 +29,6 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
         }
         ;
 
-        console.log($scope.entity.password);
-        console.log($scope.password2)
         if (!angular.equals($scope.entity.password, $scope.password2)) {
             console.log("两次输入密码不匹配");
             return;
