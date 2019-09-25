@@ -2,12 +2,11 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
 
     $scope.submit = function () {
         var url = '/api/login';
-        var method = method_post;
         var date = {
             'account': $scope.account,
             'password': $scope.password
         };
-        var msg = ajax_http(url, method, date);
+        var msg = ajax_http(url, method_post, date);
 
         if (msg.code =200){
             console.log(msg.message);

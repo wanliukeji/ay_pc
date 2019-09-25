@@ -37,44 +37,21 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
             return;
         }
 
-        $.ajax({
-            url: '/api/register',
-            method: "POST",
-            data: {
-                account: $scope.entity.account,
-                email: $scope.entity.email,
-                password: $scope.entity.password
-            },
-            success: function (res) {
-                if (res.code == 200) {
-                    console.log(res.message);
-                    localStorage.setItem('user', $scope.entity);
-                    window.location.href = '/home'
-                } else {
-                    console.log(res.message);
-                }
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
+        var url = '/api/register';
+        var date = {
+            account: $scope.entity.account,
+            email: $scope.entity.email,
+            password: $scope.entity.password
+        };
+        var msg = ajax_http(url, method_post, date);
 
-
-        // $http({
-        //     url: '/api/register',
-        //     method: "POST",
-        //     data: $scope.entity,
-        //     headers: {"Content-Type": "application/json;charset=utf-8"}
-        // }).success(function (res, status, header, config) {
-        //     if (status == 200) {
-        //         $scope.upload_gg();
-        //         console.log(config.data);
-        //     } else {
-        //         console.log(JSON.stringify(status));
-        //     }
-        // }).error(function (err, status, header, config) {
-        //     console.log(err);
-        // });
+        if (msg.code =200){
+            console.log(msg.message);
+            setUser(date);
+            href('/home');
+        } else {
+            console.error(msg.message)
+        }
 
     };
 
