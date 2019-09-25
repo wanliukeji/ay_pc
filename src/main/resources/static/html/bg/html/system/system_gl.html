@@ -36,7 +36,7 @@
             </div>
           </form>
           <div class="toolbar-btn-action">
-            <a class="btn btn-primary m-r-5" href="#!"><i class="mdi mdi-plus"></i> 新增</a>
+            <a class="btn btn-primary m-r-5" data-target="#gridSystemModal" data-toggle="modal"><i class="mdi mdi-plus"></i> 新增</a>
             <a class="btn btn-success m-r-5" href="#!"><i class="mdi mdi-check"></i> 启用</a>
             <a class="btn btn-warning m-r-5" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
             <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
@@ -280,9 +280,44 @@
   
 </div>
 
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="gridSystemModalLabel">添加内容</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <label>标题：</label>
+              <input type="text" class="form-control"/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label>下拉：</label>
+            <select type="text" class="form-control">
+              <option value="">A</option>
+              <option value="">B</option>
+              <option value="">C</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">点击保存</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/js/main.min.js"></script>
+<script type="text/javascript" src="/static/js/perfect-scrollbar.min.js"></script>
 <script src="/static/anguarl/angular.min.js"></script>
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/login.js"></script>
@@ -293,6 +328,14 @@ $(function(){
         $('#search-field').val(field);
         $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
     });
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever')
+        var modal = $(this)
+        modal.find('.modal-title').text('发送新消息给 ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
 });
 </script>
 </body>
