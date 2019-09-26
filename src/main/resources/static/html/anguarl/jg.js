@@ -24,21 +24,23 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         $scope.items = msg.data.records;
     };
 
-    var ids = getIds();
-
     $scope.export = function () {
-        if (is_item_Empty(ids)) {
+
+        var items = getIds();
+        console.log(items);
+        if (is_item_Empty(items)) {
             alert('请选择导入的数据');
             return;
         } else {
-            export_file();
+            export_file(getIds());
         }
     };
 
-    function export_file() {
-        var items = stringIds(ids);
-        console.log(getIds());
-        var msg = ajax_http('/api/jg/export', method_get, {"ids": getIds()});
+    function export_file(items) {
+        console.dir(items);
+        var url = '/api/jg/export?ids=' + items;
+        // var msg = ajax_http(url, method_get, null);
+        location.href = url
     }
 
 });

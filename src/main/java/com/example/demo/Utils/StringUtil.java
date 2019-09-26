@@ -47,7 +47,6 @@ public class StringUtil {
         for (int i = 0; i < items.length; i++) {
              listIds.add(items[i]);
         }
-
         return (Collection)listIds;
     };
 

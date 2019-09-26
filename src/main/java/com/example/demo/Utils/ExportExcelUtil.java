@@ -377,6 +377,8 @@ public class ExportExcelUtil<T> {
         }
         try {
             workbook.write(out);
+            out.flush();
+            out.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

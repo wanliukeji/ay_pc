@@ -63,7 +63,7 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         // 准备数据
         Collection<Fied> list = new ArrayList<Fied>();
 
-        list = this.listByIds(StringUtil.StringToList("123,124,125,"));
+        list = this.listByIds(StringUtil.StringToList(ids));
 
         String[] columnNames = {"", "编号", "标题", "类型", "区域", "QQ", "微信", "手机",
                 "联系人", "创建时间", "公司名称", "省份", "城市", "市区", "视频路径",

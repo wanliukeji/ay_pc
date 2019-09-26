@@ -79,16 +79,16 @@ function upload(url, method, form) {
 
 //判断集合是否为空
 function is_item_Empty(item) {
-    if (null == item) {
-        return false;
+    if (null == item || '' == item) {
+        return true;
     }
 
 
     if (item.length <= 0) {
-        return false;
+        return true;
     }
 
-    return true;
+    return false;
 };
 
 //获取选中的ids
@@ -100,11 +100,11 @@ function getIds() {
     return ids;
 };
 
-function stringIds(ids) {
+function stringIds(item) {
     var ids = '';
-    for (let i = 0; i < ids.length; i++) {
-        ids = ids[i] + ',';
-    };
-
+    for (let i = 0; i < item.length; i++) {
+        ids = item[i] + ',';
+    }
+    ;
     return ids;
 }
