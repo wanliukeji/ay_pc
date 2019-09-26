@@ -8,6 +8,8 @@ import com.example.demo.entity.Fied;
 import com.example.demo.entity.FileEntity;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.util.Date;
 
 /**
  * @author Chenny
@@ -28,6 +31,7 @@ import java.io.*;
 @Service
 public class RelService extends ServiceImpl<FiedMapper, Fied> implements Serializable {
 
+    @Autowired
     FiedService fiedService;
 
     @Transactional
@@ -42,23 +46,37 @@ public class RelService extends ServiceImpl<FiedMapper, Fied> implements Seriali
             String s = new String();
             InputStreamReader isr = new InputStreamReader(new FileInputStream(entity.getPath()), "GBK");
             input = new BufferedReader(isr);
+            int i = 0;
             while ((s = input.readLine()) != null) { // 判断是否读到了最后一行
+                i++;
                 Fied fied = new Fied();
                 String info[] = s.split("\t");
                 if (info.length >= 12) {
-                    fied.setHead_line(info[0]);
-                    fied.setSercode(info[1]);
-                    fied.setCoverage(info[2]);
-                    fied.setDetails(info[3]);
-                    fied.setLink(info[4]);
-                    fied.setAddress(info[5]);
-                    fied.setA_a_img(info[6]);
-                    fied.setZ_a_img(info[7]);
-                    fied.setA_b_img(info[8]);
-                    fied.setZ_c_img(info[9]);
-                    fied.setA_c_img(info[10]);
-                    fied.setGg_src(info[11]);
-                    fiedService.save(fied);
+                    if (i != 1) { //忽略表头
+                        fied.setHead_line(info[1]);
+                        fied.setSercode(info[2]);
+                        fied.setCoverage(info[3]);
+                        fied.setUser_qq(info[4]);
+                        fied.setUser_wx(info[5]);
+                        fied.setPhone(info[6]);
+                        fied.setLink(info[7]);
+                        fied.setCreateDate(new Date());
+                        fied.setCompany_name(info[9]);
+                        fied.setProcode(101);
+                        fied.setCitycode(201);
+                        fied.setCountycode(301);
+                        fied.setVideo_url(info[13]);
+                        fied.setGg_src(info[14]);
+                        fied.setZ_a_img(info[15]);
+                        fied.setZ_b_img(info[16]);
+                        fied.setZ_c_img(info[17]);
+                        fied.setA_a_img(info[18]);
+                        fied.setA_b_img(info[19]);
+                        fied.setA_c_img(info[20]);
+                        fied.setDetails(info[21]);
+                        fied.setAddress(info[22]);
+                        fiedService.save(fied);
+                    }
                 }
             }
             input.close();

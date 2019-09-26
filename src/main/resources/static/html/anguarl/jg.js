@@ -40,13 +40,13 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     function export_file(items) {
         console.dir(items);
         var url = '/api/jg/export?ids=' + items;
-        // var msg = ajax_http(url, method_get, null);
-        location.href = url
+        var msg = ajax_http(url, method_get, null);
     };
 
     $scope.import = function () {
-        alert(1);
         uploadfile_txt();
+        getList();
+        angular.element("#close").click();
     };
 
     //上传文件
@@ -55,7 +55,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         var url = '/api/import/jg';
         var nodes = document.getElementsByName("file_txt");
         form.append("fileName", nodes[0].files[0]);
-        alert(1);
         upload(url, method_post, form);
     }
 

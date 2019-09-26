@@ -108,7 +108,7 @@
                         <li><a href="#!">下一页</a></li>
                         <li><span>共</span></li>
                         <li class="active"><span>{{items.length}}</span></li>
-                        <li><span>页</span></li>
+                        <li><span>行</span></li>
                     </ul>
 
                 </div>
@@ -194,7 +194,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label>下载模板：</label>
-                        <a href="/static/file/demo64656D6F20190926204430.txt" download="w3logo">点这里下载</a>
+                        <a href="/static/file/jgModel.txt" download="加工数据批量导入模板">点这里下载</a>
                     </div>
                 </div>
                 <div class="row">
@@ -207,7 +207,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" ng-click="import()">导入</button>
             </div>
         </div>
