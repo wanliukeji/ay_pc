@@ -40,11 +40,11 @@
                     <div class="toolbar-btn-action">
                         <a class="btn btn-primary m-r-5" data-target="#gridSystemModal" data-toggle="modal"><i
                                 class="mdi mdi-plus"></i> 新增</a>
-                        <a class="btn btn-success m-r-5" href="#!"><i class="mdi mdi-check"></i> 启用</a>
-                        <a class="btn btn-warning m-r-5" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
-                        <a class="btn btn-purple m-r-5" href="#!"><i class="mdi mdi-vector-arrange-above"></i> 审核</a>
-                        <a class="btn btn btn-info m-r-5" href="#!"><i class="mdi mdi-vector-arrange-below"></i> 反审</a>
-                        <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
+                        <a class="btn btn-success m-r-5"  ng-click="aunt()"><i class="mdi mdi-check"></i> 启用</a>
+                        <a class="btn btn-warning m-r-5" ng-click="unaunt()"><i class="mdi mdi-block-helper"></i> 禁用</a>
+                        <!--<a class="btn btn-purple m-r-5" href="#!" ng-click="aunt()"><i class="mdi mdi-vector-arrange-above"></i> 审核</a>-->
+                        <!--<a class="btn btn btn-info m-r-5" ng-click="unaunt()"><i class="mdi mdi-vector-arrange-below"></i> 反审</a>-->
+                        <a class="btn btn-danger" href="#!" ng-click="del()"><i class="mdi mdi-window-close"></i> 删除</a>
                         <a class="btn btn-dark" href="#!" data-target="#exportModel" data-toggle="modal"><i class="mdi mdi-file-export"></i> 导出</a>
                         <a class="btn btn-brown" href="#!" data-target="#importModel" data-toggle="modal"><i class="mdi mdi-file-import"></i> 导入</a>
                     </div>
@@ -60,6 +60,7 @@
                                         <input type="checkbox" id="check-all"><span></span>
                                     </label>
                                 </th>
+                                <th>审核</th>
                                 <th>标题</th>
                                 <th>公司</th>
                                 <th>服务类型</th>
@@ -78,6 +79,12 @@
                                         <input type="checkbox" name="ids[]" value="{{item.id}}"><span></span>
                                     </label>
                                 </td>
+                                <td ng-show="item.status == 1">
+                                    <svg t="1569510664156" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2711" width="20" height="20"><path d="M450.56 597.12L342.4 489.6l-44.8 44.8 147.84 148.48 342.4-273.92-39.68-49.92-297.6 238.08z" fill="#15c377" p-id="2712"></path><path d="M512 32A480 480 0 1 0 992 512 480.64 480.64 0 0 0 512 32z m0 896A416 416 0 1 1 928 512 416.64 416.64 0 0 1 512 928z" fill="#15c377" p-id="2713"></path></svg>
+                                </td>
+                                <td ng-show="item.status == 0">
+                                    <svg t="1569510740016" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3180" width="20" height="20"><path d="M511.563 65.144c-246.87 0-446.998 200.128-446.998 446.998S264.693 959.14 511.563 959.14 958.56 759.011 958.56 512.141 758.433 65.144 511.563 65.144zM785.211 785.79c-35.561 35.561-76.954 63.473-123.03 82.961-47.672 20.164-98.348 30.388-150.619 30.388s-102.946-10.224-150.619-30.388c-46.076-19.488-87.469-47.401-123.03-82.961-35.561-35.561-63.473-76.954-82.962-123.03-20.164-47.672-30.388-98.348-30.388-150.618s10.224-102.946 30.388-150.619c19.489-46.076 47.401-87.469 82.962-123.03 35.56-35.561 76.954-63.473 123.03-82.962 47.672-20.164 98.348-30.388 150.619-30.388s102.946 10.224 150.619 30.388c46.076 19.489 87.469 47.401 123.03 82.962 35.561 35.56 63.473 76.954 82.962 123.03 20.164 47.672 30.388 98.348 30.388 150.619s-10.224 102.946-30.388 150.618c-19.489 46.076-47.401 87.47-82.962 123.03z" fill="#d81e06" p-id="3181"></path><path d="M690.087 336.983c-11.715-11.716-30.711-11.716-42.426 0L513.535 471.109 379.41 336.983c-11.716-11.716-30.711-11.716-42.427 0-11.715 11.716-11.715 30.711 0 42.427l134.126 134.126-134.126 134.125c-11.715 11.716-11.715 30.71 0 42.426 5.858 5.858 13.536 8.787 21.213 8.787s15.355-2.929 21.213-8.787l134.126-134.126 134.126 134.126c5.857 5.858 13.535 8.787 21.213 8.787s15.355-2.929 21.213-8.787c11.716-11.716 11.716-30.71 0-42.426L555.961 513.535 690.087 379.41c11.716-11.716 11.716-30.711 0-42.427z" fill="#d81e06" p-id="3182"></path></svg>
+                                </td>
                                 <td>{{item.head_line}}</td>
                                 <td>{{item.company_name}}</td>
                                 <td>{{item.sercode}}</td>
@@ -93,7 +100,7 @@
                                     <div class="btn-group">
                                         <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i
                                                 class="mdi mdi-pencil"></i></a>
-                                        <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i
+                                        <a class="btn btn-xs btn-default" ng-click="remove(item.id)" title="删除" data-toggle="tooltip"><i
                                                 class="mdi mdi-window-close"></i></a>
                                     </div>
                                 </td>
@@ -114,9 +121,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">

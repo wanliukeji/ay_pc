@@ -78,8 +78,37 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
             ex.printStackTrace();
         }
         return null;
+    };
+
+    public ResultJSON<?> delete(String ids) throws Exception {
+        // 准备数据
+       boolean f = this.removeByIds(StringUtil.StringToList(ids));
+        return ResultJSON.success(f);
+    };
+
+    public ResultJSON<?> aunt(String ids) throws Exception {
+
+        ArrayList<Integer> idItems = StringUtil.StringToArrayList(ids);
+        for (int i = 0; i < idItems.size(); i++) {
+            Fied fied = new Fied();
+            fied = getById(idItems.get(i));
+            fied.setStatus(1);
+            saveOrUpdate(fied);
+        }
+        return ResultJSON.success(null);
+    };
+
+    public ResultJSON<?> unaunt(String ids) throws Exception {
+
+        ArrayList<Integer> idItems = StringUtil.StringToArrayList(ids);
+        for (int i = 0; i < idItems.size(); i++) {
+            Fied fied = new Fied();
+            fied = getById(idItems.get(i));
+            fied.setStatus(0);
+            saveOrUpdate(fied);
+        }
+        return ResultJSON.success(null);
     }
 
-    ;
 
 }

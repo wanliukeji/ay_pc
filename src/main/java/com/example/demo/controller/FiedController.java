@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-@Api(value = "加工信息模块", description = "加工信息模块")
 public class FiedController implements FiedApi {
 
     @Autowired
@@ -37,6 +36,23 @@ public class FiedController implements FiedApi {
     @Override
     public ResultJSON<?> export(String ids) throws Exception {
         return fiedService.export(ids);
-    };
+    }
+
+    @Override
+    public ResultJSON<?> delete(String ids) throws Exception {
+        return fiedService.delete(ids);
+    }
+
+    @Override
+    public ResultJSON<?> aunt(String ids) throws Exception {
+        return fiedService.aunt(ids);
+    }
+
+    @Override
+    public ResultJSON<?> unaunt(String ids) throws Exception {
+        return fiedService.unaunt(ids);
+    }
+
+    ;
 }
 

@@ -47,7 +47,20 @@ public class StringUtil {
         for (int i = 0; i < items.length; i++) {
              listIds.add(items[i]);
         }
+
         return (Collection)listIds;
+    };
+
+    public static ArrayList<Integer> StringToArrayList(String ids) {
+
+        ArrayList listIds = new ArrayList();
+
+        String [] items = ids.split(",");
+
+        for (int i = 0; i < items.length; i++) {
+            listIds.add(items[i]);
+        }
+        return listIds;
     };
 
     public static void main(String[] args) {

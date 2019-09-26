@@ -37,4 +37,28 @@ public interface FiedApi {
             @ApiImplicitParam(name = "ID", value = "ids")
     })
     public ResultJSON<?> export(@RequestParam("ids") String ids) throws Exception;
+
+    @GetMapping(value = "/api/jg/delete", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "加工删除数据接口", notes = "加工删除数据接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ID", value = "ids")
+    })
+    @Transactional
+    public ResultJSON<?> delete(@RequestParam("ids") String ids) throws Exception;
+
+    @GetMapping(value = "/api/jg/aunt", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "加工审核数据接口", notes = "加工审核数据接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ID", value = "ids")
+    })
+    @Transactional
+    public ResultJSON<?> aunt(@RequestParam("ids") String ids) throws Exception;
+
+    @GetMapping(value = "/api/jg/unaunt", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "加工反审数据接口", notes = "加工反审数据接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ID", value = "ids")
+    })
+    @Transactional
+    public ResultJSON<?> unaunt(@RequestParam("ids") String ids) throws Exception;
 }
