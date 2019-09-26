@@ -70,5 +70,15 @@ public class BgAciton {
         return "bg/html/system/system_gl";
     }
 
+    /**
+     * 业务加工
+     * @return
+     */
+    @GetMapping("/yw/jg")
+    public String yw_jg() {
+        return "bg/html/yw/jg";
+    }
+
+
 
 }

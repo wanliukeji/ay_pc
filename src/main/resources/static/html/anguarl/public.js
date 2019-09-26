@@ -46,8 +46,8 @@ function ajax_http(url, method, data) {
         url: url,
         method: method,
         data: data,
-        async:false,
-        dataType:'JSON',
+        async: false,
+        dataType: 'JSON',
         // headers: {"Content-Type": "application/json;charset=utf-8"},
         success: function (res) {
             msg = res;
@@ -66,8 +66,8 @@ function upload(url, method, form) {
         method: method,
         data: form,
         dataType: 'JSON',
-        processData : false, // 使数据不做处理
-        contentType : false, // 不要设置Content-Type请求头
+        processData: false, // 使数据不做处理
+        contentType: false, // 不要设置Content-Type请求头
         success: function (res) {
             console.log(res);
         },
@@ -75,4 +75,36 @@ function upload(url, method, form) {
             console.log(err);
         }
     });
+};
+
+//判断集合是否为空
+function is_item_Empty(item) {
+    if (null == item) {
+        return false;
+    }
+
+
+    if (item.length <= 0) {
+        return false;
+    }
+
+    return true;
+};
+
+//获取选中的ids
+function getIds() {
+    var ids = [];//定义一个数组
+    $('input[name="ids[]"]:checked').each(function () {
+        ids.push($(this).val());
+    });
+    return ids;
+};
+
+function stringIds(ids) {
+    var ids = '';
+    for (let i = 0; i < ids.length; i++) {
+        ids = ids[i] + ',';
+    };
+
+    return ids;
 }

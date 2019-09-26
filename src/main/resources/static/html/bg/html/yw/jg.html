@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>加工信息管理</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="keywords" content="安义门窗网-加工信息管理">
+    <meta name="description" content="安义门窗网-加工信息管理">
+    <meta name="author" content="yinqi">
+    <link rel="stylesheet" href="/static/css/fileinput.min.css">
+    <!--<link rel="shortcut icon" href="/static/ico/favicon%2064.ico"/>-->
+    <link href="/static/css/dropzone.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="myJg" ng-controller="jgCtrl" ng-init="init()">
+<div class="container-fluid p-t-15 " style="min-width: 1200px;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-toolbar clearfix">
+                    <div class="pull-right search-bar" role="form">
+
+                        <!--<input type="text" class="form-control" value="" name="keyword" placeholder="请输入名称">-->
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="ReqParam.context" placeholder="请输入关键词...">
+                            <span class="input-group-btn">
+                          <button class="btn btn-cyan" ng-click="search()" type="button">
+                            搜索
+                          </button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="toolbar-btn-action">
+                        <a class="btn btn-primary m-r-5" data-target="#gridSystemModal" data-toggle="modal"><i
+                                class="mdi mdi-plus"></i> 新增</a>
+                        <a class="btn btn-success m-r-5" href="#!"><i class="mdi mdi-check"></i> 启用</a>
+                        <a class="btn btn-warning m-r-5" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
+                        <a class="btn btn-purple m-r-5" href="#!"><i class="mdi mdi-vector-arrange-above"></i> 审核</a>
+                        <a class="btn btn btn-info m-r-5" href="#!"><i class="mdi mdi-vector-arrange-below"></i> 反审</a>
+                        <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
+                        <a class="btn btn-dark" href="#!" data-target="#exportModel" data-toggle="modal"><i class="mdi mdi-file-export"></i> 导出</a>
+                        <a class="btn btn-brown" href="#!" data-target="#importModel" data-toggle="modal"><i class="mdi mdi-file-import"></i> 导入</a>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" id="check-all"><span></span>
+                                    </label>
+                                </th>
+                                <th>标题</th>
+                                <th>公司</th>
+                                <th>服务类型</th>
+                                <th>服务描述</th>
+                                <th>详细地址</th>
+                                <th>联系人</th>
+                                <th>联系电话</th>
+                                <th>公司LOGO</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in items">
+                                <td>
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" name="ids[]" value="{{item.id}}"><span></span>
+                                    </label>
+                                </td>
+                                <td>{{item.head_line}}</td>
+                                <td>{{item.company_name}}</td>
+                                <td>{{item.sercode}}</td>
+                                <td>{{item.details}}</td>
+                                <td>{{item.address}}</td>
+                                <td>{{item.link}}</td>
+                                <td>{{item.phone}}</td>
+                                <td title="{{item.gg_src}}" align="center">
+                                    <img src="{{item.gg_src}}" width="25" height="25" alt="">
+                                </td>
+
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i
+                                                class="mdi mdi-pencil"></i></a>
+                                        <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i
+                                                class="mdi mdi-window-close"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="pagination">
+                        <li class="disabled"><span>上一页</span></li>
+                        <li class="active"><span>1</span></li>
+                        <li class="disabled"><span>...</span></li>
+                        <li><a href="#!">下一页</a></li>
+                        <li><span>共</span></li>
+                        <li class="active"><span>{{items.length}}</span></li>
+                        <li><span>页</span></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center" id="gridSystemModalLabel">添加内容</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>标题：</label>
+                        <input type="text" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>下拉：</label>
+                        <select type="text" class="form-control">
+                            <option value="">A</option>
+                            <option value="">B</option>
+                            <option value="">C</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">点击保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="exportModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center">到处报表</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>导出文件类型：</label>
+                        <select type="text" class="form-control">
+                            <option value="EXCEL">EXCEL</option>
+                            <option value="TXT">TXT</option>
+                            <option value="PDF">PDF</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="export()">导出</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center">到处报表</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>选择文件：</label>
+                        <input type="file" name="a_img" class="dropify"
+                               data-max-file-size="1M"
+                               enctype="multipart/form-data"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">导出</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/js/main.min.js"></script>
+<script type="text/javascript" src="/static/js/perfect-scrollbar.min.js"></script>
+<script src="/static/js/fileinput.min.js"></script>
+<script src="/static/js/file-upload-zh.js"></script>
+<script src="/static/js/dropify.min.js"></script>
+<script src="/static/js/dropzone.min.js"></script>
+<script src="/static/js/form-fileuploads.init.js"></script>
+<script src="/static/anguarl/angular.min.js"></script>
+<script src="/static/html/anguarl/public.js"></script>
+<script src="/static/html/anguarl/jg.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.search-bar .dropdown-menu a').click(function () {
+            var field = $(this).data('field') || '';
+            $('#search-field').val(field);
+            $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
+        });
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var recipient = button.data('whatever')
+            var modal = $(this)
+            modal.find('.modal-title').text('发送新消息给 ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        });
+
+    });
+</script>
+</body>
+</html>
