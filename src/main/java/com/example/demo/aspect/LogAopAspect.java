@@ -1,6 +1,9 @@
 package com.example.demo.aspect;
 import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.Utils.StringUtil;
+import com.example.demo.entity.SysLog;
+import com.example.demo.entity.SysUser;
+import com.example.demo.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -27,8 +30,8 @@ import java.util.Date;
 @Slf4j
 public class LogAopAspect {
 
-//    @Autowired
-//    LogService logService;
+    @Autowired
+    LogService logService;
 
     //声明切入点
     @Pointcut("execution(public * com.example.demo.api.*.*())")
@@ -50,35 +53,35 @@ public class LogAopAspect {
 
     void saveLog(ProceedingJoinPoint joinPoint, long time) throws InterruptedException {
 
-//        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-//        Method method = signature.getMethod();
-//        SysLog sysLog = new SysLog();
-//        Log syslog = method.getAnnotation(Log.class);
-//        if (syslog != null) {
-//            // 注解上的描述
-//            sysLog.setDescription(syslog.value());
-//        }
-//        // 请求的方法名
-//        String className = joinPoint.getTarget().getClass().getName();
-//        String methodName = signature.getName();
-//        sysLog.setMethodName(className + "." + methodName + "()");
-//        // 请求的参数
-//        Object[] args = joinPoint.getArgs();
-//        sysLog.setStartTime(new Date());
-//        HttpServletRequest req = HttpServletRequestUtil.getRequest();
-//        if (null != req){
-//            sysLog.setRemoteAddr(req.getRemoteAddr());
-//        }
-//        sysLog.setExecuteTime(time);
-//        SysUser user = HttpServletRequestUtil.getSessionUser();
-//        if (null != user){
-//            sysLog.setUserId(user.getId()+"");
-//        }
-//        sysLog.setLocation(req.getRequestURI());
-//        sysLog.setEndTime(new Date());
-//        sysLog.setRequestUrl(req.getServerPort()+"");
-//        // 保存系统日志
-//        logService.save(sysLog);
-//        log.info(StringUtil.toString(sysLog));
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        SysLog sysLog = new SysLog();
+        Log syslog = method.getAnnotation(Log.class);
+        if (syslog != null) {
+            // 注解上的描述
+            sysLog.setDescription(syslog.value());
+        }
+        // 请求的方法名
+        String className = joinPoint.getTarget().getClass().getName();
+        String methodName = signature.getName();
+        sysLog.setMethodName(className + "." + methodName + "()");
+        // 请求的参数
+        Object[] args = joinPoint.getArgs();
+        sysLog.setStartTime(new Date());
+        HttpServletRequest req = HttpServletRequestUtil.getRequest();
+        if (null != req){
+            sysLog.setRemoteAddr(req.getRemoteAddr());
+        }
+        sysLog.setExecuteTime(time);
+        SysUser user = HttpServletRequestUtil.getSessionUser();
+        if (null != user){
+            sysLog.setUserId(user.getId()+"");
+        }
+        sysLog.setLocation(req.getRequestURI());
+        sysLog.setEndTime(new Date());
+        sysLog.setRequestUrl(req.getServerPort()+"");
+        // 保存系统日志
+        logService.save(sysLog);
+        log.info(StringUtil.toString(sysLog));
     }
 }

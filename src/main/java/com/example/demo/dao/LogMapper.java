@@ -1,5 +1,7 @@
 package com.example.demo.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.entity.SysLog;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,9 +11,9 @@ import org.springframework.stereotype.Component;
  * @email bbc123good@163.com
  * @address http://106.12.38.131:8011
  * @describe 日志接口
- *  extends BaseMapper<SysLog>
+ * extends BaseMapper<SysLog>
  */
 @Component
-public interface LogMapper {
+public interface LogMapper extends BaseMapper<SysLog> {
 
 }
