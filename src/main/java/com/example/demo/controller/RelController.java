@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Chenny
@@ -30,6 +31,11 @@ public class RelController implements RelApi {
        boolean flag = relService.save(fied);
        int i = 0;
        return ApiJSON.data(flag);
+    }
+
+    @Override
+    public ApiJSON import_jg(MultipartFile file) throws Exception {
+        return relService.uploadfile_txt(file);
     }
 }
 

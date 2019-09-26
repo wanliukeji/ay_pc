@@ -1,1 +1,1 @@
-$(".dropify").dropify({messages:{default:"点击上传图片",replace:"点击替换图片",remove:"删除",error:"Ooops, something wrong appended."},error:{fileSize:"The file size is too big (1M max)."}});
+$(".dropify").dropify({messages:{default:"点击上传文件",replace:"点击替换文件",remove:"删除",error:"Ooops, something wrong appended."},error:{fileSize:"The file size is too big (1M max)."}});

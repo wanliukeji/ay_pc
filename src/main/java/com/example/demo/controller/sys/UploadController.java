@@ -11,12 +11,19 @@ import com.example.demo.json.ResultJSON;
 import com.example.demo.service.FileService;
 import com.example.demo.service.SysUserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * @author Chenny
@@ -36,6 +43,7 @@ public class UploadController {
 
     /**
      * 上传广告图片
+     *
      * @param multipartFile
      */
     @PostMapping(value = "/uploadfile_g_img")
@@ -64,6 +72,7 @@ public class UploadController {
 
     /**
      * 上传作品图片
+     *
      * @param multipartFile
      */
     @PostMapping(value = "/uploadfile_z_img")
@@ -91,6 +100,7 @@ public class UploadController {
 
     /**
      * 上传案例图片
+     *
      * @param multipartFile
      */
     @PostMapping(value = "/uploadfile_a_img")
@@ -114,5 +124,45 @@ public class UploadController {
             log.info(e.getMessage());
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
+    }
+
+    ;
+
+    /**
+     * 上传文件
+     *
+     * @param multipartFile
+     */
+    @ApiOperation(value = "文件导入接口", notes = "文件导入接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "文件", value = "fileName")
+    })
+    @PostMapping(value = "/uploadfile_txt")
+    @ResponseBody
+    public ResultJSON<Boolean> uploadfile_txt(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+        BufferedReader input;
+        HttpServletRequest req = HttpServletRequestUtil.getRequest();
+        try {
+
+            FileEntity entity = new FileEntity();
+            FileUploadTool fileUploadTool = new FileUploadTool();
+            entity = fileUploadTool.createFile(multipartFile, req);
+
+            String s = new String();
+            input = new BufferedReader(new FileReader(entity.getPath()));
+            while ((s = input.readLine()) != null) { // 判断是否读到了最后一行
+                String info[] = s.split(" ");
+
+                for (int i = 0; i < info.length; i++) {
+                    System.out.print(info[i] + "\t");
+                }
+            }
+            input.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

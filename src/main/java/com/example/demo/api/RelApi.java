@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Chenny
@@ -23,4 +25,9 @@ public interface RelApi {
     @ApiOperation(value = "信息发布保存数据接口", notes = "信息发布保存数据接口")
     @Transactional
     public ApiJSON saveRel(@RequestBody Fied entity) throws Exception;
+
+    @PostMapping(value = "/api/import/jg")
+    @ApiOperation(value = "加工数据导入接口", notes = "加工数据导入接口")
+    @Transactional
+    public ApiJSON import_jg(@RequestParam("fileName") MultipartFile file) throws Exception;
 }

@@ -8,6 +8,7 @@
     <meta name="keywords" content="安义门窗网-加工信息管理">
     <meta name="description" content="安义门窗网-加工信息管理">
     <meta name="author" content="yinqi">
+    <base href="">
     <link rel="stylesheet" href="/static/css/fileinput.min.css">
     <!--<link rel="shortcut icon" href="/static/ico/favicon%2064.ico"/>-->
     <link href="/static/css/dropzone.min.css" rel="stylesheet" type="text/css"/>
@@ -159,7 +160,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title text-center">到处报表</h4>
+                <h4 class="modal-title text-center">导出报表</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -187,22 +188,27 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title text-center">到处报表</h4>
+                <h4 class="modal-title text-center">导入报表</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
+                        <label>下载模板：</label>
+                        <a href="/static/file/demo64656D6F20190926204430.txt" download="w3logo">点这里下载</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <label>选择文件：</label>
-                        <input type="file" name="a_img" class="dropify"
-                               data-max-file-size="1M"
-                               enctype="multipart/form-data"/>
+                        <input type="file" name="file_txt" class="dropify"
+                               data-max-file-size="1M" enctype="multipart/form-data"/>
                     </div>
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">导出</button>
+                <button type="button" class="btn btn-primary" ng-click="import()">导入</button>
             </div>
         </div>
     </div>

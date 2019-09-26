@@ -36,11 +36,27 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         }
     };
 
+    //导出EXCLE
     function export_file(items) {
         console.dir(items);
         var url = '/api/jg/export?ids=' + items;
         // var msg = ajax_http(url, method_get, null);
         location.href = url
+    };
+
+    $scope.import = function () {
+        alert(1);
+        uploadfile_txt();
+    };
+
+    //上传文件
+    function uploadfile_txt() {
+        var form = new FormData();
+        var url = '/api/import/jg';
+        var nodes = document.getElementsByName("file_txt");
+        form.append("fileName", nodes[0].files[0]);
+        alert(1);
+        upload(url, method_post, form);
     }
 
 });
