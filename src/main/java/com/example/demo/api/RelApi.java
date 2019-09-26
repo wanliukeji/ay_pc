@@ -4,6 +4,7 @@ import com.example.demo.entity.Fied;
 import com.example.demo.json.ApiJSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,5 +21,6 @@ public interface RelApi {
 
     @PostMapping(value = "/api/saveRel", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "信息发布保存数据接口", notes = "信息发布保存数据接口")
+    @Transactional
     public ApiJSON saveRel(@RequestBody Fied entity) throws Exception;
 }

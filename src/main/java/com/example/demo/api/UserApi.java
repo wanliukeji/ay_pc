@@ -3,6 +3,7 @@ package com.example.demo.api;
 import com.example.demo.entity.Users;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -19,6 +20,7 @@ public interface UserApi {
 
     @PostMapping(value = "/api/saveUser", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "用户保存数据接口", notes = "用户发布保存数据接口")
+    @Transactional
     public void saveUser(@RequestBody Users entity) throws Exception;
 
 }

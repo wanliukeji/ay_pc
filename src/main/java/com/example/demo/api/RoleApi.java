@@ -2,6 +2,7 @@ package com.example.demo.api;
 
 import com.example.demo.entity.Users;
 import io.swagger.annotations.*;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ public interface RoleApi {
             @ApiImplicitParam(name = "name", value = "用户姓名", required = true, dataType = "String"),
             @ApiImplicitParam(name = "mail", value = "用户邮箱", required = true, dataType = "String")
     })
+    @Transactional
     public void inseRole(
             @RequestParam String name) throws Exception;
 

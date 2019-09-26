@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ public interface FiedApi {
 
     @GetMapping(value = "/api/jg/getPage", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工信息数据接口", notes = "加工信息数据接口")
+    @Transactional
     public ResultJSON<IPage<Fied>> getPage(ReqParam param) throws Exception;
 
     @GetMapping(value = "/api/jg/export", produces = {"application/json;charset=UTF-8"})

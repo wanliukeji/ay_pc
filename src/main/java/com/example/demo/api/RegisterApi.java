@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,5 +27,6 @@ public interface RegisterApi {
             @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "String"),
             @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
     })
+    @Transactional
     ResultJSON<?> register(@RequestParam String account, @RequestParam String email, @RequestParam String password) throws Exception;
 }
