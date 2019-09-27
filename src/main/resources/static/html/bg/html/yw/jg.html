@@ -267,9 +267,19 @@
             modal.find('.modal-body input').val(recipient)
         });
 
-        $('.table-tr').hover(function () {
-            $(this).css({'background-Color': '#dadada', "cursor": ":pointer"});
-            $(this).css({'background-Color': '#ffffff'});
+        $('tr').on('mouseover',function () {
+            $(this).css({'background-color': '#f3f3f3', 'cursor': 'pointer'});
+        }).bind('mouseout',function () {
+            $(this).css({'background-color': '#ffffff', 'cursor': 'pointer'});
+        }).bind('click',function () {
+            $(this).find("input").attr("checked", true);
+        });
+
+        var counter=0;
+        $('tr').bind("click", function() {
+            counter++ % 2 ?
+                (function() { $(this).find("input").attr("checked", true); }()) :
+                (function() { $(this).find("input").attr("checked", false); }());
         });
 
     });
