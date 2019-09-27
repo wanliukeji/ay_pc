@@ -149,7 +149,23 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         a_c_img: '/staus/images/600.jpg'
     };
 
+    $scope.example_success = function (){
+        lightyear.loading('show');
+        // 假设ajax提交操作
+        setTimeout(function() {
+            lightyear.loading('hide');
+            lightyear.notify('修改成功，页面即将自动跳转~', 'success', 3000);
+        }, 1000)
+    };
 
+    $scope.example_error = function (){
+        lightyear.loading('show');
+        // 假设ajax提交操作
+        setTimeout(function() {
+            lightyear.loading('hide');
+            lightyear.notify('服务器错误，请稍后再试~', 'danger', 100);
+        }, 1000)
+    };
 
 });
 

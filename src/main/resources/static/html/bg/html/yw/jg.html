@@ -48,6 +48,8 @@
                                 class="mdi mdi-file-export"></i> 导出</a>
                         <a class="btn btn-brown" href="#!" data-target="#importModel" data-toggle="modal"><i
                                 class="mdi mdi-file-import"></i> 导入</a>
+                        <a class="btn btn-primary" id="example-success-notify" ng-click="example_success()">确认修改</a>
+                        <a class="btn btn-primary" id="example-error-notify" ng-click="example_error()">修改失败</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -243,7 +245,6 @@
 </div>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/static/js/main.min.js"></script>
 <script type="text/javascript" src="/static/js/perfect-scrollbar.min.js"></script>
 <script src="/static/js/fileinput.min.js"></script>
 <script src="/static/js/file-upload-zh.js"></script>
@@ -251,7 +252,14 @@
 <script src="/static/js/dropzone.min.js"></script>
 <script src="/static/js/form-fileuploads.init.js"></script>
 <script src="/static/anguarl/angular.min.js"></script>
+
+<!--消息提示-->
+<script type="text/javascript" src="/static/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/static/js/lightyear.js"></script>
+<script type="text/javascript" src="/static/js/main.min.js"></script>
+
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/jg.js"></script>
+
 </body>
 </html>
