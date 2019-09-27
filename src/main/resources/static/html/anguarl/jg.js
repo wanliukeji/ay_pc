@@ -125,5 +125,32 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         getList();
     };
 
+    $scope.entity = {
+        head_line: '承接门窗加工',
+        sercode: '1001',
+        coverage: '1002',
+        user_qq: '789878',
+        user_wx: 'jiangxilaoer',
+        phone: '1327878909',
+        link: 'CHENYI',
+        createDate: new Date(),
+        company_name: '宁波阿拉',
+        procode: '101',
+        citycode: '201',
+        countycode: '301',
+        address: '大榭开发区',
+        video_url: 'http://www.baidu.com',
+        gg_src: 'demo.jpg',
+        details: '专业加工不锈钢，塑钢，铝合金门窗',
+        z_a_img: '/staus/images/100.jpg',
+        z_b_img: '/staus/images/200.jpg',
+        z_c_img: '/staus/images/300.jpg',
+        a_a_img: '/staus/images/400.jpg',
+        a_b_img: '/staus/images/500.jpg',
+        a_c_img: '/staus/images/600.jpg'
+    };
+
+
+
 });
 
