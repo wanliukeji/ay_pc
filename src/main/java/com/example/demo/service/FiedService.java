@@ -53,14 +53,15 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 //        }
 
         try {
-            IPage<Fied> page = new Page<Fied>(param.getPageNo(), param.getPageSize());
-            QueryWrapper<Fied> qw = new QueryWrapper<Fied>();
-            qw.like("head_line", param.getContext()).or()
-                    .like("company_name", param.getContext()).or()
-                    .like("address", param.getContext());
-            page = this.page(page, null);
+            Page<Fied> page = new Page<>(0, 5);
+            QueryWrapper<Fied> qw = new QueryWrapper<>();
+//            qw.like("head_line", param.getContext()).or()
+//                    .like("company_name", param.getContext()).or()
+//                    .like("address", param.getContext());
+
+            IPage pa = baseMapper.selectPage(page, qw);
             ((Page<Fied>) page).setDesc("createDate");
-            return ResultJSON.success(page);
+            return ResultJSON.success(((Page<Fied>) page));
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
@@ -173,4 +174,5 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 //            ex.printStackTrace();
 //            return ResultJSON.error(CodeMsg.SESSION_ERROR);
 //        }
+
 }

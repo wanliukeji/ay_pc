@@ -39,7 +39,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
             return;
         } else {
             export_file(getIds());
-            alert(1);
             getList();
         }
     };
