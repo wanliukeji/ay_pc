@@ -43,32 +43,22 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
      */
     public ResultJSON<?> getByPage(ReqParam param) {
 
-//        try {
-//            List<Fied> page = baseMapper.getByPage(Integer.valueOf(param.getPageNo()),
-//                                                   Integer.valueOf(param.getPageSize()),
-//                                                   param.getContext());
-//            return page;
-//        } catch (Exception we) {
-//            return null;
-//        }
-
         try {
-            Page<Fied> page = new Page<>(0, 5);
             QueryWrapper<Fied> qw = new QueryWrapper<>();
-//            qw.like("head_line", param.getContext()).or()
-//                    .like("company_name", param.getContext()).or()
-//                    .like("address", param.getContext());
+            qw.like("head_line", param.getContext()).or()
+                    .like("company_name", param.getContext()).or()
+                    .like("address", param.getContext());
 
-            IPage pa = baseMapper.selectPage(page, qw);
-            ((Page<Fied>) page).setDesc("createDate");
-            return ResultJSON.success(((Page<Fied>) page));
+            PageHelper.startPage(param.getPageNo(), param.getPageSize());
+            List<Fied> fieds = this.list(qw);
+            qw.orderByDesc("createDate");
+            PageInfo<Fied> page = new PageInfo<>(fieds);
+            return ResultJSON.success(page);
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
-    }
-
-    ;
+    };
 
     /**
      * 导出当前页面内容

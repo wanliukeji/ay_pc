@@ -127,11 +127,16 @@
                     </div>
                     <ul class="pagination">
                         <li><a href="" ng-click="prev()">上一页</a></li>
-                        <li class="active"><a href="" ng-click="getPage()">{{currentPage + 1}}</a></span></li>
+                        <li><span>当前第</span></li>
+                        <li class="active"><span>{{pageNum}}</span></li>
+                        <li><span>页</span></li>
                         <li><a href="" ng-click="next()">下一页</a></li>
                         <li><span>共</span></li>
-                        <li class="active"><span>{{items.length}}</span></li>
+                        <li class="active"><span>{{total}}</span></li>
                         <li><span>条</span></li>
+                        <li><span>共</span></li>
+                        <li class="active"><span>{{totalPage}}</span></li>
+                        <li><span>页</span></li>
                     </ul>
                 </div>
             </div>

@@ -55,7 +55,6 @@ public class FiedController implements FiedApi {
     public ResultJSON<?> unaunt(String ids) throws Exception {
         return fiedService.unaunt(ids);
     }
-
     ;
 }
 

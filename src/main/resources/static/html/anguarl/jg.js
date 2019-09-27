@@ -3,23 +3,23 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     var url = '/api/jg/getPage';
 
     $scope.user = getUser();
+
     $scope.items = [];
 
     $scope.totalPage = 0;
-    $scope.currentPage = 0;
+    $scope.total = 0;
+    $scope.pageNum = 0;
 
+    $scope.currentPage = 0;
 
     $scope.ReqParam = {
         pageNo: 0,
-        pageSize: 10,
+        pageSize: 5,
         context: ''
     };
 
     $scope.init = function () {
         getList();
-        // $scope.totalPage = $scope.items.length % $scope.ReqParam.pageSize == 0 ?
-        //     $scope.items.length / $scope.ReqParam.pageSize :
-        //     $scope.items.length / $scope.ReqParam.pageSize + 1;
     };
 
     $scope.search = function () {
@@ -28,7 +28,11 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     function getList() {
         var msg = ajax_http(url, method_get, $scope.ReqParam);
-        $scope.items = msg.data.data.records;
+        console.log(msg);
+        $scope.items = msg.data.data.list;
+        $scope.totalPage = msg.data.data.pages;
+        $scope.total = msg.data.data.total;
+        $scope.pageNum = msg.data.data.pageNum;
     };
 
     $scope.export = function () {
@@ -39,7 +43,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
             return;
         } else {
             export_file(getIds());
-            getList();
         }
     };
 
@@ -52,7 +55,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.import = function () {
         uploadfile_txt();
-        getList();
         angular.element("#close").click();
     };
 
@@ -63,6 +65,8 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         var nodes = document.getElementsByName("file_txt");
         form.append("fileName", nodes[0].files[0]);
         upload(url, method_post, form);
+        getList();
+        window.location.href = "#";
     };
 
     $scope.del = function () {
@@ -108,12 +112,12 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     };
 
     $scope.prev = function () {
-        $scope.ReqParam.pageNo -= 1;
+        $scope.ReqParam.pageNo = $scope.pageNum - 1;
         getList();
     };
+
     $scope.next = function () {
-        $scope.ReqParam.pageNo += $scope.ReqParam.pageSize;
-        $scope.ReqParam.pageSize = $scope.currentPage
+        $scope.ReqParam.pageNo = $scope.pageNum + 1;
         getList();
     };
 
