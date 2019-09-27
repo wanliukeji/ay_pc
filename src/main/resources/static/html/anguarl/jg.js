@@ -28,7 +28,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     function getList() {
         var msg = ajax_http(url, method_get, $scope.ReqParam);
-        console.log(msg);
         $scope.items = msg.data.data.list;
         $scope.totalPage = msg.data.data.pages;
         $scope.total = msg.data.data.total;

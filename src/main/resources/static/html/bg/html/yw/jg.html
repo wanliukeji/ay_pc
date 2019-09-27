@@ -30,7 +30,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" ng-model="ReqParam.context" placeholder="请输入关键词...">
                             <span class="input-group-btn">
-                          <button class="btn btn-cyan" ng-click="search()" type="button">
+                          <button class="btn btn-cyan" id="search" ng-click="search()" type="button">
                             搜索
                           </button>
                         </span>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="toolbar-btn-action">
                         <a class="btn btn-primary m-r-5" data-target="#gridSystemModal" data-toggle="modal"><i
-                                class="mdi mdi-plus"></i> 新增</a>
+                                class="mdi mdi-plus" disabled="true"></i> 新增</a>
                         <a class="btn btn-success m-r-5" ng-click="aunt()"><i class="mdi mdi-check"></i> 启用</a>
                         <a class="btn btn-warning m-r-5" ng-click="unaunt()"><i class="mdi mdi-block-helper"></i> 禁用</a>
                         <!--<a class="btn btn-purple m-r-5" href="#!" ng-click="aunt()"><i class="mdi mdi-vector-arrange-above"></i> 审核</a>-->

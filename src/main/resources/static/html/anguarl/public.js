@@ -107,4 +107,12 @@ function stringIds(item) {
     }
     ;
     return ids;
-}
+};
+
+//回车键
+document.onkeydown = function(e){
+    var ev = document.all ? window.event : e;
+    if(ev.keyCode==13) {
+        $('#search').click();
+    }
+};
