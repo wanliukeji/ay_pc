@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.api.FiedApi;
 import com.example.demo.api.RelApi;
 import com.example.demo.entity.Fied;
@@ -13,6 +14,8 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author Chenny
@@ -29,8 +32,8 @@ public class FiedController implements FiedApi {
     @Autowired
     private FiedService fiedService;
 
-    public ResultJSON<IPage<Fied>> getPage(ReqParam param) throws Exception {
-        return fiedService.getPage(param);
+    public ResultJSON<List<Fied>> getByPage(ReqParam param) throws Exception {
+        return ResultJSON.success(fiedService.getByPage(param));
     }
 
     @Override

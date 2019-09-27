@@ -1,19 +1,17 @@
 package com.example.demo.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.ClassUtil;
 import com.example.demo.Utils.ExportExcelUtil;
+import com.example.demo.Utils.NumberUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.FiedMapper;
 import com.example.demo.entity.Fied;
-import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqParam;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.io.FileOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,27 +29,33 @@ import java.util.List;
 @Service
 public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serializable {
 
-
     /**
      * 获取页面数据
      *
      * @param param
      * @return
      */
-    public ResultJSON<IPage<Fied>> getPage(ReqParam param) {
+    public List<Fied> getByPage(ReqParam param) {
         try {
-            IPage<Fied> page = new Page<Fied>(param.getPageNo(), param.getPageSize());
-            QueryWrapper<Fied> qw = new QueryWrapper<Fied>();
-            qw.like("head_line", param.getContext()).or()
-                    .like("company_name", param.getContext()).or()
-                    .like("address", param.getContext());
-            page = this.page(page, qw);
-            ((Page<Fied>) page).setDesc("createDate");
-            return ResultJSON.success(page);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+            List<Fied> page = baseMapper.getByPage(Integer.valueOf(param.getPageNo()),
+                                               Integer.valueOf(param.getPageSize()));
+            return page;
+        } catch (Exception we) {
+            return null;
         }
+//        try {
+//            IPage<Fied> page = new Page<Fied>(param.getPageNo(), param.getPageSize());
+//            QueryWrapper<Fied> qw = new QueryWrapper<Fied>();
+//            qw.like("head_line", param.getContext()).or()
+//                    .like("company_name", param.getContext()).or()
+//                    .like("address", param.getContext());
+//            page = this.page(page, null);
+//            ((Page<Fied>) page).setDesc("createDate");
+//            return ResultJSON.success(page);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+//        }
     }
 
     ;
@@ -78,13 +82,17 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
             ex.printStackTrace();
         }
         return null;
-    };
+    }
+
+    ;
 
     public ResultJSON<?> delete(String ids) throws Exception {
         // 准备数据
-       boolean f = this.removeByIds(StringUtil.StringToList(ids));
+        boolean f = this.removeByIds(StringUtil.StringToList(ids));
         return ResultJSON.success(f);
-    };
+    }
+
+    ;
 
     public ResultJSON<?> aunt(String ids) throws Exception {
 
@@ -96,7 +104,9 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
             saveOrUpdate(fied);
         }
         return ResultJSON.success(null);
-    };
+    }
+
+    ;
 
     public ResultJSON<?> unaunt(String ids) throws Exception {
 
@@ -109,6 +119,8 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         }
         return ResultJSON.success(null);
     }
+
+    ;
 
 
 }

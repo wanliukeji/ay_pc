@@ -2,6 +2,11 @@ package com.example.demo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Fied;
+import io.swagger.models.auth.In;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author Chenny
@@ -11,5 +16,9 @@ import com.example.demo.entity.Fied;
  * @address http://106.12.38.131:8011
  * @describe 用于实现接口返回规范的类  所有接口返回值都由该类封装
  */
+@Mapper
 public interface FiedMapper extends BaseMapper<Fied> {
+
+    List<Fied> getByPage(@Param("currentPage") Integer currentPage,
+                                @Param("pageSize") Integer pageSize);
 }

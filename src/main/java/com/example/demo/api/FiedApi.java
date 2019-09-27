@@ -1,6 +1,7 @@
 package com.example.demo.api;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.entity.Fied;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author Chenny
@@ -29,7 +32,7 @@ public interface FiedApi {
     @GetMapping(value = "/api/jg/getPage", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工信息数据接口", notes = "加工信息数据接口")
     @Transactional
-    public ResultJSON<IPage<Fied>> getPage(ReqParam param) throws Exception;
+    public ResultJSON<List<Fied>> getByPage(ReqParam param) throws Exception;
 
     @GetMapping(value = "/api/jg/export", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工导出数据接口", notes = "加工导出数据接口")

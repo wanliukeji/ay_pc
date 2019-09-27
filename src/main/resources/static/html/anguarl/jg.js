@@ -5,6 +5,10 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     $scope.user = getUser();
     $scope.items = [];
 
+    $scope.totalPage = 0;
+    $scope.currentPage = 0;
+
+
     $scope.ReqParam = {
         pageNo: 0,
         pageSize: 10,
@@ -13,6 +17,9 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.init = function () {
         getList();
+        // $scope.totalPage = $scope.items.length % $scope.ReqParam.pageSize == 0 ?
+        //     $scope.items.length / $scope.ReqParam.pageSize :
+        //     $scope.items.length / $scope.ReqParam.pageSize + 1;
     };
 
     $scope.search = function () {
@@ -20,8 +27,9 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     };
 
     function getList() {
+        $scope.ReqParam.pageNo = $scope.currentPage;
         var msg = ajax_http(url, method_get, $scope.ReqParam);
-        $scope.items = msg.data.records;
+        $scope.items = msg.data;
     };
 
     $scope.export = function () {
@@ -99,6 +107,19 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     $scope.remove = function (id) {
         var url = '/api/jg/delete?ids=' + id;
         ajax_http(url, method_get, null);
+        getList();
+    };
+
+    $scope.prev = function () {
+        $scope.currentPage = $scope.currentPage - 1 >= 1 ? $scope.currentPage - 1 : 1;
+        getList();
+    };
+    $scope.next = function () {
+        $scope.currentPage = $scope.currentPage + 1 <= $scope.totalPage ? $scope.currentPage + 1 : $scope.totalPage;
+        getList();
+    };
+
+    $scope.getPage = function () {
         getList();
     };
 

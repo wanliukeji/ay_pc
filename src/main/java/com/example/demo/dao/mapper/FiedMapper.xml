@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.FiedMapper">
+
+    <select id="getByPage" resultType="com.example.demo.entity.Fied">
+        
+        SELECT
+            t.Id,
+            t.head_line,
+            t.sercode,
+            t.coverage,
+            t.user_qq,
+            t.user_wx,
+            t.phone,
+            t.link,
+            t.createDate,
+            t.company_name,
+            t.procode,
+            t.citycode,
+            t.countycode,
+            t.video_url,
+            t.gg_src,
+            t.z_a_img,
+            t.z_b_img,
+            t.z_c_img,
+            t.a_a_img,
+            t.a_b_img,
+            t.a_c_img,
+            t.details,
+            t.address,
+            t.`status`,
+            t.del
+            FROM
+            fied t
+            LIMIT #{currentPage},#{pageSize}
+
+    </select>
+</mapper>
