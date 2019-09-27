@@ -14,7 +14,7 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.ReqParam = {
         pageNo: 0,
-        pageSize: 5,
+        pageSize: 10,
         context: ''
     };
 
