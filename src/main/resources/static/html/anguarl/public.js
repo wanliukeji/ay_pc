@@ -116,3 +116,14 @@ document.onkeydown = function(e){
         $('#search').click();
     }
 };
+
+$(function () {
+    //通用选中行数
+    $('tr').on('mouseover',function () {
+        $(this).css({'background-color': '#f3f3f3', 'cursor': 'pointer'});
+    }).bind('mouseout',function () {
+        $(this).css({'background-color': '#ffffff', 'cursor': 'pointer'});
+    }).bind('click',function () {
+        $(this).find("input").click();
+    });
+});
