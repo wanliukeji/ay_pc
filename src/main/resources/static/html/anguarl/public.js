@@ -118,6 +118,20 @@ document.onkeydown = function(e){
 };
 
 $(function () {
+    //通用
+    $('.search-bar .dropdown-menu a').click(function () {
+        var field = $(this).data('field') || '';
+        $('#search-field').val(field);
+        $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
+    });
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whatever')
+        var modal = $(this);
+        modal.find('.modal-title').text('发送新消息给 ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    });
     //通用选中行数
     $('tr').on('mouseover',function () {
         $(this).css({'background-color': '#f3f3f3', 'cursor': 'pointer'});
