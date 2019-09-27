@@ -62,6 +62,7 @@
                                         <input type="checkbox" id="check-all"><span></span>
                                     </label>
                                 </th>
+                                <th>ID</th>
                                 <th>启用</th>
                                 <th>标题</th>
                                 <th>公司</th>
@@ -75,12 +76,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="item in items" class="table-tr">
+                            <tr ng-repeat="item in items" class="table-tr" >
                                 <td>
                                     <label class="lyear-checkbox checkbox-primary">
                                         <input type="checkbox" name="ids[]" value="{{item.id}}"><span></span>
                                     </label>
                                 </td>
+                                <td>{{item.id}}</td>
                                 <td ng-show="item.status == 1">
                                     <svg t="1569510664156" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                          xmlns="http://www.w3.org/2000/svg" p-id="2711" width="20" height="20">

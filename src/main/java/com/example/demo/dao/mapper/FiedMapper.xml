@@ -3,36 +3,46 @@
 <mapper namespace="com.example.demo.dao.FiedMapper">
 
     <select id="getByPage" resultType="com.example.demo.entity.Fied">
-        
+
         SELECT
-            t.Id,
-            t.head_line,
-            t.sercode,
-            t.coverage,
-            t.user_qq,
-            t.user_wx,
-            t.phone,
-            t.link,
-            t.createDate,
-            t.company_name,
-            t.procode,
-            t.citycode,
-            t.countycode,
-            t.video_url,
-            t.gg_src,
-            t.z_a_img,
-            t.z_b_img,
-            t.z_c_img,
-            t.a_a_img,
-            t.a_b_img,
-            t.a_c_img,
-            t.details,
-            t.address,
-            t.`status`,
-            t.del
-            FROM
-            fied t
-            LIMIT #{currentPage},#{pageSize}
+        t.Id,
+        t.head_line,
+        t.sercode,
+        t.coverage,
+        t.user_qq,
+        t.user_wx,
+        t.phone,
+        t.link,
+        t.createDate,
+        t.company_name,
+        t.procode,
+        t.citycode,
+        t.countycode,
+        t.video_url,
+        t.gg_src,
+        t.z_a_img,
+        t.z_b_img,
+        t.z_c_img,
+        t.a_a_img,
+        t.a_b_img,
+        t.a_c_img,
+        t.details,
+        t.address,
+        t.`status`,
+        t.del
+        FROM
+        fied t
+        where 1=1
+        <!--<if test="context != null">-->
+          <!--and t.head_line like "%"#{context}"%",-->
+          <!--or t.phone  like "%"#{context}"%",-->
+          <!--or t.link  like "%"#{context}"%",-->
+          <!--or t.link  like "%"#{context}"%",-->
+          <!--or t.company_name  like "%"#{context}"%",-->
+          <!--or t.address  like "%"#{context}"%"-->
+        <!--</if>-->
+
+        LIMIT #{currentPage},#{pageSize}
 
     </select>
 </mapper>

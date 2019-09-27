@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.ExportExcelUtil;
@@ -7,8 +9,11 @@ import com.example.demo.Utils.NumberUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.FiedMapper;
 import com.example.demo.entity.Fied;
+import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqParam;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,35 +36,46 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 
     /**
      * 获取页面数据
+     * 查询数据
      *
      * @param param
      * @return
      */
-    public List<Fied> getByPage(ReqParam param) {
-        try {
-            List<Fied> page = baseMapper.getByPage(Integer.valueOf(param.getPageNo()),
-                                               Integer.valueOf(param.getPageSize()));
-            return page;
-        } catch (Exception we) {
-            return null;
-        }
+    public ResultJSON<?> getByPage(ReqParam param) {
+
 //        try {
-//            IPage<Fied> page = new Page<Fied>(param.getPageNo(), param.getPageSize());
-//            QueryWrapper<Fied> qw = new QueryWrapper<Fied>();
-//            qw.like("head_line", param.getContext()).or()
-//                    .like("company_name", param.getContext()).or()
-//                    .like("address", param.getContext());
-//            page = this.page(page, null);
-//            ((Page<Fied>) page).setDesc("createDate");
-//            return ResultJSON.success(page);
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+//            List<Fied> page = baseMapper.getByPage(Integer.valueOf(param.getPageNo()),
+//                                                   Integer.valueOf(param.getPageSize()),
+//                                                   param.getContext());
+//            return page;
+//        } catch (Exception we) {
+//            return null;
 //        }
+
+        try {
+            IPage<Fied> page = new Page<Fied>(param.getPageNo(), param.getPageSize());
+            QueryWrapper<Fied> qw = new QueryWrapper<Fied>();
+            qw.like("head_line", param.getContext()).or()
+                    .like("company_name", param.getContext()).or()
+                    .like("address", param.getContext());
+            page = this.page(page, null);
+            ((Page<Fied>) page).setDesc("createDate");
+            return ResultJSON.success(page);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        }
     }
 
     ;
 
+    /**
+     * 导出当前页面内容
+     *
+     * @param ids
+     * @return
+     * @throws Exception
+     */
     public ResultJSON<?> export(String ids) throws Exception {
 
         ExportExcelUtil<Fied> util = new ExportExcelUtil<Fied>();
@@ -86,6 +102,13 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 
     ;
 
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     * @throws Exception
+     */
     public ResultJSON<?> delete(String ids) throws Exception {
         // 准备数据
         boolean f = this.removeByIds(StringUtil.StringToList(ids));
@@ -94,6 +117,13 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 
     ;
 
+    /**
+     * 批量启用
+     *
+     * @param ids
+     * @return
+     * @throws Exception
+     */
     public ResultJSON<?> aunt(String ids) throws Exception {
 
         ArrayList<Integer> idItems = StringUtil.StringToArrayList(ids);
@@ -108,6 +138,13 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 
     ;
 
+    /**
+     * 批量禁用
+     *
+     * @param ids
+     * @return
+     * @throws Exception
+     */
     public ResultJSON<?> unaunt(String ids) throws Exception {
 
         ArrayList<Integer> idItems = StringUtil.StringToArrayList(ids);
@@ -122,5 +159,18 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 
     ;
 
-
+//        查询分页备份
+//        try {
+//            IPage<Fied> page = new Page<Fied>(param.getPageNo(), param.getPageSize());
+//            QueryWrapper<Fied> qw = new QueryWrapper<Fied>();
+//            qw.like("head_line", param.getContext()).or()
+//                    .like("company_name", param.getContext()).or()
+//                    .like("address", param.getContext());
+//            page = this.page(page, null);
+//            ((Page<Fied>) page).setDesc("createDate");
+//            return ResultJSON.success(page);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+//        }
 }

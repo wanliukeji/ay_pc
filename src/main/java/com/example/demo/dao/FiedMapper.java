@@ -20,5 +20,6 @@ import java.util.List;
 public interface FiedMapper extends BaseMapper<Fied> {
 
     List<Fied> getByPage(@Param("currentPage") Integer currentPage,
-                                @Param("pageSize") Integer pageSize);
+                                @Param("pageSize") Integer pageSize,
+                                @Param("context") String context);
 }

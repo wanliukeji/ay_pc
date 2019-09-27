@@ -27,15 +27,13 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     };
 
     function getList() {
-        $scope.ReqParam.pageNo = $scope.currentPage;
         var msg = ajax_http(url, method_get, $scope.ReqParam);
-        $scope.items = msg.data;
+        $scope.items = msg.data.data.records;
     };
 
     $scope.export = function () {
 
         var items = getIds();
-        console.log(items);
         if (is_item_Empty(items)) {
             alert('请选择导入的数据');
             return;
@@ -111,11 +109,12 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     };
 
     $scope.prev = function () {
-        $scope.currentPage = $scope.currentPage - 1 >= 1 ? $scope.currentPage - 1 : 1;
+        $scope.ReqParam.pageNo -= 1;
         getList();
     };
     $scope.next = function () {
-        $scope.currentPage = $scope.currentPage + 1 <= $scope.totalPage ? $scope.currentPage + 1 : $scope.totalPage;
+        $scope.ReqParam.pageNo += $scope.ReqParam.pageSize;
+        $scope.ReqParam.pageSize = $scope.currentPage
         getList();
     };
 

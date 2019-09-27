@@ -32,7 +32,7 @@ public class FiedController implements FiedApi {
     @Autowired
     private FiedService fiedService;
 
-    public ResultJSON<List<Fied>> getByPage(ReqParam param) throws Exception {
+    public ResultJSON<?> getByPage(ReqParam param) throws Exception {
         return ResultJSON.success(fiedService.getByPage(param));
     }
 

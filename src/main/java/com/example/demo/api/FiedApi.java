@@ -32,7 +32,7 @@ public interface FiedApi {
     @GetMapping(value = "/api/jg/getPage", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工信息数据接口", notes = "加工信息数据接口")
     @Transactional
-    public ResultJSON<List<Fied>> getByPage(ReqParam param) throws Exception;
+    public ResultJSON<?> getByPage(ReqParam param) throws Exception;
 
     @GetMapping(value = "/api/jg/export", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工导出数据接口", notes = "加工导出数据接口")
