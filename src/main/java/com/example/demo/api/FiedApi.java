@@ -39,7 +39,7 @@ public interface FiedApi {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "ID", value = "ids")
     })
-    public void export(@RequestParam("ids") String ids) throws Exception;
+    public Object export(@RequestParam("ids") String ids) throws Exception;
 
     @GetMapping(value = "/api/jg/delete", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工删除数据接口", notes = "加工删除数据接口")

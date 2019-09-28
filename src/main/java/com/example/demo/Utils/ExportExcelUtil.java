@@ -6,7 +6,9 @@ import org.apache.poi.hssf.usermodel.*;
 //import org.apache.poi.hssf.usermodelt.HSSFCell;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.xssf.usermodel.*;
+import org.omg.CORBA.OBJ_ADAPTER;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -61,11 +63,11 @@ public class ExportExcelUtil<T> {
      * @param out     输出流
      * @param version 2003 或者 2007，不传时默认生成2003版本
      */
-    public void exportExcel(String title, String[] headers, Collection<T> dataset, OutputStream out, String version) {
+    public Object exportExcel(String title, String[] headers, Collection<T> dataset, OutputStream out, String version) {
         if (StringUtils.isBlank(version) || EXCEL_FILE_2003.equals(version.trim())) {
-            exportExcel2003(title, headers, dataset, out, "yyyy-MM-dd HH:mm:ss");
+            return exportExcel2003(title, headers, dataset, out, "yyyy-MM-dd HH:mm:ss");
         } else {
-            exportExcel2007(title, headers, dataset, out, "yyyy-MM-dd HH:mm:ss");
+            return exportExcel2007(title, headers, dataset, out, "yyyy-MM-dd HH:mm:ss");
         }
     }
 
@@ -83,7 +85,7 @@ public class ExportExcelUtil<T> {
      * @param pattern 如果有时间数据，设定输出格式。默认为"yyyy-MM-dd hh:mm:ss"
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public void exportExcel2007(String title, String[] headers, Collection<T> dataset, OutputStream out, String pattern) {
+    public Object exportExcel2007(String title, String[] headers, Collection<T> dataset, OutputStream out, String pattern) {
         // 声明一个工作薄
         XSSFWorkbook workbook = new XSSFWorkbook();
         // 生成一个表格
@@ -223,6 +225,7 @@ public class ExportExcelUtil<T> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
 
@@ -240,7 +243,7 @@ public class ExportExcelUtil<T> {
      * @param pattern 如果有时间数据，设定输出格式。默认为"yyyy-MM-dd hh:mm:ss"
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public void exportExcel2003(String title, String[] headers, Collection<T> dataset, OutputStream out, String pattern) {
+    public Object exportExcel2003(String title, String[] headers, Collection<T> dataset, OutputStream out, String pattern) {
         // 声明一个工作薄
         HSSFWorkbook workbook = new HSSFWorkbook();
         // 生成一个表格
@@ -375,6 +378,7 @@ public class ExportExcelUtil<T> {
                 }
             }
         }
+
         try {
             workbook.write(out);
             out.flush();
@@ -382,7 +386,11 @@ public class ExportExcelUtil<T> {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
+
+    ;
 
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -402,4 +410,6 @@ public class ExportExcelUtil<T> {
 //        FileUtil.createFile(fileUrl);
         util.exportExcel("用户导出", columnNames, list, new FileOutputStream(fileUrl), ExportExcelUtil.EXCEL_FILE_2003);
     }
+
+
 }

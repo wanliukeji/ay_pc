@@ -37,8 +37,16 @@ public class FiedController implements FiedApi {
     }
 
     @Override
-    public void export(String ids) throws Exception {
-        fiedService.export(ids);
+    public Object export(String ids) throws Exception {
+        String fileUrl = "D:/exportFile/加工信息数据表.xls";
+        String title = "加工信息导出";
+        String path = "com.example.demo.entity.Fied";
+        String[] columnNames = {"", "编号", "标题", "类型", "区域", "QQ", "微信", "手机",
+                "联系人", "创建时间", "公司名称", "省份", "城市", "市区", "视频路径",
+                "广告地址", "作品一", "作品二", "作品三", "案例一", "案例二", "案例三",
+                "服务", "详细地址"};
+        fiedService.export(ids, fileUrl, title, path, columnNames);
+        return null;
     }
 
     @Override
@@ -55,6 +63,7 @@ public class FiedController implements FiedApi {
     public ResultJSON<?> unaunt(String ids) throws Exception {
         return fiedService.unaunt(ids);
     }
+
     ;
 }
 

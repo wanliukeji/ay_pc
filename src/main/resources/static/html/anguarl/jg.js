@@ -48,9 +48,16 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     //导出EXCLE
     function export_file(items) {
         var url = '/api/jg/export?ids=' + items;
-        var msg = ajax_http(url, method_get, null);
+        href(url);
+        // var msg = ajax_http(url, method_get, null);
         angular.element('#export-close').click();
         msg_success('成功导出');
+        excelApp = new ActiveXObject("Excel.Application");
+        excelWorkBook = excelApp.Workbooks.open("D:\\exportFile\\加工信息数据表.xls");
+        excelSheet = oWB.ActiveSheet; //WorkSheets("sheet1")
+        excelWorkBook.close();
+        excelApp.Application.Quit();
+
     };
 
     $scope.import = function () {

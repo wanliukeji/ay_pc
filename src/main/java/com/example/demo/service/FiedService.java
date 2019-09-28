@@ -1,10 +1,12 @@
 package com.example.demo.service;
 
+import cn.hutool.http.HttpResponse;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.ExportExcelUtil;
+import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.Utils.NumberUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.FiedMapper;
@@ -17,8 +19,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.io.FileOutputStream;
-import java.io.Serializable;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -58,7 +60,9 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
-    };
+    }
+
+    ;
 
     /**
      * 导出当前页面内容
@@ -67,27 +71,34 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
      * @return
      * @throws Exception
      */
-    public void export(String ids) throws Exception {
+    public Object export(String ids, String fileUrl, String title, String beanPath, String [] columnNames) throws Exception {
 
         ExportExcelUtil<Fied> util = new ExportExcelUtil<Fied>();
-        String path = "com.example.demo.entity.Fied";
         // 准备数据
         Collection<Fied> list = new ArrayList<Fied>();
 
         list = this.listByIds(StringUtil.StringToList(ids));
 
-        String[] columnNames = {"", "编号", "标题", "类型", "区域", "QQ", "微信", "手机",
-                "联系人", "创建时间", "公司名称", "省份", "城市", "市区", "视频路径",
-                "广告地址", "作品一", "作品二", "作品三", "案例一", "案例二", "案例三",
-                "服务", "详细地址"};
+        HttpServletRequestUtil.getResponse();
 
-        String fileUrl = "D:/exportFile/加工信息数据表.xls";
+        HttpServletResponse resp = HttpServletRequestUtil.getResponse();
 
+        OutputStream out = HttpServletRequestUtil.getResponse().getOutputStream();
+        out = new FileOutputStream(fileUrl);
+        //设置文件名，boot.xls 是下载文件名
+        resp.addHeader("Content-Disposition", "attachment;filename=" + new String(title.getBytes()));
+        //设置输出流
+        OutputStream os= new BufferedOutputStream(resp.getOutputStream());
+        //设置格式
+        resp.setContentType("application/vnd.ms-excel;charset=gb2312");
         try {
-            util.exportExcel("加工信息导出", columnNames, list, new FileOutputStream(fileUrl), ExportExcelUtil.EXCEL_FILE_2003);
+           return util.exportExcel(title, columnNames, list, out, ExportExcelUtil.EXCEL_FILE_2003);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        return null;
     }
 
     ;

@@ -1,4 +1,4 @@
-package com.example.demo.service.redis;
+package com.example.demo.redis;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
