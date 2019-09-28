@@ -110,9 +110,9 @@ function stringIds(item) {
 };
 
 //回车键
-document.onkeydown = function(e){
+document.onkeydown = function (e) {
     var ev = document.all ? window.event : e;
-    if(ev.keyCode==13) {
+    if (ev.keyCode == 13) {
         $('#search').click();
     }
 };
@@ -137,7 +137,26 @@ function checked(e) {
     if (obj.checked) {
         obj.removeAttribute('checked')
     } else {
-        obj.setAttribute('checked',true);
+        obj.setAttribute('checked', true);
     }
 
+};
+
+//全局提示框
+function msg_success(msg) {
+    lightyear.loading('show');
+    // 假设ajax提交操作
+    setTimeout(function () {
+        lightyear.loading('hide');
+        lightyear.notify(msg, 'success', 3000);
+    }, 1000)
+};
+
+function msg_error(msg) {
+    lightyear.loading('show');
+    // 假设ajax提交操作
+    setTimeout(function () {
+        lightyear.loading('hide');
+        lightyear.notify(msg, 'danger', 100);
+    }, 1000)
 };

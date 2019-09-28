@@ -34,12 +34,12 @@ public interface FiedApi {
     @Transactional
     public ResultJSON<?> getByPage(ReqParam param) throws Exception;
 
-    @GetMapping(value = "/api/jg/export", produces = {"application/json;charset=UTF-8"})
+    @GetMapping(value = "/api/jg/export",  produces = "text/plain;charset=UTF-8")
     @ApiOperation(value = "加工导出数据接口", notes = "加工导出数据接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "ID", value = "ids")
     })
-    public ResultJSON<?> export(@RequestParam("ids") String ids) throws Exception;
+    public void export(@RequestParam("ids") String ids) throws Exception;
 
     @GetMapping(value = "/api/jg/delete", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工删除数据接口", notes = "加工删除数据接口")

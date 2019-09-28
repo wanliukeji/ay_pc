@@ -47,9 +47,10 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     //导出EXCLE
     function export_file(items) {
-        console.dir(items);
         var url = '/api/jg/export?ids=' + items;
         var msg = ajax_http(url, method_get, null);
+        angular.element('#export-close').click();
+        msg_success('成功导出');
     };
 
     $scope.import = function () {
@@ -147,24 +148,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
         a_a_img: '/staus/images/400.jpg',
         a_b_img: '/staus/images/500.jpg',
         a_c_img: '/staus/images/600.jpg'
-    };
-
-    $scope.example_success = function (){
-        lightyear.loading('show');
-        // 假设ajax提交操作
-        setTimeout(function() {
-            lightyear.loading('hide');
-            lightyear.notify('修改成功，页面即将自动跳转~', 'success', 3000);
-        }, 1000)
-    };
-
-    $scope.example_error = function (){
-        lightyear.loading('show');
-        // 假设ajax提交操作
-        setTimeout(function() {
-            lightyear.loading('hide');
-            lightyear.notify('服务器错误，请稍后再试~', 'danger', 100);
-        }, 1000)
     };
 
 });

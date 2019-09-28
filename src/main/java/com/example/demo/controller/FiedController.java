@@ -37,8 +37,8 @@ public class FiedController implements FiedApi {
     }
 
     @Override
-    public ResultJSON<?> export(String ids) throws Exception {
-        return fiedService.export(ids);
+    public void export(String ids) throws Exception {
+        fiedService.export(ids);
     }
 
     @Override

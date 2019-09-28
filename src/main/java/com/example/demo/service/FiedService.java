@@ -67,7 +67,7 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
      * @return
      * @throws Exception
      */
-    public ResultJSON<?> export(String ids) throws Exception {
+    public void export(String ids) throws Exception {
 
         ExportExcelUtil<Fied> util = new ExportExcelUtil<Fied>();
         String path = "com.example.demo.entity.Fied";
@@ -88,7 +88,6 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return null;
     }
 
     ;

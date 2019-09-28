@@ -27,7 +27,8 @@
                     <div class="pull-right search-bar" role="form">
                         <!--<input type="text" class="form-control" value="" name="keyword" placeholder="请输入名称">-->
                         <div class="input-group">
-                            <input type="text" class="form-control" ng-model="ReqParam.context" placeholder="请输入关键词...">
+                            <input type="text" class="form-control" ng-model="ReqParam.context"
+                                   placeholder="请输入关键词...">
                             <span class="input-group-btn">
                           <button class="btn btn-cyan" id="search" ng-click="search()" type="button">
                             搜索
@@ -47,8 +48,6 @@
                                 class="mdi mdi-file-export"></i> 导出</a>
                         <a class="btn btn-brown" href="#!" data-target="#importModel" data-toggle="modal"><i
                                 class="mdi mdi-file-import"></i> 导入</a>
-                        <a class="btn btn-danger" id="example-success-notify" ng-click="example_success()">确认修改</a>
-                        <a class="btn btn-purple" id="example-error-notify" ng-click="example_error()">修改失败</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -76,7 +75,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="item in items" class="table-tr" onmouseover="addCss(this)" onmouseout="delCss(this);" onclick="checked(this);">
+                            <tr ng-repeat="item in items" class="table-tr" onmouseover="addCss(this)"
+                                onmouseout="delCss(this);" onclick="checked(this);">
                                 <td>
                                     <label class="lyear-checkbox checkbox-primary">
                                         <input type="checkbox" name="ids[]" value="{{item.id}}"><span></span>
@@ -195,7 +195,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <label>导出文件类型：</label>
-                        <select type="text" class="form-control">
+                        <select type="text" class="form-control" disabled>
                             <option value="EXCEL">EXCEL</option>
                             <option value="TXT">TXT</option>
                             <option value="PDF">PDF</option>
@@ -205,7 +205,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" id="export-close" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" ng-click="export()">导出</button>
             </div>
         </div>
