@@ -117,27 +117,27 @@ document.onkeydown = function(e){
     }
 };
 
-$(function () {
-    //通用
-    $('.search-bar .dropdown-menu a').click(function () {
-        var field = $(this).data('field') || '';
-        $('#search-field').val(field);
-        $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
-    });
+// 通用选中
+function addCss(e) {
+    e.style.backgroundColor = '#f4f4f4';
+    e.style.cursor = 'pointer';
+};
 
-    $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget)
-        var recipient = button.data('whatever')
-        var modal = $(this);
-        modal.find('.modal-title').text('发送新消息给 ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-    });
-    //通用选中行数
-    $('tr').on('mouseover',function () {
-        $(this).css({'background-color': '#f3f3f3', 'cursor': 'pointer'});
-    }).bind('mouseout',function () {
-        $(this).css({'background-color': '#ffffff', 'cursor': 'pointer'});
-    }).bind('click',function () {
-        $(this).find("input").click();
-    });
-});
+function delCss(e) {
+    e.style.backgroundColor = '#ffffff';
+    e.style.cursor = 'pointer';
+};
+
+function checked(e) {
+    var nodes = e.childNodes;
+    var child = nodes[1].childNodes;
+    var check = child[1].childNodes;
+    var obj = check[1];
+
+    if (obj.checked) {
+        obj.removeAttribute('checked')
+    } else {
+        obj.setAttribute('checked',true);
+    }
+
+};

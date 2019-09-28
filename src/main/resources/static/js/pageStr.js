@@ -1,0 +1,17 @@
+document.writeln("<!-- 分页 -->");
+document.writeln("                    <ul class=\'pagination\'>");
+document.writeln("                        <li><a href=\'\' ng-click=\'prev()\'>上一页</a></li>");
+document.writeln("                        <li><span>当前第</span></li>");
+document.writeln("                        <li class=\'active\'><span>{{pageNum}}</span></li>");
+document.writeln("                        <li><span>页</span></li>");
+document.writeln("                        <li><a href=\'\' ng-click=\'next()\'>下一页</a></li>");
+document.writeln("                        <li><span>共</span></li>");
+document.writeln("                        <li><span>{{total}}</span></li>");
+document.writeln("                        <li><span>条</span></li>");
+document.writeln("                        <li><span>共</span></li>");
+document.writeln("                        <li><span>{{totalPage}}</span></li>");
+document.writeln("                        <li><span>页</span></li>");
+document.writeln("                        <li><span>当前显示</span></li>");
+document.writeln("                        <li><span>{{ReqParam.pageSize}}</span></li>");
+document.writeln("                        <li><span>行</span></li>");
+document.writeln("                    </ul>");

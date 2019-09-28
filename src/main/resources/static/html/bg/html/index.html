@@ -336,5 +336,15 @@
 <script src="/static/anguarl/angular.min.js"></script>
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/login.js"></script>
+<script type="text/javascript">
+    //通用选中行数
+    $('.table-tr').mouseover(function () {
+        $(this).css({'background-color': '#f3f3f3', 'cursor': 'pointer'});
+    }).mouseout(function () {
+        $(this).css({'background-color': '#ffffff', 'cursor': 'pointer'});
+    }).click(function () {
+        $(this).find("input").click();
+    });
+</script>
 </body>
 </html>
