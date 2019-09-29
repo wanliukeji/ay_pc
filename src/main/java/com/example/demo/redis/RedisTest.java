@@ -45,7 +45,7 @@ public class RedisTest {
             user.setRemark("REDIS");
             user.setUpdateBy("chenyi");
             boolean f = userService.save(user);
-//            System.out.println(RedisUtil.set("CHENYU",JSON.toJSONString(user)));
+            // System.out.println(RedisUtil.set("CHENYU",JSON.toJSONString(user)));
         } catch (Exception e) {
             e.printStackTrace();
         }

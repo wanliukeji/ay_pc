@@ -8,9 +8,7 @@
     <meta name="keywords" content="安义门窗网-系统管理">
     <meta name="description" content="安义门窗网-系统管理">
     <meta name="author" content="yinqi">
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="/static/css/style.min.css" rel="stylesheet">
+    <script src="/static/js/header.js"/>
 </head>
 
 <body>
@@ -337,30 +335,9 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
-<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/static/js/main.min.js"></script>
-<script type="text/javascript" src="/static/js/perfect-scrollbar.min.js"></script>
-<script src="/static/anguarl/angular.min.js"></script>
+<script src="/static/js/footer.js"/>
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/login.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('.search-bar .dropdown-menu a').click(function () {
-            var field = $(this).data('field') || '';
-            $('#search-field').val(field);
-            $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
-        });
 
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget)
-            var recipient = button.data('whatever')
-            var modal = $(this)
-            modal.find('.modal-title').text('发送新消息给 ' + recipient)
-            modal.find('.modal-body input').val(recipient)
-        });
-
-    });
-</script>
 </body>
 </html>
