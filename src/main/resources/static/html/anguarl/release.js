@@ -23,13 +23,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         video_url: 'http://www.baidu.com',
         gg_src: 'demo.jpg',
         details: '专业加工不锈钢，塑钢，铝合金门窗',
-        z_a_img: '/staus/images/100.jpg',
-        z_b_img: '/staus/images/200.jpg',
-        z_c_img: '/staus/images/300.jpg',
-        a_a_img: '/staus/images/400.jpg',
-        a_b_img: '/staus/images/500.jpg',
-        a_c_img: '/staus/images/600.jpg'
-    }
+        fw: '',
+        service: ''
+    };
 
     $scope.show_num_prv = 0;
     $scope.show_num_next = 0;
@@ -52,6 +48,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         //提交
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
+            $scope.entity.service = itemToString(getService());
+            $scope.entity.fw = itemToString(getfws());
+
             if ($scope.show_num_next == 3) {
                 let def = $q.defer();
                 $http({

@@ -100,6 +100,24 @@ function getIds() {
     return ids;
 };
 
+//获取选中的服务
+function getService() {
+    var sers = [];//定义一个数组
+    $('input[name="ser"]:checked').each(function () {
+        sers.push($(this).val());
+    });
+    return sers;
+};
+
+//获取选中的服务
+function getfws() {
+    var fw = [];//定义一个数组
+    $('input[name="fw"]:checked').each(function () {
+        fw.push($(this).val());
+    });
+    return fw;
+};
+
 function stringIds(item) {
     var ids = '';
     for (let i = 0; i < item.length; i++) {
@@ -107,6 +125,15 @@ function stringIds(item) {
     }
     ;
     return ids;
+};
+
+
+function itemToString(item) {
+    var str = '';
+    if (null != item) {
+      str = item.toString();
+    }
+    return str;
 };
 
 //回车键
