@@ -1,5 +1,7 @@
 package com.example.demo.controller.sys;
 
+import com.example.demo.Utils.HttpServletRequestUtil;
+import com.example.demo.entity.SysUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
@@ -103,6 +105,16 @@ public class PublicController {
     @GetMapping("/release")
     public String release() {
         return "ay/release";
+    }
+
+    /**
+     * 信息发布页
+     *
+     * @return
+     */
+    @GetMapping("/menu")
+    public String menu() {
+        return "bg/html/system/menu";
     }
 
 }

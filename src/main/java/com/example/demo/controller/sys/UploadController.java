@@ -77,19 +77,17 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_z_img")
     @ResponseBody
-    public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile[] multipartFile) {
+    public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
-            for (int i = 0; i < multipartFile.length; i++) {
-                entity = fileUploadTool.createFile(multipartFile[i], request);
-                SysUser user = HttpServletRequestUtil.getSessionUser();
-                if (null != user && entity != null) {
-                    entity.setUserId(user.getId());
-                    entity.setType("Z");
-                    fileService.save(entity);
-                }
+            entity = fileUploadTool.createFile(multipartFile, request);
+            SysUser user = HttpServletRequestUtil.getSessionUser();
+            if (null != user && entity != null) {
+                entity.setUserId(user.getId());
+                entity.setType("Z");
+                fileService.save(entity);
 
             }
         } catch (Exception e) {
@@ -105,7 +103,7 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_a_img")
     @ResponseBody
-    public ResultJSON<FileEntity> uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+    public void uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
@@ -116,13 +114,10 @@ public class UploadController {
                 entity.setUserId(user.getId());
                 entity.setType("A");
                 fileService.save(entity);
-                return ResultJSON.success(entity);
             }
-            return ResultJSON.error(CodeMsg.SESSION_ERROR);
         } catch (Exception e) {
             e.printStackTrace();
             log.info(e.getMessage());
-            return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
     }
 

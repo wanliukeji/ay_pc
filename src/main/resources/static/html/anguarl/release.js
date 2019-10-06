@@ -2,6 +2,10 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     $scope.user = getUser();
 
+    if (!is_Exist()) {
+        href('/login');
+    }
+
     $scope.entity = {
         head_line: '承接门窗加工',
         sercode: '1001',
@@ -57,10 +61,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
                     if (status == 200) {
-                        // upload_g_img();
+                        upload_g_img();
                         upload_z_img();
-                        // upload_a_img();
-                        console.log(res);
+                        upload_a_img();
                     } else {
                         console.log(res);
                     }
@@ -84,7 +87,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         form.append('fileName', file);
         var url = 'uploadfile_g_img';
         if (null != file) {
-            upload(url, method_post, file);
+            upload(url, method_post, form);
+            form.delete("fileName");
         }
     }
 
@@ -94,19 +98,14 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var form = new FormData();
         var url = '/uploadfile_z_img';
         var nodes = document.getElementsByName("z_img");
-        var files = [];
         for (let i = 0; i < nodes.length; i++) {
-            var file = nodes[i].files[i];
+            var file = nodes[i].files[0];
             if (null != file) {
-                files.push(file);
+                form.append("fileName", file);
+                upload(url, method_post, form);
+                form.delete("fileName");
             }
         }
-        console.log(files);
-
-        form.append("fileName", files);
-
-        upload(url, method_post, form);
-
     }
 
 
@@ -116,9 +115,11 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var url = '/uploadfile_a_img';
         var nodes = document.getElementsByName("a_img");
         for (let i = 0; i < nodes.length; i++) {
-            var file = nodes[i].files[i];
+            var file = nodes[i].files[0];
             if (null != file) {
-                upload(url, method_post, file);
+                form.append("fileName", file);
+                upload(url, method_post, form);
+                form.delete("fileName");
             }
         }
     }

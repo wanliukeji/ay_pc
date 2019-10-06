@@ -66,13 +66,6 @@ public class RelService extends ServiceImpl<FiedMapper, Fied> implements Seriali
                         fied.setCitycode(201);
                         fied.setCountycode(301);
                         fied.setVideo_url(info[13]);
-                        fied.setGg_src(info[14]);
-                        fied.setZ_a_img(info[15]);
-                        fied.setZ_b_img(info[16]);
-                        fied.setZ_c_img(info[17]);
-                        fied.setA_a_img(info[18]);
-                        fied.setA_b_img(info[19]);
-                        fied.setA_c_img(info[20]);
                         fied.setDetails(info[21]);
                         fied.setAddress(info[22]);
                         fiedService.save(fied);

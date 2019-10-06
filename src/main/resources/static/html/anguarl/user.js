@@ -1,6 +1,6 @@
-var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $http, $q) {
+var app = angular.module('myMenu', []).controller('menuCtrl', function ($scope, $http, $q) {
 
-    var url = '/api/jg/getPage';
+    var url = '/api/menu/getPage';
 
     $scope.user = getUser();
 
@@ -47,7 +47,7 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     //导出EXCLE
     function export_file(items) {
-        var url = '/api/jg/export?ids=' + items;
+        var url = '/api/menu/export?ids=' + items;
         href(url);
         // var msg = ajax_http(url, method_get, null);
         angular.element('#export-close').click();
@@ -78,7 +78,7 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.del = function () {
         var items = getIds();
-        var url = '/api/jg/delete?ids=' + items;
+        var url = '/api/menu/delete?ids=' + items;
         if (is_item_Empty(items)) {
             alert('请选择要删除的数据');
             return;
@@ -90,7 +90,7 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.aunt = function () {
         var items = getIds();
-        var url = '/api/jg/aunt?ids=' + items;
+        var url = '/api/menu/aunt?ids=' + items;
         if (is_item_Empty(items)) {
             alert('请选择要删除的数据');
             return;
@@ -102,7 +102,7 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.unaunt = function () {
         var items = getIds();
-        var url = '/api/jg/unaunt?ids=' + items;
+        var url = '/api/menu/unaunt?ids=' + items;
         if (is_item_Empty(items)) {
             alert('请选择要删除的数据');
             return;
@@ -113,7 +113,7 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
     };
 
     $scope.remove = function (id) {
-        var url = '/api/jg/delete?ids=' + id;
+        var url = '/api/menu/delete?ids=' + id;
         ajax_http(url, method_get, null);
         getList();
     };
@@ -130,25 +130,6 @@ var app = angular.module('myJg', []).controller('jgCtrl', function ($scope, $htt
 
     $scope.getPage = function () {
         getList();
-    };
-
-    $scope.entity = {
-        head_line: '承接门窗加工',
-        sercode: '1001',
-        coverage: '1002',
-        user_qq: '789878',
-        user_wx: 'jiangxilaoer',
-        phone: '1327878909',
-        link: 'CHENYI',
-        createDate: new Date(),
-        company_name: '宁波阿拉',
-        procode: '101',
-        citycode: '201',
-        countycode: '301',
-        address: '大榭开发区',
-        video_url: 'http://www.baidu.com',
-        gg_src: 'demo.jpg',
-        details: '专业加工不锈钢，塑钢，铝合金门窗'
     };
 
 });

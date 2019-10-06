@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -11,6 +10,8 @@
     <link href="/static/css/Jquery-ui.css" type="text/css" rel="stylesheet"/>
     <link href="/static/css/Index.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/baicons2.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/fileinput.min.css">
+
     <!--[if IE 7]>
     <style>
         .nav-tabs .nav-content .nav-item.home a, .nav-tabs .nav-content .nav-item.normal:hover {
@@ -50,7 +51,7 @@
 </head>
 
 <body class="homepage" ng-app="myHome" ng-controller="homeCtrl">
-
+<button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录 </button>
 <header>
     <div class="tool-bar-ctn">
         <div class="toolbar">
@@ -147,7 +148,7 @@
                     <input type="hidden" id="hid_address" value="zhejiang"/>
                 </div>
             </div>
-            <div class="pull-right"><a href="/release" rel="nofollow" class="post"
+            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post"
                                        target="_blank">免费发布信息</a></div>
         </div>
     </div>
@@ -1396,6 +1397,36 @@
     </div>
 
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="min-width: 500px; height: 200px; padding-bottom: 10px; align-self: center;
+            text-align: center;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" style="text-align: center;">登录</h4>
+            </div>
+            <div class="modal-body" style="text-align: center; margin: 0 auto;">
+                <table>
+                    <tr align="center">
+                        <td>账户:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr align="center">
+                        <td>密码:</td>
+                        <td><input type="text"></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div style="position: fixed; bottom: 0;">
+                <button type="button" style="display: inline-block;float: right;" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
+                <button type="button" style="display: inline-block;float: right;" class="btn btn-primary" ng-click="import()">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--<script type="text/javascript" src="/static/js/baidu_tj.js"></script>-->
 <script src="/static/js/jquery-1.8.0.js"></script>
 
@@ -1404,7 +1435,7 @@
 
 <!-- App js -->
 <script src="/static/ui/js/app.min.js"></script>
-<script src="/static/anguarl/angular.min.js"></script>
+<script src="/static/js/footer.js"/>
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/home.js"></script>
 <script>

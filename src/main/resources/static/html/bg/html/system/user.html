@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>用户管理</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="keywords" content="安义门窗网-用户管理">
+    <meta name="description" content="安义门窗网-用户管理">
+    <meta name="author" content="yinqi">
+    <link rel="stylesheet" href="/static/css/fileinput.min.css">
+    <!--<link rel="shortcut icon" href="/static/ico/favicon%2064.ico"/>-->
+    <link href="/static/css/dropzone.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/dropify.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="myMenu" ng-controller="menuCtrl" ng-init="init()">
+<div class="container-fluid p-t-15 " style="min-width: 1200px;">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-toolbar clearfix">
+                    <div class="pull-right search-bar" role="form">
+                        <!--<input type="text" class="form-control" value="" name="keyword" placeholder="请输入名称">-->
+                        <div class="input-group">
+                            <input type="text" class="form-control" ng-model="ReqParam.context"
+                                   placeholder="请输入关键词...">
+                            <span class="input-group-btn">
+                          <button class="btn btn-cyan" id="search" ng-click="search()" type="button">
+                            搜索
+                          </button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="toolbar-btn-action">
+                        <a class="btn btn-primary m-r-5" data-target="#gridSystemModal" data-toggle="modal"><i
+                                class="mdi mdi-plus" disabled="true"></i> 新增</a>
+                        <a class="btn btn-success m-r-5" ng-click="aunt()"><i class="mdi mdi-check"></i> 启用</a>
+                        <a class="btn btn-warning m-r-5" ng-click="unaunt()"><i class="mdi mdi-block-helper"></i> 禁用</a>
+                        <!--<a class="btn btn-purple m-r-5" href="#!" ng-click="aunt()"><i class="mdi mdi-vector-arrange-above"></i> 审核</a>-->
+                        <!--<a class="btn btn btn-info m-r-5" ng-click="unaunt()"><i class="mdi mdi-vector-arrange-below"></i> 反审</a>-->
+                        <a class="btn btn-danger" href="#!" ng-click="del()"><i class="mdi mdi-window-close"></i> 删除</a>
+                        <a class="btn btn-dark" href="#!" data-target="#exportModel" data-toggle="modal"><i
+                                class="mdi mdi-file-export"></i> 导出</a>
+                        <a class="btn btn-brown" href="#!" data-target="#importModel" data-toggle="modal"><i
+                                class="mdi mdi-file-import"></i> 导入</a>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" id="check-all"><span></span>
+                                    </label>
+                                </th>
+                                <th>菜单编号</th>
+                                <th>启用</th>
+                                <th>名称</th>
+                                <th>请求地址</th>
+                                <th>上级菜单</th>
+                                <th>排序</th>
+                                <th>创建时间</th>
+                                <th>创建者</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in items" class="table-tr" onmouseover="addCss(this)"
+                                onmouseout="delCss(this);" onclick="checked(this);">
+                                <td>
+                                    <label class="lyear-checkbox checkbox-primary">
+                                        <input type="checkbox" name="ids[]" value="{{item.id}}"><span></span>
+                                    </label>
+                                </td>
+                                <td>{{item.id}}</td>
+                                <td ng-show="item.enable == 1">
+                                    <svg t="1569510664156" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" p-id="2711" width="20" height="20">
+                                        <path d="M450.56 597.12L342.4 489.6l-44.8 44.8 147.84 148.48 342.4-273.92-39.68-49.92-297.6 238.08z"
+                                              fill="#15c377" p-id="2712"></path>
+                                        <path d="M512 32A480 480 0 1 0 992 512 480.64 480.64 0 0 0 512 32z m0 896A416 416 0 1 1 928 512 416.64 416.64 0 0 1 512 928z"
+                                              fill="#15c377" p-id="2713"></path>
+                                    </svg>
+                                </td>
+                                <td ng-show="item.enable == 0">
+                                    <svg t="1569510740016" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" p-id="3180" width="20" height="20">
+                                        <path d="M511.563 65.144c-246.87 0-446.998 200.128-446.998 446.998S264.693 959.14 511.563 959.14 958.56 759.011 958.56 512.141 758.433 65.144 511.563 65.144zM785.211 785.79c-35.561 35.561-76.954 63.473-123.03 82.961-47.672 20.164-98.348 30.388-150.619 30.388s-102.946-10.224-150.619-30.388c-46.076-19.488-87.469-47.401-123.03-82.961-35.561-35.561-63.473-76.954-82.962-123.03-20.164-47.672-30.388-98.348-30.388-150.618s10.224-102.946 30.388-150.619c19.489-46.076 47.401-87.469 82.962-123.03 35.56-35.561 76.954-63.473 123.03-82.962 47.672-20.164 98.348-30.388 150.619-30.388s102.946 10.224 150.619 30.388c46.076 19.489 87.469 47.401 123.03 82.962 35.561 35.56 63.473 76.954 82.962 123.03 20.164 47.672 30.388 98.348 30.388 150.619s-10.224 102.946-30.388 150.618c-19.489 46.076-47.401 87.47-82.962 123.03z"
+                                              fill="#d81e06" p-id="3181"></path>
+                                        <path d="M690.087 336.983c-11.715-11.716-30.711-11.716-42.426 0L513.535 471.109 379.41 336.983c-11.716-11.716-30.711-11.716-42.427 0-11.715 11.716-11.715 30.711 0 42.427l134.126 134.126-134.126 134.125c-11.715 11.716-11.715 30.71 0 42.426 5.858 5.858 13.536 8.787 21.213 8.787s15.355-2.929 21.213-8.787l134.126-134.126 134.126 134.126c5.857 5.858 13.535 8.787 21.213 8.787s15.355-2.929 21.213-8.787c11.716-11.716 11.716-30.71 0-42.426L555.961 513.535 690.087 379.41c11.716-11.716 11.716-30.711 0-42.427z"
+                                              fill="#d81e06" p-id="3182"></path>
+                                    </svg>
+                                </td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.href}}</td>
+                                <td>{{item.parentId}}</td>
+                                <td>{{item.sortNo}}</td>
+                                <td>{{item.createBy}}</td>
+                                <td>{{item.createTime}}</td>
+                                <td>{{item.remark}}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i
+                                                class="mdi mdi-pencil"></i></a>
+                                        <a class="btn btn-xs btn-default" ng-click="remove(item.id)" title="删除"
+                                           data-toggle="tooltip"><i
+                                                class="mdi mdi-window-close"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- 分页 -->
+                    <ul class="pagination">
+                        <li><a href="" ng-click="prev()">上一页</a></li>
+                        <li><span>当前第</span></li>
+                        <li class="active"><span>{{pageNum}}</span></li>
+                        <li><span>页</span></li>
+                        <li><a href="" ng-click="next()">下一页</a></li>
+                        <li><span>共</span></li>
+                        <li><span>{{total}}</span></li>
+                        <li><span>条</span></li>
+                        <li><span>共</span></li>
+                        <li><span>{{totalPage}}</span></li>
+                        <li><span>页</span></li>
+                        <li><span>当前显示</span></li>
+                        <li><span>{{ReqParam.pageSize}}</span></li>
+                        <li><span>行</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center" id="gridSystemModalLabel">新增数据</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>标题：</label>
+                        <input type="text" ng-model="entity.head_line" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>下拉：</label>
+                        <select type="text" class="form-control">
+                            <option value="">A</option>
+                            <option value="">B</option>
+                            <option value="">C</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">点击保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="exportModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center">导出报表</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>导出文件类型：</label>
+                        <select type="text" class="form-control" disabled>
+                            <option value="EXCEL">EXCEL</option>
+                            <option value="TXT">TXT</option>
+                            <option value="PDF">PDF</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="export-close" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="export()">导出</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center">导入报表</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>下载模板：</label>
+                        <a href="/static/file/jgModel.txt" download="加工数据批量导入模板">点这里下载</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>选择文件：</label>
+                        <input type="file" name="file_txt" class="dropify"
+                               data-max-file-size="1M" enctype="multipart/form-data"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" ng-click="import()">导入</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/footer.js"/>
+<script src="/static/html/anguarl/public.js"></script>
+<script src="/static/html/anguarl/menu.js"></script>
+</body>
+</html>
