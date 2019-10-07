@@ -24,7 +24,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     $scope.init = function () {
     }
 
-    $scope.serviceItem = getServiceItem('/getClassField');
+    $scope.serviceItem = getServiceItem('/getClassField_fw');
+    $scope.typeItem = getServiceItem('/getClassField_ty');
 
     if (!is_Exist()) {
         href('/login');
@@ -48,7 +49,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         gg_src: 'demo.jpg',
         details: '专业加工不锈钢，塑钢，铝合金门窗',
         fw: '',
-        service: ''
+        service: '',
+        type: ''
     };
 
     $scope.show_num_prv = 0;

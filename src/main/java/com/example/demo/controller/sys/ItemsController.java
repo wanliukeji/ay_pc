@@ -4,6 +4,7 @@ import com.example.demo.Utils.ClassUtil;
 import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.pojoUtil.Service;
+import com.example.demo.pojoUtil.Type;
 import io.swagger.annotations.Api;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +26,22 @@ import java.util.List;
 @Api(value = "类属性获取模块", description = "类属性获取接口")
 public class ItemsController {
 
-    @GetMapping("/getClassField")
-    public ApiJSON getClassField() {
+    @GetMapping("/getClassField_fw")
+    public ApiJSON getClassField_fw() {
         try {
             List<?> list = ClassUtil.getFieldValueByNameToList(new Service());
+            return ApiJSON.data(list);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ApiJSON.error(null);
+        }
+
+    }
+
+    @GetMapping("/getClassField_ty")
+    public ApiJSON getClassField_ty() {
+        try {
+            List<?> list = ClassUtil.getFieldValueByNameToList(new Type());
             return ApiJSON.data(list);
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -97,6 +97,20 @@
                                                                    placeholder="请输入标题" required/>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"> 服务类别：</label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <select data-plugin="customselect" id="entity.type"
+                                                                    ng-model="entity.type" required
+                                                                    class="form-control d-inline-block float-left">
+                                                                <option ng-repeat="item in typeItem" selected
+                                                                        value="{{item}}">{{item}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"> 服务类型：</label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
@@ -111,7 +125,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务范围：</label>
+                                                        <label class="col-md-3 col-form-label"> 服务区域：</label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
                                                                  ng-repeat="(index,item) in ares">
@@ -235,13 +249,16 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">广告图片</label>
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="details">服务描述：</label>
                                                         <div class="col-md-9">
-                                                            <input type="file" id="gg_src" name="gg_src" class="dropify"
-                                                                   data-max-file-size="1M" enctype="multipart/form-data"
-                                                                   accept="image/*">
+                                                            <textarea type="text" rows="5" class="form-control"
+                                                                      id="details" required
+                                                                      name="details" value="" ng-model="entity.details"
+                                                                      placeholder="请输入服务详情..."></textarea>
                                                         </div>
                                                     </div>
+
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
                                         </div>
@@ -249,6 +266,15 @@
                                         <div class="tab-pane" id="finish-2">
                                             <div class="row">
                                                 <div class="col-12">
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label">广告图片</label>
+                                                        <div class="col-md-9">
+                                                            <input type="file" id="gg_src" name="gg_src" class="dropify"
+                                                                   data-max-file-size="1M" enctype="multipart/form-data"
+                                                                   accept="image/*">
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">作品图片</label>
                                                         <div class="col-md-3">
@@ -287,16 +313,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"
-                                                               for="details">服务描述：</label>
-                                                        <div class="col-md-9">
-                                                            <textarea type="text" rows="5" class="form-control"
-                                                                      id="details" required
-                                                                      name="details" value="" ng-model="entity.details"
-                                                                      placeholder="请输入服务详情..."></textarea>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div> <!-- end row -->
                                         </div>
