@@ -147,9 +147,10 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         }
     }
 
-    //获取三级区域
+    //获取服务范围区域
     function getAre() {
-        var url = '/api/addr/getChlid?name=宁波';
+        var city = getCity();
+        var url = '/api/addr/getChlid?name=' + city;
         var msg = ajax_http(url, method_get, null);
         return msg.data;
     }
