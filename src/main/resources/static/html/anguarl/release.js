@@ -8,14 +8,14 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     $scope.ares = getAre();
 
-    $scope.prvList = getCity(1);
+    $scope.prvList = getAddr(1);
 
     $scope.selectPrv = function () {
-        $scope.cityList = getCity($scope.entity.procode);
+        $scope.cityList = getAddr($scope.entity.procode);
     }
 
     $scope.selectCity = function () {
-        $scope.disList = getCity($scope.entity.citycode);
+        $scope.disList = getAddr($scope.entity.citycode);
     }
 
     angular.element("#city").html(userAddr);
@@ -154,7 +154,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     //获取一级区域
-    function getCity(pid) {
+    function getAddr(pid) {
         var url = '/api/addr/getInfos?pid=' + pid;
         var msg = ajax_http(url, method_get, null);
         return msg.data;

@@ -178,36 +178,36 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">
                                                             公司地址</label>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-3">
                                                             <select data-plugin="customselect" id="procode"
-                                                                    ng-model="entity.procode" required ng-click="selectPrv()"
+                                                                    ng-model="entity.procode" required
+                                                                    ng-click="selectPrv()"
                                                                     class="form-control d-inline-block float-left">
-                                                                <option ng-repeat="item in prvList" value="{{item.id}}">{{item.name}}</option>
+                                                                <option ng-repeat="item in prvList" value="{{item.id}}">
+                                                                    {{item.name}}
+                                                                </option>
                                                             </select>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"></label>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-3">
                                                             <select data-plugin="customselect" id="entity.citycode"
                                                                     ng-model="entity.citycode" required
                                                                     ng-click="selectCity()"
                                                                     class="form-control d-inline-block float-left">
-                                                                <option ng-repeat="item in cityList" value="{{item.id}}">{{item.name}}</option>
+                                                                <option ng-repeat="item in cityList"
+                                                                        value="{{item.id}}">{{item.name}}
+                                                                </option>
                                                             </select>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"></label>
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-3">
                                                             <select data-plugin="customselect" id="countycode"
                                                                     ng-model="entity.countycode" required
                                                                     class="form-control d-inline-block float-left">
-                                                                <option ng-repeat="item in disList" value="{{item.id}}">{{item.name}}</option>
+                                                                <option ng-repeat="item in disList" value="{{item.id}}">
+                                                                    {{item.name}}
+                                                                </option>
                                                             </select>
                                                         </div>
+
                                                     </div>
 
                                                     <div class="form-group row mb-3">
