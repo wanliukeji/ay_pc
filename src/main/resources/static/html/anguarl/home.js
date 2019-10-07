@@ -2,6 +2,15 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.user = getUser();
 
+    var userip = getIp();
+
+    var userAddr = getCity();
+    angular.element("#city").html(userAddr);
+
+    $scope.init = function (){
+
+    };
+
     $scope.sendMsg = function () {
         if (!is_Exist($scope.user)) {
             angular.element("#showModel").click();

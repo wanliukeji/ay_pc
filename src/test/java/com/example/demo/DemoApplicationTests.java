@@ -36,7 +36,4 @@ public class DemoApplicationTests {
 
     }
 
-    public static void main(String[] args) throws Exception {
-
-    }
 }

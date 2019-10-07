@@ -19,7 +19,7 @@
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
 
 </head>
-<body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;">
+<body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;" ng-init="init()">
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
     <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
         margin-top: -90px;">
@@ -107,22 +107,13 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">服务范围</label>
+                                                        <label class="col-md-3 col-form-label"> 服务类型：</label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left">
-                                                                <input type="checkbox" id="inlineCheckbox4"
-                                                                       value="海曙区" name="fw">
-                                                                <label for="inlineCheckbox4">海曙区</label>
-                                                            </div>
-                                                            <div class="checkbox checkbox-success form-check-inline float-left">
-                                                                <input type="checkbox" id="inlineCheckbox5"
-                                                                       value="北仑区" name="fw">
-                                                                <label for="inlineCheckbox5">北仑区</label>
-                                                            </div>
-                                                            <div class="checkbox checkbox-success form-check-inline float-left">
-                                                                <input type="checkbox" id="inlineCheckbox6"
-                                                                       value="镇海区" name="fw">
-                                                                <label for="inlineCheckbox6">镇海区</label>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left"
+                                                                 ng-repeat="(index,item) in ares">
+                                                                <input type="checkbox" id="ares{{index}}"
+                                                                       value="{{item.name}}" name="ser">
+                                                                <label for="ares{{index}}">{{item.name}}</label>
                                                             </div>
 
                                                         </div>

@@ -4,12 +4,14 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     var userip = getIp();
 
-    var userAddr = getUserAddr();
+    var userAddr = getCity();
 
-    angular.element("#city").html(userAddr.city);
+    $scope.ares = getAre();
 
-    var cityId = JSON.parse(getAddrId("宁波市")).ID;
-    console.dir(getAddrChild());
+    angular.element("#city").html(userAddr);
+
+    $scope.init = function () {
+    }
 
     $scope.serviceItem = getServiceItem('/getClassField');
 
@@ -132,6 +134,13 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                 form.delete("fileName");
             }
         }
+    }
+
+    //获取三级区域
+    function getAre() {
+        var url = '/api/addr/getChlid?name=宁波';
+        var msg = ajax_http(url, method_get, null);
+        return msg.data;
     }
 
 });

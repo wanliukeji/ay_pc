@@ -198,6 +198,11 @@ function getIp() {
     return ip;
 }
 
+function getCity() {
+    var city = returnCitySN.cname;
+    return city;
+}
+
 function getUserAddr() {
     var userIp = getIp();
     var url = 'http://ip-api.com/json/' + userIp + '?lang=zh-CN';
@@ -230,16 +235,4 @@ function setTopID() {
 function getAddrId(name) {
     var city = setAddName().get(name);
     return city;
-}
-
-function getAddrChild() {
-    var map = setTopID();
-    var str = [];
-    $.each(setTopID(),function(key,value){
-        console.dir(key);
-        // if (TopID == key) {
-        //     console.log(value);
-        //     str.push(value);
-        // }
-    })
 }
