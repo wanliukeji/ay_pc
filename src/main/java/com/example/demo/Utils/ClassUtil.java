@@ -1,11 +1,18 @@
 package com.example.demo.Utils;
 
 import com.example.demo.entity.Fied;
+import com.example.demo.pojoUtil.Service;
+import javafx.collections.ObservableMap;
+import org.apache.poi.ss.formula.functions.T;
 import org.apache.tomcat.jni.User;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -38,5 +45,27 @@ public class ClassUtil {
         }
     }
 
+    /* 根据属性名获取属性值
+     *
+     */
+
+    public static Map getFieldValueByNameToMap(Object model) throws Exception {
+        Map<Object, Object> maps = new HashMap<Object, Object>();
+        for (Field field : model.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            maps.put(field.getName(), field.get(model));
+        }
+        return maps;
+    }
+
+
+    public static List<?> getFieldValueByNameToList(Object model) throws Exception {
+        List<Object> list = new ArrayList<Object>();
+        for (Field field : model.getClass().getDeclaredFields()) {
+            field.setAccessible(true);
+            list.add(field.get(model));
+        }
+        return list;
+    }
 
 }

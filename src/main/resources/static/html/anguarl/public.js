@@ -131,7 +131,7 @@ function stringIds(item) {
 function itemToString(item) {
     var str = '';
     if (null != item) {
-      str = item.toString();
+        str = item.toString();
     }
     return str;
 };
@@ -187,3 +187,59 @@ function msg_error(msg) {
         lightyear.notify(msg, 'danger', 100);
     }, 1000)
 };
+
+function getServiceItem(val) {
+    var msg = ajax_http(val, method_get, null);
+    return msg.data;
+}
+
+function getIp() {
+    var ip = returnCitySN.cip;
+    return ip;
+}
+
+function getUserAddr() {
+    var userIp = getIp();
+    var url = 'http://ip-api.com/json/' + userIp + '?lang=zh-CN';
+    var msg = ajax_http(url, method_get, null);
+    return msg;
+}
+
+function setAddName() {
+    var map = new Map();
+    var url = '/static/data/address.json?lang=zh-CN';
+    var _json = ajax_http(url, method_get, null);
+    for (var i = 0; i < _json.length; i++) {
+        var obj = _json[i];
+        map.set(obj.AddName, JSON.stringify(obj));
+    }
+    return map;
+}
+
+function setTopID() {
+    var map = new Map();
+    var url = '/static/data/address.json?lang=zh-CN';
+    var _json = ajax_http(url, method_get, null);
+    for (var i = 0; i < _json.length; i++) {
+        var obj = _json[i];
+        map.set(obj.TopID, JSON.stringify(obj));
+    }
+    return map;
+}
+
+function getAddrId(name) {
+    var city = setAddName().get(name);
+    return city;
+}
+
+function getAddrChild() {
+    var map = setTopID();
+    var str = [];
+    $.each(setTopID(),function(key,value){
+        console.dir(key);
+        // if (TopID == key) {
+        //     console.log(value);
+        //     str.push(value);
+        // }
+    })
+}

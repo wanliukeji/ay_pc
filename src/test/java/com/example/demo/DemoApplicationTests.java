@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import com.alibaba.fastjson.JSONObject;
+import com.example.demo.Utils.HttpServletRequestUtil;
+import com.example.demo.Utils.IpUtil;
 import com.example.demo.entity.Fied;
 import com.example.demo.redis.RedisUtil;
 import com.example.demo.service.FiedService;
@@ -13,7 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.*;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,16 +33,10 @@ public class DemoApplicationTests {
 
     @Test
     public void contextLoads() {
-        PageHelper.startPage(1, 5);
-        List<Fied> deptList = fiedService.list(null);
-        PageInfo<Fied>  p = new PageInfo<>(deptList);
-        System.out.println(p);
 
     }
 
-    @Test
-    public void setVal(){
-        RedisUtil.set("first","JKIEO");
-    }
+    public static void main(String[] args) throws Exception {
 
+    }
 }

@@ -19,10 +19,13 @@
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
 
 </head>
-<body ng-app="myRel" ng-controller="relCtrl">
+<body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;">
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
     <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
         margin-top: -90px;">
+</div>
+<div class="position-absolute" style="right: 270px; top: 70px;">
+    当前城市&nbsp;:&nbsp;<a id="city"></a>
 </div>
 <div class="position-absolute" ng-show="user == null" style="right: 170px; top: 70px;">
     <a href="/login">登录</a>
@@ -33,7 +36,6 @@
 <div class="position-absolute" ng-show="user != null" style="right: 170px; top: 70px;">
     <a href="/login">注销</a>
 </div>
-
 
 <p style="height: 10px; width: 100%; background-color: #48c964;"></p>
 
@@ -94,20 +96,11 @@
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"> 服务类型：</label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left">
-                                                                <input type="checkbox" id="inlineCheckbox1"
-                                                                       value="铝合金" name="ser">
-                                                                <label for="inlineCheckbox1">铝合金</label>
-                                                            </div>
-                                                            <div class="checkbox checkbox-success form-check-inline float-left">
-                                                                <input type="checkbox" id="inlineCheckbox2"
-                                                                       value="塑钢" name="ser">
-                                                                <label for="inlineCheckbox2">塑钢</label>
-                                                            </div>
-                                                            <div class="checkbox checkbox-success form-check-inline float-left">
-                                                                <input type="checkbox" id="inlineCheckbox3"
-                                                                       value="断桥铝" name="ser">
-                                                                <label for="inlineCheckbox3">断桥铝</label>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left"
+                                                                 ng-repeat="(index,item) in serviceItem">
+                                                                <input type="checkbox" id="inlineCheckbox{{index}}"
+                                                                       value="{{item}}" name="ser">
+                                                                <label for="inlineCheckbox{{index}}">{{item}}</label>
                                                             </div>
 
                                                         </div>
@@ -368,7 +361,6 @@ var search_type = "shenghuo";</script>
     })();
 </script>
 
-
 <!-- Vendor js -->
 <script src="/static/ui/js/vendor.min.js"></script>
 
@@ -390,6 +382,7 @@ var search_type = "shenghuo";</script>
 <script src="/static/anguarl/angular.min.js"></script>
 <!--<script src="https://cdn.bootcss.com/angular-toastr/2.1.1/angular-toastr.tpls.min.js" type="text/javascript"/>-->
 <link href="/static/ui/js/angular-toastr.min.js" rel="stylesheet">
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/release.js"></script>
 

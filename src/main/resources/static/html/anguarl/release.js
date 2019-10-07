@@ -2,6 +2,17 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     $scope.user = getUser();
 
+    var userip = getIp();
+
+    var userAddr = getUserAddr();
+
+    angular.element("#city").html(userAddr.city);
+
+    var cityId = JSON.parse(getAddrId("宁波市")).ID;
+    console.dir(getAddrChild());
+
+    $scope.serviceItem = getServiceItem('/getClassField');
+
     if (!is_Exist()) {
         href('/login');
     }
