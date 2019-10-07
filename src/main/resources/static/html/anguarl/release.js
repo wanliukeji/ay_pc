@@ -19,6 +19,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     angular.element("#city").html(userAddr);
+    angular.element("#userIp").html(userip);
 
     $scope.init = function () {
     }

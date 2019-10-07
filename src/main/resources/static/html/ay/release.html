@@ -25,6 +25,8 @@
         margin-top: -90px;">
 </div>
 <div class="position-absolute" style="right: 270px; top: 70px;">
+    你的IP&nbsp;:&nbsp;<a id="userIp"></a>
+    &nbsp;&nbsp;
     当前城市&nbsp;:&nbsp;<a id="city"></a>
 </div>
 <div class="position-absolute" ng-show="user == null" style="right: 170px; top: 70px;">
@@ -107,7 +109,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类型：</label>
+                                                        <label class="col-md-3 col-form-label"> 服务范围：</label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
                                                                  ng-repeat="(index,item) in ares">
