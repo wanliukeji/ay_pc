@@ -179,14 +179,10 @@
                                                         <label class="col-md-3 col-form-label">
                                                             公司地址</label>
                                                         <div class="col-md-9">
-                                                            <select data-plugin="customselect" id="entity.procode"
-                                                                    ng-model="entity.procode" required
+                                                            <select data-plugin="customselect" id="procode"
+                                                                    ng-model="entity.procode" required ng-click="selectPrv()"
                                                                     class="form-control d-inline-block float-left">
-                                                                <option value="">请选择省份</option>
-                                                                <option value="101">北京</option>
-                                                                <option value="102">江西</option>
-                                                                <option value="103">湖北</option>
-                                                                <option value="104">湖南</option>
+                                                                <option ng-repeat="item in prvList" value="{{item.id}}">{{item.name}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -196,12 +192,9 @@
                                                         <div class="col-md-9">
                                                             <select data-plugin="customselect" id="entity.citycode"
                                                                     ng-model="entity.citycode" required
+                                                                    ng-click="selectCity()"
                                                                     class="form-control d-inline-block float-left">
-                                                                <option value="">请选择城市</option>
-                                                                <option value="201">南昌</option>
-                                                                <option value="202">赣州</option>
-                                                                <option value="203">九江</option>
-                                                                <option value="204">上饶</option>
+                                                                <option ng-repeat="item in cityList" value="{{item.id}}">{{item.name}}</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -212,11 +205,7 @@
                                                             <select data-plugin="customselect" id="countycode"
                                                                     ng-model="entity.countycode" required
                                                                     class="form-control d-inline-block float-left">
-                                                                <option value="">请选择区域</option>
-                                                                <option value="301">安义</option>
-                                                                <option value="302">新建</option>
-                                                                <option value="303">静安</option>
-                                                                <option value="304">万年</option>
+                                                                <option ng-repeat="item in disList" value="{{item.id}}">{{item.name}}</option>
                                                             </select>
                                                         </div>
                                                     </div>

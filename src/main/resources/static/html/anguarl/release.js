@@ -8,6 +8,16 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     $scope.ares = getAre();
 
+    $scope.prvList = getCity(1);
+
+    $scope.selectPrv = function () {
+        $scope.cityList = getCity($scope.entity.procode);
+    }
+
+    $scope.selectCity = function () {
+        $scope.disList = getCity($scope.entity.citycode);
+    }
+
     angular.element("#city").html(userAddr);
 
     $scope.init = function () {
@@ -139,6 +149,13 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     //获取三级区域
     function getAre() {
         var url = '/api/addr/getChlid?name=宁波';
+        var msg = ajax_http(url, method_get, null);
+        return msg.data;
+    }
+
+    //获取一级区域
+    function getCity(pid) {
+        var url = '/api/addr/getInfos?pid=' + pid;
         var msg = ajax_http(url, method_get, null);
         return msg.data;
     }
