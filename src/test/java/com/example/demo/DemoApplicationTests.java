@@ -65,8 +65,9 @@ public class DemoApplicationTests {
         //调用工具类
         //JasperHelper.showHtml(exportFilePath , reportFile.getPath(), request,response, map, jrDataSource);
         //JasperHelper.export("excel", exportFilePath, reportFile, request, response, map, jrDataSource);
+//        JasperHelper.showPdf(exportFilePath, reportFile.getPath(), request, response, map,jrDataSource);
         try {
-            JasperHelper.showPdf(exportFilePath, reportFile.getPath(), request, response, map,jrDataSource);
+            JasperHelper.export("pdf", exportFilePath, reportFile, request, response, map, jrDataSource);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

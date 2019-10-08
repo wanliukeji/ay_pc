@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -23,6 +24,7 @@ public class FileEntity {
     @Id
     @TableId(type = IdType.AUTO)
     @Column
+    @Getter
     private Long id;
     /**
      * 类型 (G 广告/ Z作品 /A 案例)

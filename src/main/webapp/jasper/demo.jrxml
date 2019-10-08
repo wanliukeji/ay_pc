@@ -24,12 +24,12 @@
 		</box>
 	</style>
 	<subDataset name="Table Dataset 1" uuid="1c82cd89-5885-44bf-a025-91fce0246e81"/>
-	<field name="id" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
 	<field name="type" class="java.lang.String"/>
 	<field name="size" class="java.lang.String"/>
 	<field name="fileName" class="java.lang.String"/>
 	<field name="nfileName" class="java.lang.String"/>
-	<field name="uploadTime" class="java.lang.String"/>
+	<field name="uploadTime" class="java.sql.Timestamp"/>
 	<field name="userId" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -98,7 +98,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="21">
+		<band height="22">
 			<textField>
 				<reportElement x="0" y="0" width="85" height="20" uuid="e9582ec8-846d-43d0-a9da-65bb5d93da21"/>
 				<box leftPadding="1" bottomPadding="1"/>
@@ -138,7 +138,7 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="50">
+		<band height="114">
 			<staticText>
 				<reportElement x="476" y="30" width="79" height="20" uuid="6a655630-61e0-4a48-8115-cae55e2281bd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
