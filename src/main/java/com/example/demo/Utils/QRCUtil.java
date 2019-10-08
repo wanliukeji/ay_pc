@@ -89,18 +89,7 @@ public class QRCUtil {
         } catch (Exception e) {
         }
     }
-//    }
-//
-//    public static void main(String[] args) {
-//        try {
-//            generateQRCodeImage("http://localhost:7171/", 350, 350, QR_CODE_IMAGE_PATH);
-//        } catch (WriterException e) {
-//            System.out.println("Could not generate QR Code, WriterException :: " + e.getMessage());
-//        } catch (IOException e) {
-//            System.out.println("Could not generate QR Code, IOException :: " + e.getMessage());
-//        }
-//
-//    }
+
 
 
 }
