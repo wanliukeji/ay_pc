@@ -63,7 +63,4 @@ public class StringUtil {
         return listIds;
     };
 
-    public static void main(String[] args) {
-        System.out.println(StringToList("1,2,3,"));
-    }
 }

@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
  * @address http://106.12.38.131:8011
  * @describe 进制转换工具类
  */
-public final class Convert {
+public final class ConvertUtil {
 	private static final  byte[] hex = "0123456789ABCDEF".getBytes();
  
 	/**

@@ -36,6 +36,8 @@ public class QRCUtil {
     private static final int BLACK = 0xFF000000;
     private static final int WHITE = 0xFFFFFFFF;
 
+    private static final String ENCODE_UTF = "utf-8";
+
     /**
      * 二维码生成
      *
@@ -72,7 +74,7 @@ public class QRCUtil {
             BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(bufferedImage)));
             //定义二维码参数
             Map hints = new HashMap<>();
-            hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
+            hints.put(EncodeHintType.CHARACTER_SET, ENCODE_UTF);
             Result result = formatReader.decode(binaryBitmap, hints);
             //输出相关的二维码信息
             System.out.println("解析结果：" + result.toString());

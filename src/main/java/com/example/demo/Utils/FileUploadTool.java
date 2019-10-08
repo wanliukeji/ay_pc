@@ -63,7 +63,7 @@ public class FileUploadTool {
         if (bflag) {
             String name = fileName.substring(0, fileName.lastIndexOf("."));
 
-            String hexName = Convert.mixStr2Hex(name);
+            String hexName = ConvertUtil.mixStr2Hex(name);
             // 新的文件名
             String newFileName = this.getName(fileName)  + hexName + DateUtil.getDate();
             // 文件扩展名
