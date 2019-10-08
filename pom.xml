@@ -251,6 +251,37 @@
             <artifactId>spring-test</artifactId>
             <version>5.1.6.RELEASE</version>
         </dependency>
+
+        <!-- jasperreports Start -->
+        <!-- 该包的作用完成ireport中Preview按扭功能。通过该包可以通过java来ireport生成摸班（.jrxml或.jasper)填充数据源并导出pdf,excel,html等格式文件 -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+        <dependency>
+            <!-- 生成pdf所依赖的包 -->
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-pdfa</artifactId>
+            <version>5.5.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-asian</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <!--将.jrxml编译成.jasper.如果你不使用java编译，而使用ireport工具编译则无须导入该 包  -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.4.13</version>
+        </dependency>
+        <!-- jasperreports End -->
     </dependencies>
 
     <build>
