@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="file" language="groovy" pageWidth="595" pageHeight="769" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d9ff3aa7-bcd6-4969-888c-510ec8ecd7bf">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from file]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="size" class="java.lang.String"/>
+	<field name="path" class="java.lang.String"/>
+	<field name="fileName" class="java.lang.String"/>
+	<field name="nfileName" class="java.lang.String"/>
+	<field name="uploadTime" class="java.sql.Timestamp"/>
+	<field name="userId" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="58" uuid="ad5b8fd8-230b-4f46-a645-b39a1963a8d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[测试单]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="167" y="1" width="96" height="27" uuid="d8fa26e4-4d82-455a-be8b-92f1c4577e33"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[类型]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="1" width="82" height="27" uuid="d944e9ba-cc3e-4798-83e9-4bda929f84ae"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[文件名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="1" width="91" height="27" uuid="9fc63368-c0bb-443c-98dc-a3b768dbf032"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[用户]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="85" height="27" uuid="a0146ec9-1c60-4cef-b7f3-73f507508397"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[编号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="1" width="68" height="27" uuid="e145fdc7-5e01-4584-bbaa-961b93b64bc5"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[大小]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="1" width="133" height="27" uuid="11b79b2c-e8f9-42f4-9589-bcff48c8c0f6"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[上传时间]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="167" y="0" width="96" height="20" uuid="3d295d5b-5962-4ac7-9a6a-87fc2446fd76"/>
+				<box leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="85" height="20" uuid="6ad7925e-3714-4dab-bd0f-aebce7945ed9"/>
+				<box leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="0" width="68" height="20" uuid="3447ed13-7397-40b8-9d8d-45ac32a495ed"/>
+				<box leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{size}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="0" width="91" height="20" uuid="a914e3ea-655d-4695-bd88-e54b8e424bd0"/>
+				<box leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{userId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="82" height="20" uuid="04cdb858-d934-4486-9603-89c387ca36f6"/>
+				<box leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fileName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="0" width="133" height="20" uuid="dea619dd-cac4-49cf-8e63-16187d39f1f3"/>
+				<box leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{uploadTime}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="397" y="0" width="79" height="26" uuid="9e6b0d88-08fd-4e3c-83e0-00f61264310e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[开单时间：]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="0" width="79" height="26" uuid="3b0e25ab-c3d2-483e-9626-64f2710155ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[2019-10-08 16:21]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

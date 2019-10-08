@@ -7,10 +7,13 @@ import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 
 /**
  * @author Chenny
@@ -24,6 +27,7 @@ public class HttpServletRequestUtil {
 
     /**
      * 获取请求对象
+     *
      * @return
      */
     public static HttpServletRequest getRequest() {
@@ -32,6 +36,7 @@ public class HttpServletRequestUtil {
 
     /**
      * 获取作用域中存入的对象
+     *
      * @return
      */
     public static SysUser getSessionUser() {
@@ -47,6 +52,7 @@ public class HttpServletRequestUtil {
 
     /**
      * 获取RESPONSE
+     *
      * @return
      */
     public static HttpServletResponse getResponse() {
@@ -57,6 +63,7 @@ public class HttpServletRequestUtil {
 
     /**
      * 获取SESSION
+     *
      * @return
      */
     public static HttpSession getSession() {
@@ -64,4 +71,62 @@ public class HttpServletRequestUtil {
         HttpSession session = request.getSession();
         return session;
     }
+
+    /**
+     * 获取
+     * GETOUTPUTSTREAM
+     *
+     * @return
+     */
+    public static ServletOutputStream getOutputStream() {
+        try {
+            HttpServletResponse response = getResponse();
+            ServletOutputStream out = response.getOutputStream();
+            return out;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void closeOutputStream(ServletOutputStream out) {
+        try {
+            if (out != null) {
+                out.close();
+            }
+            System.gc();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * 获取
+     * GETOUTPUTSTREAM
+     *
+     * @return
+     */
+    public static PrintWriter getPrintWriter() {
+        try {
+            HttpServletResponse response = getResponse();
+            PrintWriter out = response.getWriter();
+            return out;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void closePrintWriter() {
+        try {
+            HttpServletResponse response = getResponse();
+            PrintWriter out = response.getWriter();
+            out.flush();
+            out.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 }

@@ -24,7 +24,7 @@ import java.util.Map;
  * @date 2019/9/25 9:33
  * @email bbc123good@163.com
  * @address http://106.12.38.131:8011
- * @describe 用于实现接口返回规范的类  所有接口返回值都由该类封装
+ * @describe 导出控制器
  */
 @Api(value = "导出模板操作", description = "导出模板操作")
 @Controller
@@ -50,20 +50,18 @@ public class exportAciton {
         //子数据源测试
         map.put("chart1", list);
 
-        HttpServletRequest request = HttpServletRequestUtil.getRequest();
-        HttpServletResponse response = HttpServletRequestUtil.getResponse();
         //指定模板文件
-        ServletContext context = request.getSession().getServletContext();
+        ServletContext context = HttpServletRequestUtil.getSession().getServletContext();
         File reportFile = null;
-        reportFile = new File(context.getRealPath("jasper\\demo.jasper"));
+        reportFile = new File(context.getRealPath("jasper\\file.jasper"));
         //指定导出文件名称
         String exportFilePath = "报表导出测试单";
         //调用工具类
         //JasperHelper.showHtml(exportFilePath , reportFile.getPath(), request,response, map, jrDataSource);
         //JasperHelper.export("excel", exportFilePath, reportFile, request, response, map, jrDataSource);
-//        JasperHelper.showPdf(exportFilePath, reportFile.getPath(), request, response, map,jrDataSource);
         try {
-            JasperHelper.export("pdf", exportFilePath, reportFile, request, response, map, jrDataSource);
+        // JasperHelper.showPdf(exportFilePath, reportFile.getPath(), request, response, map, jrDataSource);
+            JasperHelper.export("pdf", exportFilePath, reportFile, map, jrDataSource);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
