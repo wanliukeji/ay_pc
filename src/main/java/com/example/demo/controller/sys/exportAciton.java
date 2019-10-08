@@ -1,6 +1,7 @@
 package com.example.demo.controller.sys;
 
 import com.example.demo.Utils.HttpServletRequestUtil;
+import com.example.demo.entity.FileEntity;
 import com.example.demo.jasper.JasperHelper;
 import com.example.demo.service.FileService;
 import io.swagger.annotations.Api;
@@ -14,6 +15,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +42,11 @@ public class exportAciton {
      */
     @GetMapping("/api/export/file")
     public void export() {
-        List<?> list = fileService.list(null);
+        List<FileEntity> list = fileService.list(null);
 
         //JRBeanCollectionDataSource通过构造注入collection类型的参数，这里我们用的是list结构
         JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);
+
         //构建参数map
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("query", "其他参数测试");
@@ -55,7 +58,7 @@ public class exportAciton {
         File reportFile = null;
         reportFile = new File(context.getRealPath("jasper\\file.jasper"));
         //指定导出文件名称
-        String exportFilePath = "报表导出测试单";
+        String exportFilePath = "报表导出测试单" + (new Date());
         //调用工具类
         //JasperHelper.showHtml(exportFilePath , reportFile.getPath(), request,response, map, jrDataSource);
         //JasperHelper.export("excel", exportFilePath, reportFile, request, response, map, jrDataSource);
@@ -65,6 +68,10 @@ public class exportAciton {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 
 }

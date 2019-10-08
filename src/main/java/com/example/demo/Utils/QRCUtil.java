@@ -1,16 +1,12 @@
 package com.example.demo.Utils;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
-
 import cn.hutool.extra.qrcode.BufferedImageLuminanceSource;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.MatrixToImageWriter;

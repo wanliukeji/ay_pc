@@ -22,7 +22,7 @@
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="58" uuid="ad5b8fd8-230b-4f46-a645-b39a1963a8d2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="24"/>
+					<font fontName="宋体" size="24" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[测试单]]></text>
 			</staticText>
@@ -31,50 +31,50 @@
 	<columnHeader>
 		<band height="28" splitType="Stretch">
 			<staticText>
-				<reportElement x="167" y="1" width="96" height="27" uuid="d8fa26e4-4d82-455a-be8b-92f1c4577e33"/>
-				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[类型]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="85" y="1" width="82" height="27" uuid="d944e9ba-cc3e-4798-83e9-4bda929f84ae"/>
-				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[文件名]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="331" y="1" width="91" height="27" uuid="9fc63368-c0bb-443c-98dc-a3b768dbf032"/>
-				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="0"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[用户]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="0" y="1" width="85" height="27" uuid="a0146ec9-1c60-4cef-b7f3-73f507508397"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14"/>
+					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[编号]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="263" y="1" width="68" height="27" uuid="e145fdc7-5e01-4584-bbaa-961b93b64bc5"/>
+				<reportElement x="85" y="0" width="82" height="27" uuid="8b5e0e72-00ec-4d65-8b87-c4bde970b957"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14"/>
+					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[文件名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="1" width="85" height="27" uuid="275a5274-1d15-4182-b021-125d08680b0c"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[类型]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="0" width="85" height="27" uuid="ce3acb49-bfb3-4cec-9109-a78368bdc615"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[大小]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="422" y="1" width="133" height="27" uuid="11b79b2c-e8f9-42f4-9589-bcff48c8c0f6"/>
+				<reportElement x="331" y="1" width="91" height="27" uuid="91cde15e-b8d2-455b-8a49-0dfaf7df8c1a"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[用户编号]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="1" width="133" height="27" uuid="60b2bd16-1d14-443e-99e4-f3fb161c1c25"/>
 				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="14"/>
+					<font fontName="宋体" size="14" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[上传时间]]></text>
 			</staticText>
@@ -124,7 +124,9 @@
 		<band height="26" splitType="Stretch">
 			<staticText>
 				<reportElement x="397" y="0" width="79" height="26" uuid="9e6b0d88-08fd-4e3c-83e0-00f61264310e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="宋体" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
 				<text><![CDATA[开单时间：]]></text>
 			</staticText>
 			<staticText>
