@@ -4,9 +4,11 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 import cn.hutool.extra.qrcode.BufferedImageLuminanceSource;
@@ -31,6 +33,9 @@ public class QRCUtil {
     //    保存路径
     private static final String QR_CODE_IMAGE_PATH = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myQRC.png";
 
+    private static final int BLACK = 0xFF000000;
+    private static final int WHITE = 0xFFFFFFFF;
+
     /**
      * 二维码生成
      *
@@ -54,6 +59,7 @@ public class QRCUtil {
 
     /**
      * 二维码解析
+     *
      * @param qrcPath
      */
 
@@ -80,16 +86,10 @@ public class QRCUtil {
         }
     }
 
-
-    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         try {
-//            generateQRCodeImage("http://localhost:7171/", 350, 350, QR_CODE_IMAGE_PATH);
             readQRCodeImage(QR_CODE_IMAGE_PATH);
         } catch (Exception e) {
         }
     }
-
-
-
 }
