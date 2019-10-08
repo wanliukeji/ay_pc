@@ -52,11 +52,12 @@ public class exportAciton {
         map.put("query", "其他参数测试");
         //子数据源测试
         map.put("chart1", list);
+        map.put("IMAGE_URL","D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myQRC.png");
 
         //指定模板文件
         ServletContext context = HttpServletRequestUtil.getSession().getServletContext();
         File reportFile = null;
-        reportFile = new File(context.getRealPath("jasper\\file.jasper"));
+        reportFile = new File(context.getRealPath("jasper\\demo.jasper"));
         //指定导出文件名称
         String exportFilePath = "报表导出测试单" + (new Date());
         //调用工具类
