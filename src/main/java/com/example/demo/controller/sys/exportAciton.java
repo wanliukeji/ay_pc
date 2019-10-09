@@ -38,7 +38,6 @@ public class exportAciton {
 
     /**
      * 登录后台
-     *
      * @return
      */
     @GetMapping("/api/export/file")
@@ -50,15 +49,14 @@ public class exportAciton {
 
         //构建参数map
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("query", "其他参数测试");
+        map.put("query", "测试生产单");
         //子数据源测试
         map.put("chart1", list);
-        map.put("IMAGE_URL","D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myQRC.png");
-
+        // map.put("IMAGE_URL","D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myQRC.png");
         //指定模板文件
         ServletContext context = HttpServletRequestUtil.getSession().getServletContext();
         File reportFile = null;
-        reportFile = new File(context.getRealPath("jasper\\demo.jasper"));
+        reportFile = new File(context.getRealPath("jasper\\tittle.jasper"));
         //指定导出文件名称
         String exportFilePath = "报表导出测试单" + DateUtil.getDateYMDHMS();
         //调用工具类
@@ -68,12 +66,7 @@ public class exportAciton {
         // JasperHelper.showPdf(exportFilePath, reportFile.getPath(), request, response, map, jrDataSource);
             JasperHelper.export("pdf", exportFilePath, reportFile, map, jrDataSource);
         } catch (Exception ex) {
-            ex.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 
 }
