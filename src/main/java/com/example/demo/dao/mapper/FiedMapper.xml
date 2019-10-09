@@ -34,15 +34,50 @@
         fied t
         where 1=1
         <!--<if test="context != null">-->
-          <!--and t.head_line like "%"#{context}"%",-->
-          <!--or t.phone  like "%"#{context}"%",-->
-          <!--or t.link  like "%"#{context}"%",-->
-          <!--or t.link  like "%"#{context}"%",-->
-          <!--or t.company_name  like "%"#{context}"%",-->
-          <!--or t.address  like "%"#{context}"%"-->
+        <!--and t.head_line like "%"#{context}"%",-->
+        <!--or t.phone  like "%"#{context}"%",-->
+        <!--or t.link  like "%"#{context}"%",-->
+        <!--or t.link  like "%"#{context}"%",-->
+        <!--or t.company_name  like "%"#{context}"%",-->
+        <!--or t.address  like "%"#{context}"%"-->
         <!--</if>-->
 
         LIMIT #{currentPage},#{pageSize}
 
     </select>
+    <select id="getVoList" resultType="com.example.demo.vo.FiedVo">
+        SELECT
+            fied.Id,
+            fied.head_line,
+            fied.user_qq,
+            fied.user_wx,
+            fied.phone,
+            fied.link,
+            fied.createDate,
+            fied.company_name,
+            fied.procode,
+            fied.citycode,
+            fied.countycode,
+            fied.details,
+            fied.address,
+            fied.type,
+            fied.fw,
+            fied.service,
+            file.path,
+            file.type as f_type
+        FROM
+            fied
+        INNER JOIN
+            file
+        ON
+            fied.userId = file.userId
+        WHERE
+            1 = 1
+        AND
+            fied.type = #{type}
+        AND
+            file.type = 'G'
+    </select>
+
+
 </mapper>

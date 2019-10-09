@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Fied;
+import com.example.demo.vo.FiedVo;
 import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -20,6 +21,8 @@ import java.util.List;
 public interface FiedMapper extends BaseMapper<Fied> {
 
     List<Fied> getByPage(@Param("currentPage") Integer currentPage,
-                                @Param("pageSize") Integer pageSize,
-                                @Param("context") String context);
+                         @Param("pageSize") Integer pageSize,
+                         @Param("context") String context);
+
+    List<FiedVo> getVoList(@Param("type")String type);
 }

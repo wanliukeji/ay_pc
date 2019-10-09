@@ -14,6 +14,7 @@ import com.example.demo.entity.Fied;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqParam;
+import com.example.demo.vo.FiedVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -71,7 +72,7 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
      * @return
      * @throws Exception
      */
-    public Object export(String ids, String fileUrl, String title, String beanPath, String [] columnNames) throws Exception {
+    public Object export(String ids, String fileUrl, String title, String beanPath, String[] columnNames) throws Exception {
 
         ExportExcelUtil<Fied> util = new ExportExcelUtil<Fied>();
         // 准备数据
@@ -88,11 +89,11 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         //设置文件名，boot.xls 是下载文件名
         resp.addHeader("Content-Disposition", "attachment;filename=" + new String(title.getBytes()));
         //设置输出流
-        OutputStream os= new BufferedOutputStream(resp.getOutputStream());
+        OutputStream os = new BufferedOutputStream(resp.getOutputStream());
         //设置格式
         resp.setContentType("application/vnd.ms-excel;charset=gb2312");
         try {
-           return util.exportExcel(title, columnNames, list, out, ExportExcelUtil.EXCEL_FILE_2003);
+            return util.exportExcel(title, columnNames, list, out, ExportExcelUtil.EXCEL_FILE_2003);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -156,6 +157,15 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
             saveOrUpdate(fied);
         }
         return ResultJSON.success(null);
+    }
+
+    public ResultJSON<?> getVos(String type) {
+        try {
+            List<FiedVo> vos = baseMapper.getVoList(type);
+            return ResultJSON.success(vos);
+        } catch (Exception e) {
+            return ResultJSON.error(CodeMsg.QUERY_ERROR);
+        }
     }
 
     ;

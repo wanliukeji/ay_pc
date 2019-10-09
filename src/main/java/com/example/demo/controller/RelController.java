@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.api.RelApi;
 import com.example.demo.entity.Fied;
+import com.example.demo.entity.SysUser;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.service.RelService;
 import io.swagger.annotations.Api;
@@ -28,6 +30,10 @@ public class RelController implements RelApi {
 
     @Override
     public ApiJSON saveRel(Fied fied) throws Exception {
+        SysUser user = HttpServletRequestUtil.getSessionUser();
+        if (null != user) {
+            fied.setUserId(user.getId());
+        }
        boolean flag = relService.save(fied);
        int i = 0;
        return ApiJSON.data(flag);

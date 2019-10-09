@@ -35,7 +35,8 @@ public class CodeMsg {
     public static CodeMsg REG_ACCOUNT_ERROR = new CodeMsg(106,"该账户已被注册"); /*用占位符 传入一个参数*/
     public static CodeMsg REG_EMAIL_ERROR = new CodeMsg(107,"该邮箱已被注册"); /*用占位符 传入一个参数*/
     public static CodeMsg REG_PHONE_ERROR = new CodeMsg(108,"该手机已被注册"); /*用占位符 传入一个参数*/
-    public static CodeMsg REG_ERROR = new CodeMsg(108,"注册失败"); /*用占位符 传入一个参数*/
+    public static CodeMsg REG_ERROR = new CodeMsg(109,"注册失败"); /*用占位符 传入一个参数*/
+    public static CodeMsg QUERY_ERROR = new CodeMsg(110,"查询失败"); /*用占位符 传入一个参数*/
 
     private CodeMsg( ) {
     }

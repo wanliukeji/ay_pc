@@ -34,7 +34,7 @@ public interface FiedApi {
     @Transactional
     public ResultJSON<?> getByPage(ReqParam param) throws Exception;
 
-    @GetMapping(value = "/api/jg/export",  produces = "text/plain;charset=UTF-8")
+    @GetMapping(value = "/api/jg/export", produces = "text/plain;charset=UTF-8")
     @ApiOperation(value = "加工导出数据接口", notes = "加工导出数据接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "ID", value = "ids")
@@ -64,4 +64,11 @@ public interface FiedApi {
     })
     @Transactional
     public ResultJSON<?> unaunt(@RequestParam("ids") String ids) throws Exception;
+
+    @GetMapping(value = "/api/fied/getVos", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "查询临时数据接口", notes = "查询临时数据接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "ID", value = "ids")
+    })
+    public ResultJSON<?> getVos(@RequestParam(name = "type") String type) throws Exception;
 }

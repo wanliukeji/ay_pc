@@ -2,13 +2,16 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.user = getUser();
 
+    $scope.jgItems = [];
+
     var userip = getIp();
 
     var userAddr = getCity();
     angular.element("#city").html(userAddr);
 
-    $scope.init = function (){
-
+    $scope.init = function () {
+        $scope.jgItems = getVos('加工');
+        console.log($scope.jgItems);
     };
 
     $scope.sendMsg = function () {
@@ -118,6 +121,12 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
                 upload(url, method_post, file);
             }
         }
+    }
+
+    function getVos(type) {
+        var url = "/api/fied/getVos?type=" + type;
+        var msg = ajax_http(url, method_get, null);
+        return msg.data;
     }
 
 });

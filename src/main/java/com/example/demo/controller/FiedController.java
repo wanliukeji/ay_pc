@@ -64,6 +64,11 @@ public class FiedController implements FiedApi {
         return fiedService.unaunt(ids);
     }
 
+    @Override
+    public ResultJSON<?> getVos(String type) throws Exception {
+        return fiedService.getVos(type);
+    }
+
     ;
 }
 
