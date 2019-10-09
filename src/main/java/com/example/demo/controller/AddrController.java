@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @RestController
 @Slf4j
-public class AddrAction implements AddrApi {
+public class AddrController implements AddrApi {
 
     @Autowired
     private AddrService service;

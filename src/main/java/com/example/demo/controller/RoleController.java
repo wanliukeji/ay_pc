@@ -16,7 +16,7 @@ import java.util.Date;
  * @describe 用于实现接口返回规范的类  所有接口返回值都由该类封装
  */
 @RestController
-public class RoleAction implements RoleApi {
+public class RoleController implements RoleApi {
 
     @Autowired
     RoleService service;

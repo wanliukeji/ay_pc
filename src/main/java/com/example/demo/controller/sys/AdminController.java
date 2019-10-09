@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-public class AdminAction implements AdminApi {
+public class AdminController implements AdminApi {
 
     @Autowired
     private SysUserService sysUserService;
