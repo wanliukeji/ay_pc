@@ -42,8 +42,8 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 public class CodeUtil {
 
     //    保存路径
-    private static final String QCR_CODE_IMAGE_PATH = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myQRC.png";
-    private static final String BAR_CODE_IMAGE_PATH = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myBar.png";
+    private static final String QCR_CODE_IMAGE_PATH = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myQRC";
+    private static final String BAR_CODE_IMAGE_PATH = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\Qrc\\myBar";
     private static final String INTER_PATH = "http://localhost:7171/";
 
     private static final int BLACK = 0xFF000000;
@@ -54,6 +54,7 @@ public class CodeUtil {
     private static final Integer BARHEIGTH = 50;
     private static final Integer QCRWIDTH = 350;
     private static final Integer QCRHEIGTH = 350;
+    private static final String SUFFIX = ".png";
 
     /**
      * 二维码生成
@@ -229,11 +230,19 @@ public class CodeUtil {
      * @param args
      */
     public static void main(String[] args) {
+//        String path = BAR_CODE_IMAGE_PATH + DateUtil.getDateYMDHMS() + SUFFIX;
+//        try {
+//            generateBAR("6923450657713", path);
+//            String barMsg = readBAR(path);
+//            System.out.println(barMsg);
+//        } catch (Exception ex) {
+//        }
+        String path = QCR_CODE_IMAGE_PATH + DateUtil.getDateYMDHMS() + SUFFIX;
         try {
-//            generateBAR("6923450657713",BAR_CODE_IMAGE_PATH);
-            String barMsg = readBAR(BAR_CODE_IMAGE_PATH);
-            System.out.println(barMsg);
+            generateQRCodeImage("chenyu",path);
+            readQRCodeImage(path);
         } catch (Exception ex) {
         }
+
     }
 }
