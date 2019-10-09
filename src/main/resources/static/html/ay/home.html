@@ -355,94 +355,48 @@
                 <a style="float: right; font-size: 12px; color: #48c964;">更多>></a>
             </div>
 
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;">
+            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;" ng-repeat="item in jgItems  | limitTo:4">
                 <div style=" width: 40%; height: 100%; display: inline-block;float: left;
                     vertical-align: middle; ">
-                    <img src="https://t1.58cdn.com.cn/bidding/small/n_v2e9473f25f53d4fada08d827f0604ea89.jpg?w=160&h=120&ss=1"
+                    <img src="{{item.path}}"
                          width="107" height="127" alt="">
                 </div>
                 <div style="width: 60%; height: 100%; display: inline-block;float: left;
                        padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px;">小谢门窗</p>
+                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">{{item.company_name}}</p>
                     <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
                          overflow: hidden; " class="text-webkit">
                         <b>服务描述：</b>
-                        工装装修范围：
-                        （1）写字楼 办公室以及各类公共空间的装饰设计与装饰工程
-                        （2）店面 商铺 专卖店 服装店 各类型商铺的装饰设计与装饰工程
-                        （3）展厅、展览馆、展示厅等各类型商业展示空间的装饰设计与装饰工程
+                        {{item.details}}
                     </p>
                     <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">2019-10-1</span>
+                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="https://t1.58cdn.com.cn/bidding/small/n_v2e9473f25f53d4fada08d827f0604ea89.jpg?w=160&h=120&ss=1"
-                         width="107" height="127" alt="">
-                </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px;">小谢门窗</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        工装装修范围：
-                        （1）写字楼 办公室以及各类公共空间的装饰设计与装饰工程
-                        （2）店面 商铺 专卖店 服装店 各类型商铺的装饰设计与装饰工程
-                        （3）展厅、展览馆、展示厅等各类型商业展示空间的装饰设计与装饰工程
-                    </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">2019-10-1</span>
-                    </p>
-                </div>
-            </div>
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="https://t1.58cdn.com.cn/bidding/small/n_v2e9473f25f53d4fada08d827f0604ea89.jpg?w=160&h=120&ss=1"
-                         width="107" height="127" alt="">
-                </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px;">小谢门窗</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        工装装修范围：
-                        （1）写字楼 办公室以及各类公共空间的装饰设计与装饰工程
-                        （2）店面 商铺 专卖店 服装店 各类型商铺的装饰设计与装饰工程
-                        （3）展厅、展览馆、展示厅等各类型商业展示空间的装饰设计与装饰工程
-                    </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">2019-10-1</span>
-                    </p>
-                </div>
-            </div>
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="https://t1.58cdn.com.cn/bidding/small/n_v2e9473f25f53d4fada08d827f0604ea89.jpg?w=160&h=120&ss=1"
-                         width="107" height="127" alt="">
-                </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px;">小谢门窗</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        工装装修范围：
-                        （1）写字楼 办公室以及各类公共空间的装饰设计与装饰工程
-                        （2）店面 商铺 专卖店 服装店 各类型商铺的装饰设计与装饰工程
-                        （3）展厅、展览馆、展示厅等各类型商业展示空间的装饰设计与装饰工程
-                    </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">2019-10-1</span>
-                    </p>
-                </div>
-            </div>
+            <!--<div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;">-->
+                <!--<div style=" width: 40%; height: 100%; display: inline-block;float: left;-->
+                    <!--vertical-align: middle; ">-->
+                    <!--<img src="https://t1.58cdn.com.cn/bidding/small/n_v2e9473f25f53d4fada08d827f0604ea89.jpg?w=160&h=120&ss=1"-->
+                         <!--width="107" height="127" alt="">-->
+                <!--</div>-->
+                <!--<div style="width: 60%; height: 100%; display: inline-block;float: left;-->
+                       <!--padding:0px 10px 10px">-->
+                    <!--<p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px;">小谢门窗</p>-->
+                    <!--<p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;-->
+                         <!--overflow: hidden; " class="text-webkit">-->
+                        <!--<b>服务描述：</b>-->
+                        <!--工装装修范围：-->
+                        <!--（1）写字楼 办公室以及各类公共空间的装饰设计与装饰工程-->
+                        <!--（2）店面 商铺 专卖店 服装店 各类型商铺的装饰设计与装饰工程-->
+                        <!--（3）展厅、展览馆、展示厅等各类型商业展示空间的装饰设计与装饰工程-->
+                    <!--</p>-->
+                    <!--<p style="margin-top: 16px; height: 15px;">-->
+                        <!--<span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">2019-10-1</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+
         </section>
         <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
                  class="section-box category-jiaoyupeixun">

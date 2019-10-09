@@ -63,7 +63,7 @@
             fied.type,
             fied.fw,
             fied.service,
-            file.path,
+            SUBSTRING(file.path,33) as path,
             file.type as f_type
         FROM
             fied
