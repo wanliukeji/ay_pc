@@ -65,7 +65,7 @@ public class FileUploadTool {
 
             String hexName = ConvertUtil.mixStr2Hex(name);
             // 新的文件名
-            String newFileName = this.getName(fileName)  + hexName + DateUtil.getDate();
+            String newFileName = this.getName(fileName)  + hexName + DateUtil.getDateYMDHMS();
             // 文件扩展名
             String fileEnd = this.getFileExt(fileName);
             String logoPathDir = logoPathDir(fileEnd);

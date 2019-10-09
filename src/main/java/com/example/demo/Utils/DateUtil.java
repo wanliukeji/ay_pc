@@ -14,7 +14,11 @@ import java.util.Date;
  */
 public class DateUtil {
 
-    public static String getDate(){
+    /**
+     * 返回年月日时分秒数字格式
+     * @return
+     */
+    public static String getDateYMDHMS(){
         DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         return format.format(new Date());
     }

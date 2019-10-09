@@ -1,5 +1,6 @@
 package com.example.demo.controller.sys;
 
+import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.entity.FileEntity;
 import com.example.demo.jasper.JasperHelper;
@@ -59,7 +60,7 @@ public class exportAciton {
         File reportFile = null;
         reportFile = new File(context.getRealPath("jasper\\demo.jasper"));
         //指定导出文件名称
-        String exportFilePath = "报表导出测试单" + (new Date());
+        String exportFilePath = "报表导出测试单" + DateUtil.getDateYMDHMS();
         //调用工具类
         //JasperHelper.showHtml(exportFilePath , reportFile.getPath(), request,response, map, jrDataSource);
         //JasperHelper.export("excel", exportFilePath, reportFile, request, response, map, jrDataSource);
