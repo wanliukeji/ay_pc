@@ -237,12 +237,12 @@ public class CodeUtil {
 //            System.out.println(barMsg);
 //        } catch (Exception ex) {
 //        }
-        String path = QCR_CODE_IMAGE_PATH + DateUtil.getDateYMDHMS() + SUFFIX;
-        try {
-            generateQRCodeImage("chenyu",path);
-            readQRCodeImage(path);
-        } catch (Exception ex) {
-        }
+//        String path = QCR_CODE_IMAGE_PATH + DateUtil.getDateYMDHMS() + SUFFIX;
+//        try {
+//            generateQRCodeImage("chenyu",path);
+//            readQRCodeImage(path);
+//        } catch (Exception ex) {
+//        }
 
     }
 }
