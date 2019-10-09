@@ -77,6 +77,11 @@
             fied.type = #{type}
         AND
             file.type = 'G'
+        GROUP BY
+			fied.userId
+		ORDER BY
+			fied.createDate
+		DESC
     </select>
 
 
