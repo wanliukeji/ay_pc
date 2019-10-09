@@ -3,6 +3,15 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     $scope.user = getUser();
 
     $scope.jgItems = [];
+    $scope.dgItems = [];
+    $scope.azItems = [];
+    $scope.mccItems = [];
+    $scope.blcItems = [];
+    $scope.pjsItems = [];
+    $scope.ddItems = [];
+    $scope.dpItems = [];
+    $scope.cfItems = [];
+    $scope.sbItems = [];
 
     var userip = getIp();
 
@@ -11,7 +20,15 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
-        console.log($scope.jgItems);
+        $scope.dgItems = getVos('点工');
+        $scope.azItems = getVos('加工');
+        $scope.mccItems = getVos('加工');
+        $scope.blcItems = getVos('加工');
+        $scope.pjsItems = getVos('加工');
+        $scope.ddItems = getVos('加工');
+        $scope.dpItems = getVos('加工');
+        $scope.cfItems = getVos('加工');
+        $scope.sbItems = getVos('加工');
     };
 
     $scope.sendMsg = function () {
