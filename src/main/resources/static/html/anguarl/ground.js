@@ -15,7 +15,7 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         procode: null,
         citycode: null,
         countycode: null,
-        type: $scope.type,
+        type: null,
         fw: null
     };
 
