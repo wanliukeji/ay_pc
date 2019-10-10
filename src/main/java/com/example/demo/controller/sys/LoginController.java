@@ -27,29 +27,8 @@ public class LoginController implements LoginApi {
     @Autowired
     private SysUserService sysUserService;
 
-    public ResultJSON<Boolean> login(String account,String password) {
-        boolean flag = false;
-        //解密
-        try {
-            if (null != account && password != null) {
-                SysUser user = sysUserService.getOne(new QueryWrapper<SysUser>().eq("account", account));
-                if (null != user) {
-                    //解密
-                    String pwd = EncryptUtil.Base64Decode(user.getPassword());
-                     if (password.equalsIgnoreCase(password)) {
-                        HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
-                        return ResultJSON.success(true);
-                     }
-                } else {
-                    return ResultJSON.error(CodeMsg.LOGIN_ERROR);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error(e.getMessage());
-            return ResultJSON.error(CodeMsg.SERVER_ERROR);
-        }
-        return ResultJSON.error(CodeMsg.SERVER_ERROR);
+    public ResultJSON<Boolean> login(String account, String password) {
+        return sysUserService.login(account, password);
     }
 
 }

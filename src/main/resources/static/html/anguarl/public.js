@@ -8,7 +8,7 @@ var reg_phone = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a
 
 //用户区
 function getUser() {
-    var user = localStorage.getItem('user');
+    var user = sessionStorage.getItem('user');
     if (null != user) {
         user = typeof user == 'string' ? JSON.parse(user) : user;
     }
@@ -16,7 +16,7 @@ function getUser() {
 }
 
 function is_Exist() {
-    var user = localStorage.getItem('user');
+    var user = sessionStorage.getItem('user');
     if (null != user) {
         return true;
     }
@@ -24,7 +24,7 @@ function is_Exist() {
 }
 
 function setUser(obj) {
-    localStorage.setItem('user', JSON.stringify(obj));
+    sessionStorage.setItem('user', JSON.stringify(obj));
 }
 
 function setitems(obj) {

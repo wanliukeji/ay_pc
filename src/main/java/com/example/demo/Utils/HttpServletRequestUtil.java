@@ -35,7 +35,7 @@ public class HttpServletRequestUtil {
     }
 
     /**
-     * 获取作用域中存入的对象
+     * 获取作用域中的对象
      *
      * @return
      */
@@ -48,6 +48,10 @@ public class HttpServletRequestUtil {
         } else {
             return null;
         }
+    }
+
+    public static void  setSessionUser(SysUser user) {
+        HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
     }
 
     /**
