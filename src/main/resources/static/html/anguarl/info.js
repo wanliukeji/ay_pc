@@ -40,5 +40,12 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
         }
     }
 
+    $scope.sendMsg = function () {
+        if (!is_Exist($scope.user)) {
+            angular.element("#showModel").click();
+        } else {
+            href('/release');
+        }
+    };
 });
 

@@ -111,5 +111,13 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         $scope.ReqParam.countycode = null;
         getList();
     }
+
+    $scope.sendMsg = function () {
+        if (!is_Exist($scope.user)) {
+            angular.element("#showModel").click();
+        } else {
+            href('/release');
+        }
+    };
 });
 

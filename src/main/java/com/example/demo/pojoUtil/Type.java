@@ -19,9 +19,9 @@ public class Type extends Object {
 
     private String FW003 = "安装";
 
-    private String FW004 = "门窗厂家";
+    private String FW004 = "门窗厂";
 
-    private String FW005 = "玻璃厂家";
+    private String FW005 = "玻璃厂";
 
     private String FW006 = "配件商";
 
