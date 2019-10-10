@@ -163,5 +163,17 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         }
     }
 
+    $scope.goInfo = function (id) {
+        var url = 'api/fied/getInfoVo?id=' + id;
+        var msg = ajax_http(url, method_get, null);
+        if (msg.code = 200) {
+            setSessionObj('entity', msg.data);
+            href('/info');
+        } else {
+            history.go(0);
+        }
+        // setSessionObj()
+    }
+
 });
 

@@ -25,4 +25,7 @@ public interface FiedMapper extends BaseMapper<Fied> {
                          @Param("context") String context);
 
     List<FiedVo> getVoList(@Param("type")String type);
+
+    FiedVo getInfoVo(@Param("id") Integer id);
+
 }

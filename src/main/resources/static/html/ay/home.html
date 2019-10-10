@@ -359,18 +359,25 @@
                  ng-repeat="item in jgItems  | limitTo:4">
                 <div style=" width: 40%; height: 100%; display: inline-block;float: left;
                     vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}"
+                             width="107" height="127" alt="">
+                    </a>
                 </div>
                 <div style="width: 60%; height: 100%; display: inline-block;float: left;
                        padding:0px 10px 10px">
                     <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
+                         overflow: hidden; " class="text-webkit">
+                            <b>服务描述：</b>
+                            {{item.details}}
+                        </p>
+                    </a>
                     <p style="margin-top: 16px; height: 15px;">
                         <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
                     </p>

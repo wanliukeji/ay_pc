@@ -2,4 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.FileMapper">
 
+    <select id="getInfoList" resultType="com.example.demo.entity.FileEntity">
+        SELECT
+        file.id,
+        file.type,
+        file.size,
+        SUBSTRING(file.path,33) as path,
+        file.fileName,
+        file.nfileName,
+        file.uploadTime,
+        file.userId,
+        file.imgUrl
+        FROM
+        file
+        WHERE
+        1 = 1
+        <if test="userId != null">
+            AND
+            file.userId = #{userId}
+        </if>
+        AND
+        file.type != 'G'
+        ORDER BY
+        file.uploadTime
+        DESC
+        LIMIT 0,6
+    </select>
+    <select id="gethoppyList" resultType="com.example.demo.entity.FileEntity">
+
+    </select>
 </mapper>

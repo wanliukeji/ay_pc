@@ -58,6 +58,16 @@ public class ResultJSON<T> implements Serializable{
     }
 
     /**
+     * 失败时候的调用
+     * @param CodeMsg CodeMsg
+     * @param <T> t
+     * @return ResultJSON
+     */
+    public static <T> ResultJSON<T> error(String msg){
+        return new ResultJSON<T>((T) msg);
+    }
+
+    /**
      * 成功的构造函数
      * @param data data
      */

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myInfo" ng-controller="infoCtrl" ng-init="init()">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>安义门窗网-小谢加工店</title>
+    <title>安义门窗网-{{entity.company_name}}</title>
     <meta name="description" content='安义门窗网-小谢加工店'/>
     <meta name="mobile-agent" content="format=html5; url=http://m.qu114.com/jx-waiyupeixun/56002257.html"/>
     <meta name="mobile-agent" content="format=xhtml; url=http://m.qu114.com/jx-waiyupeixun/56002257.html"/>
@@ -114,20 +114,20 @@
 
     <ul class="search-crumbs">
         <li><a href="http://jx.qu114.com/">安义门窗网</a></li>
-        <li><i class="icon-arrow-right"></i><a href="http://jx.qu114.com/jiaoyu.shtml">外加工</a></li>
+        <li><i class="icon-arrow-right"></i><a href="http://jx.qu114.com/jiaoyu.shtml">{{entity.type}}</a></li>
         <li>
-        <li><i class="icon-arrow-right"></i><a href="http://jx.qu114.com/waiyupeixun/">小谢门窗</a></li>
+        <li><i class="icon-arrow-right"></i><a href="http://jx.qu114.com/waiyupeixun/">{{entity.company_name}}</a></li>
         <li>
     </ul>
     <div class="viewad-main">
         <div class="viewad-content ">
             <div class="viewad-header">
                 <div class="viewad-title">
-                    <h1>小谢门窗加工</h1>
+                    <h1>{{entity.company_name}}</h1>
                 </div>
                 <div class="viewad-actions">
-                    <span>信息编号:&nbsp;56002257 &nbsp;</span>
-                    <span>2018-08-19 10:40:42 &nbsp;</span>
+                    <span>信息编号:&nbsp;{{entity.id}}&nbsp;</span>
+                    <span>{{entity.createDate}} &nbsp;</span>
 
                 </div>
             </div>
@@ -140,7 +140,7 @@
                             <table id="Qu114TablePare" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td class="biaoti">项目：</td>
-                                    <td><span>翻译</span></td>
+                                    <td><span>{{entity.type}}</span></td>
                                 </tr>
                             </table>
 
@@ -150,15 +150,16 @@
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>服务区域：</label>
                             <div class="content">
-                                <a href='/haining/waiyupeixun/'>北仑区</a> -
-                                <a href='/hainzb/waiyupeixun/'>北仑周边</a>
+                                {{entity.fw}}
+                                <!--<a href='/haining/waiyupeixun/'>北仑区</a> - -->
+                                <!--<a href='/hainzb/waiyupeixun/'>北仑周边</a>-->
                             </div>
                         </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>详细地址：</label>
                             <div class="content">
-                                江南东路小港街道120号
+                                {{entity.address}}
                             </div>
                         </div>
 
@@ -166,7 +167,20 @@
                             <label>联系人：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank" href="http://user.qu114.com/43201638/">谢军军</a>
+                        <a target="_blank" href="http://user.qu114.com/43201638/">
+                            {{entity.link}}
+                        </a>
+                        </span>
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item">
+                            <label>微信号：</label>
+                            <div class="content">
+                    <span>
+                        <a target="_blank" href="http://user.qu114.com/43201638/">
+                            {{entity.user_wx}}
+                        </a>
                         </span>
                             </div>
                         </div>
@@ -178,7 +192,9 @@
                         <ul>
                             <li class="contact-btn-box">
                                 <label>联系电话：</label>
-                                <a class="contact-no" style="margin-left: 12px;">17370306786</a>
+                                <a class="contact-no" style="margin-left: 12px;">
+                                    {{entity.phone}}
+                                </a>
                             </li>
                         </ul>
                     </section>
@@ -213,37 +229,20 @@
                     </div>
 
                     <div class="viewad-text" style="color:#333;">
-                        我们是一家集设计，研发，生产，销售和售后服务于一体的专业厂家，品质为先，价钱实惠，服务**，追求卓越。
-                        断桥铝门窗，采用隔热断桥铝型材和中空玻璃，具有节能、隔音、防噪、防尘、防水等功能。
-                        断桥铝门窗主要分类
-                        1 按开启方式分为：固定窗、上悬窗、中悬窗、下悬窗、立转窗、平开门窗、滑轮平开窗、滑轮窗、平开下悬门窗、推拉门窗、推拉平开窗、折叠门、地弹簧门、提升推拉门、推拉折叠门、内倒侧滑门。
-                        2 按性能分为：普通型门窗、隔声型门窗、保温型门窗。
-                        3 按应用部位分为：内门窗、外门窗。
-                        断桥铝门窗优势：均采用高档隔热铝合金型材和中空玻璃。具有节能、隔音、防噪、防尘、防水等功能。断桥铝门窗的热传导系数K值为3/m2•K以下，比普通门窗热量散失减少一半，隔声量达29分贝以上，均达国家A1类窗标准。
-                        阳光房也称为玻璃房，采用玻璃与金属框架搭建的全明非传统建筑，以达到享受阳光，亲近自然的目的
-                        阳光房就其用料及制造方法可分为五个发展阶段：
-                        一是纯木结构的阳光房
-                        二是纯钢结构的阳光房
-                        三是铝幕墙结构的阳光房
-                        四是钢铝结构的阳光房
-                        阳光房优势：管材均采用热镀锌钢，现场满焊焊接，极大的增强了阳光房的结构安全牢固性。因为更安全，所以更放心；因为更牢固，所以更多的客户选择钢结构阳光房。
-                        产品种类：木结构阳光房，圆弧顶阳光房，组合顶阳光房，彩钢顶阳光房，钢化玻璃阳光房等。
-
+                        {{entity.details}}
                     </div>
 
                     <div class="photo-gallery big">
                         <div class="featured-height">
-                            <div class="photo-item col-6 " style="text-align:center;"><a
-                                    href="https://pic1.58cdn.com.cn/p1/big/n_v290759e387a1049118fd6ddf8bc28fef4.jpg?w=425&h=320"
-                                    target="_blank"><img
-                                    src="https://pic2.58cdn.com.cn/p1/big/n_v241eff054cc79412f936022ddcabfec5b.jpg?w=425&h=320"
-                                    style="max-width:400px;max-height:400px;"/></a></div>
+                            <div class="photo-item col-5 " style="text-align:center;" ng-repeat="item in files">
+                                <!--<img src="{{item.path}}" width="200" height="200" ng-repeat="item in files"/>-->
+                                <img src="{{item.path}}" width="200" height="200"/>
+                            </div>
 
                         </div>
                     </div>
-                    <br/>
                     <div class="viewad-text" style="font-size:14px;">
-                        如果您觉得“<strong>小谢门窗</strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去114<a
+                        如果您觉得“<strong>{{entity.company_name}}</strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去114<a
                             class="a_res" target="_blank" href="/waiyupeixun/">外加工</a>频道，将会获得更多的信任！)
                         <br/>
                         查看<a href='http://jx.qu114.com/waiyupeixun/' target="_blank">最新发布信息</a> &raquo; 或&nbsp;
@@ -275,41 +274,18 @@
                 <div class="viewad-items">
                     <ul class="block-posts">
 
-                        <li><a href="http://jx.qu114.com/yishupeixun/55879045.html" target="_blank" class="clearfix">
-                            <p class="title">宁波绿点门窗</p>
-                            <div class="img "><img
-                                    src="http://img.qu114.com/imagesmall/2018-05-29/20180529182823506-2417.jpg"
-                                    onerror="this.style.display='none'"/></div>
+                        <li ng-repeat="item in hoppyItem | limitTo:3">
+                            <a href="" ng-click="goInfo(item.id)" target="_blank" class="clearfix">
+                            <p class="title">{{item.company_name}}</p>
+                            <div class="img ">
+                                <img src="{{item.path}}" width="66" height="66" onerror="this.style.display='none'"/></div>
                             <div class="item-content">
                                 <p class="price"></p>
-                                <p class="adress"><span>南湖区</span><span>&nbsp;-&nbsp;</span><span>府南花园</span></p>
-                                <p class="create-time"><span>2019-02-27 &nbsp;</span></p>
+                                <p class="adress"><span>南湖区</span><span>&nbsp;-&nbsp;</span><span>{{item.address}}</span></p>
+                                <p class="create-time"><span>{{item.createDate}} &nbsp;</span></p>
                             </div>
-                        </a></li>
-
-                        <li><a href="http://jx.qu114.com/waiyupeixun/53002305.html" target="_blank" class="clearfix">
-                            <p class="title">北仑加线装潢...</p>
-                            <div class="img "><img
-                                    src="http://img.qu114.com/imagesmall/2017-10-09/20171009214403705-1023.jpg"
-                                    onerror="this.style.display='none'"/></div>
-                            <div class="item-content">
-                                <p class="price"></p>
-                                <p class="adress"><span>海宁市</span><span>&nbsp;-&nbsp;</span><span>海宁周边</span></p>
-                                <p class="create-time"><span>2018-10-28 &nbsp;</span></p>
-                            </div>
-                        </a></li>
-
-                        <li><a href="http://jx.qu114.com/waiyupeixun/56129948.html" target="_blank" class="clearfix">
-                            <p class="title">上海彭德门窗</p>
-                            <div class="img "><img
-                                    src="http://img.qu114.com/imagesmall/2018-06-26/20180626150442568-5248.jpg"
-                                    onerror="this.style.display='none'"/></div>
-                            <div class="item-content">
-                                <p class="price"></p>
-                                <p class="adress"><span>嘉兴</span><span>&nbsp;-&nbsp;</span><span>嘉善县</span></p>
-                                <p class="create-time"><span>2018-08-24 &nbsp;</span></p>
-                            </div>
-                        </a></li>
+                            </a>
+                        </li>
 
                     </ul>
                 </div>
@@ -341,15 +317,17 @@
                 <div class="poster-avatar">
 
                     <a target="_blank" href="http://user.qu114.com/43201638/">
-                        <img src="http://pic.qu114.com/xx/20180312/images/default.jpg" class="shangjia"></a>
+                        <img src="{{entity.path}}" class="shangjia"></a>
 
                 </div>
                 <div class="poster-detail">
                     <h3>
-                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name">ttjy0</a>
+                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name">
+                            {{entity.link}}
+                        </a>
                     </h3>
                     <div class="poster-createTime">
-                        注册时间：2015-09-25
+                        注册时间：{{entity.createDate}}
                     </div>
                 </div>
             </section>
@@ -361,9 +339,6 @@
                     </div>
                     <div class="head">
                         信用记录&nbsp;
-                        <a href="http://user.qu114.com/43201638/" target="blank">
-                            <img src="http://pic.qu114.com/xx/20180312/images/verify_go.png">
-                        </a>
                     </div>
                 </div>
                 <ul>
@@ -578,7 +553,9 @@
 
 </div>
 <script type="text/javascript" src="/static/js/baidu_tj.js"></script>
-<script src="/static/jquery-1.8.0.js"></script>
+<script src="/static/js/footer.js"/>
+<script src="/static/html/anguarl/public.js"></script>
+<script src="/static/html/anguarl/info.js"></script>
 <script>
     $("#Qu114Icon").hover(function () {
         var href = $(this).attr('#href');

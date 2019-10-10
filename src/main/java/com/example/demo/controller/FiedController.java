@@ -69,6 +69,5 @@ public class FiedController implements FiedApi {
         return fiedService.getVos(type);
     }
 
-    ;
 }
 

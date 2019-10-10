@@ -10,7 +10,7 @@ var reg_phone = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a
 function getUser() {
     var user = localStorage.getItem('user');
     if (null != user) {
-        var user = typeof user == 'string' ? JSON.parse(user) : user;
+        user = typeof user == 'string' ? JSON.parse(user) : user;
     }
     return user;
 }
@@ -30,6 +30,39 @@ function setUser(obj) {
 function setitems(obj) {
     localStorage.setItem('items', JSON.stringify(obj));
 }
+
+function setlocalObj(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getlocalObj(key) {
+    var entity = localStorage.getItem(key);
+    if (null != entity) {
+        entity = typeof entity == 'string' ? JSON.parse(entity) : entity;
+    }
+    return entity
+}
+
+function removelocalObj(name) {
+   localStorage.removeItem(name);
+}
+
+function setSessionObj(key, value) {
+    sessionStorage.setItem(key, JSON.stringify(value));
+}
+
+function getSessionObj(key) {
+    var entity = sessionStorage.getItem(key);
+    if (null != entity) {
+        entity = typeof entity == 'string' ? JSON.parse(entity) : entity;
+    }
+    return entity
+}
+
+function removeSessionObj(name) {
+    sessionStorage.removeItem(name);
+}
+
 
 function removeUser(name) {
     localStorage.removeItem(name);
@@ -200,7 +233,7 @@ function getIp() {
 
 function getCity() {
     var city = returnCitySN.cname;
-    city = city.substring(city.indexOf("省") + 1 || city.indexOf("区") + 1 , city.indexOf("市"));
+    city = city.substring(city.indexOf("省") + 1 || city.indexOf("区") + 1, city.indexOf("市"));
     return city;
 }
 

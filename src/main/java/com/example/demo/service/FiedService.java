@@ -5,10 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.ExportExcelUtil;
-import com.example.demo.Utils.HttpServletRequestUtil;
-import com.example.demo.Utils.NumberUtil;
-import com.example.demo.Utils.StringUtil;
+import com.example.demo.Utils.*;
 import com.example.demo.dao.FiedMapper;
 import com.example.demo.entity.Fied;
 import com.example.demo.exception.CodeMsg;
@@ -168,7 +165,14 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         }
     }
 
-    ;
+    public FiedVo getInfoVo(Integer id) {
+        try {
+            FiedVo vo = baseMapper.getInfoVo(id);
+            return vo;
+        } catch (Exception e) {
+            return new FiedVo();
+        }
+    }
 
 //        查询分页备份
 //        try {

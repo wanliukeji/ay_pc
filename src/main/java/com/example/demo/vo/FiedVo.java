@@ -51,4 +51,6 @@ public class FiedVo implements Serializable {
 
     private String f_type;
 
+    private String userId;
+
 }

@@ -3,6 +3,9 @@ package com.example.demo.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.FileEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author Chenny
@@ -14,4 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface FileMapper extends BaseMapper<FileEntity> {
+
+    List<FileEntity> getInfoList(@Param("userId") String userId);
+
+    List<FileEntity> gethoppyList(@Param("text") String text);
 }
