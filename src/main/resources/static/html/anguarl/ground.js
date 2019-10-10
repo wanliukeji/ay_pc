@@ -54,10 +54,19 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
 
     $scope.selectPrv = function (id) {
         $scope.cityList = getAddr(id);
+        $scope.ReqParam.procode = id;
+        getList();
     }
 
     $scope.selectCity = function (id) {
         $scope.disList = getAddr(id);
+        $scope.ReqParam.citycode = id;
+        getList();
+    }
+
+    $scope.selectDis = function (id) {
+        $scope.ReqParam.countycode = id;
+        getList();
     }
 
     function getList() {
@@ -83,5 +92,24 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         getList();
     }
 
+    $scope.removeFw = function () {
+        $scope.ReqParam.fw = null;
+        getList();
+    }
+
+    $scope.removePrv = function () {
+        $scope.ReqParam.procode = null;
+        getList();
+    }
+
+    $scope.removeCity = function () {
+        $scope.ReqParam.citycode = null;
+        getList();
+    }
+
+    $scope.removeDis = function () {
+        $scope.ReqParam.countycode = null;
+        getList();
+    }
 });
 

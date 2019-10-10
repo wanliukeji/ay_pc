@@ -145,21 +145,21 @@
                         <dl id="cate" class="cate_dl">
                             <dt>类别：</dt>
                             <dd>
-                                <a href='' class="select">不限</a>
+                                <a href='' class="select" ng-click="removeFw()" onclick="addDomCass(this)">不限</a>
                                 <a href="" ng-repeat="item in serviceItem" onclick="addDomCass(this)"
                                    ng-click="selectFw(item)">{{item}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
                             <dt>省份：</dt>
-                            <dd><a href='' class="select">不限</a>
+                            <dd><a href='' class="select" ng-click="removePrv()" onclick="addDomCass(this)">不限</a>
                                 <a href='' ng-repeat="item in prvList" onclick="addDomCass(this)"
                                    ng-click="selectPrv(item.id)">{{item.name}}</a>
                         </dl>
                         <dl class="area_dl show">
                             <dt>城市：</dt>
                             <dd>
-                                <a href='' class="select">不限</a>
+                                <a href='' class="select" ng-click="removeCity()" onclick="addDomCass(this)">不限</a>
                                 <a href='' ng-repeat="item in cityList" onclick="addDomCass(this)"
                                    ng-click="selectCity(item.id)">{{item.name}}</a>
                             </dd>
@@ -167,8 +167,9 @@
                         <dl class="area_dl show">
                             <dt>区域：</dt>
                             <dd>
-                                <a href='' class="select">不限</a>
-                                <a href='' ng-repeat="item in disList" onclick="addDomCass(this)">{{item.name}}</a>
+                                <a href='' class="select" ng-click="removeDis()" onclick="addDomCass(this)">不限</a>
+                                <a href='' ng-repeat="item in disList" onclick="addDomCass(this)"
+                                   ng-click="selectDis(item.id)">{{item.name}}</a>
                             </dd>
                         </dl>
                     </td>
