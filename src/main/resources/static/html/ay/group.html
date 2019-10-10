@@ -146,8 +146,8 @@
                             <dt>类别：</dt>
                             <dd>
                                 <a href='' class="select">不限</a>
-                                <a href=''>铝合金门窗加工</a>
-                                <a href="" ng-repeat="item in serviceItem" onclick="addDomCass(this)">{{item}}</a>
+                                <a href="" ng-repeat="item in serviceItem" onclick="addDomCass(this)"
+                                   ng-click="selectFw(item)">{{item}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">

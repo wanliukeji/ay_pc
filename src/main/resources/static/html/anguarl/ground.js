@@ -77,6 +77,10 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         getList();
     };
 
+    $scope.selectFw = function (val) {
+        $scope.ReqParam.fw = val;
+        getList();
+    }
 
 });
 

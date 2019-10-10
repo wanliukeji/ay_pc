@@ -29,7 +29,7 @@ public interface FiedMapper extends BaseMapper<Fied> {
 
     FiedVo getInfoVo(@Param("id") Integer id);
 
-    List<Fied> getPageVos(@Param("procode") Integer procode, @Param("citycode") Integer citycode,
+    List<FiedVo> getPageVos(@Param("procode") Integer procode, @Param("citycode") Integer citycode,
                           @Param("countycode") Integer countycode,@Param("type") String type,
                           @Param("fw") String fw);
 }

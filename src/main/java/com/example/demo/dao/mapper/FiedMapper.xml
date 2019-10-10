@@ -172,7 +172,7 @@
         </if>
 
         <if test="fw != null">
-            AND fied.fw = #{fw} like "%"#{fw}"%"
+            AND fied.service like "%"#{fw}"%"
         </if>
 
         AND

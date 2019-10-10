@@ -201,8 +201,8 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 
         try {
             PageHelper.startPage(param.getPageNo(), param.getPageSize());
-            List<Fied> fieds = baseMapper.getPageVos(param.getProcode(), param.getCitycode(), param.getCountycode(), param.getType(), param.getFw());
-            PageInfo<Fied> page = new PageInfo<>(fieds);
+            List<FiedVo> fieds = baseMapper.getPageVos(param.getProcode(), param.getCitycode(), param.getCountycode(), param.getType(), param.getFw());
+            PageInfo<FiedVo> page = new PageInfo<>(fieds);
             return ResultJSON.success(page);
         } catch (Exception ex) {
             ex.printStackTrace();
