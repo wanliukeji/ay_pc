@@ -35,7 +35,6 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
         } else {
             history.go(0);
         }
-        // setSessionObj()
     }
 
 });
