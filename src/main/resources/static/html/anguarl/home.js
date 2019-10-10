@@ -146,5 +146,22 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         return msg.data;
     }
 
+    $scope.login = function () {
+        var url = '/api/login';
+        var date = {
+            'account': $scope.account,
+            'password': $scope.password
+        };
+        var msg = ajax_http(url, method_post, date);
+
+        if (msg.code = 200) {
+            console.log(msg.message);
+            setUser(date);
+            // href('/home');
+        } else {
+            console.error(msg.message)
+        }
+    }
+
 });
 
