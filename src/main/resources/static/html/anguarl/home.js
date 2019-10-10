@@ -175,5 +175,18 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         // setSessionObj()
     }
 
+    $scope.goGroup = function (type) {
+        var url = "/api/fied/getVos?type=" + type;
+        var msg = ajax_http(url, method_get, null);
+        if (msg.code = 200) {
+            setSessionObj('groupList', msg.data);
+            setSessionObj('type', type);
+            href('/group');
+        } else {
+            history.go(0);
+        }
+        // setSessionObj()
+    }
+
 });
 
