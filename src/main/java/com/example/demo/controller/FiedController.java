@@ -2,9 +2,11 @@ package com.example.demo.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.api.FiedApi;
 import com.example.demo.api.RelApi;
 import com.example.demo.entity.Fied;
+import com.example.demo.entity.SysUser;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqFiedParam;
@@ -32,6 +34,9 @@ public class FiedController implements FiedApi {
 
     @Autowired
     private FiedService fiedService;
+
+    @Autowired
+    private RelService relService;
 
     public ResultJSON<?> getByPage(ReqParam param) throws Exception {
         return ResultJSON.success(fiedService.getByPage(param));
@@ -73,6 +78,16 @@ public class FiedController implements FiedApi {
     @Override
     public ResultJSON<?> getPageVos(ReqFiedParam param) throws Exception {
         return ResultJSON.success(fiedService.getPageVos(param));
+    }
+
+    @Override
+    public ApiJSON saveRel(Fied fied) throws Exception {
+        SysUser user = HttpServletRequestUtil.getSessionUser();
+        if (null != user) {
+            fied.setUserId(user.getId());
+        }
+        boolean flag = relService.save(fied);
+        return ApiJSON.data(flag);
     }
 
 }

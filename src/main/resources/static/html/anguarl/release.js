@@ -14,8 +14,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         $scope.cityList = getAddr(id);
     }
 
-    $scope.selectCity = function () {
-        $scope.disList = getAddr($scope.entity.citycode);
+    $scope.selectCity = function (id) {
+        $scope.disList = getAddr(id);
     }
 
     angular.element("#city").html(userAddr);
@@ -80,7 +80,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             if ($scope.show_num_next == 3) {
                 let def = $q.defer();
                 $http({
-                    url: '/api/saveRel',
+                    url: '/api/fied/save',
                     method: "POST",
                     data: $scope.entity,
                     headers: {"Content-Type": "application/json;charset=utf-8"}
@@ -164,6 +164,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     //获取一级区域
     function getAddr(pid) {
+        pid = Number.parseInt(pid);
         var url = '/api/addr/getInfos?pid=' + pid;
         var msg = ajax_http(url, method_get, null);
         return msg.data;

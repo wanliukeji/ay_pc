@@ -29,17 +29,6 @@ public class RelController implements RelApi {
     private RelService relService;
 
     @Override
-    public ApiJSON saveRel(Fied fied) throws Exception {
-        SysUser user = HttpServletRequestUtil.getSessionUser();
-        if (null != user) {
-            fied.setUserId(user.getId());
-        }
-       boolean flag = relService.save(fied);
-       int i = 0;
-       return ApiJSON.data(flag);
-    }
-
-    @Override
     public ApiJSON import_jg(MultipartFile file) throws Exception {
         return relService.uploadfile_txt(file);
     }

@@ -199,9 +199,9 @@
                                                         <div class="col-md-3">
                                                             <select data-plugin="customselect" id="procode"
                                                                     ng-model="entity.procode" required
-                                                                    ng-click="selectPrv()"
+                                                                    ng-click="selectPrv(entity.procode)"
                                                                     class="form-control d-inline-block float-left">
-                                                                <option ng-repeat="item in prvList" value="{{item.id}}">
+                                                                <option ng-repeat="item in prvList" value="{{item.id}}" >
                                                                     {{item.name}}
                                                                 </option>
                                                             </select>
@@ -209,7 +209,7 @@
                                                         <div class="col-md-3">
                                                             <select data-plugin="customselect" id="entity.citycode"
                                                                     ng-model="entity.citycode" required
-                                                                    ng-click="selectCity()"
+                                                                    ng-click="selectCity(entity.citycode)"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option ng-repeat="item in cityList"
                                                                         value="{{item.id}}">{{item.name}}

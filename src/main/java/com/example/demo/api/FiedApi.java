@@ -30,6 +30,11 @@ import java.util.List;
 @Api(value = "加工信息模块", description = "加工信息模块")
 public interface FiedApi {
 
+    @PostMapping(value = "/api/fied/save", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "信息发布保存数据接口", notes = "信息发布保存数据接口")
+    @Transactional
+    public ApiJSON saveRel(@RequestBody Fied entity) throws Exception;
+
     @GetMapping(value = "/api/jg/getPage", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "加工信息数据接口", notes = "加工信息数据接口")
     @Transactional
