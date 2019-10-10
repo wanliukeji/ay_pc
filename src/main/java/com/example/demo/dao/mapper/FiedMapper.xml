@@ -5,33 +5,29 @@
     <select id="getByPage" resultType="com.example.demo.entity.Fied">
 
         SELECT
-        t.Id,
-        t.head_line,
-        t.sercode,
-        t.coverage,
-        t.user_qq,
-        t.user_wx,
-        t.phone,
-        t.link,
-        t.createDate,
-        t.company_name,
-        t.procode,
-        t.citycode,
-        t.countycode,
-        t.video_url,
-        t.gg_src,
-        t.z_a_img,
-        t.z_b_img,
-        t.z_c_img,
-        t.a_a_img,
-        t.a_b_img,
-        t.a_c_img,
-        t.details,
-        t.address,
-        t.`status`,
-        t.del
+            t.Id,
+            t.head_line,
+            t.sercode,
+            t.coverage,
+            t.user_qq,
+            t.user_wx,
+            t.phone,
+            t.link,
+            t.createDate,
+            t.company_name,
+            t.procode,
+            t.citycode,
+            t.countycode,
+            t.video_url,
+            t.details,
+            t.address,
+            t.`status`,
+            t.del,
+            t.type,
+            t.fw,
+            t.service
         FROM
-        fied t
+            fied t
         where 1=1
         <!--<if test="context != null">-->
         <!--and t.head_line like "%"#{context}"%",-->
@@ -45,6 +41,7 @@
         LIMIT #{currentPage},#{pageSize}
 
     </select>
+
     <select id="getVoList" resultType="com.example.demo.vo.FiedVo">
         SELECT
             fied.Id,
