@@ -120,39 +120,28 @@
                         <dl id="cate" class="cate_dl">
                             <dt>类别：</dt>
                             <dd>
-                                <a href='/zhejiang/waiyupeixun/'>不限</a>
-                                <a href='/zhejiang/yingyupeixun/' class="select">铝合金门窗加工</a>
-                                <a href='/zhejiang/riyupeixun/'>塑钢门窗加工</a>
-                                <a href='/zhejiang/hanyupeixun/'>断桥铝门窗加工</a>
-                                <a href='/zhejiang/fayupeixun/'>铝木门窗加工</a>
-                                <a href='/zhejiang/kouyupeixun/'>不锈钢加工</a>
+                                <a href=''>不限</a>
+                                <a href='' class="select">铝合金门窗加工</a>
+                                <a href="" ng-repeat="item in serviceItem">{{item}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
+                            <dt>省份：</dt>
+                            <dd><a href='' class="select">不限</a>
+                                <a href='' ng-repeat="item in prvList" ng-click="selectPrv(item.id)">{{item.name}}</a>
+                        </dl>
+                        <dl class="area_dl show">
                             <dt>城市：</dt>
-                            <dd><a href='http://www.qu114.com/zhejiang/yingyupeixun/' class="select">不限</a><a
-                                    href='http://hz.qu114.com/yingyupeixun/' title='杭州英语培训'>杭州</a><a
-                                    href='http://jx.qu114.com/yingyupeixun/' title='嘉兴英语培训'>嘉兴</a><a
-                                    href='http://nb.qu114.com/yingyupeixun/' title='宁波英语培训'>宁波</a><a
-                                    href='http://wz.qu114.com/yingyupeixun/' title='温州英语培训'>温州</a><a
-                                    href='http://huzhou.qu114.com/yingyupeixun/' title='湖州英语培训'>湖州</a><a
-                                    href='http://sx.qu114.com/yingyupeixun/' title='绍兴英语培训'>绍兴</a><a
-                                    href='http://jh.qu114.com/yingyupeixun/' title='金华英语培训'>金华</a><a
-                                    href='http://taizhou.qu114.com/yingyupeixun/' title='台州英语培训'>台州</a><a
-                                    href='http://zhoushan.qu114.com/yingyupeixun/' title='舟山英语培训'>舟山</a></dd>
+                            <dd>
+                                <a href='' class="select">不限</a>
+                                <a href='' ng-repeat="item in cityList" ng-click="selectCity(item.id)">{{item.name}}</a>
+                            </dd>
                         </dl>
                         <dl class="area_dl show">
                             <dt>区域：</dt>
-                            <dd><a href='http://www.qu114.com/zhejiang/yingyupeixun/' class="select">不限</a><a
-                                    href='http://hz.qu114.com/yingyupeixun/' title='杭州英语培训'>北仑区</a><a
-                                    href='http://jx.qu114.com/yingyupeixun/' title='嘉兴英语培训'>镇海区</a><a
-                                    href='http://nb.qu114.com/yingyupeixun/' title='宁波英语培训'>江东区</a><a
-                                    href='http://wz.qu114.com/yingyupeixun/' title='温州英语培训'>海曙区</a><a
-                                    href='http://huzhou.qu114.com/yingyupeixun/' title='湖州英语培训'>高新区</a><a
-                                    href='http://sx.qu114.com/yingyupeixun/' title='绍兴英语培训'>鄞州区</a><a
-                                    href='http://jh.qu114.com/yingyupeixun/' title='金华英语培训'>慈溪市</a><a
-                                    href='http://taizhou.qu114.com/yingyupeixun/' title='台州英语培训'>慈城</a><a
-                                    href='http://zhoushan.qu114.com/yingyupeixun/' title='舟山英语培训'>象山</a>
+                            <dd>
+                                <a href='' class="select">不限</a>
+                                <a href='' ng-repeat="item in disList">{{item.name}}</a>
                             </dd>
                         </dl>
                     </td>
