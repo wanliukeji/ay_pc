@@ -120,28 +120,28 @@
                         <dl id="cate" class="cate_dl">
                             <dt>类别：</dt>
                             <dd>
-                                <a href=''>不限</a>
-                                <a href='' class="select">铝合金门窗加工</a>
-                                <a href="" ng-repeat="item in serviceItem">{{item}}</a>
+                                <a href='' class="select">不限</a>
+                                <a href='' >铝合金门窗加工</a>
+                                <a href="" ng-repeat="item in serviceItem" onclick="addDomCass(this)">{{item}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
                             <dt>省份：</dt>
                             <dd><a href='' class="select">不限</a>
-                                <a href='' ng-repeat="item in prvList" ng-click="selectPrv(item.id)">{{item.name}}</a>
+                                <a href='' ng-repeat="item in prvList" onclick="addDomCass(this)" ng-click="selectPrv(item.id)">{{item.name}}</a>
                         </dl>
                         <dl class="area_dl show">
                             <dt>城市：</dt>
                             <dd>
                                 <a href='' class="select">不限</a>
-                                <a href='' ng-repeat="item in cityList" ng-click="selectCity(item.id)">{{item.name}}</a>
+                                <a href='' ng-repeat="item in cityList" onclick="addDomCass(this)" ng-click="selectCity(item.id)">{{item.name}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
                             <dt>区域：</dt>
                             <dd>
                                 <a href='' class="select">不限</a>
-                                <a href='' ng-repeat="item in disList">{{item.name}}</a>
+                                <a href='' ng-repeat="item in disList" onclick="addDomCass(this)">{{item.name}}</a>
                             </dd>
                         </dl>
                     </td>
@@ -341,6 +341,12 @@
     }, function () {
         $('#href').css('display', 'none');
     });
+
+    function addDomCass(obj) {
+        $(obj).addClass('select');
+        var $element = $(obj).siblings();//获取元素，为数组
+        $element.removeClass('select');
+    }
 </script>
 </body>
 </html>
