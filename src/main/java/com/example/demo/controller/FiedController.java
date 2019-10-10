@@ -7,6 +7,7 @@ import com.example.demo.api.RelApi;
 import com.example.demo.entity.Fied;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.req.ReqFiedParam;
 import com.example.demo.req.ReqParam;
 import com.example.demo.service.FiedService;
 import com.example.demo.service.RelService;
@@ -67,6 +68,11 @@ public class FiedController implements FiedApi {
     @Override
     public ResultJSON<?> getVos(String type) throws Exception {
         return fiedService.getVos(type);
+    }
+
+    @Override
+    public ResultJSON<?> getPageVos(ReqFiedParam param) throws Exception {
+        return ResultJSON.success(fiedService.getPageVos(param));
     }
 
 }

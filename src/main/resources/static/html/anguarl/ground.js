@@ -1,7 +1,23 @@
 var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope, $http, $q) {
-
+    var url = '/api/fied/getPageVos';
     $scope.groupList = [];
     $scope.serviceItem = [];
+
+    $scope.totalPage = 0;
+    $scope.total = 0;
+    $scope.pageNum = 1;
+
+    $scope.currentPage = 0;
+
+    $scope.ReqParam = {
+        pageNo: 0,
+        pageSize: 6,
+        procode: null,
+        citycode: null,
+        countycode: null,
+        type: $scope.type,
+        fw: null
+    };
 
     $scope.init = function () {
         $scope.groupList = getSessionObj('groupList');
@@ -42,6 +58,25 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
     $scope.selectCity = function () {
         $scope.disList = getAddr($scope.citycode);
     }
+
+    function getList() {
+        var msg = ajax_http(url, method_post, $scope.ReqParam)
+        $scope.groupList = msg.data.data.list;
+        $scope.totalPage = msg.data.data.pages;
+        $scope.total = msg.data.data.total;
+        $scope.pageNum = msg.data.data.pageNum;
+    }
+
+    $scope.prev = function () {
+        $scope.ReqParam.pageNo = $scope.pageNum - 1;
+        getList();
+    };
+
+    $scope.next = function () {
+        $scope.ReqParam.pageNo = $scope.pageNum + 1;
+        getList();
+    };
+
 
 });
 

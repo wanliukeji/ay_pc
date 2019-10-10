@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.demo.entity.Fied;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.req.ReqFiedParam;
 import com.example.demo.req.ReqParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -71,4 +72,10 @@ public interface FiedApi {
             @ApiImplicitParam(name = "ID", value = "ids")
     })
     public ResultJSON<?> getVos(@RequestParam(name = "type") String type) throws Exception;
+
+
+    @PostMapping(value = "/api/fied/getPageVos")
+    @ApiOperation(value = "分组筛选数据接口", notes = "分组筛选数据接口")
+    @Transactional
+    public ResultJSON<?> getPageVos(@RequestBody ReqFiedParam param) throws Exception;
 }

@@ -10,6 +10,7 @@ import com.example.demo.dao.FiedMapper;
 import com.example.demo.entity.Fied;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.req.ReqFiedParam;
 import com.example.demo.req.ReqParam;
 import com.example.demo.vo.FiedVo;
 import com.github.pagehelper.PageHelper;
@@ -188,5 +189,27 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
 //            ex.printStackTrace();
 //            return ResultJSON.error(CodeMsg.SESSION_ERROR);
 //        }
+
+    /**
+     * 获取页面数据
+     * 查询数据
+     *
+     * @param param
+     * @return
+     */
+    public ResultJSON<?> getPageVos(ReqFiedParam param) {
+
+        try {
+            PageHelper.startPage(param.getPageNo(), param.getPageSize());
+            List<Fied> fieds = baseMapper.getPageVos(param.getProcode(), param.getCitycode(), param.getCountycode(), param.getType(), param.getFw());
+            PageInfo<Fied> page = new PageInfo<>(fieds);
+            return ResultJSON.success(page);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        }
+    }
+
+    ;
 
 }

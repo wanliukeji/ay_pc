@@ -11,6 +11,22 @@
     <link href="/static/css/Jquery-ui.css" rel="stylesheet"/>
     <link href="/static/css/ListBaicons.css" rel="stylesheet"/>
     <link href="/static/css/ListIndex.css" rel="stylesheet"/>
+    <style type="text/css">
+        .page-btn {
+            border: none;
+            background: #48c964;
+            color: white;
+            padding: 8px;
+            width: 80px;
+        }
+        .page-df {
+            border: none;
+            color: black;
+            padding: 8px;
+            min-width: 80px;
+            background: none;
+        }
+    </style>
 </head>
 
 <body class="category-xiaoshou category-gongzuo view-table" ng-app="myGroup" ng-controller="groupCtrl" ng-init="init()">
@@ -130,20 +146,22 @@
                             <dt>类别：</dt>
                             <dd>
                                 <a href='' class="select">不限</a>
-                                <a href='' >铝合金门窗加工</a>
+                                <a href=''>铝合金门窗加工</a>
                                 <a href="" ng-repeat="item in serviceItem" onclick="addDomCass(this)">{{item}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
                             <dt>省份：</dt>
                             <dd><a href='' class="select">不限</a>
-                                <a href='' ng-repeat="item in prvList" onclick="addDomCass(this)" ng-click="selectPrv(item.id)">{{item.name}}</a>
+                                <a href='' ng-repeat="item in prvList" onclick="addDomCass(this)"
+                                   ng-click="selectPrv(item.id)">{{item.name}}</a>
                         </dl>
                         <dl class="area_dl show">
                             <dt>城市：</dt>
                             <dd>
                                 <a href='' class="select">不限</a>
-                                <a href='' ng-repeat="item in cityList" onclick="addDomCass(this)" ng-click="selectCity(item.id)">{{item.name}}</a>
+                                <a href='' ng-repeat="item in cityList" onclick="addDomCass(this)"
+                                   ng-click="selectCity(item.id)">{{item.name}}</a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
@@ -253,6 +271,13 @@
                         <a style="float: right;">{{item.createDate}}</a>
                     </div>
                 </div>
+            </li>
+            <li>
+                <button class="page-btn" ng-click="prev()">上一页</button>
+                &nbsp;
+                <button class="page-df">第{{pageNum}}页</button>
+                &nbsp;
+                <button class="page-btn" ng-click="next()">下一页</button>
             </li>
         </ul>
     </div>

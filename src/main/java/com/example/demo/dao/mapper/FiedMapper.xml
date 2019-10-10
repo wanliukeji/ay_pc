@@ -126,6 +126,60 @@
             fied.userId
 
     </select>
+    <select id="getPageVos" resultType="com.example.demo.vo.FiedVo">
+        SELECT
+        fied.Id,
+        fied.head_line,
+        fied.user_qq,
+        fied.user_wx,
+        fied.phone,
+        fied.link,
+        fied.createDate,
+        fied.company_name,
+        fied.procode,
+        fied.citycode,
+        fied.countycode,
+        fied.details,
+        fied.address,
+        fied.type,
+        fied.fw,
+        fied.service,
+        fied.userId,
+        SUBSTRING(file.path,33) as path,
+        file.type as f_type
+        FROM
+        fied
+        INNER JOIN
+        file
+        ON
+        fied.userId = file.userId
+        WHERE
+        1 = 1
+        <if test="procode != null">
+            AND fied.procode = #{procode}
+        </if>
+
+        <if test="citycode != null">
+            AND fied.citycode = #{citycode}
+        </if>
+
+        <if test="countycode != null">
+            AND fied.countycode = #{countycode}
+        </if>
+
+        <if test="type != null">
+            AND fied.type = #{type}
+        </if>
+
+        <if test="fw != null">
+            AND fied.fw = #{fw} like "%"#{fw}"%"
+        </if>
+
+        AND
+        file.type = 'G'
+        GROUP BY
+        fied.userId
+    </select>
 
 
 </mapper>

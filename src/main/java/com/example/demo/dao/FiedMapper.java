@@ -3,6 +3,7 @@ package com.example.demo.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.Fied;
 import com.example.demo.vo.FiedVo;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,7 @@ public interface FiedMapper extends BaseMapper<Fied> {
 
     FiedVo getInfoVo(@Param("id") Integer id);
 
+    List<Fied> getPageVos(@Param("procode") Integer procode, @Param("citycode") Integer citycode,
+                          @Param("countycode") Integer countycode,@Param("type") String type,
+                          @Param("fw") String fw);
 }

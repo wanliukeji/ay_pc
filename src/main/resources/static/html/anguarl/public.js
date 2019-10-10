@@ -78,10 +78,10 @@ function ajax_http(url, method, data) {
     $.ajax({
         url: url,
         method: method,
-        data: data,
+        data: JSON.stringify(data),
         async: false,
         dataType: 'JSON',
-        // headers: {"Content-Type": "application/json;charset=utf-8"},
+        headers: {"Content-Type": "application/json;charset=utf-8"},
         success: function (res) {
             msg = res;
         },
