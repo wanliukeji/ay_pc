@@ -46,17 +46,18 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
 
     //获取一级区域
     function getAddr(pid) {
-        var url = '/api/addr/getInfos?pid=' + pid;
+        var id = Number.parseInt(pid);
+        var url = '/api/addr/getInfos?pid=' + id;
         var msg = ajax_http(url, method_get, null);
         return msg.data;
     }
 
-    $scope.selectPrv = function () {
-        $scope.cityList = getAddr($scope.procode);
+    $scope.selectPrv = function (id) {
+        $scope.cityList = getAddr(id);
     }
 
-    $scope.selectCity = function () {
-        $scope.disList = getAddr($scope.citycode);
+    $scope.selectCity = function (id) {
+        $scope.disList = getAddr(id);
     }
 
     function getList() {

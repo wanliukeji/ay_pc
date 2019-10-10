@@ -41,5 +41,6 @@ public class AddrController implements AddrApi {
     public ResultJSON<?> getInfos(String name) throws Exception {
         return service.getInfos(name);
     }
+
 }
 

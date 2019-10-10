@@ -10,8 +10,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     $scope.prvList = getAddr(1);
 
-    $scope.selectPrv = function () {
-        $scope.cityList = getAddr($scope.entity.procode);
+    $scope.selectPrv = function (id) {
+        $scope.cityList = getAddr(id);
     }
 
     $scope.selectCity = function () {
