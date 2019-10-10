@@ -10,6 +10,10 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         $scope.prvList = getAddr(1);
         $scope.cityList = getAddr(31);
         $scope.disList = getAddr(388);
+        $scope.user = getUser();
+
+        var userAddr = getCity();
+        angular.element("#city").html(userAddr);
     }
 
     $scope.goInfo = function (id) {

@@ -5,6 +5,9 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
     $scope.hoppyItem = [];
     $scope.init = function () {
         $scope.entity = getSessionObj('entity');
+        $scope.user = getUser();
+        var userAddr = getCity();
+        angular.element("#city").html(userAddr);
         if ($scope.entity == null) {
             href('/login');
         } else {
