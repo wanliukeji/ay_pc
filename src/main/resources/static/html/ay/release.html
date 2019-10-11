@@ -17,7 +17,6 @@
     <link href="/static/ui/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
-
 </head>
 <body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;" ng-init="init()">
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
@@ -46,7 +45,6 @@
 <div class="content-page" style="margin: 0 auto; text-align: center; padding-right: 10%;
         padding-left: 10%; min-width: 1200px;">
     <div class="content">
-
         <!-- Start Content-->
         <div class="container-fluid">
 
@@ -56,7 +54,7 @@
                         <div class="card-body">
                             <h4 class="header-title font-22">填写信息
                                 &nbsp;
-                            <span style="color: #999999;font-size: 12px;text-align: right;">(*为必填项)</span></h4>
+                                <span style="color: #999999;font-size: 12px;text-align: right;">(*为必填项)</span></h4>
                             <br>
                             <div>
                                 <div id="progressbarwizard">
@@ -101,7 +99,8 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类别<i style="color: red;">*</i></label>
+                                                        <label class="col-md-3 col-form-label"> 服务类别<i
+                                                                style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect" id="entity.type"
                                                                     ng-model="entity.type" required
@@ -115,7 +114,8 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类型<i style="color: red;">*</i></label>
+                                                        <label class="col-md-3 col-form-label"> 服务类型<i
+                                                                style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
                                                                  ng-repeat="(index,item) in serviceItem">
@@ -128,7 +128,8 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务区域<i style="color: red;">*</i></label>
+                                                        <label class="col-md-3 col-form-label"> 服务区域<i
+                                                                style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
                                                                  ng-repeat="(index,item) in ares">
@@ -196,7 +197,8 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="company_name">公司名称<i style="color: red;">*</i></label>
+                                                               for="company_name">公司名称<i
+                                                                style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="company_name"
                                                                    name="company_name" ng-model="entity.company_name"
@@ -214,7 +216,7 @@
                                                                     ng-click="selectPrv(entity.procode)"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择</option>
-                                                                <option ng-repeat="item in prvList" value="{{item.id}}" >
+                                                                <option ng-repeat="item in prvList" value="{{item.id}}">
                                                                     {{item.name}}
                                                                 </option>
                                                             </select>
@@ -352,12 +354,13 @@
             </div>
         </div>
     </div> <!-- content -->
-    <div class="container">
-        <div id="footer">Copyright ©
-            <script type="text/javascript">document.write(new Date().getFullYear());</script>
-            qu114.com All Rights Reserved.&nbsp;安义门窗信息网
-        </div>
-    </div>
+</div>
+<p style="height: 10px; width: 100%; background-color: #48c964;"></p>
+<div style=" position: absolute;bottom: 0px; min-width: 100%;
+    background-color: white; padding: 15px;
+    text-align: center;">Copyright ©
+    <script type="text/javascript">document.write(new Date().getFullYear());</script>
+    qu114.com All Rights Reserved.&nbsp;安义门窗信息网
 </div>
 <button data-target="#showModelMsg" id="showModel" data-toggle="modal" hidden/>
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="showModelMsg">
@@ -365,12 +368,16 @@
         <div class="modal-content" style=" padding-bottom: 30px; align-self: center;
             text-align: center;">
             <!--<div class="modal-body" style="height: 98px;">-->
-                <div style="font-size: 24px; color: #48c964; margin-top: 25px;">
-                    <svg t="1570755175053" class="icon" viewBox="0 0 1229 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1869" width="26" height="26"><path d="M512.283136 1023.998976a102.399693 102.399693 0 0 1-72.703782-29.695911l-409.598771-409.598771a102.399693 102.399693 0 0 1 145.407564-145.407564l325.631023 326.65502L1044.761539 40.961925a102.399693 102.399693 0 1 1 163.839508 122.879631l-614.398157 819.197543a102.399693 102.399693 0 0 1-74.751775 40.959877z" fill="#48c964" p-id="1870"></path></svg>
-                    &nbsp;操作成功
-                    &nbsp;
-                    <span style="font-size: 16px;">正在跳转.........</span>
-                </div>
+            <div style="font-size: 24px; color: #48c964; margin-top: 25px;">
+                <svg t="1570755175053" class="icon" viewBox="0 0 1229 1024" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" p-id="1869" width="26" height="26">
+                    <path d="M512.283136 1023.998976a102.399693 102.399693 0 0 1-72.703782-29.695911l-409.598771-409.598771a102.399693 102.399693 0 0 1 145.407564-145.407564l325.631023 326.65502L1044.761539 40.961925a102.399693 102.399693 0 1 1 163.839508 122.879631l-614.398157 819.197543a102.399693 102.399693 0 0 1-74.751775 40.959877z"
+                          fill="#48c964" p-id="1870"></path>
+                </svg>
+                &nbsp;操作成功
+                &nbsp;
+                <span style="font-size: 16px;">正在跳转.........</span>
+            </div>
             <!--</div>-->
         </div>
     </div>
