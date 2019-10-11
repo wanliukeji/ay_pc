@@ -4,7 +4,7 @@ var method_get = 'GET';
 
 //正则区
 var reg_email = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
-var reg_phone = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //正则表达式
+var reg_phone = /^[1][3,4,5,7,8][0-9]{9}$/; //正则表达式
 
 //用户区
 function getUser() {
@@ -237,8 +237,8 @@ function msg_error(msg) {
     // 假设ajax提交操作
     setTimeout(function () {
         lightyear.loading('hide');
-        lightyear.notify(msg, 'danger', 2000);
-    }, 2000)
+        lightyear.notify(msg, 'danger', 1000);
+    }, 1000)
 };
 
 function getServiceItem(val) {
@@ -289,4 +289,41 @@ function setTopID() {
 function getAddrId(name) {
     var city = setAddName().get(name);
     return city;
+}
+
+function reg_test(reg, text) {
+    if (reg.test(text)) {
+        return true;
+    }
+    return false;
+}
+
+/**
+ * 返回
+ */
+function backUrl() {
+    history.go(-1);
+}
+
+/**
+ * 刷新页面
+ */
+function flush() {
+    history.go(0);
+}
+
+/**
+ * 隐藏
+ * @param e
+ */
+function hidde(e) {
+    $(e).css({' display':'none'});
+}
+
+/**
+ * 隐藏
+ * @param e
+ */
+function show(e) {
+    $(e).css({' display':'block'});
 }

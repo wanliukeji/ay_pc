@@ -54,7 +54,9 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title font-22">填写信息</h4>
+                            <h4 class="header-title font-22">填写信息
+                                &nbsp;
+                            <span style="color: #999999;font-size: 12px;text-align: right;">(*为必填项)</span></h4>
                             <br>
                             <div>
                                 <div id="progressbarwizard">
@@ -90,7 +92,7 @@
                                                 <div class="col-12">
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="headline">标题：</label>
+                                                               for="headline">标题<i style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="headline"
                                                                    name="headline" ng-model="entity.head_line" value=""
@@ -99,12 +101,13 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类别：</label>
+                                                        <label class="col-md-3 col-form-label"> 服务类别<i style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect" id="entity.type"
                                                                     ng-model="entity.type" required
                                                                     class="form-control">
-                                                                <option ng-repeat="item in typeItem" selected
+                                                                <option value="">请选择</option>
+                                                                <option ng-repeat="item in typeItem"
                                                                         value="{{item}}">{{item}}
                                                                 </option>
                                                             </select>
@@ -112,7 +115,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类型：</label>
+                                                        <label class="col-md-3 col-form-label"> 服务类型<i style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
                                                                  ng-repeat="(index,item) in serviceItem">
@@ -125,7 +128,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务区域：</label>
+                                                        <label class="col-md-3 col-form-label"> 服务区域<i style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
                                                                  ng-repeat="(index,item) in ares">
@@ -157,7 +160,16 @@
                                                     </div>
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="phone">手机：</label>
+                                                               for="phone">电话</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control" id="sercode"
+                                                                   name="phone" ng-model="entity.sercode" value=""
+                                                                   placeholder="请输入您的电话号码" required></input>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="phone">手机<i style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="phone"
                                                                    name="phone" ng-model="entity.phone" value=""
@@ -166,7 +178,7 @@
                                                     </div>
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="link">联系人：</label>
+                                                               for="link">联系人<i style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="link"
                                                                    name="link" ng-model="entity.link" value=""
@@ -184,7 +196,7 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="company_name">公司名称：</label>
+                                                               for="company_name">公司名称<i style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="company_name"
                                                                    name="company_name" ng-model="entity.company_name"
@@ -195,12 +207,13 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">
-                                                            公司地址</label>
+                                                            公司地址<i style="color: red;">*</i></label>
                                                         <div class="col-md-3">
                                                             <select data-plugin="customselect" id="procode"
                                                                     ng-model="entity.procode" required
                                                                     ng-click="selectPrv(entity.procode)"
                                                                     class="form-control d-inline-block float-left">
+                                                                <option value="">请选择</option>
                                                                 <option ng-repeat="item in prvList" value="{{item.id}}" >
                                                                     {{item.name}}
                                                                 </option>
@@ -211,6 +224,7 @@
                                                                     ng-model="entity.citycode" required
                                                                     ng-click="selectCity(entity.citycode)"
                                                                     class="form-control d-inline-block float-left">
+                                                                <option value="">请选择</option>
                                                                 <option ng-repeat="item in cityList"
                                                                         value="{{item.id}}">{{item.name}}
                                                                 </option>
@@ -220,6 +234,7 @@
                                                             <select data-plugin="customselect" id="countycode"
                                                                     ng-model="entity.countycode" required
                                                                     class="form-control d-inline-block float-left">
+                                                                <option value="">请选择</option>
                                                                 <option ng-repeat="item in disList" value="{{item.id}}">
                                                                     {{item.name}}
                                                                 </option>
@@ -230,7 +245,7 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="address">详细地址</label>
+                                                               for="address">详细地址<i style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" id="address" name="address"
                                                                    ng-model="entity.address" required
@@ -323,7 +338,7 @@
                                                    style="background: #48c964;">{{info.prv}}</a>
                                             </li>
                                             <li class="next list-inline-item float-right">
-                                                <a ng-click="next()"
+                                                <a ng-click="next()" id="next-btn"
                                                    class="btn btn-secondary border-0 text-white"
                                                    style="background: #48c964;">{{info.next}}</a>
                                             </li>
@@ -341,6 +356,22 @@
         <div id="footer">Copyright ©
             <script type="text/javascript">document.write(new Date().getFullYear());</script>
             qu114.com All Rights Reserved.&nbsp;安义门窗信息网
+        </div>
+    </div>
+</div>
+<button data-target="#showModelMsg" id="showModel" data-toggle="modal" hidden/>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="showModelMsg">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style=" padding-bottom: 30px; align-self: center;
+            text-align: center;">
+            <!--<div class="modal-body" style="height: 98px;">-->
+                <div style="font-size: 24px; color: #48c964; margin-top: 25px;">
+                    <svg t="1570755175053" class="icon" viewBox="0 0 1229 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1869" width="26" height="26"><path d="M512.283136 1023.998976a102.399693 102.399693 0 0 1-72.703782-29.695911l-409.598771-409.598771a102.399693 102.399693 0 0 1 145.407564-145.407564l325.631023 326.65502L1044.761539 40.961925a102.399693 102.399693 0 1 1 163.839508 122.879631l-614.398157 819.197543a102.399693 102.399693 0 0 1-74.751775 40.959877z" fill="#48c964" p-id="1870"></path></svg>
+                    &nbsp;操作成功
+                    &nbsp;
+                    <span style="font-size: 16px;">正在跳转.........</span>
+                </div>
+            <!--</div>-->
         </div>
     </div>
 </div>

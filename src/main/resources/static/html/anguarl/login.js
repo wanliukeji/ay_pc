@@ -8,7 +8,7 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
         };
         var msg = ajax_http_post(url, date);
         if (msg.code == 200) {
-            msg_success("登录成功,正在进入系统")
+            msg_success("登录成功,正在进入...")
             setUser(date);
 
             setTimeout(function () {
