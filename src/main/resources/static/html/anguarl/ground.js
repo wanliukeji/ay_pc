@@ -29,7 +29,7 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         $scope.user = getUser();
 
         var userAddr = getCity();
-        angular.element("#city").html(userAddr);
+        angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
     }
 
     $scope.goInfo = function (id) {
@@ -118,6 +118,11 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         } else {
             href('/release');
         }
+    };
+
+    $scope.outlogin = function () {
+        removeUser("user");
+        href('/login');
     };
 });
 

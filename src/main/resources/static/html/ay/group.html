@@ -35,41 +35,7 @@
     <div class="tool-bar-ctn">
         <div class="toolbar">
             <div class="toolbar-link">
-                <a>当前城市</a>
                 <a class="hot-link" id="city"></a>
-                <div class="dropdown wechat">
-                    <a rel="dialog" href="#promote-weixin-modal" data-toggle="modal">微信版</a>
-                    <div class="dropdown-block">
-                        <div class='one-block'>
-                            <p class='dropdown-title'>去114网公众号</p>
-                            <p class='dropdown-describe'>微信扫码关注</p>
-                            <div class='dropdown-img'>
-                                <!--<img src="http://pic.qu114.com/www/20180316/images/erweima.jpg" width="110"-->
-                                <!--height="110"/>-->
-                            </div>
-                        </div>
-                        <div class='one-block'>
-                            <p class='dropdown-title'>手机版</p>
-                            <p class='dropdown-describe'>微信扫扫立即体验</p>
-                            <div class='dropdown-img'>
-                                <!--<img src="http://pic.qu114.com/www/20180316/images/h5_go.png" width="110" height="110"/>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="dropdown mobile">
-                    <a href="javascript:;">手机APP</a>
-                    <div class="dropdown-block">
-                        <div class='one-block'>
-                            <p class='dropdown-title'>去114网手机APP</p>
-                            <p class='dropdown-describe'>扫码下载IOS客户端</p>
-                            <div class='dropdown-img'>
-                                <!--<img src="http://pic.qu114.com/www/20180316/images/app_go.png" width="110"-->
-                                <!--height="110"/>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <ul id="user-tools" class="navbar-nav">
                 <li ng-show="user == null">
@@ -80,8 +46,7 @@
                 </li>
 
                 <li class="dropdown" ng-show="user != null">
-                    <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i>
-                    </a>
+                    <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a target='_blank' rel="nofollow">个人账户</a></li>
                         <li><a target='_blank' rel="nofollow">设置</a></li>
@@ -92,16 +57,23 @@
                 </li>
                 <li style="display: none" class="js-separator"></li>
                 <li class="dropdown">
-                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i>
-                    </a>
+                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href='http://about.qu114.com/extension/' target='_blank' rel="nofollow">推广服务</a></li>
-                        <li><a href='http://about.qu114.com/account/7.html' target='_blank' rel="nofollow">微信绑定</a></li>
-                        <li><a href='http://about.qu114.com/authentication/' target='_blank' rel="nofollow">认证资料</a>
+                        <li><a target='_blank' rel="nofollow">推广服务</a></li>
+                        <li><a target='_blank' rel="nofollow">网站建设</a></li>
+                        <li><a target='_blank' rel="nofollow">软件开发</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="http://about.qu114.com" target="_blank">帮助中心</a></li>
+                <li class="dropdown">
+                    <a href="javascript:;" target="_blank">帮助中心<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow">密码找回</a></li>
+                        <li><a target='_blank' rel="nofollow">发新信息</a></li>
+                        <li><a target='_blank' rel="nofollow">网站协议</a>
+                        <li><a target='_blank' rel="nofollow">反馈</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -109,7 +81,7 @@
         <div class="top-banner full-banner"></div>
         <div class="location" style="height: 115px;">
             <span class="breadcrumb">
-                <a href="/home" class="primary-logo">
+                <a href="#" class="primary-logo">
 
                     <img src="/static/image/anny_logo.png" alt="安义分类信息网"
                          width="300" height="200" style="margin-top:-72px;"/>

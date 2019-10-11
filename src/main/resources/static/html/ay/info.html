@@ -17,44 +17,10 @@
 <body class="viewad-baomu viewad-fuwu viewad-new">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
 <header>
-    <div class="tool-bar-ctn">
+    <div class="tool-bar-ctn" style="background-color: white;">
         <div class="toolbar">
             <div class="toolbar-link">
-                <a>当前城市</a>
                 <a class="hot-link" id="city"></a>
-                <div class="dropdown wechat">
-                    <a rel="dialog" href="#promote-weixin-modal" data-toggle="modal">微信版</a>
-                    <div class="dropdown-block">
-                        <div class='one-block'>
-                            <p class='dropdown-title'>去114网公众号</p>
-                            <p class='dropdown-describe'>微信扫码关注</p>
-                            <div class='dropdown-img'>
-                                <!--<img src="http://pic.qu114.com/www/20180316/images/erweima.jpg" width="110"-->
-                                <!--height="110"/>-->
-                            </div>
-                        </div>
-                        <div class='one-block'>
-                            <p class='dropdown-title'>手机版</p>
-                            <p class='dropdown-describe'>微信扫扫立即体验</p>
-                            <div class='dropdown-img'>
-                                <!--<img src="http://pic.qu114.com/www/20180316/images/h5_go.png" width="110" height="110"/>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="dropdown mobile">
-                    <a href="javascript:;">手机APP</a>
-                    <div class="dropdown-block">
-                        <div class='one-block'>
-                            <p class='dropdown-title'>去114网手机APP</p>
-                            <p class='dropdown-describe'>扫码下载IOS客户端</p>
-                            <div class='dropdown-img'>
-                                <!--<img src="http://pic.qu114.com/www/20180316/images/app_go.png" width="110"-->
-                                <!--height="110"/>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <ul id="user-tools" class="navbar-nav">
                 <li ng-show="user == null">
@@ -65,8 +31,7 @@
                 </li>
 
                 <li class="dropdown" ng-show="user != null">
-                    <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i>
-                    </a>
+                    <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a target='_blank' rel="nofollow">个人账户</a></li>
                         <li><a target='_blank' rel="nofollow">设置</a></li>
@@ -77,42 +42,24 @@
                 </li>
                 <li style="display: none" class="js-separator"></li>
                 <li class="dropdown">
-                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i>
-                    </a>
+                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href='http://about.qu114.com/extension/' target='_blank' rel="nofollow">推广服务</a></li>
-                        <li><a href='http://about.qu114.com/account/7.html' target='_blank' rel="nofollow">微信绑定</a></li>
-                        <li><a href='http://about.qu114.com/authentication/' target='_blank' rel="nofollow">认证资料</a>
+                        <li><a target='_blank' rel="nofollow">推广服务</a></li>
+                        <li><a target='_blank' rel="nofollow">网站建设</a></li>
+                        <li><a target='_blank' rel="nofollow">软件开发</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="http://about.qu114.com" target="_blank">帮助中心</a></li>
+                <li class="dropdown">
+                    <a href="javascript:;" target="_blank">帮助中心<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow">密码找回</a></li>
+                        <li><a target='_blank' rel="nofollow">发新信息</a></li>
+                        <li><a target='_blank' rel="nofollow">网站协议</a>
+                        <li><a target='_blank' rel="nofollow">反馈</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
-    </div>
-    <div class="header">
-        <div class="top-banner full-banner"></div>
-        <div class="location" style="height: 115px;">
-            <span class="breadcrumb">
-                <a href="/home" class="primary-logo">
-
-                    <img src="/static/image/anny_logo.png" alt="安义分类信息网"
-                         width="300" height="200" style="margin-top:-72px;"/>
-                    </a>
-            </span>
-            <div class="head-search">
-                <div class="search" style=" margin-top: 15px; ">
-                    <input id="keyword" onfocus="this.select();return false;" placeholder="请输入类别名称或关键字" value=""
-                           x-webkit-speech="" name="query" class="input search-query ui-autocomplete-input"
-                           autocomplete="off" style="margin-left: auto; font-size:14px;"/>
-                    <input type="button" name="button" class="frontpage-search-trigger search-trigger" value="搜  索"
-                           onclick="searchList()" style="margin-left: 401px; margin-top: -40px;"/>
-                    <input type="hidden" id="hid_type" value="shenghuo"/>
-                    <input type="hidden" id="hid_address" value="zhejiang"/>
-                </div>
-            </div>
-            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post"
-                                       target="_blank">免费发布信息</a></div>
         </div>
     </div>
 </header>
@@ -468,90 +415,7 @@
     </div>
 </div>
 
-<div class="jl-footer">
-    <section class="footer-rule">
-        <img src="/static/image/anny_logo.png" width="220" height="130" class="left-img">
-        <ul class="right-rules">
-            <li>
-                <div class="bold">
-                    <span>关于安义门窗网</span>
-                </div>
-                <a href="http://about.qu114.com/help003.aspx" target="_blank" rel="nofollow">了解我们</a>
-                <a href="http://about.qu114.com/hr.aspx" target="_blank" rel="nofollow">加入我们</a>
-                <a href="http://m.qu114.com/" target="_self">手机网页版</a>
-            </li>
-            <li>
-                <div class="bold">
-                    <span>帮助中心</span>
-                </div>
-                <a href="http://about.qu114.com/" target="_blank" rel="nofollow">常见问题</a>
-                <a href="http://about.qu114.com/preventdeception/" target="_blank" rel="nofollow">防骗常识</a>
-                <a href="http://about.qu114.com/clause.aspx" target="_blank" rel="nofollow">条款声明</a>
-            </li>
-            <li>
-                <div class="bold">
-                    <span>产品服务</span>
-                </div>
-                <a href="http://about.qu114.com/extension/" target="_blank" rel="nofollow">推广服务</a>
-                <a href="http://about.qu114.com/account/7.html" target="_blank" rel="nofollow">微信绑定</a>
-                <a href="http://about.qu114.com/integral/" target="_blank" rel="nofollow">消费积分</a>
-            </li>
-            <li>
-                <div class="bold">
-                    <span>会员服务</span>
-                </div>
-                <a href="http://my.qu114.com/" target="_blank" rel="nofollow">会员中心</a>
-                <a href="http://about.qu114.com/integral/3.html" target="_blank" rel="nofollow">积分充值</a>
-                <a href="http://user.qu114.com//" target="_blank" rel="nofollow">信用中心</a>
-            </li>
-            <li>
-                <div class="bold">
-                    <span>联系我们</span>
-                </div>
-                <p>客服QQ：3276497858<a href="tencent://message/?uin=100530114&Site=www.qu114.com&Menu=yes" target="_blank"
-                                     class="qqcontact">QQ交谈</a></p>
-                <p>工作时间：周一至周五 9:00-18:00</p>
-            </li>
-        </ul>
-    </section>
-
-    <section class="footer-cities" style="padding: 0; padding-top: 10px; padding-left: 10px; vertical-align: middle;">
-        <ul>
-            <li>
-                <div class="c-title">友情链接</div>
-                <div id="Div1" class="c-links expanded">
-                    <a href="http://www.qu114.com/zhejiang/applink.xhtml" target="_blank" rel="nofollow">南昌网</a>
-                    <a href="http://www.qu114.com/zhejiang/applink.xhtml" target="_blank" rel="nofollow">江西网</a>
-                    <a href="http://www.qu114.com/zhejiang/applink.xhtml" target="_blank" rel="nofollow">安义官网</a>
-                </div>
-            </li>
-        </ul>
-    </section>
-
-    <div class="copyright">
-        <span><span style="font-size:20px; position:relative; top:2px;">©</span>2019 安义分类信息网&nbsp;276497858（周一至周五，9:00-18:00）</span>
-    </div>
-    <div class="icp-number"><span><a href="http://www.miitbeian.gov.cn/" rel="nofollow">赣ICP备16019261号-9</a>
-        &nbsp;|&nbsp;<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010602001073"
-                        rel="nofollow">公网安备010602001073号</a></span>
-    </div>
-</div>
-
-<div id="sidebar-buttons">
-    <a id="Qu114Icon" href="#" title="手机去114网"><i class="icon-mobile2"></i></a>
-    <div id="href" class="qrcode-login-dialog in left fade" style="display: none;">
-        <img src="http://pic.qu114.com/xx/20180312/images/app_go.png" width="110" height="110"><img
-            src="http://pic.qu114.com/xx/20180312/images/erweima.jpg" width="110" height="110">
-    </div>
-    <div class="IconHover " style="background:url(http://pic.qu114.com/xx/20180312/images/online.png)">
-        <a href="tencent://message/?uin=100530114&amp;Site=www.qu114.com&amp;Menu=yes"
-           style="color:#cc0000;font-size:12px" target="_blank" class="online-chat">在线客服</a>
-    </div>
-    <div class="IconHover icon-arrow-up ">
-        <a id="IconHover" href="#" style="color:#cc0000;font-size:12px">返回顶部 </a>
-    </div>
-
-</div>
+<script type="text/javascript" src="/static/js/jl-footer.js" />
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
     <div class="modal-dialog" role="document">

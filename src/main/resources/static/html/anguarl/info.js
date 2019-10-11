@@ -7,7 +7,7 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
         $scope.entity = getSessionObj('entity');
         $scope.user = getUser();
         var userAddr = getCity();
-        angular.element("#city").html(userAddr);
+        angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
         if ($scope.entity == null) {
             href('/login');
         } else {

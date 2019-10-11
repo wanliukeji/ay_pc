@@ -16,7 +16,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     var userip = getIp();
 
     var userAddr = getCity();
-    angular.element("#city").html(userAddr);
+    angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
 
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
