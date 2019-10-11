@@ -1,19 +1,22 @@
 var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope, $http, $q, $window) {
 
-    $scope.submit = function () {
-        var url = '/api/login';
+    $scope.login = function () {
+        var url = '/api/user/login';
         var date = {
             'account': $scope.account,
             'password': $scope.password
         };
-        var msg = ajax_http(url, method_post, date);
-
-        if (msg.code =200){
-            console.log(msg.message);
+        var msg = ajax_http_post(url, date);
+        if (msg.code == 200) {
+            msg_success("登录成功,正在进入系统")
             setUser(date);
-            href('/home');
+
+            setTimeout(function () {
+                href('/home');
+            },3000)
+
         } else {
-            console.error(msg.message)
+            msg_error("账户密码输入不匹配,请重新输入");
         }
     }
 });

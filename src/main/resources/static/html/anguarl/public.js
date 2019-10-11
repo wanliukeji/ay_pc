@@ -78,10 +78,30 @@ function ajax_http(url, method, data) {
     $.ajax({
         url: url,
         method: method,
-        data: JSON.stringify(data),
+        data: data,
         async: false,
         dataType: 'JSON',
         headers: {"Content-Type": "application/json;charset=utf-8"},
+        success: function (res) {
+            msg = res;
+        },
+        error: function (err) {
+            msg = err;
+        }
+    });
+    return msg;
+}
+
+//通用POST请求
+function ajax_http_post(url, data) {
+    var msg = null;
+    $.ajax({
+        url: url,
+        method: method_post,
+        data: data,
+        async: false,
+        dataType: 'JSON',
+        // headers: {"Content-Type": "application/json;charset=utf-8"},
         success: function (res) {
             msg = res;
         },
@@ -208,8 +228,8 @@ function msg_success(msg) {
     // 假设ajax提交操作
     setTimeout(function () {
         lightyear.loading('hide');
-        lightyear.notify(msg, 'success', 3000);
-    }, 1000)
+        lightyear.notify(msg, 'success', 2000);
+    }, 2000)
 };
 
 function msg_error(msg) {
@@ -217,8 +237,8 @@ function msg_error(msg) {
     // 假设ajax提交操作
     setTimeout(function () {
         lightyear.loading('hide');
-        lightyear.notify(msg, 'danger', 100);
-    }, 1000)
+        lightyear.notify(msg, 'danger', 2000);
+    }, 2000)
 };
 
 function getServiceItem(val) {
