@@ -314,6 +314,22 @@
             <artifactId>jsoup</artifactId>
             <version>1.10.2</version>
         </dependency>
+
+        <!-- 聊天 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-websocket</artifactId>-->
+            <!--<version>5.0.4.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-messaging</artifactId>-->
+            <!--<version>5.0.4.RELEASE</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

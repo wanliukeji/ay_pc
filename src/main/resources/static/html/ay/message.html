@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>WebSocket</title>
+</head>
+<body>
+<input id="CreateSocket" type="button" value="创建WebSocKet"/>
+<input id="Message" type="text" value=""/>
+<input id="Send" type="button" value="发送"/>
+<input id="Close" type="button" value="关闭WebSocket"/>
+</body>
+<script src="/static/js/jquery.min.js"/>
+<script type="text/javascript">
+    alert(2);
+    /**
+     * 创建 WebSocKet 的方法
+     */
+    function createWebSocket(urlValue) {
+        if ("WebSocket" in window) {
+            return new WebSocket(urlValue);
+        }
+        if ("MozWebSocket" in window) {
+            return new MozWebSocket(urlValue);
+        }
+        console.error("浏览器不支持 WebSocKet");
+    }
+
+    /**
+     * 1, 创建WebSocket
+     * 2, WebScoket 的地址为ws协议
+     */
+    var webSocket = null;
+    var urlValue = "ws://localhost/ay_pc/WebSocket?userId=" + 10;
+
+    $('#CreateSocket').on('click', function () {
+        alert(1);
+        webSocket = createWebSocket(urlValue);
+        console.log(webSocket);
+        // 服务器返回数据时执行
+        webSocket.onmessage = function (msg) {
+            console.log(msg.data);
+        }
+        // 请求关闭时执行
+        webSocket.onclose = function () {
+            console.log(arguments);
+        }
+    });
+
+    $('#Send').on('click', function () {
+        var message = $('#Message').val().trim();
+        if (message == "") {
+            console.error("发送的内容不能为空!");
+            return;
+        }
+        if (webSocket == null) {
+            console.error("未创建 WebSocket 请求!");
+            return;
+        }
+        // 向服务器发送请求的方法
+        webSocket.send(message);
+        $('#Message').val("");
+    });
+</script>

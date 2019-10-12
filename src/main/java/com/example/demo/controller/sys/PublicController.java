@@ -113,8 +113,35 @@ public class PublicController {
      * @return
      */
     @GetMapping("/menu")
-    public String menu() {
+    public String msg() {
         return "bg/html/system/menu";
     }
 
+    /**
+     * 聊天
+     *
+     * @return
+     */
+    @GetMapping("/msg")
+    public String menu() {
+        return "ay/message";
+    }
+
+    /**
+     * 聊天 xiaohua
+     * @return
+     */
+    @GetMapping("/xiaohua")
+    public String xiaohua() {
+        return "socket/xiaohua";
+    }
+
+    /**
+     * 聊天 xiaoMing
+     * @return
+     */
+    @GetMapping("/xiaoMing")
+    public String xiaoMing() {
+        return "socket/xiaoMing";
+    }
 }
