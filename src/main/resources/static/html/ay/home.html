@@ -11,7 +11,6 @@
     <link href="/static/css/Index.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/baicons2.css" type="text/css"/>
     <link rel="stylesheet" href="/static/css/fileinput.min.css">
-
     <!--[if IE 7]>
     <style>
         .nav-tabs .nav-content .nav-item.home a, .nav-tabs .nav-content .nav-item.normal:hover {
@@ -55,8 +54,9 @@
     <link href="/static/ui/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/css/ay_style.css" rel="stylesheet" type="text/css"/>
-
     <![endif]-->
+    <link href="/static/css/public.css" rel="stylesheet" type="text/css"/>
+
 </head>
 
 <body class="homepage" ng-app="myHome" ng-controller="homeCtrl" ng-init="init()">
@@ -78,8 +78,8 @@
                 <li class="dropdown" ng-show="user != null">
                     <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >个人账户</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >设置</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">个人账户</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">设置</a></li>
                         <li><a target='_blank' rel="nofollow" href="/admin">后台入口</a></li>
                         <li><a ng-click="outlogin()" target='_blank' rel="nofollow">注销</a>
                         </li>
@@ -89,19 +89,19 @@
                 <li class="dropdown">
                     <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >推广服务</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >网站建设</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >软件开发</a>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">推广服务</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站建设</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">软件开发</a>
                         </li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" target="_blank">帮助中心<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >密码找回</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >发新信息</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >网站协议</a>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发" >反馈</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">密码找回</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">发新信息</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站协议</a>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">反馈</a></li>
                     </ul>
                 </li>
             </ul>
@@ -333,343 +333,357 @@
 <div class="container category-content">
 
     <section style="width:325px" class="content-column column-1">
-
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">代加工
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('加工')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('加工')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in jgItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
+            <div class="section-box-div-4" ng-repeat="item in jgItems  | limitTo:4">
+                <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
-                        <img src="{{item.path}}"
-                             width="107" height="127" alt="">
+                        <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
                         <a href="" ng-click="goInfo(item.id)">
                             {{item.company_name}}
                         </a>
                     </p>
                     <a href="" ng-click="goInfo(item.id)">
-                        <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
+                        <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}}
+                            {{item.details}} +
                         </p>
                     </a>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">点工
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">更多>></a>
             </div>
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in dgItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in dgItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">安装
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('安装')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('安装')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in azItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in azItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">门窗厂
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('门窗厂')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('门窗厂')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in mccItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in mcItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">玻璃厂
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('玻璃厂')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('玻璃厂')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in blcItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in blcItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">配件商
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('配件商')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('配件商')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in pjsItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in pjsItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">小区定点
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('定点')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('定点')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in ddItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in ddItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">门窗铺面
+                <a href="#" target="_blank">店铺
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('店铺')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('店铺')">更多>></a>
             </div>
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in dpItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in dpItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">厂房
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('厂房')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('厂房')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in cfItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in cfItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-        <section style="height: auto; width: 100%; min-width: 1200px; padding-bottom: 10px;"
-                 class="section-box category-jiaoyupeixun">
+        <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" target="_blank">设备
                 </a>
-                <a style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('设备')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('设备')">更多>></a>
             </div>
-
-            <div style="width: 25%; height: 150px; padding: 10px; display: inline-block; float: left;"
-                 ng-repeat="item in sbItems  | limitTo:4">
-                <div style=" width: 40%; height: 100%; display: inline-block;float: left;
-                    vertical-align: middle; ">
-                    <img src="{{item.path}}"
-                         width="107" height="127" alt="">
+            <div class="section-box-div-4" ng-repeat="item in sbItems  | limitTo:4">
+                <div class="section-box-div-4-img">
+                    <a href="" ng-click="goInfo(item.id)">
+                        <img src="{{item.path}}" class="div-4-img">
+                    </a>
                 </div>
-                <div style="width: 60%; height: 100%; display: inline-block;float: left;
-                       padding:0px 10px 10px">
-                    <p style="color: #48c964; font-size: 18px; font-weight: bolder; margin-bottom: 5px; white-space: nowrap;">
-                        {{item.company_name}}</p>
-                    <p style="font-size: 12px;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
-                         overflow: hidden; " class="text-webkit">
-                        <b>服务描述：</b>
-                        {{item.details}}
+                <div class="section-box-div-4-info">
+                    <p class="section-box-div-4-name">
+                        <a href="" ng-click="goInfo(item.id)">
+                            {{item.company_name}}
+                        </a>
                     </p>
-                    <p style="margin-top: 16px; height: 15px;">
-                        <span style="float: right; font-size: 12px;color: #b9b9b9; position: relative; bottom: 0px;">{{item.createDate}}</span>
+                    <a href="" ng-click="goInfo(item.id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{item.details}} +
+                        </p>
+                    </a>
+                    <p class="section-box-div-4-bottom">
+                        <span class="section-box-div-4-time">{{item.createDate}}</span>
                     </p>
                 </div>
             </div>
-
         </section>
-
     </section>
 
 </div>
 
-
-<script type="text/javascript" src="/static/js/jl-footer.js" />
-
 <div id="sidebar-buttons">
-    <a id="Qu114Icon" href="#" title="手机去114网"><i class="icon-mobile2"></i></a>
-    <div id="href" class="qrcode-login-dialog in left fade" style="display: none;">
-        <!--<img src="http://pic.qu114.com/www/20180316/images/app_go.png" width="110" height="110"><img-->
-        <!--src="http://pic.qu114.com/www/20180316/images/erweima.jpg" width="110" height="110">-->
+    <a id="Qu114Icon" href="#">
+        <i class="icon-weixin"></i></a>
+    <div id="href" class="qrcode-login-dialog in fade" style="display: none;">
+        <img src="/static/image/wechatqrc.png" class="display-img">
+        <img src="/static/image/wechatqrc.png" class="display-img">
     </div>
-    <div class="IconHover ">
+    <div class="IconHover">
         <a href="tencent://message/?uin=100530114&amp;Site=www.qu114.com&amp;Menu=yes"
-           style="color:#cc0000;font-size:12px" target="_blank" class="online-chat">在线客服</a>
+           style="color:#cc0000;font-size:12px" target="_blank" class="online-chat">
+            在线客服
+        </a>
+        <i class="icon-kefu" style="color: #48c964;"></i>
     </div>
     <div class="IconHover icon-arrow-up ">
-        <a id="IconHover" href="#" style="color:#cc0000;font-size:12px">返回顶部 </a>
+        <a id="IconHover" href="#" style="color:#48c964;font-size:12px">返回顶部 </a>
     </div>
 
 </div>
+<script type="text/javascript" src="/static/js/jl-footer.js"/>
+
+
+
+<script type='text/javascript' src='/static/js/jquery-1.8.0.js'></script>
+<script type='text/javascript' src='/static/js/jquery.min.js'></script>
+<script type='text/javascript' src='/static/js/bootstrap.min.js'></script>
+<script src='/static/anguarl/angular.min.js'></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="/static/html/anguarl/public.js"></script>
+<script src="/static/html/anguarl/home.js"></script>
+<script>
+    $(function () {
+        $("#Qu114Icon").hover(function () {
+            var href = $(this).attr('#href');
+            $('#href').css('display', 'block');
+        }, function () {
+            $('#href').css('display', 'none');
+        });
+    });
+    $('a').hover(function () {
+        $(this).css({'cursor': 'pointer'});
+    });
+</script>
+
+</body>
+</html>
+
 
 <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
     <div class="modal-dialog" role="document">
@@ -700,26 +714,3 @@
         </div>
     </div>
 </div>
-<script type='text/javascript' src='/static/js/jquery-1.8.0.js'></script>
-<script type='text/javascript' src='/static/js/jquery.min.js'></script>
-<script type='text/javascript' src='/static/js/bootstrap.min.js'></script>
-<script src='/static/anguarl/angular.min.js'></script>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
-<script src="/static/html/anguarl/public.js"></script>
-<script src="/static/html/anguarl/home.js"></script>
-<script>
-    $(function () {
-        $("#Qu114Icon").hover(function () {
-            var href = $(this).attr('#href');
-            $('#href').css('display', 'block');
-        }, function () {
-            $('#href').css('display', 'none');
-        });
-    });
-    $('a').hover(function () {
-        $(this).css({'cursor': 'pointer'});
-    });
-</script>
-
-</body>
-</html>

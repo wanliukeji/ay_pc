@@ -51,42 +51,44 @@
 
     <select id="getVoList" resultType="com.example.demo.vo.FiedVo">
         SELECT
-            fied.Id,
-            fied.head_line,
-            fied.user_qq,
-            fied.user_wx,
-            fied.phone,
-            fied.link,
-            fied.createDate,
-            fied.company_name,
-            fied.procode,
-            fied.citycode,
-            fied.countycode,
-            fied.details,
-            fied.address,
-            fied.type,
-            fied.fw,
-            fied.service,
-            SUBSTRING(file.path,33) as path,
-            fied.price,
-            file.type as f_type
+        fied.Id,
+        fied.head_line,
+        fied.user_qq,
+        fied.user_wx,
+        fied.phone,
+        fied.link,
+        fied.createDate,
+        fied.company_name,
+        fied.procode,
+        fied.citycode,
+        fied.countycode,
+        fied.details,
+        fied.address,
+        fied.type,
+        fied.fw,
+        fied.service,
+        SUBSTRING(file.path,33) as path,
+        fied.price,
+        file.type as f_type
         FROM
-            fied
+        fied
         INNER JOIN
-            file
+        file
         ON
-            fied.userId = file.userId
+        fied.userId = file.userId
         WHERE
-            1 = 1
-        AND
+        1 = 1
+        <if test="type != null">
+            AND
             fied.type = #{type}
+        </if>
         AND
-            file.type = 'G'
+        file.type = 'G'
         GROUP BY
-			fied.userId
-		ORDER BY
-			fied.createDate
-		DESC
+        fied.userId
+        ORDER BY
+        fied.createDate
+        DESC
     </select>
 
     <select id="getInfoVo" resultType="com.example.demo.vo.FiedVo">

@@ -1,0 +1,84 @@
+.section-box-div {
+    height: auto;
+    width: 100%;
+    min-width: 1200px;
+    padding-bottom: 10px;
+}
+
+.title > .more-form {
+    float: right;
+    font-size: 12px;
+    color: #48c964;
+}
+
+.section-box-div-4 {
+    width: 25%;
+    height: 150px;
+    padding: 10px;
+    display: inline-block;
+    float: left;
+}
+
+.section-box-div-4-img {
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+    float: left;
+    vertical-align: middle;
+}
+
+.div-4-img {
+    width: 107px;
+    height: 127px;
+}
+
+.div-4-img:hover {
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    cursor: pointer;
+    transition: all 0.6s;
+}
+
+.section-box-div-4-info {
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    float: left;
+    padding: 0px 10px 10px
+}
+
+.section-box-div-4-name {
+    color: #48c964;
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.section-box-div-4-details {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    height: 65px;
+}
+
+.section-box-div-4-bottom {
+    margin-top: 16px;
+    height: 15px;
+}
+
+.section-box-div-4-time {
+    float: right;
+    font-size: 12px;
+    color: #b9b9b9;
+    position: relative;
+}
+
+.display-img {
+    max-width: 100px;
+    max-height: 100px;
+}

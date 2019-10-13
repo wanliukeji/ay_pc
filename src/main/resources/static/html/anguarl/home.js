@@ -21,20 +21,20 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
         $scope.dgItems = getVos('点工');
-        $scope.azItems = getVos('加工');
-        $scope.mccItems = getVos('加工');
-        $scope.blcItems = getVos('加工');
-        $scope.pjsItems = getVos('加工');
-        $scope.ddItems = getVos('加工');
-        $scope.dpItems = getVos('加工');
-        $scope.cfItems = getVos('加工');
-        $scope.sbItems = getVos('加工');
+        $scope.azItems = getVos('安装');
+        $scope.mccItems = getVos('门窗厂');
+        $scope.blcItems = getVos('玻璃厂');
+        $scope.pjsItems = getVos('配件商');
+        $scope.ddItems = getVos('定点');
+        $scope.dpItems = getVos('店铺');
+        $scope.cfItems = getVos('厂房');
+        $scope.sbItems = getVos('设备');
     };
 
     $scope.sendMsg = function () {
         if (!is_Exist($scope.user)) {
-            window.alert('您还未登录,请先登录');
-            // angular.element("#showModel").click();
+            // window.alert('您还未登录,请先登录');
+            angular.element("#showModel").click();
         } else {
             href('/release');
         }

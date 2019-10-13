@@ -1,13 +1,11 @@
 var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, $http, $q) {
 
-    $scope.files = getFiles('4');
-
-    $scope.jpgs = getFiles('16');
-    console.log($scope.jpgs);
-
     $scope.hoppyItem = [];
     $scope.init = function () {
         $scope.entity = getSessionObj('entity');
+        $scope.files = getFiles($scope.entity.userId);
+        $scope.jpgs = getFiles($scope.entity.userId);
+
         $scope.user = getUser();
         var userAddr = getCity();
         angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
