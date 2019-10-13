@@ -35,6 +35,18 @@
             cursor: pointer;
             transition: all 0.6s;
         }
+        .img-al {
+            width: 200px;
+            height: 200px;
+        }
+        .img-al:hover {
+            transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            cursor: pointer;
+            transition: all 0.8s;
+        }
     </style>
 </head>
 <body class="viewad-baomu viewad-fuwu viewad-new">
@@ -226,7 +238,7 @@
                         <div class="featured-height">
                             <div class="photo-item col-5 " style="text-align:center;" ng-repeat="item in files">
                                 <!--<img src="{{item.path}}" width="200" height="200" ng-repeat="item in files"/>-->
-                                <img src="{{item.path}}" width="200" height="200"/>
+                                <img src="{{item.path}}" class="img-al"/>
                             </div>
 
                         </div>

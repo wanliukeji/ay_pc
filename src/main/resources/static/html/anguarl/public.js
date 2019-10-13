@@ -112,6 +112,26 @@ function ajax_http_post(url, data) {
     return msg;
 }
 
+//通用POST请求
+function ajax_http_post_login(url, data) {
+    var msg = null;
+    $.ajax({
+        url: url,
+        method: method_post,
+        data: data,
+        async: false,
+        dataType: 'JSON',
+        // headers: {"Content-Type": "application/json;charset=utf-8"},
+        success: function (res) {
+            msg = res;
+        },
+        error: function (err) {
+            msg = err;
+        }
+    });
+    return msg;
+}
+
 //通用文件上传
 function upload(url, method, form) {
     $.ajax({

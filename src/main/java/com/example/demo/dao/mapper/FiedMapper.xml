@@ -186,6 +186,59 @@
         GROUP BY
         fied.userId
     </select>
+    <select id="getPageAll" resultType="com.example.demo.vo.FiedVo">
+        SELECT
+        fied.Id,
+        fied.head_line,
+        fied.user_qq,
+        fied.user_wx,
+        fied.phone,
+        fied.link,
+        fied.createDate,
+        fied.company_name,
+        fied.procode,
+        fied.citycode,
+        fied.countycode,
+        fied.details,
+        fied.address,
+        fied.type,
+        fied.fw,
+        fied.service,
+        fied.userId,
+        SUBSTRING(file.path,33) as path,
+        fied.price,
+        file.type as f_type
+        FROM
+        fied
+        INNER JOIN
+        file
+        ON
+        fied.userId = file.userId
+        WHERE
+        1 = 1
+        <if test="val != null">
+            AND
+            (      fied.head_line like "%"#{val}"%"
+                or fied.user_qq like "%"#{val}"%"
+                or fied.user_wx like "%"#{val}"%"
+                or fied.phone like "%"#{val}"%"
+                or fied.link like "%"#{val}"%"
+                or fied.company_name like "%"#{val}"%"
+                or fied.details like "%"#{val}"%"
+                or fied.address like "%"#{val}"%"
+                or fied.type like "%"#{val}"%"
+                or fied.fw like "%"#{val}"%"
+                or fied.fw like "%"#{val}"%"
+            )
+        </if>
+
+
+
+        AND
+        file.type = 'G'
+        GROUP BY
+        fied.userId
+    </select>
 
 
 </mapper>

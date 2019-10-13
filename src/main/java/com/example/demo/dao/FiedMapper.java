@@ -32,4 +32,6 @@ public interface FiedMapper extends BaseMapper<Fied> {
     List<FiedVo> getPageVos(@Param("procode") Integer procode, @Param("citycode") Integer citycode,
                           @Param("countycode") Integer countycode,@Param("type") String type,
                           @Param("fw") String fw);
+
+    List<FiedVo> getPageAll(@Param("val") String searchVal);
 }

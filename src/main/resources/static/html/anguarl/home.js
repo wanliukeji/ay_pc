@@ -57,7 +57,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
             'account': $scope.account,
             'password': $scope.password
         };
-        var msg = ajax_http_post(url, date);
+        var msg = ajax_http_post_login(url, date);
 
         if (msg.code == 200) {
             setUser(msg.data);
@@ -90,6 +90,20 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
             history.go(0);
         }
         // setSessionObj()
+    }
+
+    $scope.search = function () {
+        var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
+        var msg = ajax_http(url, method_get, null);
+        $scope.groupList = msg.data;
+        setSessionObj('groupList', $scope.groupList);
+        href('/group');
+    }
+
+    document.onkeydown = function (e) {
+        if ((e.keyCode || e.which) == 13) {
+            angular.element("#search-btn").click();
+        }
     }
 
 });

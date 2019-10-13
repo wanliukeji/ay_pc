@@ -81,6 +81,11 @@ public class FiedController implements FiedApi {
     }
 
     @Override
+    public ApiJSON<?> getPageAll(String searchVal) throws Exception {
+        return fiedService.getPageAll(searchVal);
+    }
+
+    @Override
     public ApiJSON saveRel(Fied fied) throws Exception {
         boolean flag = relService.save(fied);
         return ApiJSON.data(flag);

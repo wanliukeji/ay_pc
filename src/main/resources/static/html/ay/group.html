@@ -12,6 +12,16 @@
     <link href="/static/css/ListBaicons.css" rel="stylesheet"/>
     <link href="/static/css/ListIndex.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/public.css">
+    <style type="text/css">
+        img:hover {
+            transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+    </style>
 </head>
 
 <body class="category-xiaoshou category-gongzuo view-table" ng-app="myGroup" ng-controller="groupCtrl" ng-init="init()">
@@ -73,11 +83,10 @@
             </span>
             <div class="head-search">
                 <div class="search" style=" margin-top: 15px; ">
-                    <input id="keyword" onfocus="this.select();return false;" placeholder="请输入类别名称或关键字" value=""
-                           x-webkit-speech="" name="query" class="input search-query ui-autocomplete-input"
+                    <input id="keyword" placeholder="请输入类别名称或关键字" ng-model="searchVal" name="query" class="input search-query ui-autocomplete-input"
                            autocomplete="off" style="margin-left: auto; font-size:14px;"/>
                     <input type="button" name="button" class="frontpage-search-trigger search-trigger" value="搜  索"
-                           onclick="searchList()" style="margin-left: 401px; margin-top: -40px;"/>
+                           ng-click="search()" style="margin-left: 401px; margin-top: -40px;" ng-keydown="enterEvent($event)" id="search-btn"/>
                     <input type="hidden" id="hid_type" value="shenghuo"/>
                     <input type="hidden" id="hid_address" value="zhejiang"/>
                 </div>

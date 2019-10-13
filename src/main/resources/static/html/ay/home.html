@@ -119,11 +119,10 @@
             </span>
             <div class="head-search">
                 <div class="search" style=" margin-top: 15px; ">
-                    <input id="keyword" onfocus="this.select();return false;" placeholder="请输入类别名称或关键字" value=""
-                           x-webkit-speech="" name="query" class="input search-query ui-autocomplete-input"
+                    <input id="keyword" placeholder="请输入类别名称或关键字" ng-model="searchVal" name="query" class="input search-query ui-autocomplete-input"
                            autocomplete="off" style="margin-left: auto; font-size:14px;"/>
                     <input type="button" name="button" class="frontpage-search-trigger search-trigger" value="搜  索"
-                           onclick="searchList()" style="margin-left: 401px; margin-top: -40px;"/>
+                           ng-click="search()" style="margin-left: 401px; margin-top: -40px;" ng-keydown="enterEvent($event)" id="search-btn"/>
                     <input type="hidden" id="hid_type" value="shenghuo"/>
                     <input type="hidden" id="hid_address" value="zhejiang"/>
                 </div>

@@ -9,6 +9,7 @@ import com.example.demo.Utils.*;
 import com.example.demo.dao.FiedMapper;
 import com.example.demo.entity.Fied;
 import com.example.demo.exception.CodeMsg;
+import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqFiedParam;
 import com.example.demo.req.ReqParam;
@@ -207,6 +208,15 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
+        }
+    }
+
+    public ApiJSON<?> getPageAll(String searchVal) {
+        try {
+            List<FiedVo> vos = baseMapper.getPageAll(searchVal);
+            return ApiJSON.data(vos);
+        } catch (Exception ex) {
+            return ApiJSON.error("查询数据失败");
         }
     }
 
