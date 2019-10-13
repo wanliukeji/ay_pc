@@ -33,7 +33,8 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.sendMsg = function () {
         if (!is_Exist($scope.user)) {
-            angular.element("#showModel").click();
+            window.alert('您还未登录,请先登录');
+            // angular.element("#showModel").click();
         } else {
             href('/release');
         }

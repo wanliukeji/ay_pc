@@ -118,7 +118,8 @@ function upload(url, method, form) {
         url: url,
         method: method,
         data: form,
-        dataType: 'JSON',
+        dataType: 'formData',
+        cache: false,//上传文件无需缓存
         processData: false, // 使数据不做处理
         contentType: false, // 不要设置Content-Type请求头
         success: function (res) {

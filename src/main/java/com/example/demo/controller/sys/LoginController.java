@@ -27,7 +27,7 @@ public class LoginController implements LoginApi {
     @Autowired
     private SysUserService sysUserService;
 
-    public ResultJSON<Boolean> login(String account, String password) {
+    public ResultJSON<SysUser> login(String account, String password) {
         return sysUserService.login(account, password);
     }
 

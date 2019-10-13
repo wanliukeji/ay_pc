@@ -21,9 +21,6 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     angular.element("#city").html(userAddr);
     angular.element("#userIp").html(userip);
 
-    $scope.init = function () {
-    }
-
     $scope.serviceItem = getServiceItem('/getClassField_fw');
     $scope.typeItem = getServiceItem('/getClassField_ty');
 
@@ -32,15 +29,15 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     $scope.entity = {
-        head_line: '',
-        sercode: '',
-        coverage: '',
-        user_qq: '',
-        user_wx: '',
-        phone: '',
-        link: '',
+        head_line: '宁波茳德门窗厂',
+        sercode: '100',
+        coverage: '100',
+        user_qq: '132312',
+        user_wx: 'sdadafdf',
+        phone: '13278789090',
+        link: '大鱼',
         createDate: new Date(),
-        company_name: '',
+        company_name: '茳德门窗',
         procode: '',
         citycode: '',
         countycode: '',
@@ -50,7 +47,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         details: '',
         fw: '',
         service: '',
-        type: ''
+        type: '',
+        price: 0,
+        userId: $scope.user.id
     };
 
     $scope.show_num_prv = 0;
@@ -222,11 +221,12 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
-        form.append('userId', '4');
+        form.append('userId', $scope.user.id);
         var url = 'uploadfile_g_img';
         if (null != file) {
             upload(url, method_post, form);
             form.delete("fileName");
+            form.delete("userId");
         }
     }
 
@@ -240,9 +240,10 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             var file = nodes[i].files[0];
             if (null != file) {
                 form.append("fileName", file);
-                form.append('userId', '4');
+                form.append('userId', $scope.user.id);
                 upload(url, method_post, form);
                 form.delete("fileName");
+                form.delete("userId");
             }
         }
     }
@@ -257,9 +258,10 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             var file = nodes[i].files[0];
             if (null != file) {
                 form.append("fileName", file);
-                form.append('userId', '4');
+                form.append('userId', $scope.user.id);
                 upload(url, method_post, form);
                 form.delete("fileName");
+                form.delete("userId");
             }
         }
     }

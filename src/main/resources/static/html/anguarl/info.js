@@ -1,6 +1,9 @@
 var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, $http, $q) {
 
-    $scope.files = [];
+    $scope.files = getFiles('4');
+
+    $scope.jpgs = getFiles('16');
+    console.log($scope.jpgs);
 
     $scope.hoppyItem = [];
     $scope.init = function () {
@@ -8,7 +11,7 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
         $scope.user = getUser();
         var userAddr = getCity();
         angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
-        if ($scope.entity == null) {
+        if (!$scope.entity) {
             href('/login');
         } else {
             getFiles($scope.entity.userId);
@@ -19,7 +22,7 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
     function getFiles(userId) {
         var url = '/api/file/getInfos?userId=' + userId;
         var msg = ajax_http(url, method_get, null);
-        $scope.files = msg.data;
+        return msg.data;
     }
 
     function gethoppyItem(type) {

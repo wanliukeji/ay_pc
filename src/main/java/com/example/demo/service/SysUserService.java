@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class SysUserService extends ServiceImpl<SysUSerMapper, SysUser> {
 
-    public ResultJSON<Boolean> login(String account, String password) {
+    public ResultJSON<SysUser> login(String account, String password) {
         boolean flag = false;
         //解密
         try {
@@ -34,7 +34,7 @@ public class SysUserService extends ServiceImpl<SysUSerMapper, SysUser> {
                     String pwd = EncryptUtil.Base64Decode(user.getPassword());
                     if (password.equalsIgnoreCase(password)) {
                         HttpServletRequestUtil.setSessionUser(user);
-                        return ResultJSON.success(true);
+                        return ResultJSON.success(user);
                     }
                 } else {
                     return ResultJSON.error(CodeMsg.LOGIN_ERROR);

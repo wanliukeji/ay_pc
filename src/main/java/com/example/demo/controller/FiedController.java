@@ -82,10 +82,6 @@ public class FiedController implements FiedApi {
 
     @Override
     public ApiJSON saveRel(Fied fied) throws Exception {
-        SysUser user = HttpServletRequestUtil.getSessionUser();
-        if (null != user) {
-            fied.setUserId(user.getId());
-        }
         boolean flag = relService.save(fied);
         return ApiJSON.data(flag);
     }
