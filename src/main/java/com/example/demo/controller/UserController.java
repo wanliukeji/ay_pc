@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.api.UserApi;
+import com.example.demo.entity.SysUser;
 import com.example.demo.entity.Users;
+import com.example.demo.json.ApiJSON;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +23,17 @@ public class UserController implements UserApi {
     private UserService service;
 
     @Override
-    public void saveUser(Users entity) throws Exception {
+    public void saveUser(SysUser entity) throws Exception {
         service.save(entity);
+    }
+
+    @Override
+    public ApiJSON<SysUser> edit(SysUser entity) throws Exception {
+        return service.edit(entity);
+    }
+
+    @Override
+    public ApiJSON<SysUser> editPwd(Integer id, String password) throws Exception {
+        return service.editPwd(id, password);
     }
 }

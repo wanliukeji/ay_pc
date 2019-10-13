@@ -39,4 +39,5 @@ public interface LoginApi extends Serializable {
     public ResultJSON<SysUser> login(@RequestParam("account") String account,
                                      @RequestParam("password") String password);
 
+
 }

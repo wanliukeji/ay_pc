@@ -1,11 +1,14 @@
 package com.example.demo.api;
 
+import com.example.demo.entity.SysUser;
 import com.example.demo.entity.Users;
+import com.example.demo.json.ApiJSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author Chenny
@@ -21,6 +24,16 @@ public interface UserApi {
     @PostMapping(value = "/api/saveUser", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "用户保存数据接口", notes = "用户发布保存数据接口")
     @Transactional
-    public void saveUser(@RequestBody Users entity) throws Exception;
+    public void saveUser(@RequestBody SysUser entity) throws Exception;
+
+    @PostMapping(value = "/api/user/edit", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "用户修改数据接口", notes = "用户修改数据接口")
+    @Transactional
+    public ApiJSON<SysUser> edit(@RequestBody SysUser entity) throws Exception;
+
+    @PostMapping(value = "/api/user/editPwd", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "用户修改数据接口", notes = "用户修改数据接口")
+    @Transactional
+    public ApiJSON<SysUser> editPwd(@RequestParam("id") Integer id, @RequestParam("password") String password) throws Exception;
 
 }
