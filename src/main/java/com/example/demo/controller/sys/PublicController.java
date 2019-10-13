@@ -118,6 +118,16 @@ public class PublicController {
     }
 
     /**
+     * 信息发布页
+     *
+     * @return
+     */
+    @GetMapping("/mine")
+    public String mine() {
+        return "ay/mine";
+    }
+
+    /**
      * 聊天
      *
      * @return

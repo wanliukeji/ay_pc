@@ -63,7 +63,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
             setUser(msg.data);
             href('/home');
         } else {
-            console.error(msg.message)
+            alert("账户密码不匹配      " + msg.message);
         }
     }
 

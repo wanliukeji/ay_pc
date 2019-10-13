@@ -28,7 +28,7 @@ public class SysUserService extends ServiceImpl<SysUSerMapper, SysUser> {
         //解密
         try {
             if (null != account && password != null) {
-                SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("account", account));
+                SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("account", account).or().eq("email", account).or().eq("phone", account));
                 if (null != user) {
                     //解密
                     String pwd = EncryptUtil.Base64Decode(user.getPassword());
