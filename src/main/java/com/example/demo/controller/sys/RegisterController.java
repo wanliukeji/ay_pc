@@ -35,36 +35,7 @@ public class RegisterController implements RegisterApi {
     RegService service;
 
     @Override
-    public ResultJSON<?> register(String account, String email, String password) {
-
-        if (StringUtil.isNotEmty(account)) {
-            SysUser user = service.getOne(new QueryWrapper<SysUser>().eq("account", account));
-            if (null != user) {
-                return ResultJSON.error(CodeMsg.REG_ACCOUNT_ERROR);
-            }
-        }
-
-        if (StringUtil.isNotEmty(email)) {
-            SysUser user = service.getOne(new QueryWrapper<SysUser>().eq("account", account));
-            if (null != user) {
-                return ResultJSON.error(CodeMsg.REG_EMAIL_ERROR);
-            }
-        }
-
-        SysUser user = new SysUser();
-        //加密
-        password = EncryptUtil.Base64Encode(password);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setAccount(account);
-        user.setCreateTime(new Date());
-
-        boolean flag = service.save(user);
-
-        if (flag) {
-            HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
-            return ResultJSON.success(flag);
-        }
-        return ResultJSON.error(CodeMsg.REG_ERROR);
+    public ApiJSON<?> register(String account, String email, String password) {
+        return service.register(account, email, password);
     }
 }

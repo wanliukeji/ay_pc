@@ -1,11 +1,20 @@
 package com.example.demo.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.Utils.EncryptUtil;
+import com.example.demo.Utils.HttpServletRequestUtil;
+import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.RegMapper;
 import com.example.demo.entity.SysUser;
+import com.example.demo.exception.CodeMsg;
+import com.example.demo.json.ApiJSON;
+import com.example.demo.json.ResultJSON;
+import io.swagger.annotations.Api;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author Chenny
@@ -18,4 +27,36 @@ import java.io.Serializable;
 @Service
 public class RegService extends ServiceImpl<RegMapper, SysUser> implements Serializable {
 
+    public ApiJSON<?> register(String account, String email, String password) {
+
+        if (StringUtil.isNotEmty(account)) {
+            SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("account", account));
+            if (null != user) {
+                return ApiJSON.error("该账号已使用");
+            }
+        }
+
+        if (StringUtil.isNotEmty(email)) {
+            SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("email", email));
+            if (null != user) {
+                return ApiJSON.error("该邮箱已注册");
+            }
+        }
+
+        SysUser user = new SysUser();
+        //加密
+        password = EncryptUtil.Base64Encode(password);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setAccount(account);
+        user.setCreateTime(new Date());
+
+        boolean flag = this.save(user);
+
+        if (flag) {
+            HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
+            return ApiJSON.success("注册成功");
+        }
+        return ApiJSON.error("注册失败");
+    }
 }

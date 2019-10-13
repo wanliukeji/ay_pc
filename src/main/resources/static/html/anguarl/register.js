@@ -10,43 +10,47 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
 
     $scope.register = function () {
 
-        if (angular.equals('', $scope.entity.account)) {
-            console.log("账号不能为空");
+        if (!$scope.entity.account) {
+            msg_error("账号不能为空");
             return;
         }
         ;
 
-        if (angular.equals('', $scope.entity.email)) {
-            console.log("邮箱不能为空");
+        console.log($scope.entity);
+
+        if (!$scope.entity.email) {
+            msg_error("邮箱不能为空");
             return;
         }
         ;
 
         if (!reg_email.test($scope.entity.email)) {
-            console.log("邮箱格式输入有误");
+            msg_error("邮箱格式输入有误");
             return;
         }
         ;
 
         if (!angular.equals($scope.entity.password, $scope.password2)) {
-            console.log("两次输入密码不匹配");
+            msg_error("两次输入密码不匹配");
             return;
         }
 
-        var url = '/api/register';
+        var url = '/api/user/register';
         var date = {
             account: $scope.entity.account,
             email: $scope.entity.email,
             password: $scope.entity.password
         };
-        var msg = ajax_http(url, method_post, date);
+        var msg = ajax_http_post(url, date);
 
-        if (msg.code =200){
-            console.log(msg.message);
+        if (msg.code == 200){
+            msg_success(msg.msg);
             setUser(date);
-            href('/home');
+            setTimeout(function () {
+                href('/home');
+            },3000)
         } else {
-            console.error(msg.message)
+            msg_error(msg.msg)
         }
 
     };

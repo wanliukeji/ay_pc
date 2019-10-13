@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -20,13 +21,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Api(value = "注册模块", description = "注册接口")
 public interface RegisterApi {
 
-    @PostMapping(value = "/api/register", produces = {"application/json;charset=UTF-8"})
+    @PostMapping(value = "/api/user/register", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "注册接口", notes = "注册接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "账号", required = true, dataType = "String"),
             @ApiImplicitParam(name = "email", value = "邮箱", required = true, dataType = "String"),
             @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String")
     })
-    @Transactional
-    ResultJSON<?> register(@RequestParam String account, @RequestParam String email, @RequestParam String password) throws Exception;
+    ApiJSON<?> register(@RequestParam("account") String account,
+                        @RequestParam("email") String email,
+                        @RequestParam("password") String password) throws Exception;
 }
