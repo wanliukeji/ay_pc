@@ -2,31 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>当前用户xiaoHua</title>
+    <title>新消息-小明</title>
 </head>
 <style>
     #message{
-        width: 50%;
+        width: 80%;
         height: 500px;
-        border: 1px solid black;
-        background-color: darkgray;
+        border: 1px solid #8bff69;
+
+        background-color: #ffffff;
+        margin: 0 auto;
     }
 
     #inputVal{
-        width: 50%;
+        width: 80%;
+        margin: 0 auto;
     }
     input{
+        border: 1px solid #8bff69;
         width: 92%;
+        height: 30px;
+    }
+
+    #btn {
+        width: 90px;
+        padding: 8.2px;
+        border: none;
+        margin-top: 2px;
+        background-color: #8bff69;
+        color: white;
     }
 </style>
 <body>
-<h1>当前用户xiaoHua</h1>
+<h1 align="center">正在跟小花对话中</h1>
 <div id="message">
 
 </div>
 <div id="inputVal">
     <input type="text" name="text">
-    <button onclick="send()">发送</button>
+    <button onclick="send()" id="btn">发送</button>
 </div>
 
 <script>
@@ -42,7 +56,7 @@
     }
     websocket.onopen=function () {
         console.log("webscoket已经连接成功");
-        addMessage("webscoket已经连接成功");
+        // addMessage("webscoket已经连接成功");
 
     };
     websocket.onclose=function () {
@@ -62,7 +76,16 @@
 
     function send() {
         websocket.send("xiaoHua:"+inputEl.value);
-        messageEl.innerHTML+="我:"+inputEl.value+"</br>";
+        messageEl.innerHTML+='<div><img src="/static/image/wechat.jpg" width="20" height="20" alt="">&nbsp;&nbsp;'
+           + '2019-10-13 8:15:46<br><span style="margin: 2em; background-color: #00ccba; width: auto; height: 10px; color: white; padding: 2px; top: 2px;">'
+           + inputEl.value + '</span></div>';
+    }
+
+    document.onkeydown = function(e){
+        var ev = document.all ? window.event : e;
+        if(ev.keyCode==13) {
+            send();
+        }
     }
 
 
