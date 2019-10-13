@@ -68,7 +68,7 @@
             fied.fw,
             fied.service,
             SUBSTRING(file.path,33) as path,
-            file.price,
+            fied.price,
             file.type as f_type
         FROM
             fied
