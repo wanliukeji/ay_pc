@@ -52,17 +52,16 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     }
 
     $scope.login = function () {
-        var url = '/api/login';
+        var url = '/api/user/login';
         var date = {
             'account': $scope.account,
             'password': $scope.password
         };
-        var msg = ajax_http(url, method_post, date);
+        var msg = ajax_http_post(url, date);
 
-        if (msg.code = 200) {
-            console.log(msg.message);
-            setUser(date);
-            // href('/home');
+        if (msg.code == 200) {
+            setUser(msg.data);
+            href('/home');
         } else {
             console.error(msg.message)
         }

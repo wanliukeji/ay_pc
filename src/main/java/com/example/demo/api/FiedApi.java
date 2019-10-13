@@ -81,6 +81,5 @@ public interface FiedApi {
 
     @PostMapping(value = "/api/fied/getPageVos")
     @ApiOperation(value = "分组筛选数据接口", notes = "分组筛选数据接口")
-    @Transactional
     public ResultJSON<?> getPageVos(@RequestBody ReqFiedParam param) throws Exception;
 }

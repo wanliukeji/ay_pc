@@ -1,5 +1,4 @@
 var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope, $http, $q) {
-    var url = '/api/fied/getPageVos';
     $scope.groupList = [];
     $scope.serviceItem = [];
 
@@ -70,7 +69,8 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
     }
 
     function getList() {
-        var msg = ajax_http(url, method_post, $scope.ReqParam)
+        var url = '/api/fied/getPageVos';
+        var msg = ajax_http_post(url, JSON.stringify($scope.ReqParam))
         $scope.groupList = msg.data.data.list;
         $scope.totalPage = msg.data.data.pages;
         $scope.total = msg.data.data.total;
@@ -119,6 +119,23 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
             href('/release');
         }
     };
+
+    $scope.login = function () {
+        var url = '/api/user/login';
+        var date = {
+            'account': $scope.account,
+            'password': $scope.password
+        };
+        var msg = ajax_http_post(url, date);
+
+        if (msg.code == 200) {
+            setUser(msg.data);
+            href('/group');
+        } else {
+            console.error(msg.message)
+        }
+    }
+
 
     $scope.outlogin = function () {
         removeUser("user");

@@ -82,3 +82,18 @@
     max-width: 100px;
     max-height: 100px;
 }
+
+.page-btn {
+    border: none;
+    background: #48c964;
+    color: white;
+    padding: 8px;
+    width: 80px;
+}
+.page-df {
+    border: none;
+    color: black;
+    padding: 8px;
+    min-width: 80px;
+    background: none;
+}

@@ -101,7 +101,7 @@ function ajax_http_post(url, data) {
         data: data,
         async: false,
         dataType: 'JSON',
-        // headers: {"Content-Type": "application/json;charset=utf-8"},
+        headers: {"Content-Type": "application/json;charset=utf-8"},
         success: function (res) {
             msg = res;
         },
