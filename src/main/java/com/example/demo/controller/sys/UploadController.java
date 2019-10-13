@@ -48,15 +48,14 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_g_img")
     @ResponseBody
-    public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+    public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,String userId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
-            SysUser user = HttpServletRequestUtil.getSessionUser();
-            if (null != user && entity != null) {
-                entity.setUserId(user.getId());
+            if (null != userId && entity != null) {
+                entity.setUserId(userId);
                 entity.setType("G");
                 fileService.save(entity);
                 return ResultJSON.success(entity);
@@ -77,15 +76,14 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_z_img")
     @ResponseBody
-    public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+    public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,String userId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
-            SysUser user = HttpServletRequestUtil.getSessionUser();
-            if (null != user && entity != null) {
-                entity.setUserId(user.getId());
+            if (null != userId && entity != null) {
+                entity.setUserId(userId);
                 entity.setType("Z");
                 fileService.save(entity);
 
@@ -103,15 +101,14 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_a_img")
     @ResponseBody
-    public void uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+    public void uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,String userId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
             entity = fileUploadTool.createFile(multipartFile, request);
-            SysUser user = HttpServletRequestUtil.getSessionUser();
-            if (null != user && entity != null) {
-                entity.setUserId(user.getId());
+            if (null != userId && entity != null) {
+                entity.setUserId(userId);
                 entity.setType("A");
                 fileService.save(entity);
             }

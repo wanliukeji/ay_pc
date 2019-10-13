@@ -53,4 +53,6 @@ public class FiedVo implements Serializable {
 
     private String userId;
 
+    private Double price;
+
 }

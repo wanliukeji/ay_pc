@@ -25,7 +25,8 @@
         t.del,
         t.type,
         t.fw,
-        t.service
+        t.service,
+        t.price
         FROM
         fied t
         where 1=1
@@ -67,6 +68,7 @@
             fied.fw,
             fied.service,
             SUBSTRING(file.path,33) as path,
+            file.price,
             file.type as f_type
         FROM
             fied
@@ -89,41 +91,42 @@
 
     <select id="getInfoVo" resultType="com.example.demo.vo.FiedVo">
         SELECT
-            fied.Id,
-            fied.head_line,
-            fied.user_qq,
-            fied.user_wx,
-            fied.phone,
-            fied.link,
-            fied.createDate,
-            fied.company_name,
-            fied.procode,
-            fied.citycode,
-            fied.countycode,
-            fied.details,
-            fied.address,
-            fied.type,
-            fied.fw,
-            fied.service,
-            fied.userId,
+        fied.Id,
+        fied.head_line,
+        fied.user_qq,
+        fied.user_wx,
+        fied.phone,
+        fied.link,
+        fied.createDate,
+        fied.company_name,
+        fied.procode,
+        fied.citycode,
+        fied.countycode,
+        fied.details,
+        fied.address,
+        fied.type,
+        fied.fw,
+        fied.service,
+        fied.userId,
         SUBSTRING(file.path,33) as path,
-            file.type as f_type
+        fied.price,
+        file.type as f_type
         FROM
-            fied
+        fied
         INNER JOIN
-            file
+        file
         ON
-            fied.userId = file.userId
+        fied.userId = file.userId
         WHERE
-            1 = 1
+        1 = 1
         <if test="id != null">
             AND fied.id = #{id}
         </if>
 
         AND
-            file.type = 'G'
+        file.type = 'G'
         GROUP BY
-            fied.userId
+        fied.userId
 
     </select>
     <select id="getPageVos" resultType="com.example.demo.vo.FiedVo">
@@ -146,6 +149,7 @@
         fied.service,
         fied.userId,
         SUBSTRING(file.path,33) as path,
+        fied.price,
         file.type as f_type
         FROM
         fied

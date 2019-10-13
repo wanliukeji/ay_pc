@@ -37,4 +37,8 @@ public class Service extends Object {
 
     private String FW012 = "雨棚";
 
+    private String FW013 = "求租";
+
+    private String FW014 = "转让";
+
 }
