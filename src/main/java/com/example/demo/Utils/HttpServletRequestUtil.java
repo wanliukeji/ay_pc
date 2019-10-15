@@ -1,18 +1,13 @@
 package com.example.demo.Utils;
 
-import cn.hutool.http.HttpResponse;
 import com.example.demo.entity.SysUser;
-import com.sun.xml.internal.ws.client.ResponseContext;
-import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**

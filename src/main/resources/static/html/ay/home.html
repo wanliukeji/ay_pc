@@ -56,7 +56,12 @@
     <link href="/static/css/ay_style.css" rel="stylesheet" type="text/css"/>
     <![endif]-->
     <link href="/static/css/public.css" rel="stylesheet" type="text/css"/>
-
+    <style type="text/css">
+        a:hover, big-title:hover {
+            text-decoration: none;
+            color: red;
+        }
+    </style>
 </head>
 
 <body class="homepage" ng-app="myHome" ng-controller="homeCtrl" ng-init="init()">
@@ -153,10 +158,16 @@
     </ul>
 </section>
 
+
+<section class="nav-items container">
+    <iframe src="/img" scrolling="no" style="min-width: 1200px; height: 200px;
+    border: none;"></iframe>
+</section>
+
 <section class="nav-items container">
     <ul class="nav-content" style="width: 100%;">
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('加工')">
+        <a href="" ng-click="goGroup('加工')">
+            <li class="nav-item">
                 <svg t="1568624518688" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="1268" width="40" height="40">
@@ -169,24 +180,24 @@
                     <path d="M87.125825 654.587486c0 0-17.73185 4.826935-23.289426 21.63167l0 188.920744c0 0 2.192945 25.207102 23.289426 30.125111L380.305097 895.26501c0 0 21.107737-4.919033 21.107737-33.745569L401.412834 678.67816c0 0-8.912997-21.723767-23.360034-24.090675L87.125825 654.587486z"
                           p-id="1272" fill="#48c964"></path>
                 </svg>
-                <p class="big-title">加工</p></a>
-            </a>
-            <p class="sub-title"><i target="_blank">外包</i>&nbsp;/&nbsp;<i target="_blank">找活</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('点工')">
+                <p class="big-title">加工</p>
+                <p class="sub-title"><i target="_blank">外包</i>&nbsp;/&nbsp;<i target="_blank">找活</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('点工')">
+            <li class="nav-item">
                 <svg t="1568624710570" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="1852" width="40" height="40">
                     <path d="M276 1004.8c-34.4-8-158.4-57.6-168.8-126.4-7.2-44.8 10.4-88.8 48.8-120.8 28.8-24 100.8-69.6 130.4-84.8 11.2-5.6 27.2-12 41.6-18.4 40.8-17.6 56.8-25.6 60.8-32.8 4.8-11.2 4.8-19.2 0.8-40.8v-1.6l-1.6-1.6C371.2 560 330.4 510.4 320 480c-10.4-30.4-21.6-92-22.4-120v-6.4H214.4c1.6-12.8 7.2-40 16-55.2 12.8-22.4 32.8-41.6 36-43.2l3.2-1.6V248c0-18.4 10.4-82.4 56.8-128.8 56-56 134.4-96 185.6-96h3.2c51.2 0 129.6 40.8 185.6 96 46.4 46.4 56.8 110.4 56.8 128.8v4l3.2 1.6c3.2 1.6 23.2 20.8 36 43.2 8.8 15.2 13.6 42.4 16 55.2H728.8v6.4c0 28-12 89.6-22.4 120-10.4 30.4-51.2 80-68 97.6l-1.6 1.6v1.6c-4 21.6-4.8 29.6 0.8 40.8 3.2 8 19.2 15.2 60.8 32.8 14.4 6.4 29.6 12.8 41.6 18.4 30.4 15.2 101.6 60.8 130.4 84.8 38.4 32 56 76 48.8 120.8-11.2 68.8-134.4 118.4-168.8 126.4-25.6-8.8-163.2-20.8-212-20.8h-14.4c-3.2 0-6.4 0.8-11.2 0.8-4 0-8-0.8-11.2-0.8h-14.4c-48 1.6-185.6 13.6-211.2 22.4z m467.2-39.2l2.4-0.8c12-2.4 120.8-27.2 136-104.8 8-44-43.2-82.4-68-100-16.8-12.8-31.2-21.6-49.6-31.2l-8-4-41.6 234.4 6.4 0.8c10.4 1.6 17.6 3.2 20 4l2.4 1.6zM262.4 728.8c-21.6 11.2-35.2 20.8-49.6 31.2-24.8 18.4-76 56.8-68 100 15.2 77.6 123.2 102.4 136 104.8l2.4 0.8 1.6-1.6c2.4-0.8 10.4-2.4 20-4l6.4-0.8-41.6-234.4-7.2 4z m265.6 216c45.6 0.8 87.2 3.2 119.2 6.4l6.4 0.8 36.8-257.6-8-4c-6.4-3.2-13.6-5.6-20.8-8.8-27.2-11.2-55.2-22.4-66.4-61.6-1.6-7.2-2.4-14.4-1.6-22.4 0.8-9.6 4-17.6 7.2-28 0.8-4 2.4-7.2 4-12 18.4-16 44.8-54.4 58.4-80.8l8.8-18.4c6.4-16.8 12-56 15.2-85.6l0.8-7.2H338.4l0.8 7.2c4.8 43.2 10.4 72 15.2 85.6l8.8 18.4c14.4 27.2 40.8 65.6 59.2 81.6 1.6 4 2.4 8 4 11.2 3.2 9.6 6.4 18.4 7.2 28 0.8 8 0.8 15.2-1.6 22.4-11.2 39.2-39.2 50.4-66.4 61.6-7.2 3.2-14.4 5.6-20.8 8.8l-8 4 36.8 257.6 6.4-0.8c32.8-3.2 73.6-5.6 119.2-6.4H528zM308.8 261.6c-6.4 3.2-16 8.8-26.4 26.4-5.6 8.8-6.4 16-7.2 20.8l-0.8 7.2H751.2l-0.8-7.2c0-4.8-1.6-11.2-6.4-20.8-10.4-17.6-20.8-23.2-26.4-26.4 0-23.2 0.8-69.6-41.6-112-55.2-56-116.8-88.8-162.4-88.8-60.8 0-122.4 48.8-162.4 88.8-42.4 42.4-42.4 89.6-42.4 112z"
                           fill="#48c964" p-id="1853"></path>
                 </svg>
-                <p class="big-title">点工</p></a>
-            <p class="sub-title"><i>找活</i>&nbsp;/&nbsp;<i>找师傅</i></p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('安装')">
+                <p class="big-title">点工</p>
+                <p class="sub-title"><i>找活</i>&nbsp;/&nbsp;<i>找师傅</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('安装')">
+            <li class="nav-item">
                 <svg t="1568624896129" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="7049" width="40" height="40">
@@ -194,11 +205,11 @@
                           p-id="7050" fill="#48c964"></path>
                 </svg>
                 <p class="big-title">安装</p>
-            </a>
-            <p class="sub-title"><i>承包</i>&nbsp;/&nbsp;<i>外包</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('门窗厂')">
+                <p class="sub-title"><i>承包</i>&nbsp;/&nbsp;<i>外包</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('门窗厂')">
+            <li class="nav-item">
                 <svg t="1568625168878" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="8381" width="40" height="40">
@@ -232,11 +243,12 @@
                     <path d="M957.9 933.3c0 4.2-3.5 7.7-7.7 7.7h-875c-4.2 0-7.7-3.5-7.7-7.7v-27.5c0-4.2 3.5-7.7 7.7-7.7h875.1c4.2 0 7.7 3.5 7.7 7.7v27.5z"
                           fill="#48c964" p-id="8397"></path>
                 </svg>
-                <p class="big-title">门窗厂</p></a>
-            <p class="sub-title"><i>预定</i>&nbsp;/&nbsp;<i>配送</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('玻璃厂')">
+                <p class="big-title">门窗厂</p>
+                <p class="sub-title"><i>预定</i>&nbsp;/&nbsp;<i>配送</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('玻璃厂')">
+            <li class="nav-item">
                 <svg t="1568625215495" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="9193" width="40" height="40">
@@ -244,11 +256,11 @@
                           p-id="9194" fill="#48c964"></path>
                 </svg>
                 <p class="big-title">玻璃厂</p>
-            </a>
-            <p class="sub-title"><i>预定</i>&nbsp;/&nbsp;<i>配送</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('配件商')">
+                <p class="sub-title"><i>预定</i>&nbsp;/&nbsp;<i>配送</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('配件商')">
+            <li class="nav-item">
                 <svg t="1568625263772" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="9408" width="40" height="40">
@@ -256,11 +268,11 @@
                           fill="#48c964" p-id="9409"></path>
                 </svg>
                 <p class="big-title">配件商</p>
-            </a>
-            <p class="sub-title"><i>预定</i>&nbsp;/&nbsp;<i>配送</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('定点')">
+                <p class="sub-title"><i>预定</i>&nbsp;/&nbsp;<i>配送</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('定点')">
+            <li class="nav-item">
                 <svg t="1568625326966" class="icon" viewBox="0 0 1048 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="9887" width="40" height="40">
@@ -279,11 +291,11 @@
                           fill="#48c964" p-id="9894"></path>
                 </svg>
                 <p class="big-title">定点</p>
-            </a>
-            <p class="sub-title"><i>出让</i>&nbsp;/&nbsp;<i>入驻</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('店铺')">
+                <p class="sub-title"><i>出让</i>&nbsp;/&nbsp;<i>入驻</i></p>
+            </li>
+        </a>
+        <a href="#" ng-click="goGroup('店铺')">
+            <li class="nav-item">
                 <svg t="1568625368432" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="10823" width="40" height="40">
@@ -291,11 +303,11 @@
                           p-id="10824" fill="#48c964"></path>
                 </svg>
                 <p class="big-title">店铺</p>
-            </a>
-            <p class="sub-title"><i>出租</i>&nbsp;/&nbsp;<i>转让</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('厂房')">
+                <p class="sub-title"><i>出租</i>&nbsp;/&nbsp;<i>转让</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('厂房')">
+            <li class="nav-item">
                 <svg t="1568625416374" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="11419" width="40" height="40">
@@ -308,11 +320,11 @@
                           p-id="11424" fill="#48c964"></path>
                 </svg>
                 <p class="big-title">厂房</p>
-            </a>
-            <p class="sub-title"><i>出租</i>&nbsp;/&nbsp;<i>转让</i></p>
-        </li>
-        <li class="nav-item">
-            <a href="" ng-click="goGroup('设备')">
+                <p class="sub-title"><i>出租</i>&nbsp;/&nbsp;<i>转让</i></p>
+            </li>
+        </a>
+        <a href="" ng-click="goGroup('设备')">
+            <li class="nav-item">
                 <svg t="1568625493889" class="icon" viewBox="0 0 1024 1024" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                      p-id="11710" width="40" height="40">
@@ -322,16 +334,10 @@
                           fill="#48c964" p-id="11712"></path>
                 </svg>
                 <p class="big-title">设备</p>
-            </a>
-            <p class="sub-title"><i>出租</i>&nbsp;/&nbsp;<i>转让</i></p>
-        </li>
+                <p class="sub-title"><i>出租</i>&nbsp;/&nbsp;<i>转让</i></p>
+            </li>
+        </a>
     </ul>
-</section>
-
-
-<section class="nav-items container">
-    <iframe src="/img" scrolling="no" style="min-width: 1200px; height: 200px;
-    border: none;"></iframe>
 </section>
 
 <div class="container category-content">
@@ -339,9 +345,8 @@
     <section style="width:325px" class="content-column column-1">
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">代加工
-                </a>
-                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('加工')">更多>></a>
+                <a href="#" ng-click="goGroup('加工')" target="_blank">代加工</a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('加工')">了解更多>></a>
             </div>
             <div class="section-box-div-4" ng-repeat="item in jgItems  | limitTo:4">
                 <div class="section-box-div-4-img">
@@ -369,9 +374,9 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">点工
+                <a href="#" ng-click="goGroup('点工')" target="_blank">点工
                 </a>
-                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">了解更多>></a>
             </div>
             <div class="section-box-div-4" ng-repeat="item in dgItems  | limitTo:4">
                 <div class="section-box-div-4-img">
@@ -399,9 +404,9 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">安装
+                <a href="#" ng-click="goGroup('安装')" target="_blank">安装
                 </a>
-                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('安装')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('安装')">了解更多>></a>
             </div>
             <div class="section-box-div-4" ng-repeat="item in azItems  | limitTo:4">
                 <div class="section-box-div-4-img">
@@ -429,9 +434,9 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">门窗厂
+                <a href="#" ng-click="goGroup('门窗厂')" target="_blank">门窗厂
                 </a>
-                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('门窗厂')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('门窗厂')">了解更多>></a>
             </div>
             <div class="section-box-div-4" ng-repeat="item in mcItems  | limitTo:4">
                 <div class="section-box-div-4-img">
@@ -459,9 +464,9 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">玻璃厂
+                <a href="#" ng-click="goGroup('玻璃厂')" target="_blank">玻璃厂
                 </a>
-                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('玻璃厂')">更多>></a>
+                <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('玻璃厂')">了解更多>></a>
             </div>
             <div class="section-box-div-4" ng-repeat="item in blcItems  | limitTo:4">
                 <div class="section-box-div-4-img">
@@ -489,7 +494,7 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">配件商
+                <a href="#" ng-click="goGroup('配件商')" target="_blank">配件商
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('配件商')">更多>></a>
             </div>
@@ -519,7 +524,7 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">小区定点
+                <a href="#" ng-click="goGroup('定点')" target="_blank">小区定点
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('定点')">更多>></a>
             </div>
@@ -549,7 +554,7 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">店铺
+                <a href="#" ng-click="goGroup('店铺')" target="_blank">店铺
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('店铺')">更多>></a>
             </div>
@@ -579,7 +584,7 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">厂房
+                <a href="#" ng-click="goGroup('厂房')" target="_blank">厂房
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('厂房')">更多>></a>
             </div>
@@ -609,7 +614,7 @@
         </section>
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
-                <a href="#" target="_blank">设备
+                <a href="#" ng-click="goGroup('设备')" target="_blank">设备
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('设备')">更多>></a>
             </div>
@@ -681,6 +686,10 @@
     });
     $('a').hover(function () {
         $(this).css({'cursor': 'pointer'});
+    });
+
+    $('.icon').mouseover(function () {
+        $(this).attr('fill', 'red');
     });
 </script>
 

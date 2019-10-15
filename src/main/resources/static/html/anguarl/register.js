@@ -41,7 +41,7 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
             email: $scope.entity.email,
             password: $scope.entity.password
         };
-        var msg = ajax_http_post(url, date);
+        var msg = ajax_http_post_login(url, date);
 
         if (msg.code == 200){
             msg_success(msg.msg);

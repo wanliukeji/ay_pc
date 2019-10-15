@@ -238,7 +238,9 @@
                         <div class="featured-height">
                             <div class="photo-item col-5 " style="text-align:center;" ng-repeat="item in files">
                                 <!--<img src="{{item.path}}" width="200" height="200" ng-repeat="item in files"/>-->
-                                <img src="{{item.path}}" class="img-al"/>
+                                <a href="{{item.path}}">
+                                    <img src="{{item.path}}" class="img-al"/>
+                                </a>
                             </div>
 
                         </div>

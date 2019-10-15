@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Api(value = "注册模块", description = "注册接口")
 public interface RegisterApi {
 
-    @PostMapping(value = "/api/user/register", produces = {"application/json;charset=UTF-8"})
+    @PostMapping(value = "/api/user/register")
     @ApiOperation(value = "注册接口", notes = "注册接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "账号", required = true, dataType = "String"),
