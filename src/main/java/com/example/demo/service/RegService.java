@@ -36,12 +36,12 @@ public class RegService extends ServiceImpl<RegMapper, SysUser> implements Seria
             }
         }
 
-        if (StringUtil.isNotEmty(email)) {
-            SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("email", email));
-            if (null != user) {
-                return ApiJSON.error("该邮箱已注册");
-            }
-        }
+//        if (StringUtil.isNotEmty(email)) {
+//            SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("email", email));
+//            if (null != user) {
+//                return ApiJSON.error("该邮箱已注册");
+//            }
+//        }
 
         SysUser user = new SysUser();
         //加密

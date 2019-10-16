@@ -18,8 +18,11 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     var userAddr = getCity();
     angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
 
+    console.log(getBrowserInfo);
+
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
+        console.log(getVos('加工'));
         $scope.dgItems = getVos('点工');
         $scope.azItems = getVos('安装');
         $scope.mccItems = getVos('门窗厂');

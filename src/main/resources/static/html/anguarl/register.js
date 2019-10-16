@@ -16,19 +16,17 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
         }
         ;
 
-        console.log($scope.entity);
-
-        if (!$scope.entity.email) {
-            msg_error("邮箱不能为空");
-            return;
-        }
-        ;
-
-        if (!reg_email.test($scope.entity.email)) {
-            msg_error("邮箱格式输入有误");
-            return;
-        }
-        ;
+        // if (!$scope.entity.email) {
+        //     msg_error("邮箱不能为空");
+        //     return;
+        // }
+        // ;
+        //
+        // if (!reg_email.test($scope.entity.email)) {
+        //     msg_error("邮箱格式输入有误");
+        //     return;
+        // }
+        // ;
 
         if (!angular.equals($scope.entity.password, $scope.password2)) {
             msg_error("两次输入密码不匹配");

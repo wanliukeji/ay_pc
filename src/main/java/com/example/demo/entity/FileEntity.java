@@ -60,5 +60,7 @@ public class FileEntity {
      * 用户
      */
     private String userId;
+    
+    private String msgCode;
 
 }

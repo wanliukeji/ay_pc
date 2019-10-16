@@ -41,6 +41,8 @@ public class FiedVo implements Serializable {
 
     private String address;
 
+    private String telephone;
+
     private String type;
 
     private String fw;
@@ -53,6 +55,9 @@ public class FiedVo implements Serializable {
 
     private String userId;
 
-    private Double price;
+    private String price;
+    
+    private String msgCode;
+
 
 }

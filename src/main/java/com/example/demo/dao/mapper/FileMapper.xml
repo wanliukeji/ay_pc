@@ -12,7 +12,8 @@
         file.nfileName,
         file.uploadTime,
         file.userId,
-        file.imgUrl
+        file.imgUrl,
+        file.msgCode
         FROM
         file
         WHERE

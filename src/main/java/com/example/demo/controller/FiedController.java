@@ -38,6 +38,17 @@ public class FiedController implements FiedApi {
     @Autowired
     private RelService relService;
 
+    @Override
+    public ApiJSON saveFied(Fied entity) throws Exception {
+        try {
+            boolean flag = relService.save(entity);
+            return ApiJSON.data(flag);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ApiJSON.error(ex.getMessage());
+        }
+    }
+
     public ResultJSON<?> getByPage(ReqParam param) throws Exception {
         return ResultJSON.success(fiedService.getByPage(param));
     }
@@ -83,12 +94,6 @@ public class FiedController implements FiedApi {
     @Override
     public ApiJSON<?> getPageAll(String searchVal) throws Exception {
         return fiedService.getPageAll(searchVal);
-    }
-
-    @Override
-    public ApiJSON saveRel(Fied fied) throws Exception {
-        boolean flag = relService.save(fied);
-        return ApiJSON.data(flag);
     }
 
 }

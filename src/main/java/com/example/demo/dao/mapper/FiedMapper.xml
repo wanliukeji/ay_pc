@@ -7,8 +7,8 @@
         SELECT
         t.Id,
         t.head_line,
-        t.sercode,
-        t.coverage,
+        t.telephone,
+        t.msgCode,
         t.user_qq,
         t.user_wx,
         t.phone,
@@ -67,6 +67,7 @@
         fied.type,
         fied.fw,
         fied.service,
+        fied.msgCode,
         SUBSTRING(file.path,33) as path,
         fied.price,
         file.type as f_type
@@ -75,7 +76,7 @@
         INNER JOIN
         file
         ON
-        fied.userId = file.userId
+        fied.msgCode = file.msgCode
         WHERE
         1 = 1
         <if test="type != null">

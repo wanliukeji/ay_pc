@@ -54,7 +54,7 @@ public class RelService extends ServiceImpl<FiedMapper, Fied> implements Seriali
                 if (info.length >= 12) {
                     if (i != 1) { //忽略表头
                         fied.setHead_line(info[1]);
-                        fied.setSercode(info[2]);
+                        fied.setTelephone(info[2]);
                         fied.setCoverage(info[3]);
                         fied.setUser_qq(info[4]);
                         fied.setUser_wx(info[5]);

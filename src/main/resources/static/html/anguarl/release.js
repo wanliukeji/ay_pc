@@ -30,9 +30,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     $scope.entity = {
         head_line: '宁波茳德门窗厂',
-        sercode: '100',
-        coverage: '100',
-        user_qq: '132312',
+        telephone: '',
+        msgCode: '',
+        user_qq: '1193227758',
         user_wx: 'sdadafdf',
         phone: '13278789090',
         link: '大鱼',
@@ -48,7 +48,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         fw: '',
         service: '',
         type: '',
-        price: 0,
+        // price: 0,
         userId: $scope.user.id
     };
 
@@ -80,112 +80,72 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
                 if (!$scope.entity.head_line) {
                     msg_error('标题不能为空');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.company_name) {
                     msg_error('公司名不能为空');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.phone) {
                     msg_error('手机号不能为空');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!reg_test(reg_phone, $scope.entity.phone)) {
                     msg_error("手机格式有误");
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.link) {
                     msg_error('联系人不能为空');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.service) {
                     msg_error('请选择服务类');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.fw) {
                     msg_error('请选择区域');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
-                alert($scope.entity.procode);
-
                 if (!$scope.entity.procode) {
                     msg_error('请选择省份');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.citycode) {
                     msg_error('请选择城市');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.countycode) {
                     msg_error('请选择县区');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.address) {
                     msg_error('详细地址不能为空');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.details) {
                     msg_error('服务描述不能为空');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
                 if (!$scope.entity.type) {
                     msg_error('请选择类别');
-                    setTimeout(function () {
-                        flush();
-                    },2000);
                     return;
                 }
 
+                var time = dateFomat_YYMMDDHHFFMM();
+                $scope.entity.msgCode = time + $scope.user.id;
 
-                let def = $q.defer();
                 $http({
                     url: '/api/fied/save',
                     method: "POST",
@@ -222,11 +182,13 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
         form.append('userId', $scope.user.id);
+        form.append('msgCode', $scope.entity.msgCode);
         var url = 'uploadfile_g_img';
         if (null != file) {
             upload(url, method_post, form);
             form.delete("fileName");
             form.delete("userId");
+            form.delete('msgCode');
         }
     }
 
@@ -241,9 +203,11 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             if (null != file) {
                 form.append("fileName", file);
                 form.append('userId', $scope.user.id);
+                form.append('msgCode', $scope.entity.msgCode);
                 upload(url, method_post, form);
                 form.delete("fileName");
                 form.delete("userId");
+                form.delete('msgCode');
             }
         }
     }
@@ -259,9 +223,11 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             if (null != file) {
                 form.append("fileName", file);
                 form.append('userId', $scope.user.id);
+                form.append('msgCode', $scope.entity.msgCode);
                 upload(url, method_post, form);
                 form.delete("fileName");
                 form.delete("userId");
+                form.delete('msgCode');
             }
         }
     }
