@@ -18,8 +18,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     var userAddr = getCity();
     angular.element("#city").html('<i style="color: black;">当前城市&nbsp;</i>' + userAddr);
 
-    console.log(getBrowserInfo);
-
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
         console.log(getVos('加工'));
@@ -36,7 +34,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.sendMsg = function () {
         if (!is_Exist($scope.user)) {
-            // window.alert('您还未登录,请先登录');
             angular.element("#showModel").click();
         } else {
             href('/release');
@@ -51,6 +48,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     function getVos(type) {
         var url = "/api/fied/getVos?type=" + type;
         var msg = ajax_http(url, method_get, null);
+        console.log(msg);
         return msg.data;
     }
 
