@@ -48,7 +48,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     function getVos(type) {
         var url = "/api/fied/getVos?type=" + type;
         var msg = ajax_http(url, method_get, null);
-        console.log(msg);
         return msg.data;
     }
 

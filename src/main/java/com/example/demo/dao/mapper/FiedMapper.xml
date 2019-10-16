@@ -40,11 +40,8 @@
         <!--</if>-->
 
         LIMIT #{currentPage},#{pageSize}
-
         ORDER BY
-
         fied.createDate
-
         DESC
 
     </select>
@@ -86,7 +83,7 @@
         AND
         file.type = 'G'
         GROUP BY
-        fied.userId
+        fied.msgCode
         ORDER BY
         fied.createDate
         DESC
@@ -129,7 +126,7 @@
         AND
         file.type = 'G'
         GROUP BY
-        fied.userId
+        fied.msgCode
 
     </select>
     <select id="getPageVos" resultType="com.example.demo.vo.FiedVo">
@@ -185,7 +182,7 @@
         AND
         file.type = 'G'
         GROUP BY
-        fied.userId
+        fied.msgCode
     </select>
     <select id="getPageAll" resultType="com.example.demo.vo.FiedVo">
         SELECT
@@ -232,13 +229,10 @@
                 or fied.fw like "%"#{val}"%"
             )
         </if>
-
-
-
         AND
         file.type = 'G'
         GROUP BY
-        fied.userId
+        fied.msgCode
     </select>
 
 
