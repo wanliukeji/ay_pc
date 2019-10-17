@@ -86,6 +86,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     $scope.goGroup = function (type) {
         var url = "/api/fied/getVos?type=" + type;
         var msg = ajax_http(url, method_get, null);
+        console.log(msg);
         if (msg.code = 200) {
             setSessionObj('groupList', msg.data);
             setSessionObj('type', type);
@@ -101,7 +102,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         var msg = ajax_http(url, method_get, null);
         $scope.groupList = msg.data;
         setSessionObj('groupList', $scope.groupList);
-        href('/group');
+        // href('/group');
     }
 
     document.onkeydown = function (e) {
