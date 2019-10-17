@@ -220,6 +220,14 @@ public class FiedService extends ServiceImpl<FiedMapper, Fied> implements Serial
         }
     }
 
-    ;
+    public ResultJSON<?> getFiedInfoVos(String type) {
+        try {
+            List <FiedVo> vos = baseMapper.getFiedInfoVos(type);
+            return ResultJSON.success(vos);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error("查询失败");
+        }
+    };
 
 }

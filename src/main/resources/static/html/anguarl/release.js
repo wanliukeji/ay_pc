@@ -48,7 +48,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         fw: '',
         service: '',
         type: '',
-        // price: 0,
+        price: 0,
         userId: $scope.user.id
     };
 
@@ -156,6 +156,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                         upload_g_img();
                         upload_z_img();
                         upload_a_img();
+                        $scope.info.next = '发布中...';
                         angular.element("#showModel").click();
                         setTimeout(function () {
                             href('/home')
@@ -242,6 +243,9 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
 
     //获取一级区域
     function getAddr(pid) {
+        if (pid == 'undefined') {
+            pid = 0;
+        }
         pid = Number.parseInt(pid);
         var url = '/api/addr/getInfos?pid=' + pid;
         var msg = ajax_http(url, method_get, null);

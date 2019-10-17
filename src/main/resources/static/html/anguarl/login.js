@@ -1,16 +1,21 @@
 var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope, $http, $q, $window) {
 
+    $scope.init = function () {
+        $scope.stauts = '登录';
+    }
+
     $scope.login = function () {
         var url = '/api/user/login';
         var date = {
             'account': $scope.account,
             'password': $scope.password
         };
+
+        $scope.stauts = '正在登录.....';
+
         var msg = ajax_http_post_login(url, date);
         if (msg.code == 200) {
-            msg_success("登录成功,正在进入...")
             setUser(msg.data);
-
             setTimeout(function () {
                 href('/home');
             },3000)

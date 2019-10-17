@@ -92,6 +92,11 @@ public class FiedController implements FiedApi {
     }
 
     @Override
+    public ResultJSON<?> getFiedInfoVos(String type) throws Exception {
+        return fiedService.getFiedInfoVos(type);
+    }
+
+    @Override
     public ApiJSON<?> getPageAll(String searchVal) throws Exception {
         return fiedService.getPageAll(searchVal);
     }

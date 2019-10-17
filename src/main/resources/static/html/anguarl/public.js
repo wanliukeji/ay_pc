@@ -420,6 +420,48 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 function dateFomat_YYMMDDHHFFMM() {
     var data = new Date();
-    var time = data.getFullYear() + '' + data.getMonth() + '' + data.getDate() + '' + data.getHours() + '' + data.getMinutes() +  + data.getSeconds();
+    var time = data.getFullYear() + '' + data.getMonth() + '' + data.getDate() + '' + data.getHours() + '' + data.getMinutes() + +data.getSeconds();
     return time;
+}
+
+// 编写JS实现JS原生ajax功能
+
+function js_ajax_htttp_get(url) {
+    //发送异步请求
+
+    //1.创建ajax引擎对象----所有操作都是由ajax引擎完成
+
+    var xmlHttp = new XMLHttpRequest();
+
+    //2.为引擎对象绑定监听事件
+
+    xmlHttp.onreadystatechange = function () {
+
+        //当状态变化时处理的事情
+
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+
+            //5.接收响应信息
+
+            var data = xmlHttp.responseText;
+            console.log(data);
+
+        }
+
+    }
+
+    //3.绑定服务器地址
+
+    //第一个参数：请求方式GET/POST
+
+    //第二个参数：后台服务器地址
+
+    //第三个参数：是否是异步 true--异步   false--同步
+
+    xmlHttp.open("GET", url, true);
+
+    //4.发送请求
+
+    xmlHttp.send();
+
 }

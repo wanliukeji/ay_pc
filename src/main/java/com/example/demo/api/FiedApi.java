@@ -83,6 +83,10 @@ public interface FiedApi {
     @ApiOperation(value = "分组筛选数据接口", notes = "分组筛选数据接口")
     public ResultJSON<?> getPageVos(@RequestBody ReqFiedParam param) throws Exception;
 
+    @GetMapping(value = "/api/fied/getFiedInfoVos")
+    @ApiOperation(value = "首页数据接口", notes = "首页筛选数据接口")
+    public ResultJSON<?> getFiedInfoVos(@RequestParam("type") String type) throws Exception;
+
     @GetMapping(value = "/api/fied/getPageAll")
     @ApiOperation(value = "查询数据接口", notes = "查询数据接口")
     public ApiJSON<?> getPageAll(@RequestParam("searchVal") String searchVal) throws Exception;

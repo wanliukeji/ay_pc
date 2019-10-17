@@ -1,7 +1,6 @@
 package com.example.demo.vo;
 
 import lombok.Data;
-
 import java.io.Serializable;
 
 /**
@@ -58,6 +57,5 @@ public class FiedVo implements Serializable {
     private String price;
     
     private String msgCode;
-
 
 }

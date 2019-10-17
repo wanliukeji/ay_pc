@@ -227,7 +227,7 @@
                                                         <div class="col-md-3">
                                                             <select data-plugin="customselect" id="procode"
                                                                     ng-model="entity.procode" required
-                                                                    ng-click="selectPrv(entity.procode)"
+                                                                    ng-change="selectPrv(entity.procode)"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择</option>
                                                                 <option ng-repeat="item in prvList" value="{{item.id}}">
@@ -238,7 +238,7 @@
                                                         <div class="col-md-3">
                                                             <select data-plugin="customselect" id="entity.citycode"
                                                                     ng-model="entity.citycode" required
-                                                                    ng-click="selectCity(entity.citycode)"
+                                                                    ng-change="selectCity(entity.citycode)"
                                                                     class="form-control d-inline-block float-left">
                                                                 <option value="">请选择</option>
                                                                 <option ng-repeat="item in cityList"
@@ -420,11 +420,8 @@ var search_type = "shenghuo";</script>
 <script src="/static/js/dropify.min.js"></script>
 <script src="/static/js/dropzone.min.js"></script>
 <script src="/static/js/form-fileuploads.init.js"></script>
-
 <!-- App js -->
 <script src="/static/ui/js/app.min.js"></script>
-
-
 <!-- Plugins js-->
 <script src="/static/js/wizard.init.js"></script>
 <!-- Init js-->

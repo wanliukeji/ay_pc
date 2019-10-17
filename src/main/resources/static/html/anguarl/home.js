@@ -1,6 +1,7 @@
 var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, $http, $q) {
 
     $scope.user = getUser();
+    $scope.stauts = '登录';
 
     $scope.jgItems = [];
     $scope.dgItems = [];
@@ -20,7 +21,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
-        console.log(getVos('加工'));
         $scope.dgItems = getVos('点工');
         $scope.azItems = getVos('安装');
         $scope.mccItems = getVos('门窗厂');
@@ -46,10 +46,11 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     };
 
     function getVos(type) {
-        var url = "/api/fied/getVos?type=" + type;
+        var url = "/api/fied/getFiedInfoVos?type=" + type;
         var msg = ajax_http(url, method_get, null);
         return msg.data;
     }
+
 
     $scope.login = function () {
         var url = '/api/user/login';
@@ -60,8 +61,11 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         var msg = ajax_http_post_login(url, date);
 
         if (msg.code == 200) {
+            $scope.stauts = '正在登录.....';
             setUser(msg.data);
-            href('/home');
+            setTimeout(function () {
+                href('/home');
+            },2000)
         } else {
             alert("账户密码不匹配      " + msg.message);
         }

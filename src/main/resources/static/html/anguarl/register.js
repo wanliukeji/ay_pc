@@ -6,6 +6,8 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
         password: ''
     };
 
+    $scope.stauts = '注册';
+
     $scope.password2 = '';
 
     $scope.register = function () {
@@ -42,7 +44,7 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
         var msg = ajax_http_post_login(url, date);
 
         if (msg.code == 200){
-            msg_success(msg.msg);
+            $scope.stauts = '注册中....';
             setUser(date);
             setTimeout(function () {
                 href('/home');

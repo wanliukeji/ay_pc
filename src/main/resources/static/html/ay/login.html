@@ -17,7 +17,7 @@
 
 <body class="authentication-bg authentication-bg-pattern"
       style="background:url(/static/bg/sc.jpg) no-repeat; background-size: cover;" ng-app="myLogin"
-      ng-controller="loginCtrl">
+      ng-controller="loginCtrl" ng-init="init()">
 <div class="account-pages mt-5 mb-5 w-25 left" style="margin-right: 20px; min-width: 360px; float: right;">
     <div class="container right">
         <div class="row right" style="margin-top: 60px;">
@@ -59,8 +59,8 @@
                             </div>
 
                             <div class="form-group mb-0 text-center">
-                                <button class="btn btn-block" style="background-color: #48c964;" type="button"
-                                        ng-click="login()"> 登录
+                                <button class="btn btn-block" style="background-color: #48c964; min-height: 40px;" type="button"
+                                        ng-click="login()"> {{stauts}}
                                 </button>
                             </div>
                         </div>

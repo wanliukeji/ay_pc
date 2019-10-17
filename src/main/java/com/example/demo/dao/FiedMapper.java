@@ -34,4 +34,6 @@ public interface FiedMapper extends BaseMapper<Fied> {
                           @Param("fw") String fw);
 
     List<FiedVo> getPageAll(@Param("val") String searchVal);
+
+    List<FiedVo> getFiedInfoVos(@Param("type") String type);
 }
