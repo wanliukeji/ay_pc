@@ -166,7 +166,7 @@
 <section class="nav-tabs">
     <ul class="nav-content clearfix">
         <li class="nav-item home"><a href="/" target="_blank">首页</a></li>
-        <!--<li class="nav-item" title="尚未对外开放"><a target="_blank">门窗行情</a></li>-->
+        <li class="nav-item" title="尚未对外开放"><a target="_blank">门窗牛人</a></li>
         <!--<li class="nav-item" title="尚未对外开放"><a target="_blank">工业信息</a></li>-->
         <!--<li class="nav-item" title="尚未对外开放"><a target="_blank">企业名录</a></li>-->
         <!--<li class="nav-item" title="尚未对外开放"><a target="_blank">江湖名人</a></li>-->
@@ -363,7 +363,7 @@
 
 <div class="container category-content">
 
-    <section style="width:325px; max-height: 360px;" class="content-column column-1">
+    <section style="width:325px;" class="content-column column-1">
         <section class="section-box category-jiaoyupeixun section-box-div">
             <div class="title">
                 <a href="#" ng-click="goGroup('加工')" target="_blank">代加工</a>
@@ -423,7 +423,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in dgItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(dgItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{dgItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(dgItems[0].id)">
+                            {{dgItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(dgItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{dgItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{dgItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in dgItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -453,7 +476,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('安装')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in azItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(azItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{azItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(azItems[0].id)">
+                            {{azItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(azItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{azItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{azItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in azItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -483,7 +529,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('门窗厂')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in mccItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(mccItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{mccItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(mccItems[0].id)">
+                            {{mccItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(mccItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{mccItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{mccItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in mccItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -513,7 +582,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('玻璃厂')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in blcItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(blcItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{blcItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(blcItems[0].id)">
+                            {{blcItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(blcItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{blcItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{blcItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in blcItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -543,7 +635,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('配件商')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in pjsItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(pjsItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{pjsItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(pjsItems[0].id)">
+                            {{pjsItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(pjsItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{pjsItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{pjsItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in pjsItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -573,7 +688,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('定点')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in ddItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(ddItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{ddItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(ddItems[0].id)">
+                            {{ddItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(ddItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{ddItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{ddItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in ddItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -603,7 +741,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('店铺')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in dpItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(dpItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{dpItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(dpItems[0].id)">
+                            {{dpItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(dpItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{dpItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{dpItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in dpItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -633,7 +794,30 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('厂房')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in cfItems  | limitTo:4">
+            <div class="section-box-div-1">
+                <div>
+                    <a href="" ng-click="goInfo(cfItems[0].id)">
+                        <img class="div-4-img div-1-img" src="{{cfItems[0].path}}">
+                    </a>
+                </div>
+                <div>
+                    <p class="section-box-div-4-name" style="text-align: center;">
+                        <a href="" ng-click="goInfo(cfItems[0].id)">
+                            {{cfItems[0].company_name}}
+                        </a>
+                    </p>
+                    <a ng-click="goInfo(cfItems[0].id)">
+                        <p class="text-webkit section-box-div-4-details">
+                            <b>服务描述：</b>
+                            {{cfItems[0].details}} +
+                        </p>
+                    </a>
+                    <p class="div-1-p">
+                        <span class="section-box-div-4-time">{{cfItems[0].createDate}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="section-box-div-4" ng-repeat="item in cfItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
@@ -663,7 +847,7 @@
                 </a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('设备')">了解更多>></a>
             </div>
-            <div class="section-box-div-4" ng-repeat="item in sbItems  | limitTo:4">
+            <div class="section-box-div-4" ng-repeat="item in sbItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a href="" ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">
