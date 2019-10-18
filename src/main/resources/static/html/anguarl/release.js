@@ -29,22 +29,25 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     }
 
     $scope.entity = {
-        head_line: '宁波喜临门',
-        telephone: '0791-8080',
+        head_line: '宁波铝合金门窗--新桥门窗加工厂,终身保修',
+        telephone: '4008900126',
         msgCode: '',
         user_qq: '1193227758',
         user_wx: 'xilinmen',
         phone: '13278789090',
-        link: '张亮清',
+        link: '陈经理 ',
         createDate: new Date(),
-        company_name: '喜临门',
+        company_name: '宁波新桥门窗',
         procode: '',
         citycode: '',
         countycode: '',
-        address: '中山东路1266号',
+        address: '宁波市,海曙区,永寿街36号',
         video_url: '',
         gg_src: '',
-        details: '主营不锈钢防盗窗，不锈钢扶手，雨棚，阳光房，断桥铝，铝木门窗，淋浴房等',
+        details: '\n' +
+        '宁波新桥门窗主要从事建筑门窗工程施工设计安装。我们主要生产铝合金、感应门、木铝门窗、节能门窗、阳光房、艺术玻璃采光顶、艺术阳光房玻璃房及附加代理产品壁柜移动门、隔断墙。\n' +
+        '上门测量、安装提供样品，可根据用户需要订做、加工、安装。只有想得到没有做不到！\n' +
+        '专业制作：钢结构、阳光房、现浇混泥土、封阳台等。\n',
         fw: '',
         service: '',
         type: '',

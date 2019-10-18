@@ -500,7 +500,7 @@
                 <!--{{jgItems[1].path}}-->
                 <div>
                     <a ng-click="goInfo(jgItems[0].id)">
-                        <img class="div-4-img div-1-img" src="{{jqItem[0].path}}">
+                        <img class="div-4-img div-1-img" src="{{jgItems[0].path}}">
                     </a>
                 </div>
                 <div>
@@ -521,7 +521,7 @@
                 </div>
             </div>
 
-            <div class="section-box-div-4" ng-repeat="item in jgItems  | limitTo:8">
+            <div class="section-box-div-4" ng-repeat="item in jgItems  | limitTo:6">
                 <div class="section-box-div-4-img">
                     <a ng-click="goInfo(item.id)">
                         <img src="{{item.path}}" class="div-4-img">

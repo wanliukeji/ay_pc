@@ -21,7 +21,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.init = function () {
         $scope.jgItems = getVos('加工');
-        console.log($scope.jgItems);
         $scope.dgItems = getVos('点工');
         $scope.azItems = getVos('安装');
         $scope.mccItems = getVos('门窗厂');
