@@ -12,6 +12,13 @@
     <link href="/static/css/Jquery-ui.css" type="text/css" rel="stylesheet"/>
     <link href="/static/css/Index.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/baicons2.css" type="text/css"/>
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css"/>
+
     <!--[if IE 7]>
     <style>
         .nav-tabs .nav-content .nav-item.home a, .nav-tabs .nav-content .nav-item.normal:hover {
@@ -107,6 +114,36 @@
             padding: 0 auto;
             height: auto;
         }
+
+        a {
+            color: #444444;
+        }
+
+        .container {
+            width: 80%;
+            min-width: 1200px;
+            padding: 0px;
+        }
+
+        .new-div-left, .new-div-center, .new-div-right {
+            position: relative;
+            display: inline-block;
+            min-height: 600px;
+            margin: 0 auto;
+        }
+
+        .new-div-left {
+            width: 29.2%;
+        }
+
+        .new-div-center {
+            width: 45%;
+        }
+
+        .new-div-right {
+            width: 25%;
+        }
+
     </style>
 </head>
 
@@ -164,9 +201,8 @@
     <div class="header">
         <div class="top-banner full-banner"></div>
         <div class="location" style="height: 115px;">
-            <span class="breadcrumb">
+            <span class="breadcrumb" style="background-color: white;">
                 <a class="primary-logo">
-
                     <img src="/static/image/anny_logo.png" alt="安义分类信息网"
                          width="300" height="200" style="margin-top:-72px;"/>
                     </a>
@@ -190,7 +226,7 @@
 </header>
 <section class="nav-tabs">
     <ul class="nav-content clearfix">
-        <li class="nav-item home"><a href="/" target="_blank">首页</a></li>
+        <li class="nav-item home"><a href="/" style="color: white;" target="_blank">首页</a></li>
         <li class="nav-item"><a href="/company" target="_blank">企业名录</a></li>
         <li class="nav-item" title="尚未对外开放"><a target="_blank">门窗牛人</a></li>
         <li class="nav-item" title="尚未对外开放"><a href="/static/html/ay/hy.html" target="_blank">工业信息</a></li>
@@ -206,7 +242,6 @@
         </li>
     </ul>
 </section>
-
 
 <section class="nav-items container">
     <iframe src="/static/tx/xz.html" scrolling="no" style="min-width: 1200px; height: 370px;
@@ -409,36 +444,83 @@
     <p class="hot-pp-p">其他品牌</p>
     <ul class="nav-content hot-pp-ul" style="height: auto;">
         <li class="nav-item" style="width: 10%; padding: 0 auto;margin-left: 7px;margin-top: 3px;">
-            <img src="https://mc.cdnjm.cn/201808/11/105528ps5b6e5020bf24a1.4404617941860.jpg" width="100%" height="60" alt="">
+            <img src="https://mc.cdnjm.cn/201808/11/105528ps5b6e5020bf24a1.4404617941860.jpg" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto; margin-left: 7px;margin-top: 3px;">
-            <img src="https://mc.cdnjm.cn/201907/30/093247ps5d3f9e3fd71b22.5947941541860.jpg" width="100%" height="60" alt="">
+            <img src="https://mc.cdnjm.cn/201907/30/093247ps5d3f9e3fd71b22.5947941541860.jpg" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto; margin-left: 7px;margin-top: 3px;">
-            <img src="http://mc.cdnjm.cn/201901/15/102137ps5c3d43b19ddae3.770756797200.gif" width="100%" height="60" alt="">
+            <img src="http://mc.cdnjm.cn/201901/15/102137ps5c3d43b19ddae3.770756797200.gif" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto;margin-left: 7px;margin-top: 3px;">
-            <img src="https://mc.cdnjm.cn/201904/18/092953ps5cb7d311beda93.6533861841860.jpg" width="100%" height="60" alt="">
+            <img src="https://mc.cdnjm.cn/201904/18/092953ps5cb7d311beda93.6533861841860.jpg" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto; margin-left: 7px;margin-top: 3px;">
-            <img src="http://mc.cdnjm.cn/201903/07/132005ps5c80aa05ae9306.9614807421447.gif" width="100%" height="60" alt="">
+            <img src="http://mc.cdnjm.cn/201903/07/132005ps5c80aa05ae9306.9614807421447.gif" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto; margin-left: 7px;margin-top: 3px;">
-            <img src="http://mc.cdnjm.cn/201710/30/103107ps59f68eebe6d189.785531911.gif" width="100%" height="60" alt="">
+            <img src="http://mc.cdnjm.cn/201710/30/103107ps59f68eebe6d189.785531911.gif" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto;margin-left: 7px;margin-top: 3px;">
-            <img src="http://mc.cdnjm.cn/201904/02/100619ps5ca2c39b587255.9891649314833.gif" width="100%" height="60" alt="">
+            <img src="http://mc.cdnjm.cn/201904/02/100619ps5ca2c39b587255.9891649314833.gif" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto; margin-left: 7px;margin-top: 3px;">
-            <img src="https://mc.cdnjm.cn/201710/30/103128ps59f68f00dd19f4.692767371.gif" width="100%" height="60" alt="">
+            <img src="https://mc.cdnjm.cn/201710/30/103128ps59f68f00dd19f4.692767371.gif" width="100%" height="60"
+                 alt="">
         </li>
         <li class="nav-item" style="width: 10%; padding: 0 auto; margin-left: 7px;margin-top: 3px;">
-            <img src="http://mc.cdnjm.cn/201905/30/140203ps5cef71dbd76d29.0822469626776.jpg" width="100%" height="60" alt="">
+            <img src="http://mc.cdnjm.cn/201905/30/140203ps5cef71dbd76d29.0822469626776.jpg" width="100%" height="60"
+                 alt="">
         </li>
     </ul>
 </section>
-<section class="nav-items container" style="border: black 1px solid; height: 300px;">
 
+<section class="nav-items container" style=" height: 600px;">
+    <p style="height: 8%; position: absolute; margin-top: 0px; width: 29.2%; text-align: left; font-size: 26px;
+        padding: 10px; font-family: 宋体; font-weight: bolder; color: #db214c; border-bottom: 5px #db214c solid; ">
+        行业热点
+    </p>
+    <div class="new-div-left">
+        <!--<marquee  direction="up" style="margin-top: 16%;position: absolute; height: 80%; padding: 15px;">-->
+            <ol style="font-size: 22px; margin-top: 20%; position: absolute;">
+                <li>第16届大沥凤池铝门窗建筑装饰博览会揭幕</li>
+                <li>10~11月门窗企业招商会独家预告丨招商汇</li>
+                <li>新品预告|展志天华木门2020新品即将正式发布</li>
+                <li>加盟福利来袭 佛山优质门窗品牌聚焦</li>
+                <li>苏宁易购：前三季度预计归属股东净利润116.39亿元</li>
+                <li>聚焦|阿里要做大家居行业的“菜鸟”？</li>
+                <li>建材老商加盟伊盾门窗 如何月销量破百万？</li>
+            </ol>
+        <!--</marquee>-->
+    </div>
+    <div class="new-div-center" style=" border-left: 3px #db214c solid; margin: 0 auto;">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active"><a href="#h" data-toggle="tab">品牌</a></li>
+            <li><a href="#l" data-toggle="tab">铝合金</a></li>
+            <li><a href="#x" data-toggle="tab">不锈钢</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content" style="position: absolute;">
+            <div class="tab-pane fade in active" id="h">
+            </div>
+            <div class="tab-pane fade in active" id="l">
+            </div>
+            <div class="tab-pane fade in active" id="x">
+            </div>
+        </div>
+    </div>
+    <div class="new-div-right" style="border-left: 3px #db214c solid;">
+        <p style="height: 8%; position: absolute; margin-top: 0px; width: 100%; text-align: left; font-size: 26px;
+        padding: 10px; font-family: 宋体; font-weight: bolder; color: #db214c; border-bottom: 5px #db214c solid; ">
+            排行榜
+        </p>
+    </div>
 </section>
 
 <div class="container category-content" style="position: relative;">
