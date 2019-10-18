@@ -102,6 +102,10 @@
             border: rebeccapurple 1px solid;
         }
 
+        #btns>li:hover {
+            cursor: pointer;
+        }
+
         #btns .active {
             background: #f60;
         }
@@ -148,12 +152,12 @@
             var aBtns = document.getElementById("btns").getElementsByTagName("li");
             var i = Math.floor(Math.random() * 0 + 3)
             aBtns[i].onclick();
-        },300)
+        }, 300)
     </script>
 </head>
 <body>
 <div class="box" style="margin: 0 auto; padding: 0 auto; min-width: 1200px">
-    <ul id="picList"  style="margin: 0 auto; padding: 0 auto;">
+    <ul id="picList" style="margin: 0 auto; padding: 0 auto;">
     </ul>
     <ol id="btns">
         <li class="active">1</li>

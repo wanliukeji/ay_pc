@@ -2,7 +2,7 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
 
     $scope.init = function () {
         $scope.stauts = '登录';
-    }
+    };
 
     $scope.login = function () {
         var url = '/api/user/login';
@@ -24,5 +24,6 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
             msg_error("账户密码输入不匹配,请重新输入");
         }
     }
+
 });
 
