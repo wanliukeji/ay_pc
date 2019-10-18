@@ -245,21 +245,29 @@ function checked(e) {
 
 //全局提示框
 function msg_success(msg) {
-    lightyear.loading('show');
-    // 假设ajax提交操作
-    setTimeout(function () {
-        lightyear.loading('hide');
-        lightyear.notify(msg, 'success', 2000);
-    }, 2000)
+    try {
+        lightyear.loading('show');
+        // 假设ajax提交操作
+        setTimeout(function () {
+            lightyear.loading('hide');
+            lightyear.notify(msg, 'success', 2000);
+        }, 2000)
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 function msg_error(msg) {
-    lightyear.loading('show');
-    // 假设ajax提交操作
-    setTimeout(function () {
-        lightyear.loading('hide');
-        lightyear.notify(msg, 'danger', 1000);
-    }, 1000)
+    try {
+        lightyear.loading('show');
+        // 假设ajax提交操作
+        setTimeout(function () {
+            lightyear.loading('hide');
+            lightyear.notify(msg, 'danger', 1000);
+        }, 1000)
+    } catch (e) {
+        console.log(e);
+    }
 };
 
 function getServiceItem(val) {
