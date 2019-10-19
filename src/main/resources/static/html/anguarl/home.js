@@ -50,16 +50,15 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     };
     // 发布安装加工
     $scope.sendAz = function () {
-        alert('发布安装');
-        // href('/')
+        href('/release')
     };
     // 发布材料配送
     $scope.sendPs = function () {
-        alert('发布配送');
+        href('/relcl')
     };
     // 发布材料
     $scope.sendCz = function () {
-        alert('发布材料');
+        href('/zr')
     };
 
     $scope.outlogin = function () {

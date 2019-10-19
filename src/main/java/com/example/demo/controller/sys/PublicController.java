@@ -98,7 +98,7 @@ public class PublicController {
     }
 
     /**
-     * 信息发布页
+     * 加工安装
      *
      * @return
      */
@@ -153,5 +153,23 @@ public class PublicController {
     @GetMapping("/xiaoMing")
     public String xiaoMing() {
         return "socket/xiaoMing";
+    }
+
+    /**
+     * 材料商
+     * @return
+     */
+    @GetMapping("/relcl")
+    public String relcl() {
+        return "ay/relcl";
+    }
+
+    /**
+     * 转让
+     * @return
+     */
+    @GetMapping("/zr")
+    public String zr() {
+        return "ay/zr";
     }
 }

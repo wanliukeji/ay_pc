@@ -52,7 +52,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title font-22">填写加工/安装/点工信息
+                            <h4 class="header-title font-22">填写材料配送信息
                                 &nbsp;
                                 <span style="color: #999999;font-size: 12px;text-align: right;">(<i
                                         style="color: red;">*</i>为必填项)</span></h4>
@@ -98,38 +98,76 @@
                                                                    placeholder="请输入标题" required/>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类别<i
+                                                        <label class="col-md-3 col-form-label"> 配送材料<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <select data-plugin="customselect" id="entity.type"
-                                                                    ng-model="entity.type" required
-                                                                    class="form-control">
-                                                                <option value="">请选择</option>
-                                                                <option ng-repeat="item in typeItem"
-                                                                        value="{{item}}">{{item}}
-                                                                </option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类型<i
-                                                                style="color: red;">*</i></label>
-                                                        <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left"
-                                                                 ng-repeat="(index,item) in serviceItem">
-                                                                <input type="checkbox" id="inlineCheckbox{{index}}"
-                                                                       value="{{item}}" name="ser">
-                                                                <label for="inlineCheckbox{{index}}">{{item}}</label>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="不锈钢圆管"
+                                                                       value="不锈钢圆管" name="ser">
+                                                                <label for="不锈钢圆管">不锈钢圆管</label>
                                                             </div>
 
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="不锈钢方管"
+                                                                       value="不锈钢方管" name="ser">
+                                                                <label for="不锈钢方管">不锈钢方管</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="耐力板"
+                                                                       value="耐力板" name="ser">
+                                                                <label for="耐力板">耐力板</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="304不锈钢板"
+                                                                       value="304不锈钢板" name="ser">
+                                                                <label for="304不锈钢板">304不锈钢板</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="塑钢型材"
+                                                                       value="塑钢型材" name="ser">
+                                                                <label for="塑钢型材">塑钢型材</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="铝合金方管"
+                                                                       value="铝合金方管" name="ser">
+                                                                <label for="铝合金方管">铝合金方管</label>
+                                                            </div>
+
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="钢管"
+                                                                       value="钢管" name="ser">
+                                                                <label for="钢管">钢管</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="砂轮片"
+                                                                       value="砂轮片" name="ser">
+                                                                <label for="砂轮片">砂轮片</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="铝条"
+                                                                       value="铝条" name="ser">
+                                                                <label for="铝条">铝条</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="花边"
+                                                                       value="花边" name="ser">
+                                                                <label for="花边">花边</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="普通玻璃"
+                                                                       value="普通玻璃" name="ser">
+                                                                <label for="普通玻璃">普通玻璃</label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="钢化玻璃"
+                                                                       value="钢化玻璃" name="ser">
+                                                                <label for="钢化玻璃">钢化玻璃</label>
+                                                            </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务区域<i
+                                                        <label class="col-md-3 col-form-label"> 配送区域<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <div class="checkbox checkbox-success form-check-inline float-left"
@@ -141,20 +179,18 @@
 
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="user_qq">价格：</label>
+                                                               for="user_qq">配送起步价：</label>
                                                         <div class="col-md-3">
                                                             <input type="number" class="form-control" id="price"
                                                                    name="price" ng-model="entity.price" value=""
                                                                    placeholder="请输入价格"></input>
                                                         </div>
                                                         <div class="col-md-6 text-left" style="padding-top: 10px;">
-                                                            <span style="font-size: 14px; color: #d0d0d0;">(计价方式)门窗安装，加工，制作服务类按平米计算 &nbsp;&nbsp;出租，转让按月计算&nbsp;&nbsp;点工按天计算</span>
+                                                            <span style="font-size: 14px; color: #d0d0d0;">(计价方式) 按材料商配送公里数计算</span>
                                                         </div>
                                                     </div>
-
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
                                                                for="user_qq">QQ：</label>
@@ -200,7 +236,6 @@
                                                                    placeholder="请输入联系人" required/>
                                                         </div>
                                                     </div>
-
                                                 </div> <!-- end col -->
                                             </div> <!-- end row -->
                                         </div>
@@ -271,16 +306,6 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="video_url">视频链接</label>
-                                                        <div class="col-md-9">
-                                                            <input type="text" id="video_url" name="video_url"
-                                                                   ng-model="entity.video_url"
-                                                                   class="form-control" placeholder="请输入视频链接"/>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"
                                                                for="details">服务描述：</label>
                                                         <div class="col-md-9">
                                                             <textarea type="text" rows="5" class="form-control"
@@ -298,7 +323,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">广告图片</label>
+                                                        <label class="col-md-3 col-form-label">店标</label>
                                                         <div class="col-md-9">
                                                             <input type="file" id="gg_src" name="gg_src" class="dropify"
                                                                    data-max-file-size="1M" enctype="multipart/form-data"
@@ -307,7 +332,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">作品图片</label>
+                                                        <label class="col-md-3 col-form-label">产品图片</label>
                                                         <div class="col-md-3">
                                                             <input type="file" name="z_img" class="dropify"
                                                                    data-max-file-size="1M"
@@ -326,7 +351,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">案例图片</label>
+                                                        <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-3">
                                                             <input type="file" name="a_img" class="dropify"
                                                                    data-max-file-size="1M"

@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
 <head>
-    <title>安义门窗网</title>
+    <title>安义门窗网-出租转让</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="Keywords" content="安义门窗网-免费发布信息"/>
     <meta name="Description" content="安义门窗网-免费发布信息"/>
@@ -52,7 +52,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title font-22">填写加工/安装/点工信息
+                            <h4 class="header-title font-22">填写出租/转让信息
                                 &nbsp;
                                 <span style="color: #999999;font-size: 12px;text-align: right;">(<i
                                         style="color: red;">*</i>为必填项)</span></h4>
@@ -100,43 +100,38 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类别<i
+                                                        <label class="col-md-3 col-form-label"> 性质<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect" id="entity.type"
                                                                     ng-model="entity.type" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
-                                                                <option ng-repeat="item in typeItem"
-                                                                        value="{{item}}">{{item}}
-                                                                </option>
+                                                                <option value="出租">出租</option>
+                                                                <option value="转让">转让</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类型<i
+                                                        <label class="col-md-3 col-form-label"> 设施<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left"
-                                                                 ng-repeat="(index,item) in serviceItem">
-                                                                <input type="checkbox" id="inlineCheckbox{{index}}"
-                                                                       value="{{item}}" name="ser">
-                                                                <label for="inlineCheckbox{{index}}">{{item}}</label>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="水" value="水" name="ser">
+                                                                <label for="水">水</label>
                                                             </div>
 
-                                                        </div>
-                                                    </div>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="电"
+                                                                       value="电" name="ser">
+                                                                <label for="电">电</label>
+                                                            </div>
 
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务区域<i
-                                                                style="color: red;">*</i></label>
-                                                        <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left"
-                                                                 ng-repeat="(index,item) in ares">
-                                                                <input type="checkbox" id="ares{{index}}"
-                                                                       value="{{item.name}}" name="fw">
-                                                                <label for="ares{{index}}">{{item.name}}</label>
+                                                            <div class="checkbox checkbox-success form-check-inline float-left">
+                                                                <input type="checkbox" id="宽带"
+                                                                       value="宽带" name="ser">
+                                                                <label for="宽带">宽带</label>
                                                             </div>
 
                                                         </div>
@@ -144,17 +139,62 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="user_qq">价格：</label>
-                                                        <div class="col-md-3">
+                                                               for="user_qq">月租：</label>
+                                                        <div class="col-md-9">
                                                             <input type="number" class="form-control" id="price"
                                                                    name="price" ng-model="entity.price" value=""
                                                                    placeholder="请输入价格"></input>
                                                         </div>
-                                                        <div class="col-md-6 text-left" style="padding-top: 10px;">
-                                                            <span style="font-size: 14px; color: #d0d0d0;">(计价方式)门窗安装，加工，制作服务类按平米计算 &nbsp;&nbsp;出租，转让按月计算&nbsp;&nbsp;点工按天计算</span>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"
+                                                               for="user_qq">转让费：</label>
+                                                        <div class="col-md-9">
+                                                            <input type="number" class="form-control" id="转让费"
+                                                                   name="price" ng-model="entity.price" value=""
+                                                                   placeholder="请输入转让费用"></input>
                                                         </div>
                                                     </div>
 
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"> 付款方式<i
+                                                                style="color: red;">*</i></label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <select data-plugin="customselect"
+                                                                    ng-model="entity.type" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="">无押金</option>
+                                                                <option value="押一付三">押一付三</option>
+                                                                <option value="押一付六">押一付六</option>
+                                                                <option value="一年一付">一年一付</option>
+                                                                <option value="面议">面议</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"> 是否临近小区门口<i
+                                                                style="color: red;">*</i></label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <select data-plugin="customselect"
+                                                                    ng-model="entity.type" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="">是</option>
+                                                                <option value="">无</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div> <!-- end col -->
+                                            </div> <!-- end row -->
+                                        </div>
+
+                                        <div class="tab-pane active" id="profile-tab-2">
+                                            <div class="row">
+                                                <div class="col-12">
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
                                                                for="user_qq">QQ：</label>
@@ -200,14 +240,6 @@
                                                                    placeholder="请输入联系人" required/>
                                                         </div>
                                                     </div>
-
-                                                </div> <!-- end col -->
-                                            </div> <!-- end row -->
-                                        </div>
-
-                                        <div class="tab-pane active" id="profile-tab-2">
-                                            <div class="row">
-                                                <div class="col-12">
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
@@ -298,7 +330,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">广告图片</label>
+                                                        <label class="col-md-3 col-form-label">展示图片</label>
                                                         <div class="col-md-9">
                                                             <input type="file" id="gg_src" name="gg_src" class="dropify"
                                                                    data-max-file-size="1M" enctype="multipart/form-data"
@@ -307,7 +339,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">作品图片</label>
+                                                        <label class="col-md-3 col-form-label">现场图片</label>
                                                         <div class="col-md-3">
                                                             <input type="file" name="z_img" class="dropify"
                                                                    data-max-file-size="1M"
