@@ -36,8 +36,30 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         if (!is_Exist($scope.user)) {
             angular.element("#showModel").click();
         } else {
+            angular.element("#queryModel").click();
             href('/release');
         }
+    };
+
+    $scope.sendMsg = function () {
+        if (!is_Exist($scope.user)) {
+            angular.element("#showModel").click();
+        } else {
+            angular.element("#queryModel").click();
+        }
+    };
+    // 发布安装加工
+    $scope.sendAz = function () {
+        alert('发布安装');
+        // href('/')
+    };
+    // 发布材料配送
+    $scope.sendPs = function () {
+        alert('发布配送');
+    };
+    // 发布材料
+    $scope.sendCz = function () {
+        alert('发布材料');
     };
 
     $scope.outlogin = function () {
@@ -65,7 +87,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
             setUser(msg.data);
             setTimeout(function () {
                 href('/home');
-            },2000)
+            }, 2000)
         } else {
             alert("账户密码不匹配      " + msg.message);
         }

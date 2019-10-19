@@ -144,12 +144,26 @@
             width: 25%;
         }
 
+        .model-btn {
+            min-width: 100%;
+            text-align: center;
+            background: #48c964;
+            border: none;
+            color: #ffffff;
+            padding: 7px;
+            margin-bottom: 10px;
+        }
+
+        .model-btn:hover {
+            background-color: #1fc91b;
+        }
     </style>
 </head>
 
 <body class="homepage" ng-app="myHome" ng-controller="homeCtrl" ng-init="init()">
 
-<button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
+<button data-target="#importModel" id="showModel" data-toggle="modal" hidden>点击登录</button>
+<button data-target="#selectModel" id="queryModel" data-toggle="modal" hidden>选择发布</button>
 
 <header>
     <div class="tool-bar-ctn">
@@ -1248,6 +1262,24 @@
                 </button>
             </div>
 
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="selectModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style=" padding-bottom: 20px; align-self: center;
+            text-align: center;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" style="text-align: center;">选择发布信息类型</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px; padding-bottom: 15px;">
+                <button class="model-btn" ng-click="sendAz();">发布加工/点工/安装信息</button>
+                <button class="model-btn" ng-click="sendPs();">发布材料配送信息</button>
+                <button class="model-btn" ng-click="sendCz();">发布出租/转让信息</button>
+                <button class="model-btn">取消</button>
+            </div>
         </div>
     </div>
 </div>
