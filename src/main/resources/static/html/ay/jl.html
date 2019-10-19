@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>安义门窗网</title>
+    <meta name="Keywords" content="安义门窗网-免费发布门窗信息"/>
+    <meta name="Description"
+          content="安义门窗网-免费发布门窗信息"/>
+    <script src="https://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+    <link href="/static/css/Jquery-ui.css" type="text/css" rel="stylesheet"/>
+    <link href="/static/css/Index.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/static/css/baicons2.css" type="text/css"/>
+</head>
+<body class="homepage" ng-app="myHome" ng-controller="homeCtrl" ng-init="init()">
+<button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
+<header>
+    <div class="tool-bar-ctn">
+        <div class="toolbar">
+            <div class="toolbar-link">
+                <a class="hot-link" id="city"></a>
+            </div>
+            <ul id="user-tools" class="navbar-nav">
+                <li ng-show="user == null">
+                    <a data-target="#importModel" rel="nofollow" data-toggle="modal" data-type="login"
+                       class="no-padding">登录</a>/
+                    <a href="/register" rel="nofollow" data-toggle="userAuth" data-type="reg"
+                       class="no-padding">注册</a>
+                </li>
+
+                <li class="dropdown" ng-show="user != null">
+                    <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow" title="尚未开发" href="/mine">个人账户</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">设置</a></li>
+                        <li><a target='_blank' rel="nofollow" href="/admin">后台入口</a></li>
+                        <li><a ng-click="outlogin()" target='_blank' rel="nofollow">注销</a>
+                        </li>
+                    </ul>
+                </li>
+                <li style="display: none" class="js-separator"></li>
+                <li class="dropdown">
+                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="tencent://message/?uin=1193227758&amp;Menu=yes" target='_blank'
+                               rel="nofollow">品牌推广</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站建设</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">软件开发</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" target="_blank">帮助中心<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">密码找回</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">发新信息</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站协议</a>
+                        <li><a href="tencent://message/?uin=1193227758&amp;Site=www.qu114.com&amp;Menu=yes"
+                               target='_blank' rel="nofollow">联系我们</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="header">
+        <div class="top-banner full-banner"></div>
+        <div class="location" style="height: 115px;">
+            <span class="breadcrumb">
+                <a class="primary-logo">
+
+                    <img src="/static/image/anny_logo.png" alt="安义分类信息网"
+                         width="300" height="200" style="margin-top:-72px;"/>
+                    </a>
+            </span>
+            <div class="head-search">
+                <div class="search" style=" margin-top: 15px; ">
+                    <input id="keyword" placeholder="请输入类别名称或关键字" ng-model="searchVal" name="query"
+                           class="input search-query ui-autocomplete-input"
+                           autocomplete="off" style="margin-left: auto; font-size:14px;"/>
+                    <input type="button" name="button" class="frontpage-search-trigger search-trigger" value="搜  索"
+                           ng-click="search()" style="margin-left: 401px; margin-top: -40px;"
+                           ng-keydown="enterEvent($event)" id="search-btn"/>
+                    <input type="hidden" id="hid_type" value="shenghuo"/>
+                    <input type="hidden" id="hid_address" value="zhejiang"/>
+                </div>
+            </div>
+            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post"
+                                       target="_blank">免费发布信息</a></div>
+        </div>
+    </div>
+</header>
+<section class="nav-tabs" style="border-bottom: 10px solid #48c964;">
+    <ul class="nav-content clearfix">
+        <li class="nav-item"><a href="/" target="_blank">首页</a></li>
+        <li class="nav-item"><a href="/company" target="_blank">企业名录</a></li>
+        <li class="nav-item" title="尚未对外开放"><a href="/static/html/ay/hy.html" target="_blank">工业信息</a></li>
+        <li class="nav-item home"><a target="_blank" href="/static/html/ay/anyi.html">门窗之乡</a></li>
+        <li class="nav-item"><a href="/static/html/ay/fs.html" target="_blank">不锈钢之都</a></li>
+        <li class="nav-item"><a href="/static/html/ay/yk.html" target="_blank">五金之都</a></li>
+        <li class="nav-item"><a href="/static/html/ay/yk.html" target="_blank">行业交流</a></li>
+        <li class="nav-item has-content">
+            <a target="_blank">联系我们</a>
+            <div class="hover-content qrcode " style=" width: 121px;">
+                <img src="/static/image/wechatqrc.png"/>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<div style="position: relative; margin: 0 auto; padding: 11%; padding-top: 10px; padding-bottom: 0px;">
+<iframe scrolling="no" style="min-width: 1200px; min-height: 900px; margin: 0 auto;
+    border: none;" src="https://www.ncnews.com.cn/xwzx/ncxw/xqxw/201803/t20180312_1249274.html"></iframe>
+</div>
+<script type="text/javascript" src="/static/js/jl-footer.js"></script>
+
+
+<script type='text/javascript' src='/static/js/jquery-1.8.0.js'></script>
+<script type='text/javascript' src='/static/js/jquery.min.js'></script>
+<script type='text/javascript' src='/static/js/bootstrap.min.js'></script>
+<script src='/static/anguarl/angular.min.js'></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="/static/html/anguarl/public.js"></script>
+<script src="/static/html/anguarl/home.js"></script>
+<script>
+    $(function () {
+        $("#Qu114Icon").hover(function () {
+            var href = $(this).attr('#href');
+            $('#href').css('display', 'block');
+        }, function () {
+            $('#href').css('display', 'none');
+        });
+    });
+    $('a').hover(function () {
+        $(this).css({'cursor': 'pointer'});
+    });
+
+    $('.icon').mouseover(function () {
+        $(this).attr('fill', 'red');
+    });
+</script>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style=" padding-bottom: 20px; align-self: center;
+            text-align: center;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" style="text-align: center;">登录</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px;">
+                <p>
+                    <input type="text" style="min-width: 300px;" class="form-control"
+                           placeholder="请输入账号/手机号码/邮箱" ng-model="account"/>
+                </p>
+                <br>
+                <p>
+                    <input type="password" style="min-width: 300px;" class="form-control"
+                           placeholder="请输入密码" ng-model="password"/>
+                </p>
+            </div>
+            <div class="modal-footer" style="margin: 0 auto; text-align: center;">
+                <button style="min-width: 90%; text-align: center; background: #48c964; border: none;
+                    color: #ffffff; padding: 5px;" ng-click="login();">{{stauts}}
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
