@@ -101,7 +101,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         var msg = ajax_http(url, method_get, null);
         $scope.groupList = msg.data;
         setSessionObj('groupList', $scope.groupList);
-        // href('/group');
+        href('/group');
     }
 
     document.onkeydown = function (e) {

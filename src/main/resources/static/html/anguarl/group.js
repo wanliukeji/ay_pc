@@ -147,6 +147,7 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
         var msg = ajax_http(url, method_get, null);
         $scope.groupList = msg.data;
+        href('/group');
     }
 
     document.onkeydown = function (e) {
