@@ -291,7 +291,6 @@ function msg_error(msg) {
 
 function getServiceItem(url) {
     var msg = ajax_http_get(url);
-    console.log(msg);
     return msg.data;
 }
 
@@ -302,6 +301,7 @@ function getIp() {
 
 function getCity() {
     var city = returnCitySN.cname;
+    console.log(returnCitySN);
     city = city.substring(city.indexOf("省") + 1 || city.indexOf("区") + 1, city.indexOf("市"));
     return city;
 }
