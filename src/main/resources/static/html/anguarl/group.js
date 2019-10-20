@@ -33,7 +33,7 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
 
     $scope.goInfo = function (id) {
         var url = 'api/fied/getInfoVo?id=' + id;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         if (msg.code = 200) {
             setSessionObj('entity', msg.data);
             href('/info');
@@ -45,9 +45,9 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
 
     //获取一级区域
     function getAddr(pid) {
-        var id = Number.parseInt(pid);
-        var url = '/api/addr/getInfos?pid=' + id;
-        var msg = ajax_http(url, method_get, null);
+        // var id = Number.parseInt(pid);
+        var url = '/api/addr/getInfos?pid=' + pid;
+        var msg = ajax_http_get(url);
         return msg.data;
     }
 
@@ -145,7 +145,7 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
 
     $scope.search = function () {
         var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         $scope.groupList = msg.data;
         href('/group');
     }

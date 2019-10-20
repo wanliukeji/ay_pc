@@ -12,10 +12,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -83,7 +80,7 @@ public interface FiedApi {
     @ApiOperation(value = "分组筛选数据接口", notes = "分组筛选数据接口")
     public ResultJSON<?> getPageVos(@RequestBody ReqFiedParam param) throws Exception;
 
-    @GetMapping(value = "/api/fied/getFiedInfoVos")
+    @GetMapping(value = "/api/fied/getFiedInfoVos", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "首页数据接口", notes = "首页筛选数据接口")
     public ResultJSON<?> getFiedInfoVos(@RequestParam("type") String type) throws Exception;
 

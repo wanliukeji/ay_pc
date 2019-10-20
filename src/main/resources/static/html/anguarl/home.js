@@ -66,12 +66,17 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         href('/login');
     };
 
+    // function getVos(type) {
+    //     var url = "/api/fied/getFiedInfoVos?type=" + type;
+    //     var msg = ajax_http(url, method_get, null);
+    //     return msg.data;
+    // }
+
     function getVos(type) {
         var url = "/api/fied/getFiedInfoVos?type=" + type;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         return msg.data;
     }
-
 
     $scope.login = function () {
         var url = '/api/user/login';
@@ -106,7 +111,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.goGroup = function (type) {
         var url = "/api/fied/getVos?type=" + type;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         if (msg.code = 200) {
             setSessionObj('groupList', msg.data);
             setSessionObj('type', type);

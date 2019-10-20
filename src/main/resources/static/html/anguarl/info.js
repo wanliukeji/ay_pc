@@ -19,19 +19,19 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
 
     function getFiles(userId) {
         var url = '/api/file/getInfos?userId=' + userId;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         return msg.data;
     }
 
     function gethoppyItem(type) {
         var url = '/api/fied/getVos?type=' + type;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         $scope.hoppyItem = msg.data;
     }
 
     $scope.goInfo = function (id) {
         var url = 'api/fied/getInfoVo?id=' + id;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         console.log(msg);
         if (msg.code = 200) {
             $scope.entity = msg.date;
