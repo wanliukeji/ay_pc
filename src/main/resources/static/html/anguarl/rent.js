@@ -1,4 +1,4 @@
-var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $http, $q) {
+var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $http, $q) {
 
     $scope.user = getUser();
 
@@ -37,22 +37,27 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         phone: '13278789090',
         link: '陈经理 ',
         createDate: new Date(),
-        company_name: '宁波新桥门窗',
+        company_name: '日月星城',
         procode: '',
         citycode: '',
         countycode: '',
         address: '宁波市,海曙区,永寿街36号',
         video_url: '',
-        gg_src: '',
         details: '\n' +
         '宁波新桥门窗主要从事建筑门窗工程施工设计安装。我们主要生产铝合金、感应门、木铝门窗、节能门窗、阳光房、艺术玻璃采光顶、艺术阳光房玻璃房及附加代理产品壁柜移动门、隔断墙。\n' +
         '上门测量、安装提供样品，可根据用户需要订做、加工、安装。只有想得到没有做不到！\n' +
         '专业制作：钢结构、阳光房、现浇混泥土、封阳台等。\n',
-        fw: '',
+        facility: '',
         service: '',
-        type: '',
+        transfer: '',
         price: 0,
-        userId: $scope.user.id
+        userId: $scope.user.id,
+        pay:'',
+        area:'',
+        haveOther:'',
+        nature:'',
+        isExit:'',
+        type:''
     };
 
     $scope.show_num_prv = 0;
@@ -76,8 +81,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         //提交
         if ($scope.show_num_next >= 2) {
             $scope.info.next = '发  布';
-            $scope.entity.service = itemToString(getService());
-            $scope.entity.fw = itemToString(getfws());
+            $scope.entity.facility = itemToString(getService());
 
             if ($scope.show_num_next == 3) {
 
@@ -106,13 +110,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     return;
                 }
 
-                if (!$scope.entity.service) {
-                    msg_error('请选择服务类');
-                    return;
-                }
-
-                if (!$scope.entity.fw) {
-                    msg_error('请选择区域');
+                if (!$scope.entity.facility) {
+                    msg_error('请选择设施');
                     return;
                 }
 
@@ -141,16 +140,11 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     return;
                 }
 
-                if (!$scope.entity.type) {
-                    msg_error('请选择类别');
-                    return;
-                }
-
                 var time = dateFomat_YYMMDDHHFFMM();
                 $scope.entity.msgCode = time + $scope.user.id;
 
                 $http({
-                    url: '/api/fied/save',
+                    url: '/api/rent/save',
                     method: "POST",
                     data: $scope.entity,
                     headers: {"Content-Type": "application/json;charset=utf-8"}
@@ -240,7 +234,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     function getAre() {
         var city = getCity();
         var url = '/api/addr/getChlid?name=' + city;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         return msg.data;
     }
 
@@ -251,7 +245,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         }
         pid = Number.parseInt(pid);
         var url = '/api/addr/getInfos?pid=' + pid;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         return msg.data;
     }
 

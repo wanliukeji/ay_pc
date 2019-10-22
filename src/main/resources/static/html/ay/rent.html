@@ -18,7 +18,7 @@
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
 </head>
-<body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;" ng-init="init()">
+<body ng-app="Rent" ng-controller="RentCtrl" style="min-width: 1200px;" ng-init="init()">
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
     <a href="/home">
         <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
@@ -104,11 +104,26 @@
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect" id="entity.type"
-                                                                    ng-model="entity.type" required
+                                                                    ng-model="entity.nature" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
                                                                 <option value="出租">出租</option>
                                                                 <option value="转让">转让</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"> 转让对象<i
+                                                                style="color: red;">*</i></label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <select data-plugin="customselect" id="type"
+                                                                    ng-model="entity.type" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="定点">小区定点</option>
+                                                                <option value="门面">门面</option>
+                                                                <option value="厂房">厂房</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -152,7 +167,7 @@
                                                                for="user_qq">转让费：</label>
                                                         <div class="col-md-9">
                                                             <input type="number" class="form-control" id="转让费"
-                                                                   name="price" ng-model="entity.price" value=""
+                                                                   name="price" ng-model="entity.transfer" value=""
                                                                    placeholder="请输入转让费用"></input>
                                                         </div>
                                                     </div>
@@ -162,7 +177,7 @@
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect"
-                                                                    ng-model="entity.type" required
+                                                                    ng-model="entity.pay" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
                                                                 <option value="">无押金</option>
@@ -179,7 +194,7 @@
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect"
-                                                                    ng-model="entity.type" required
+                                                                    ng-model="entity.isExit" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
                                                                 <option value="">是</option>
@@ -193,7 +208,7 @@
                                                                for="user_qq">实际面积：</label>
                                                         <div class="col-md-9">
                                                             <input type="number" class="form-control"
-                                                                   name="price" ng-model="entity.price" value=""
+                                                                   name="price" ng-model="entity.area" value=""
                                                                    placeholder="请输入可用面积"></input>
                                                         </div>
                                                     </div>
@@ -203,7 +218,7 @@
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
                                                             <select data-plugin="customselect"
-                                                                    ng-model="entity.type" required
+                                                                    ng-model="entity.haveOther" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
                                                                 <option value="">有</option>
@@ -268,7 +283,7 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="company_name">公司名称<i
+                                                               for="company_name">小区名称<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control" id="company_name"
@@ -280,7 +295,7 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label">
-                                                            公司地址<i style="color: red;">*</i></label>
+                                                            地址<i style="color: red;">*</i></label>
                                                         <div class="col-md-3">
                                                             <select data-plugin="customselect" id="procode"
                                                                     ng-model="entity.procode" required
@@ -497,7 +512,7 @@ var search_type = "shenghuo";</script>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 
 <script src="/static/html/anguarl/public.js"></script>
-<script src="/static/html/anguarl/release.js"></script>
+<script src="/static/html/anguarl/rent.js"></script>
 
 </body>
 </html>

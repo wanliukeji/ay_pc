@@ -124,7 +124,7 @@ public class PublicController {
      */
     @GetMapping("/relCz")
     public String relCz() {
-        return "ay/relCz";
+        return "ay/rent";
     }
 
     /**
