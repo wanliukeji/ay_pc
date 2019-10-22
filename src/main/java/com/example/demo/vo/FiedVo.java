@@ -58,4 +58,6 @@ public class FiedVo implements Serializable {
     
     private String msgCode;
 
+    private String timeNum;
+
 }

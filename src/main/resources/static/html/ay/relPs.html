@@ -18,7 +18,7 @@
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
 </head>
-<body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;" ng-init="init()">
+<body ng-app="myRelc" ng-controller="relcCtrl" style="min-width: 1200px;" ng-init="init()">
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
     <a href="/home">
         <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
@@ -107,9 +107,9 @@
                                                                     ng-model="entity.type" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
-                                                                <option value="">断桥铝厂</option>
-                                                                <option value="">玻璃厂</option>
-                                                                <option value="">配件商</option>
+                                                                <option value="门窗厂">门窗厂</option>
+                                                                <option value="玻璃厂">玻璃厂</option>
+                                                                <option value="配件商">配件商</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -207,6 +207,25 @@
                                                             <span style="font-size: 14px; color: #d0d0d0;">(计价方式) 按材料商配送公里数计算</span>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"> 配送时长<i
+                                                                style="color: red;">*</i></label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <select data-plugin="customselect"
+                                                                    ng-model="entity.timeNum" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="一天以内">一天以内</option>
+                                                                <option value="三天以内">三天以内</option>
+                                                                <option value="五天以内">五天以内</option>
+                                                                <option value="一周以内">一周以内</option>
+                                                                <option value="半月以内">半月以内</option>
+                                                                <option value="半月以内">半月以内</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
                                                                for="user_qq">QQ：</label>
@@ -481,7 +500,7 @@ var search_type = "shenghuo";</script>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 
 <script src="/static/html/anguarl/public.js"></script>
-<script src="/static/html/anguarl/release.js"></script>
+<script src="/static/html/anguarl/relcl.js"></script>
 
 </body>
 </html>

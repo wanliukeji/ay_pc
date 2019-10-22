@@ -54,11 +54,11 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     };
     // 发布材料配送
     $scope.sendPs = function () {
-        href('/relcl')
+        href('/relPs')
     };
     // 发布材料
     $scope.sendCz = function () {
-        href('/zr')
+        href('/relCz')
     };
 
     $scope.outlogin = function () {
@@ -97,17 +97,23 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         }
     }
 
-    $scope.goInfo = function (id) {
+    $scope.goInfo = function (id,type) {
         var url = 'api/fied/getInfoVo?id=' + id;
         var msg = ajax_http_get(url);
         console.log(url);
         if (msg.code = 200) {
             setSessionObj('entity', msg.data);
-            href('/info');
+            if (angular.equals('加工',type)||angular.equals('点工',type)||angular.equals('安装',type)) {
+                href('/info');
+            } else if (angular.equals('门窗厂',type)||angular.equals('玻璃厂',type)||angular.equals('配件商',type)) {
+                href('/info_cl');
+            } else if (angular.equals('定点',type)||angular.equals('店铺',type)||angular.equals('厂房',type)) {
+                href('/info_cz');
+            }
+
         } else {
             history.go(0);
         }
-        // setSessionObj()
     }
 
     $scope.goGroup = function (type) {

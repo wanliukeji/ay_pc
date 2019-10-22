@@ -1,4 +1,4 @@
-var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $http, $q) {
+var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, $http, $q) {
 
     $scope.user = getUser();
 
@@ -107,12 +107,12 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                 }
 
                 if (!$scope.entity.service) {
-                    msg_error('请选择服务类');
+                    msg_error('请选择配送产品');
                     return;
                 }
 
                 if (!$scope.entity.fw) {
-                    msg_error('请选择区域');
+                    msg_error('请选择配送区域');
                     return;
                 }
 
@@ -141,8 +141,10 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     return;
                 }
 
+                console.log($scope.entity);
+
                 if (!$scope.entity.type) {
-                    msg_error('请选择类别');
+                    msg_error('请选择厂家类型');
                     return;
                 }
 
@@ -240,7 +242,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
     function getAre() {
         var city = getCity();
         var url = '/api/addr/getChlid?name=' + city;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         return msg.data;
     }
 
@@ -251,7 +253,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         }
         pid = Number.parseInt(pid);
         var url = '/api/addr/getInfos?pid=' + pid;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         return msg.data;
     }
 

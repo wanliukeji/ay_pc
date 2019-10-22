@@ -540,17 +540,17 @@
             <div class="section-box-div-1">
                 <!--{{jgItems[1].path}}-->
                 <div>
-                    <a ng-click="goInfo(jgItems[0].id)">
+                    <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{jgItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(jgItems[0].id)">
+                        <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)">
                             {{jgItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(jgItems[0].id)">
+                    <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{jgItems[0].details}} +
@@ -564,17 +564,17 @@
 
             <div class="section-box-div-4" ng-repeat="item in jgItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -604,17 +604,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(dgItems[0].id)">
+                    <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{dgItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(dgItems[0].id)">
+                        <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
                             {{dgItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(dgItems[0].id)">
+                    <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{dgItems[0].details}} +
@@ -627,17 +627,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in dgItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -667,17 +667,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(azItems[0].id)">
+                    <a ng-click="goInfo(azItems[0].id,azItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{azItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(azItems[0].id)">
+                        <a ng-click="goInfo(azItems[0].id,azItems[0].type)">
                             {{azItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(azItems[0].id)">
+                    <a ng-click="goInfo(azItems[0].id,azItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{azItems[0].details}} +
@@ -690,17 +690,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in azItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -730,17 +730,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(mccItems[0].id)">
+                    <a ng-click="goInfo(mccItems[0].id,mccItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{mccItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(mccItems[0].id)">
+                        <a ng-click="goInfo(mccItems[0].id,mccItems[0].type)">
                             {{mccItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(mccItems[0].id)">
+                    <a ng-click="goInfo(mccItems[0].id,mccItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{mccItems[0].details}} +
@@ -753,17 +753,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in mccItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -793,17 +793,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(blcItems[0].id)">
+                    <a ng-click="goInfo(blcItems[0].id,blcItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{blcItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(blcItems[0].id)">
+                        <a ng-click="goInfo(blcItems[0].id,blcItems[0].type)">
                             {{blcItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(blcItems[0].id)">
+                    <a ng-click="goInfo(blcItems[0].id,blcItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{blcItems[0].details}} +
@@ -816,17 +816,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in blcItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -856,17 +856,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(pjsItems[0].id)">
+                    <a ng-click="goInfo(pjsItems[0].id,pjsItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{pjsItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(pjsItems[0].id)">
+                        <a ng-click="goInfo(pjsItems[0].id,pjsItems[0].type)">
                             {{pjsItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(pjsItems[0].id)">
+                    <a ng-click="goInfo(pjsItems[0].id,pjsItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{pjsItems[0].details}} +
@@ -879,17 +879,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in pjsItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -919,17 +919,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(ddItems[0].id)">
+                    <a ng-click="goInfo(ddItems[0].id,ddItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{ddItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(ddItems[0].id)">
+                        <a ng-click="goInfo(ddItems[0].id,ddItems[0].type)">
                             {{ddItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(ddItems[0].id)">
+                    <a ng-click="goInfo(ddItems[0].id,ddItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{ddItems[0].details}} +
@@ -942,17 +942,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in ddItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -982,17 +982,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(dpItems[0].id)">
+                    <a ng-click="goInfo(dpItems[0].id,dpItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{dpItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(dpItems[0].id)">
+                        <a ng-click="goInfo(dpItems[0].id,dpItems[0].type)">
                             {{dpItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(dpItems[0].id)">
+                    <a ng-click="goInfo(dpItems[0].id,dpItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{dpItems[0].details}} +
@@ -1005,17 +1005,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in dpItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -1045,17 +1045,17 @@
             </div>
             <div class="section-box-div-1">
                 <div>
-                    <a ng-click="goInfo(cfItems[0].id)">
+                    <a ng-click="goInfo(cfItems[0].id,cfItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{cfItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(cfItems[0].id)">
+                        <a ng-click="goInfo(cfItems[0].id,cfItems[0].type)">
                             {{cfItems[0].company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(cfItems[0].id)">
+                    <a ng-click="goInfo(cfItems[0].id,cfItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{cfItems[0].details}} +
@@ -1068,17 +1068,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in cfItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +
@@ -1108,17 +1108,17 @@
             </div>
             <div class="section-box-div-4" ng-repeat="item in sbItems  | limitTo:6">
                 <div class="section-box-div-4-img">
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <img src="{{item.path}}" class="div-4-img">
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id)">
+                        <a ng-click="goInfo(item.id,item.type)">
                             {{item.company_name}}
                         </a>
                     </p>
-                    <a ng-click="goInfo(item.id)">
+                    <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
                             {{item.details}} +

@@ -26,7 +26,8 @@
         t.type,
         t.fw,
         t.service,
-        t.price
+        t.price,
+        t.timeNum
         FROM
         fied t
         where 1=1
@@ -67,6 +68,7 @@
         fied.msgCode,
         SUBSTRING(file.path,33) as path,
         fied.price,
+        fied.timeNum
         file.type as f_type
         FROM
         fied
@@ -110,6 +112,7 @@
         fied.userId,
         SUBSTRING(file.path,33) as path,
         fied.price,
+        fied.timeNum,
         file.type as f_type
         FROM
         fied
@@ -148,6 +151,7 @@
         fied.fw,
         fied.service,
         fied.userId,
+        fied.timeNum,
         SUBSTRING(file.path,33) as path,
         fied.price,
         file.type as f_type
@@ -205,6 +209,7 @@
         fied.userId,
         SUBSTRING(file.path,33) as path,
         fied.price,
+        fied.timeNum,
         file.type as f_type
         FROM
         fied
@@ -255,6 +260,7 @@
         fied.userId,
         SUBSTRING(file.path,33) as path,
         fied.price,
+        fied.timeNum,
         file.type as f_type
         FROM
         fied
@@ -272,6 +278,5 @@
         GROUP BY
         fied.msgCode
     </select>
-
 
 </mapper>

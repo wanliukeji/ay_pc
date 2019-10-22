@@ -108,6 +108,47 @@ public class PublicController {
     }
 
     /**
+     * 材料配送
+     *
+     * @return
+     */
+    @GetMapping("/relPs")
+    public String relPs() {
+        return "ay/relPs";
+    }
+
+    /**
+     * 出租转让
+     *
+     * @return
+     */
+    @GetMapping("/relCz")
+    public String relCz() {
+        return "ay/relCz";
+    }
+
+    /**
+     * 出租转让
+     *
+     * @return
+     */
+    @GetMapping("/info_cz")
+    public String info_cz() {
+        return "ay/info_cz";
+    }
+
+    /**
+     * 材料配送
+     *
+     * @return
+     */
+    @GetMapping("/info_cl")
+    public String info_cl() {
+        return "ay/info_cl";
+    }
+
+
+    /**
      * 信息发布页
      *
      * @return
