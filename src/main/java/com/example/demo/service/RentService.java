@@ -15,6 +15,7 @@ import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqFiedParam;
 import com.example.demo.req.ReqParam;
 import com.example.demo.vo.FiedVo;
+import com.example.demo.vo.RentVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,21 @@ import java.util.List;
 public class RentService extends ServiceImpl<RentMapper, Rent> implements Serializable {
 
 
+    public ResultJSON<?> getRentInfoVos(String type) {
+        try {
+           return ResultJSON.success(baseMapper.getRentInfoVos(type));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResultJSON.error("查询失败");
+    }
 
+    public ResultJSON<RentVo> getInfo(Integer id) {
+        try {
+            return ResultJSON.success(baseMapper.getInfo(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResultJSON.error("查询失败");
+    }
 }

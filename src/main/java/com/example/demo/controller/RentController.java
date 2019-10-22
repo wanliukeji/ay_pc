@@ -11,6 +11,7 @@ import com.example.demo.req.ReqParam;
 import com.example.demo.service.FiedService;
 import com.example.demo.service.RelService;
 import com.example.demo.service.RentService;
+import com.example.demo.vo.RentVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,6 +40,16 @@ public class RentController implements RentApi {
             ex.printStackTrace();
             return ApiJSON.error(ex.getMessage());
         }
+    }
+
+    @Override
+    public ResultJSON<?> getRentInfoVos(String type) throws Exception {
+        return rentService.getRentInfoVos(type);
+    }
+
+    @Override
+    public ResultJSON<RentVo> getInfo(Integer id) throws Exception {
+        return rentService.getInfo(id);
     }
 
 }

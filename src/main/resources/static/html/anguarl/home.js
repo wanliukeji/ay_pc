@@ -26,10 +26,10 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         $scope.mccItems = getVos('门窗厂');
         $scope.blcItems = getVos('玻璃厂');
         $scope.pjsItems = getVos('配件商');
-        $scope.ddItems = getVos('定点');
-        $scope.dpItems = getVos('店铺');
-        $scope.cfItems = getVos('厂房');
-        $scope.sbItems = getVos('设备');
+        $scope.ddItems = getRentVos('定点');
+        $scope.dpItems = getRentVos('店铺');
+        $scope.cfItems = getRentVos('厂房');
+        $scope.sbItems = getRentVos('设备');
     };
 
     $scope.sendMsg = function () {
@@ -66,14 +66,14 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         href('/login');
     };
 
-    // function getVos(type) {
-    //     var url = "/api/fied/getFiedInfoVos?type=" + type;
-    //     var msg = ajax_http(url, method_get, null);
-    //     return msg.data;
-    // }
-
     function getVos(type) {
         var url = "/api/fied/getFiedInfoVos?type=" + type;
+        var msg = ajax_http_get(url);
+        return msg.data;
+    }
+
+    function getRentVos(type) {
+        var url = "/api/rent/getRentInfoVos?type=" + type;
         var msg = ajax_http_get(url);
         return msg.data;
     }
@@ -98,22 +98,22 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     }
 
     $scope.goInfo = function (id,type) {
-        var url = 'api/fied/getInfoVo?id=' + id;
-        var msg = ajax_http_get(url);
-        console.log(url);
-        if (msg.code = 200) {
-            setSessionObj('entity', msg.data);
             if (angular.equals('加工',type)||angular.equals('点工',type)||angular.equals('安装',type)) {
+                var url = 'api/fied/getInfoVo?id=' + id;
+                var msg = ajax_http_get(url);
+                setSessionObj('entity', msg.data);
                 href('/info');
             } else if (angular.equals('门窗厂',type)||angular.equals('玻璃厂',type)||angular.equals('配件商',type)) {
+                var url = 'api/fied/getInfoVo?id=' + id;
+                var msg = ajax_http_get(url);
+                setSessionObj('entity', msg.data);
                 href('/info_cl');
             } else if (angular.equals('定点',type)||angular.equals('店铺',type)||angular.equals('厂房',type)) {
+                var url = '/api/rent/getInfo?id=' + Number.parseInt(id);
+                var msg = ajax_http_get(url);
+                setSessionObj('entity', msg.data);
                 href('/info_cz');
             }
-
-        } else {
-            history.go(0);
-        }
     }
 
     $scope.goGroup = function (type) {

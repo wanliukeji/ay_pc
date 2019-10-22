@@ -6,10 +6,12 @@ import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.req.ReqFiedParam;
 import com.example.demo.req.ReqParam;
+import com.example.demo.vo.RentVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,5 +33,13 @@ public interface RentApi {
     @ApiOperation(value = "出租/转让信息发布保存数据接口", notes = "出租/转让信息发布保存数据接口")
     @Transactional
     public ApiJSON saveRent(@RequestBody Rent entity) throws Exception;
+
+    @GetMapping(value = "/api/rent/getRentInfoVos", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "首页数据接口", notes = "首页筛选数据接口")
+    public ResultJSON<?> getRentInfoVos(@RequestParam("type") String type) throws Exception;
+
+    @GetMapping(value = "/api/rent/getInfo", produces = {"application/json;charset=UTF-8"})
+    @ApiOperation(value = "数据接口", notes = "首页筛选数据接口")
+    public ResultJSON<RentVo> getInfo(@RequestParam("id") Integer id) throws Exception;
 
 }

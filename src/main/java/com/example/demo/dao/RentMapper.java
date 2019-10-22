@@ -25,6 +25,7 @@ public interface RentMapper extends BaseMapper<Rent> {
                          @Param("pageSize") Integer pageSize,
                          @Param("context") String context);
 
-    List<RentVo> getInfo(@Param("id") String id);
+    RentVo getInfo(@Param("id") Integer id);
 
+    List<RentVo> getRentInfoVos(@Param("type") String type);
 }

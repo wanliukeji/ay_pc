@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myInfo" ng-controller="infoCtrl" ng-init="init()">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myInfoCz" ng-controller="infoCzCtrl" ng-init="init()">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -133,13 +133,24 @@
 
                         </div>
 
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>性质：</label>
+                            <div class="content">
+                                {{entity.nature}}
+                            </div>
+                        </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
-                            <label>服务区域：</label>
+                            <label>付款方式：</label>
                             <div class="content">
-                                {{entity.fw}}
-                                <!--<a href='/haining/waiyupeixun/'>北仑区</a> - -->
-                                <!--<a href='/hainzb/waiyupeixun/'>北仑周边</a>-->
+                                {{entity.pay}}
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>发布时间：</label>
+                            <div class="content">
+                                {{entity.createDate | date:'yyyy-MM-dd'}}
                             </div>
                         </div>
 
@@ -177,11 +188,16 @@
                             <div class="content">
                     <span>
                         <a target="_blank">
-                            {{entity.price}} 元
-                            <i ng-show="entity.type == '点工'">/天</i>
-                            <i ng-show="entity.type != '点工'">/平米</i>
+                            {{entity.price}} 元/月
                         </a>
                         </span>
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>设施：</label>
+                            <div class="content">
+                                {{entity.facility}}
                             </div>
                         </div>
 
@@ -507,7 +523,7 @@
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script src="/static/js/footer.js"/>
 <script src="/static/html/anguarl/public.js"></script>
-<script src="/static/html/anguarl/info.js"></script>
+<script src="/static/html/anguarl/info_cz.js"></script>
 <script>
     $("#Qu114Icon").hover(function () {
         var href = $(this).attr('#href');

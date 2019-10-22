@@ -6,49 +6,100 @@
     </select>
     <select id="getInfo" resultType="com.example.demo.vo.RentVo">
         SELECT
-                rent.Id,
-                rent.head_line,
-                rent.telephone,
-                rent.msgCode,
-                rent.user_qq,
-                rent.user_wx,
-                rent.phone,
-                rent.link,
-                rent.createDate,
-                rent.company_name,
-                rent.procode,
-                rent.citycode,
-                rent.countycode,
-                rent.video_url,
-                rent.details,
-                rent.address,
-                rent.`status`,
-                rent.del,
-                rent.facility,
-                rent.transfer,
-                rent.pay,
-                rent.userId,
-                rent.price,
-                rent.area,
-                rent.haveOther,
-                rent.nature,
-                rent.isExit,
-                rent.type
-                SUBSTRING(file.path,33) as path
-            FROM
-                rent
-            INNER JOIN
-                file
-            ON
-                rent.msgCode = file.msgCode
-            WHERE
-                1 = 1
-            <if test="id != null">
-                AND fied.id = #{id}
-            </if>
-                AND
-                file.type = 'G'
-                GROUP BY
-                fied.msgCode
+        rent.Id,
+        rent.head_line,
+        rent.telephone,
+        rent.msgCode,
+        rent.user_qq,
+        rent.user_wx,
+        rent.phone,
+        rent.link,
+        rent.createDate,
+        rent.company_name,
+        rent.procode,
+        rent.citycode,
+        rent.countycode,
+        rent.video_url,
+        rent.details,
+        rent.address,
+        rent.`status`,
+        rent.del,
+        rent.facility,
+        rent.transfer,
+        rent.pay,
+        rent.userId,
+        rent.price,
+        rent.area,
+        rent.haveOther,
+        rent.nature,
+        rent.isExit,
+        rent.type,
+        SUBSTRING(file.path,33) as path
+        FROM
+        rent
+        INNER JOIN
+        file
+        ON
+        rent.msgCode = file.msgCode
+        WHERE
+        1 = 1
+        <if test="id != null">
+            AND rent.id = #{id}
+        </if>
+        AND
+        file.type = 'G'
+        GROUP BY
+        rent.msgCode
+    </select>
+    <select id="getRentInfoVos" resultType="com.example.demo.vo.RentVo">
+        SELECT
+        rent.Id,
+        rent.head_line,
+        rent.telephone,
+        rent.msgCode,
+        rent.user_qq,
+        rent.user_wx,
+        rent.phone,
+        rent.link,
+        rent.createDate,
+        rent.company_name,
+        rent.procode,
+        rent.citycode,
+        rent.countycode,
+        rent.video_url,
+        rent.details,
+        rent.address,
+        rent.`status`,
+        rent.del,
+        rent.facility,
+        rent.transfer,
+        rent.pay,
+        rent.userId,
+        rent.price,
+        rent.area,
+        rent.haveOther,
+        rent.nature,
+        rent.isExit,
+        rent.type,
+        SUBSTRING(file.path,33) as path
+        FROM
+        rent
+        INNER JOIN
+        file
+        ON
+        rent.msgCode = file.msgCode
+        WHERE
+        1 = 1
+        <if test="type != null">
+            AND
+            rent.type = #{type}
+        </if>
+        AND
+        file.type = 'G'
+        GROUP BY
+        rent.msgCode
+        ORDER BY
+        rent.createDate
+        DESC
     </select>
 </mapper>
