@@ -35,10 +35,12 @@
             cursor: pointer;
             transition: all 0.6s;
         }
+
         .img-al {
             width: 200px;
             height: 200px;
         }
+
         .img-al:hover {
             transform: scale(1.1);
             -moz-transform: scale(1.1);
@@ -170,8 +172,20 @@
                             </div>
                         </div>
 
-                    </div>
+                        <div class="viewad-meta2-item">
+                            <label>价格：</label>
+                            <div class="content">
+                    <span>
+                        <a target="_blank">
+                            {{entity.price}} 元
+                            <i ng-show="entity.type == '点工'">/天</i>
+                            <i ng-show="entity.type != '点工'">/平米</i>
+                        </a>
+                        </span>
+                            </div>
+                        </div>
 
+                    </div>
 
                     <section class="viewad-contact">
                         <ul>

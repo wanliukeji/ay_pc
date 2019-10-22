@@ -115,7 +115,7 @@ function ajax_http_post(url, data) {
 //通用GET请求
 function ajax_http_get(strUrl) {
     var url = encodeURI(strUrl);
-    var msg = null;
+    var msg = '';
     $.ajax({
         url: url,
         async: false,

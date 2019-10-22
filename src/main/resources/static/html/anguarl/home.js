@@ -99,7 +99,8 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
 
     $scope.goInfo = function (id) {
         var url = 'api/fied/getInfoVo?id=' + id;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
+        console.log(url);
         if (msg.code = 200) {
             setSessionObj('entity', msg.data);
             href('/info');

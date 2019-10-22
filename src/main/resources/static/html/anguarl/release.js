@@ -141,8 +141,6 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     return;
                 }
 
-                console.log($scope.entity);
-
                 if (!$scope.entity.type) {
                     msg_error('请选择类别');
                     return;
