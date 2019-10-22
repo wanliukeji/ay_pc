@@ -74,14 +74,6 @@ public class HttpClientService {
         return html;
     }
 
-
-    public static void main(String[] args) {
-        String url = "https://www.cnblogs.com/";
-        url = "https://www.tuicool.com/";
-        url = "https://www.csdn.net/";
-        pareHtmlForTag(getHttpHtml(url), "a");
-    }
-
     /**
      * 解析获取页面内容
      *
@@ -131,5 +123,11 @@ public class HttpClientService {
 
         String title = element.text(); // 返回元素的文本
         System.out.println("左侧菜单内容" + title);
+    }
+
+
+    public static void main(String[] args) {
+        String url = "https://www.zhipin.com/common/data/position.json";
+        pareHtmlForTag(getHttpHtml(url), "a");
     }
 }

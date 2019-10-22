@@ -103,13 +103,12 @@
                                                         <label class="col-md-3 col-form-label"> 服务类别<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <select data-plugin="customselect" id="entity.type"
-                                                                    ng-model="entity.type" required
+                                                            <select data-plugin="customselect" id="entity.type" required
                                                                     class="form-control">
                                                                 <option value="">请选择</option>
-                                                                <option ng-repeat="item in typeItem"
-                                                                        value="{{item}}">{{item}}
-                                                                </option>
+                                                                <option value="加工">加工</option>
+                                                                <option value="安装">安装</option>
+                                                                <option value="点工">点工</option>
                                                             </select>
                                                         </div>
                                                     </div>
