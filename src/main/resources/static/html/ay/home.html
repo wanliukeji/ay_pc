@@ -564,18 +564,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)">
-                            {{jgItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)" ng-bind="jgItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{jgItems[0].details}} +
+                            <span ng-bind="jgItems[0].details"></span>+
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{jgItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="jgItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -588,18 +586,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -620,27 +616,23 @@
                 <a ng-click="goGroup('点工')" target="_blank">点工</a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">了解更多>></a>
             </div>
-            <div class="section-box-div-1">
-                <!--{{jgItems[1].path}}-->
-                <div>
+            <div class="section-box-div-1"><div>
                     <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{dgItems[0].path}}">
                     </a>
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
-                            {{dgItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)" ng-bind="dgItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{dgItems[0].details}} +
+                            <span ng-bind="dgItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{dgItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="dgItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -653,18 +645,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -694,18 +684,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(azItems[0].id,azItems[0].type)">
-                            {{azItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(azItems[0].id,azItems[0].type)" ng-bind="azItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(azItems[0].id,azItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{azItems[0].details}} +
+                            <span ng-bind="azItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{azItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="azItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -718,18 +706,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)">                      </a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -759,18 +745,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(mccItems[0].id,mccItems[0].type)">
-                            {{mccItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(mccItems[0].id,mccItems[0].type)" ng-bind="mccItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(mccItems[0].id,mccItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{mccItems[0].details}} +
+                            <span ng-bind="mccItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{mccItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="mccItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -783,18 +767,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -824,18 +806,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(blcItems[0].id,blcItems[0].type)">
-                            {{blcItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(blcItems[0].id,blcItems[0].type)" ng-bind="blcItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(blcItems[0].id,blcItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{blcItems[0].details}} +
+                            <span ng-bind="blcItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{blcItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="blcItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -848,18 +828,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span>+
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -889,18 +867,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(pjsItems[0].id,pjsItems[0].type)">
-                            {{pjsItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(pjsItems[0].id,pjsItems[0].type)" ng-bind="pjsItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(pjsItems[0].id,pjsItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{pjsItems[0].details}} +
+                            <span ng-bind="pjsItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{pjsItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="pjsItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -913,18 +889,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -954,18 +928,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(dpItems[0].id,dpItems[0].type)">
-                            {{dpItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(dpItems[0].id,dpItems[0].type)" ng-bind="dpItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(dpItems[0].id,dpItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{dpItems[0].details}} +
+                            <span ng-bind="dpItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{dpItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="dpItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -978,18 +950,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -1019,18 +989,16 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(cfItems[0].id,cfItems[0].type)">
-                            {{cfItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(cfItems[0].id,cfItems[0].type)" ng-bind="cfItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(cfItems[0].id,cfItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{cfItems[0].details}} +
+                            <span ng-bind="cfItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
-                        <span class="section-box-div-4-time">{{cfItems[0].createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="cfItems[0].createDate"></span>
                     </p>
                 </div>
             </div>
@@ -1043,18 +1011,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>
@@ -1076,7 +1042,6 @@
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('设备')">了解更多>></a>
             </div>
             <div class="section-box-div-1">
-                <!--{{jgItems[1].path}}-->
                 <div>
                     <a ng-click="goInfo(sbItems[0].id,sbItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{sbItems[0].path}}">
@@ -1084,14 +1049,12 @@
                 </div>
                 <div>
                     <p class="section-box-div-4-name" style="text-align: center;">
-                        <a ng-click="goInfo(sbItems[0].id,sbItems[0].type)">
-                            {{sbItems[0].company_name}}
-                        </a>
+                        <a ng-click="goInfo(sbItems[0].id,sbItems[0].type)" ng-bind="sbItems[0].company_name"></a>
                     </p>
                     <a ng-click="goInfo(sbItems[0].id,sbItems[0].type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{sbItems[0].details}} +
+                            <span ng-bind="sbItems[0].details"></span> +
                         </p>
                     </a>
                     <p class="div-1-p">
@@ -1108,18 +1071,16 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">
-                            {{item.company_name}}
-                        </a>
+                        <a ng-click="goInfo(item.id,item.type)" ng-bind="item.company_name"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">
                             <b>服务描述：</b>
-                            {{item.details}} +
+                            <span ng-bind="item.details"></span> +
                         </p>
                     </a>
                     <p class="section-box-div-4-bottom">
-                        <span class="section-box-div-4-time">{{item.createDate}}</span>
+                        <span class="section-box-div-4-time" ng-bind="item.createDate"></span>
                     </p>
                 </div>
             </div>

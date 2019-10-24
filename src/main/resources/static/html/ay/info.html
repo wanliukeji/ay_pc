@@ -103,18 +103,18 @@
 <div class="container box">
     <ul class="search-crumbs">
         <li><a href="/home">安义门窗网</a></li>
-        <li><i class="icon-arrow-right"></i><a href="/group">{{entity.type}}</a></li>
-        <li><i class="icon-arrow-right"></i><a>{{entity.company_name}}</a></li>
+        <li><i class="icon-arrow-right"></i><a href="/group" ng-bind="entity.type"></a></li>
+        <li><i class="icon-arrow-right"></i><a ng-bind="entity.company_name"></a></li>
     </ul>
     <div class="viewad-main">
         <div class="viewad-content ">
             <div class="viewad-header">
                 <div class="viewad-title">
-                    <h1>{{entity.company_name}}</h1>
+                    <h1  ng-bind="entity.company_name"></h1>
                 </div>
                 <div class="viewad-actions">
-                    <span>信息编号:&nbsp;{{entity.id}}&nbsp;</span>
-                    <span>{{entity.createDate}} &nbsp;</span>
+                    <span>信息编号:&nbsp;<i ng-bind="entity.id"></i>&nbsp;</span>
+                    <span ng-bind="entity.createDate">&nbsp;</span>
 
                 </div>
             </div>
@@ -127,7 +127,7 @@
                             <table id="Qu114TablePare" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td class="biaoti">项目：</td>
-                                    <td><span>{{entity.type}}</span></td>
+                                    <td><span ng-bind="entity.type"></span></td>
                                 </tr>
                             </table>
 
@@ -136,8 +136,7 @@
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>服务区域：</label>
-                            <div class="content">
-                                {{entity.fw}}
+                            <div class="content" ng-bind="entity.fw">
                                 <!--<a href='/haining/waiyupeixun/'>北仑区</a> - -->
                                 <!--<a href='/hainzb/waiyupeixun/'>北仑周边</a>-->
                             </div>
@@ -145,18 +144,14 @@
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>详细地址：</label>
-                            <div class="content">
-                                {{entity.address}}
-                            </div>
+                            <div class="content" ng-bind="entity.address"></div>
                         </div>
 
                         <div class="viewad-meta2-item">
                             <label>联系人：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank">
-                            {{entity.link}}
-                        </a>
+                        <a target="_blank" ng-bind="entity.link"></a>
                         </span>
                             </div>
                         </div>
@@ -165,9 +160,7 @@
                             <label>微信号：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank">
-                            {{entity.user_wx}}
-                        </a>
+                        <a target="_blank" ng-bind="entity.user_wx"></a>
                         </span>
                             </div>
                         </div>
@@ -176,8 +169,7 @@
                             <label>价格：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank">
-                            {{entity.price}} 元
+                        <a target="_blank" ng-bind="entity.price">
                             <i ng-show="entity.type == '点工'">/天</i>
                             <i ng-show="entity.type != '点工'">/平米</i>
                         </a>
@@ -191,9 +183,7 @@
                         <ul>
                             <li class="contact-btn-box">
                                 <label>联系电话：</label>
-                                <a class="contact-no" style="margin-left: 12px;">
-                                    {{entity.phone}}
-                                </a>
+                                <a class="contact-no" style="margin-left: 12px;" ng-bind="entity.phone"></a>
                                 <a href="" class="contact-no" style="margin-left: 12px;" title="私信">
                                     <svg t="1570945466951" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                          xmlns="http://www.w3.org/2000/svg" p-id="2056" width="25" height="25">
@@ -245,7 +235,7 @@
                     </div>
 
                     <div class="viewad-text" style="color:#333;">
-                        {{entity.details}}
+                       <p ng-bind="entity.details"></p>
                     </div>
 
                     <div class="photo-gallery big">
@@ -260,8 +250,8 @@
                         </div>
                     </div>
                     <div class="viewad-text" style="font-size:14px;">
-                        如果您觉得“<strong>{{entity.company_name}}</strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
-                            class="a_res" target="_blank" href="/home">{{entity.type}}</a>频道，将会获得更多的信任！)
+                        如果您觉得“<strong ng-bind="entity.company_name"></strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
+                            class="a_res" target="_blank" href="/home"><i ng-bind="entity.type"></i></a>频道，将会获得更多的信任！)
                         <br/>
                         查看<a href='http://jx.qu114.com/waiyupeixun/' target="_blank">最新发布信息</a> >
                         <a href="/release" target="_blank"
@@ -294,14 +284,14 @@
 
                         <li ng-repeat="item in hoppyItem | limitTo:3">
                             <a href="" ng-click="goInfo(item.id)" target="_blank" class="clearfix">
-                                <p class="title">{{item.company_name}}</p>
+                                <p class="title" ng-bind="item.company_name"></p>
                                 <div class="img ">
                                     <img src="{{item.path}}" width="66" height="66"/></div>
                                 <div class="item-content">
                                     <p class="price"></p>
                                     <p class="adress">
-                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span>{{item.address}}</span></p>
-                                    <p class="create-time"><span>{{item.createDate}} &nbsp;</span></p>
+                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
+                                    <p class="create-time"><span ng-bind="item.createDate">&nbsp;</span></p>
                                 </div>
                             </a>
                         </li>
@@ -334,12 +324,10 @@
                 </div>
                 <div class="poster-detail">
                     <h3>
-                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name">
-                            {{entity.link}}
-                        </a>
+                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name" ng-bind="entity.link"></a>
                     </h3>
                     <div class="poster-createTime">
-                        注册时间：{{entity.createDate}}
+                        注册时间：<i ng-bind="entity.createDate"></i>
                     </div>
                 </div>
             </section>

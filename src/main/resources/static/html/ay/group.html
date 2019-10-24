@@ -98,7 +98,7 @@
 </header>
 <ul class="search-crumbs">
     <li><a href="/home">安义门窗网</a></li>
-    <li><i class="icon-arrow-right"></i><a  >{{type}}</a></li>
+    <li><i class="icon-arrow-right"></i><a ng-bind="type"></a></li>
 </ul>
 <section>
 
@@ -112,21 +112,23 @@
                             <dd>
                                 <a href='' class="select" ng-click="removeFw()" onclick="addDomCass(this)">不限</a>
                                 <a  ng-repeat="item in serviceItem" onclick="addDomCass(this)"
-                                   ng-click="selectFw(item)">{{item}}</a>
+                                   ng-click="selectFw(item)">
+                                    <i ng-bind="item"></i>
+                                </a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
                             <dt>省份：</dt>
                             <dd><a href='' class="select" ng-click="removePrv()" onclick="addDomCass(this)">不限</a>
                                 <a href='' ng-repeat="item in prvList" onclick="addDomCass(this)"
-                                   ng-click="selectPrv(item.id)">{{item.name}}</a>
+                                   ng-click="selectPrv(item.id)" ng-bind="item.name"></a>
                         </dl>
                         <dl class="area_dl show">
                             <dt>城市：</dt>
                             <dd>
                                 <a href='' class="select" ng-click="removeCity()" onclick="addDomCass(this)">不限</a>
                                 <a href='' ng-repeat="item in cityList" onclick="addDomCass(this)"
-                                   ng-click="selectCity(item.id)">{{item.name}}</a>
+                                   ng-click="selectCity(item.id)" ng-bind="item.name"></a>
                             </dd>
                         </dl>
                         <dl class="area_dl show">
@@ -134,7 +136,7 @@
                             <dd>
                                 <a href='' class="select" ng-click="removeDis()" onclick="addDomCass(this)">不限</a>
                                 <a href='' ng-repeat="item in disList" onclick="addDomCass(this)"
-                                   ng-click="selectDis(item.id)">{{item.name}}</a>
+                                   ng-click="selectDis(item.id)" ng-bind="item.name"></a>
                             </dd>
                         </dl>
                     </td>
@@ -160,7 +162,7 @@
 
                     <img src="{{item.path}}" width="160"
                          height="160" class="sidebar-buy-url"/>
-                    <div class="side-promo-name">{{item.company_name}}</div>
+                    <div class="side-promo-name" ng-bind="item.company_name"></div>
                 </a>
 
             </div>
@@ -172,13 +174,13 @@
         <section class="tab-sort-nav">
             <ul class="listing-tab-navi">
                 <li class="home">
-                    <h1><a style="color: white;">门窗{{type}}</a></h1>
+                    <h1><a style="color: white;">门窗 <i ng-bind="type"></i> </a></h1>
                 </li>
                 <li class="tab-title-item">
                     <a title="尚未开发" target="_blank">优质商家</a>
                 </li>
             </ul>
-            <div class="list-sort"><span class="sort-label">共 <span class="sort-label" style="color:#cc0000;">{{groupList.length}}</span> 条加工门窗信息</span>
+            <div class="list-sort"><span class="sort-label">共 <span class="sort-label" style="color:#cc0000;" ng-bind="groupList.length"></span> 条加工门窗信息</span>
             </div>
         </section>
 
@@ -189,9 +191,7 @@
                 </a>
                 <div class="media-body">
                     <div class="media-body-title">
-                        <a  ng-click="goInfo(item.id)" target="_blank" class="title">
-                            {{item.company_name}}
-                        </a>
+                        <a  ng-click="goInfo(item.id)" target="_blank" class="title" ng-bind="item.company_name"></a>
                         <a  ng-click="goInfo(item.id)"><span style="float: right;
                             font-size: 17px; padding:2px 10px;">
                             <svg t="1568705794187" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -203,8 +203,7 @@
 
                     </div>
                     <div class="ad-item-detail"
-                         style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;">
-                        {{item.details}}
+                         style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;" ng-bind="item.details">
                     </div>
                     <div class="ad-item-detail">
                         <a >
@@ -234,14 +233,14 @@
                                       p-id="6168" fill="#48c964"></path>
                             </svg>
                         </a>
-                        <a style="float: right;">{{item.createDate}}</a>
+                        <a style="float: right;" ng-bind="item.createDate"></a>
                     </div>
                 </div>
             </li>
             <li>
                 <button class="page-btn" ng-click="prev()">上一页</button>
                 &nbsp;
-                <button class="page-df">第{{pageNum}}页</button>
+                <button class="page-df">第 <i ng-bind="pageNum"></i> 页</button>
                 &nbsp;
                 <button class="page-btn" ng-click="next()">下一页</button>
             </li>
