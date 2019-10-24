@@ -5,7 +5,6 @@ var app = angular.module('myInfoCz', []).controller('infoCzCtrl', function ($sco
         $scope.entity = getSessionObj('entity');
         $scope.files = getFiles($scope.entity.userId);
         $scope.jpgs = getFiles($scope.entity.userId);
-        console.log($scope.entity);
 
         $scope.user = getUser();
         var userAddr = getCity();

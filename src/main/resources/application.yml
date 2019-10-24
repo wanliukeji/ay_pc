@@ -1,6 +1,6 @@
 #服务配置
 server:
-  port: 7171
+  port: 80
   tomcat:
     uri-encoding: UTF-8
   error:
@@ -8,7 +8,7 @@ server:
 spring:
     #数据配置
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://localhost:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
 #    url: jdbc:mysql://106.12.38.131:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
