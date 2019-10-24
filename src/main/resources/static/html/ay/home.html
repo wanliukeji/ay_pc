@@ -155,7 +155,7 @@
             margin-bottom: 10px;
         }
 
-        .model-btn:hover {
+        .model-btn:hover, #sendMsg:hover {
             background-color: #1fc91b;
         }
 
@@ -163,10 +163,12 @@
             cursor: pointer;
             color: red;
         }
+
         .row-div-li {
             margin-bottom: 10px;
             padding: 0 auto;
         }
+
         .section-box {
             padding: 0 auto;
         }
@@ -256,7 +258,7 @@
                     <input type="hidden" id="hid_address" value="zhejiang"/>
                 </div>
             </div>
-            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post"
+            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post" id="sendMsg"
                                        target="_blank">免费发布信息</a></div>
         </div>
     </div>
@@ -616,7 +618,8 @@
                 <a ng-click="goGroup('点工')" target="_blank">点工</a>
                 <a class="more-form" style="float: right; font-size: 12px; color: #48c964;" ng-click="goGroup('点工')">了解更多>></a>
             </div>
-            <div class="section-box-div-1"><div>
+            <div class="section-box-div-1">
+                <div>
                     <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
                         <img class="div-4-img div-1-img" src="{{dgItems[0].path}}">
                     </a>
@@ -706,7 +709,7 @@
                 </div>
                 <div class="section-box-div-4-info">
                     <p class="section-box-div-4-name">
-                        <a ng-click="goInfo(item.id,item.type)">                      </a>
+                        <a ng-click="goInfo(item.id,item.type)"> </a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
                         <p class="text-webkit section-box-div-4-details">

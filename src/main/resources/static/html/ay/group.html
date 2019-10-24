@@ -21,11 +21,27 @@
             cursor: pointer;
             transition: all 0.6s;
         }
+
+        .model-btn {
+            min-width: 100%;
+            text-align: center;
+            background: #48c964;
+            border: none;
+            color: #ffffff;
+            padding: 7px;
+            margin-bottom: 10px;
+        }
+
+        .model-btn:hover, #sendMsg:hover {
+            background-color: #1fc91b;
+        }
+
     </style>
 </head>
 
 <body class="category-xiaoshou category-gongzuo view-table" ng-app="myGroup" ng-controller="groupCtrl" ng-init="init()">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
+<button data-target="#selectModel" id="queryModel" data-toggle="modal" hidden>选择发布</button>
 <header>
     <div class="tool-bar-ctn">
         <div class="toolbar">
@@ -83,15 +99,17 @@
             </span>
             <div class="head-search">
                 <div class="search" style=" margin-top: 15px; ">
-                    <input id="keyword" placeholder="请输入类别名称或关键字" ng-model="searchVal" name="query" class="input search-query ui-autocomplete-input"
+                    <input id="keyword" placeholder="请输入类别名称或关键字" ng-model="searchVal" name="query"
+                           class="input search-query ui-autocomplete-input"
                            autocomplete="off" style="margin-left: auto; font-size:14px;"/>
                     <input type="button" name="button" class="frontpage-search-trigger search-trigger" value="搜  索"
-                           ng-click="search()" style="margin-left: 401px; margin-top: -40px;" ng-keydown="enterEvent($event)" id="search-btn"/>
+                           ng-click="search()" style="margin-left: 401px; margin-top: -40px;"
+                           ng-keydown="enterEvent($event)" id="search-btn"/>
                     <input type="hidden" id="hid_type" value="shenghuo"/>
                     <input type="hidden" id="hid_address" value="zhejiang"/>
                 </div>
             </div>
-            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post"
+            <div class="pull-right"><a ng-click="sendMsg();" rel="nofollow" class="post" id="sendMsg"
                                        target="_blank">免费发布信息</a></div>
         </div>
     </div>
@@ -111,7 +129,7 @@
                             <dt>类别：</dt>
                             <dd>
                                 <a href='' class="select" ng-click="removeFw()" onclick="addDomCass(this)">不限</a>
-                                <a  ng-repeat="item in serviceItem" onclick="addDomCass(this)"
+                                <a ng-repeat="item in serviceItem" onclick="addDomCass(this)"
                                    ng-click="selectFw(item)">
                                     <i ng-bind="item"></i>
                                 </a>
@@ -180,19 +198,20 @@
                     <a title="尚未开发" target="_blank">优质商家</a>
                 </li>
             </ul>
-            <div class="list-sort"><span class="sort-label">共 <span class="sort-label" style="color:#cc0000;" ng-bind="groupList.length"></span> 条加工门窗信息</span>
+            <div class="list-sort"><span class="sort-label">共 <span class="sort-label" style="color:#cc0000;"
+                                                                    ng-bind="groupList.length"></span> 条加工门窗信息</span>
             </div>
         </section>
 
         <ul id="ctl00_DivInfoListControls" style="border-top: 1px dotted #eee;" class="list-ad-items">
             <li style="height: 170px;" ng-repeat="item in groupList">
-                <a  ng-click="goInfo(item.id)" target="_blank" class="media-cap " style="height: 125px;">
+                <a ng-click="goInfo(item.id)" target="_blank" class="media-cap " style="height: 125px;">
                     <img src="{{item.path}}" width="150" height="125"/>
                 </a>
                 <div class="media-body">
                     <div class="media-body-title">
-                        <a  ng-click="goInfo(item.id)" target="_blank" class="title" ng-bind="item.company_name"></a>
-                        <a  ng-click="goInfo(item.id)"><span style="float: right;
+                        <a ng-click="goInfo(item.id)" target="_blank" class="title" ng-bind="item.company_name"></a>
+                        <a ng-click="goInfo(item.id)"><span style="float: right;
                             font-size: 17px; padding:2px 10px;">
                             <svg t="1568705794187" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" p-id="7084" width="18" height="18"><path
@@ -203,10 +222,11 @@
 
                     </div>
                     <div class="ad-item-detail"
-                         style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;" ng-bind="item.details">
+                         style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;"
+                         ng-bind="item.details">
                     </div>
                     <div class="ad-item-detail">
-                        <a >
+                        <a>
                             <svg t="1568704711175" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" p-id="2574" width="30" height="30">
                                 <path d="M700.9 559.2L592.1 668l-46.8-46.8c-11.7-11.7-30.7-11.7-42.4 0s-11.7 30.7 0 42.4l57.8 57.8c8.4 8.4 19.6 13 31.4 13s23-4.6 31.4-13l119.7-119.7c11.7-11.7 11.7-30.7 0-42.4-11.6-11.8-30.6-11.8-42.3-0.1z"
@@ -217,7 +237,7 @@
                                       p-id="2577" fill="#48c964"></path>
                             </svg>
                         </a>
-                        <a >
+                        <a>
                             <svg t="1568704765912" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" p-id="2952" width="30" height="30">
                                 <path d="M675.1 366.4V262.3c0-4.7-1.9-9.3-5.2-12.7-3.4-3.4-7.9-5.2-12.7-5.2H223.8c-3.5 0-6.9 0.9-9.9 2.7-5.3 3.3-8.4 9.1-8.4 15.2v96.6c0.1 4.7 2 9.2 5.4 12.5l64.2 63.9c-29.8 31.7-50.8 71.9-59 116.6-2 11 6.4 21.1 17.6 21.1 8.6 0 16-6.1 17.6-14.6 2.4-13.5 6.3-26.9 11.7-39.9 30.2-73 101.5-120.6 180.5-120.6 107.8 0.2 195.2 87.6 195.4 195.4 0 79-47.6 150.3-120.6 180.5s-157.1 13.5-213-42.4c-28.9-28.9-47.3-65.4-54.2-103.9-1.5-8.5-9-14.6-17.6-14.6h-0.1c-11.1 0-19.5 10-17.6 20.9 19 108.5 113.7 191 227.7 191 127.6-0.2 231-103.6 231.2-231.2 0-63.7-25.8-121.5-67.5-163.3l60.7-49.7c4.5-3.2 7.2-8.6 7.2-14.2z m-330 18c-15.4 7.2-29.8 16.1-43.1 26.5l-60.7-59.1v-71.6h103.8v104.2z m161.1-13.3c-19.9-5.6-40.9-8.6-62.6-8.6s-42.7 3-62.6 8.6v-90.9h125.3l-0.1 90.9z m132.4-13.6l-59 49.3c-11.8-8.6-24.3-16.1-37.6-22.3V280.2h96.6v77.3z"
@@ -226,7 +246,7 @@
                                       fill="#48c964" p-id="2954"></path>
                             </svg>
                         </a>
-                        <a >
+                        <a>
                             <svg t="1568705002831" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" p-id="6167" width="30" height="30">
                                 <path d="M843.1 495.9c30.9 0 55.9-25 55.9-55.9 0-28.9-21.9-52.7-50-55.6l0.1-0.6s-153.5-2.8-277.1 0c0 0 68-140.8 46.9-214.8-21.8-76.3-82.5-91-111.9 0-33.9 104.7-45.3 142.3-98 183-18.4 14.2-37.8 19.8-52.2 26.5-42.1 19.7-36.8 62.2-36.8 62.2v322.7s-3.1 29.8 19.9 53.3c13.3 13.5 35.5 14.3 35.5 14.3l411.5 0.6 0.1-0.8c2.6 0.4 5.3 0.6 8 0.6 30.9 0 55.9-25 55.9-55.9 0-28.4-21.2-51.9-48.6-55.4l0.1-0.9c2.1 0.3 4.3 0.4 6.5 0.4 30.9 0 55.9-25 55.9-55.9 0-27.9-20.4-51-47.1-55.2l0.2-1.2c2.3 0.3 4.6 0.5 7 0.5 30.9 0 55.9-25 55.9-55.9 0-28.1-20.7-51.3-47.6-55.3l0.2-1.4c3.4 0.4 6.5 0.7 9.7 0.7zM126.6 383.8h159v447.9h-159z"
@@ -316,7 +336,7 @@
 </div>
 
 <div id="sidebar-buttons">
-    <a id="Qu114Icon"   title="手机去114网"><i class="icon-mobile2"></i></a>
+    <a id="Qu114Icon" title="手机去114网"><i class="icon-mobile2"></i></a>
     <div id="href" class="qrcode-login-dialog in left fade" style="display: none;">
         <img src="http://pic.qu114.com/www/20180316/images/app_go.png" width="110" height="110"><img
             src="http://pic.qu114.com/www/20180316/images/erweima.jpg" width="110" height="110">
@@ -326,7 +346,7 @@
            style="color:#cc0000;font-size:12px" target="_blank" class="online-chat">在线客服</a>
     </div>
     <div class="IconHover icon-arrow-up ">
-        <a id="IconHover"   style="color:#cc0000;font-size:12px">返回顶部 </a>
+        <a id="IconHover" style="color:#cc0000;font-size:12px">返回顶部 </a>
     </div>
 </div>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
@@ -373,6 +393,25 @@
                 </button>
             </div>
 
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="selectModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style=" padding-bottom: 20px; align-self: center;
+            text-align: center;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" style="text-align: center;">选择发布信息类型</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px; padding-bottom: 15px;">
+                <button class="model-btn" ng-click="sendAz();">发布加工/点工/安装信息</button>
+                <button class="model-btn" ng-click="sendPs();">发布材料配送信息</button>
+                <button class="model-btn" ng-click="sendCz();">发布出租/转让信息</button>
+                <!--<button class="model-btn" ng-click="sendCz();" disabled>发布其他信息</button>-->
+                <!--<button class="model-btn" disabled>取消</button>-->
+            </div>
         </div>
     </div>
 </div>

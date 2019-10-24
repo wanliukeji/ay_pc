@@ -37,7 +37,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
             angular.element("#showModel").click();
         } else {
             angular.element("#queryModel").click();
-            href('/release');
+            // href('/release');
         }
     };
 

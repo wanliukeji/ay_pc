@@ -116,8 +116,22 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         if (!is_Exist($scope.user)) {
             angular.element("#showModel").click();
         } else {
-            href('/release');
+            angular.element("#queryModel").click();
+            // href('/release');
         }
+    };
+
+    // 发布安装加工
+    $scope.sendAz = function () {
+        href('/release')
+    };
+    // 发布材料配送
+    $scope.sendPs = function () {
+        href('/relPs')
+    };
+    // 发布材料
+    $scope.sendCz = function () {
+        href('/relCz')
     };
 
     $scope.login = function () {
