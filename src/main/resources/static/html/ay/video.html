@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>安义门窗网</title>
+    <title>安义门窗网-VIP视频解析</title>
     <meta name="Keywords" content="安义门窗网-免费发布门窗信息"/>
     <meta name="Description"
           content="安义门窗网-免费发布门窗信息"/>
@@ -13,26 +13,36 @@
     <link href="/static/css/Index.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/baicons2.css" type="text/css"/>
     <link rel="stylesheet" href="/static/css/bootstrap.min.css" type="text/css"/>
-    <style type="text/css">
-        a {
-            color: #333333;
-        }
-        .model-btn {
-            min-width: 100%;
-            text-align: center;
-            background: #48c964;
-            border: none;
-            color: #ffffff;
-            padding: 7px;
-            margin-bottom: 10px;
-        }
-
-        .model-btn:hover, #sendMsg:hover {
-            background-color: #1fc91b;
-        }
-    </style>
 </head>
-<body class="homepage" ng-app="myHome" ng-controller="homeCtrl" ng-init="init()">
+<style type="text/css">
+    a {
+        color: #333333;
+    }
+
+    .model-btn {
+        min-width: 100%;
+        text-align: center;
+        background: #48c964;
+        border: none;
+        color: #ffffff;
+        padding: 7px;
+        margin-bottom: 10px;
+    }
+
+    .model-btn:hover, #sendMsg:hover {
+        background-color: #1fc91b;
+    }
+
+    .vip-btn {
+        border: none;
+        background-color: #48c964;
+        color: white;
+        padding: 7px;
+        width: 100px;
+        border-radius: 2px;
+    }
+</style>
+<body class="homepage" ng-app="myVideo" ng-controller="videoCtrl" ng-init="init()">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden>点击登录</button>
 <button data-target="#selectModel" id="queryModel" data-toggle="modal" hidden>选择发布</button>
 
@@ -124,8 +134,8 @@
     <ul class="nav-content clearfix">
         <li class="nav-item"><a href="/" target="_blank">首页</a></li>
         <li class="nav-item"><a href="/company" target="_blank">企业名录</a></li>
-        <li class="nav-item home"><a target="_blank" style="color: white;"  href="/static/html/ay/anyi.html">门窗之乡</a></li>
-        <li class="nav-item"><a target="_blank" href="/video">VIP解析</a></li>
+        <li class="nav-item home"><a target="_blank" style="color: white;" href="/video">VIP解析</a></li>
+        <li class="nav-item"><a target="_blank" href="/static/html/ay/anyi.html">门窗之乡</a></li>
         <li class="nav-item has-content">
             <a target="_blank">联系我们</a>
             <div class="hover-content qrcode " style=" width: 121px;">
@@ -135,15 +145,17 @@
     </ul>
 </section>
 
-<div class="row" style="position: relative; margin: 0 auto; padding: 11%; padding-top: 10px; padding-bottom: 0px;">
-    <iframe src="/static/tx/zy/index.html" scrolling="no" style="min-width: 1200px; height: 400px;
-    border: none;"></iframe>
+<div class="row" style="margin: 0 auto; padding-left: 10%;">
+    <div class="modal-body">
+        <div class="col-lg-10">
+            <input type="text" ng-model="v_url" placeholder="请输入各大网站VIP视频路径" class="form-control">
+        </div>
+        <div class="col-lg-2">
+            <button class="vip-btn" ng-click="goTo()">解析</button>
+        </div>
+    </div>
 </div>
 
-<div style="position: relative; margin: 0 auto; padding: 11%; padding-top: 10px; padding-bottom: 0px;">
-    <iframe scrolling="no" hspace="-500px" style="min-width: 1200px; min-height: 900px; margin: 0 auto;
-    border: none;" src="https://www.ncnews.com.cn/xwzx/ncxw/xqxw/201803/t20180312_1249274.html"></iframe>
-</div>
 <script type="text/javascript" src="/static/js/jl-footer.js"></script>
 
 
@@ -153,7 +165,7 @@
 <script src='/static/anguarl/angular.min.js'></script>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script src="/static/html/anguarl/public.js"></script>
-<script src="/static/html/anguarl/home.js"></script>
+<script src="/static/html/anguarl/video.js"></script>
 <script>
     $(function () {
         $("#Qu114Icon").hover(function () {

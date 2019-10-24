@@ -213,4 +213,13 @@ public class PublicController {
     public String zr() {
         return "ay/zr";
     }
+
+    /**
+     * VIP视频解析
+     * @return
+     */
+    @GetMapping("/video")
+    public String video() {
+        return "ay/video";
+    }
 }
