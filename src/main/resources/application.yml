@@ -8,8 +8,8 @@ server:
 spring:
     #数据配置
   datasource:
-    url: jdbc:mysql://localhost:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
-#    url: jdbc:mysql://106.12.38.131:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+#    url: jdbc:mysql://localhost:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://106.12.38.131:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
