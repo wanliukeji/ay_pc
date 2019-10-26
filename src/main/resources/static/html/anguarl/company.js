@@ -60,6 +60,10 @@ var app = angular.module('myCompany', []).controller('myCompanyCtrl', function (
     $scope.sendCz = function () {
         href('/relCz')
     };
+    // 发布设备
+    $scope.sendSb = function () {
+        href('/relSb')
+    };
 
     $scope.outlogin = function () {
         removeUser("user");
@@ -90,7 +94,7 @@ var app = angular.module('myCompany', []).controller('myCompanyCtrl', function (
             $scope.stauts = '正在登录.....';
             setUser(msg.data);
             setTimeout(function () {
-                href('/home');
+                history.go(0);
             }, 2000)
         } else {
             alert("账户密码不匹配      " + msg.message);

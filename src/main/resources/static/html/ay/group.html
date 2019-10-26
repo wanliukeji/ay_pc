@@ -68,20 +68,11 @@
                 </li>
                 <li style="display: none" class="js-separator"></li>
                 <li class="dropdown">
-                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a target='_blank' rel="nofollow" title="尚未开发">推广服务</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站建设</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发">软件开发</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
                     <a href="javascript:;" target="_blank">帮助中心<i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a target='_blank' rel="nofollow" title="尚未开发">密码找回</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发">发新信息</a></li>
-                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站协议</a>
+                        <li><a href="/about" target='_blank' rel="nofollow">网站开发</a></li>
+                        <li><a href="/about" target='_blank' rel="nofollow">软件定制</a>
                         <li><a target='_blank' rel="nofollow" title="尚未开发">反馈</a></li>
                     </ul>
                 </li>
@@ -164,7 +155,6 @@
     </form>
 
 </section>
-
 
 <section class="container">
 
@@ -388,8 +378,8 @@
                 </p>
             </div>
             <div class="modal-footer" style="margin: 0 auto; text-align: center;">
-                <button style="min-width: 90%; text-align: center; background: #48c964; border: none;
-                    color: #ffffff; padding: 5px;" ng-click="login();">登录
+                <button style="min-width: 95%; text-align: center; background: #48c964; border: none;
+                    color: #ffffff; padding: 5px;" ng-click="login();">{{stauts}}
                 </button>
             </div>
 
@@ -409,7 +399,7 @@
                 <button class="model-btn" ng-click="sendAz();">发布加工/点工/安装信息</button>
                 <button class="model-btn" ng-click="sendPs();">发布材料配送信息</button>
                 <button class="model-btn" ng-click="sendCz();">发布出租/转让信息</button>
-                <!--<button class="model-btn" ng-click="sendCz();" disabled>发布其他信息</button>-->
+                <button class="model-btn" ng-click="sendSb();">发布加工设备</button>
                 <!--<button class="model-btn" disabled>取消</button>-->
             </div>
         </div>

@@ -133,6 +133,10 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
     $scope.sendCz = function () {
         href('/relCz')
     };
+    // 发布设备
+    $scope.sendSb = function () {
+        href('/relSb')
+    };
 
     $scope.login = function () {
         var url = '/api/user/login';

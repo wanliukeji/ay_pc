@@ -241,4 +241,13 @@ public class PublicController {
     public String video() {
         return "ay/video";
     }
+
+    /**
+     * 展示页面
+     * @return
+     */
+    @GetMapping("/about")
+    public String about() {
+        return "ay/about";
+    }
 }
