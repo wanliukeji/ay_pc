@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
 <head>
-    <title>安义门窗网</title>
+    <title>安义门窗网-加工设备</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="Keywords" content="安义门窗网-免费发布信息"/>
     <meta name="Description" content="安义门窗网-免费发布信息"/>
@@ -18,7 +18,7 @@
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/angular-toastr.min.css" rel="stylesheet">
 </head>
-<body ng-app="myRel" ng-controller="relCtrl" style="min-width: 1200px;" ng-init="init()">
+<body ng-app="RelSb" ng-controller="RelSbCtrl" style="min-width: 1200px;" ng-init="init()">
 <div style="width: 80%; height: 100px; margin-bottom: 10px; margin: 0 auto;">
     <a href="/home">
         <img src="/static/image/anny_logo.png" alt="" style="position:absolute; z-index: 100;
@@ -52,7 +52,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title font-22">填写加工/安装/点工信息
+                            <h4 class="header-title font-22">填写设备出租/转让信息
                                 &nbsp;
                                 <span style="color: #999999;font-size: 12px;text-align: right;">(<i
                                         style="color: red;">*</i>为必填项)</span></h4>
@@ -100,60 +100,85 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类别<i
+                                                        <label class="col-md-3 col-form-label"> 性质<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <select data-plugin="customselect" id="entity.type" required
-                                                                    class="form-control" ng-model="entity.type">
+                                                            <select data-plugin="customselect" id="entity.type"
+                                                                    ng-model="entity.nature" required
+                                                                    class="form-control">
                                                                 <option value="">请选择</option>
-                                                                <option value="加工">加工</option>
-                                                                <option value="安装">安装</option>
-                                                                <option value="点工">点工</option>
+                                                                <option value="出租">出租</option>
+                                                                <option value="转让">转让</option>
                                                             </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务类型<i
+                                                        <label class="col-md-3 col-form-label"> 转让对象<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left"
-                                                                 ng-repeat="(index,item) in serviceItem">
-                                                                <input type="checkbox" id="inlineCheckbox{{index}}"
-                                                                       value="{{item}}" name="ser">
-                                                                <label for="inlineCheckbox{{index}}">{{item}}</label>
-                                                            </div>
-
+                                                            <select data-plugin="customselect" id="type"
+                                                                    ng-model="entity.type" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="电锤">电锤</option>
+                                                                <option value="电钻">电钻</option>
+                                                                <option value="切割机">切割机</option>
+                                                                <option value="机床">机床</option>
+                                                                <option value="其他">其他</option>
+                                                                <!--<option value="设备">设备</option>-->
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"> 服务区域<i
+                                                        <label class="col-md-3 col-form-label"> 新旧程度<i
                                                                 style="color: red;">*</i></label>
                                                         <div class="col-md-9" style="padding-left: 20px;">
-                                                            <div class="checkbox checkbox-success form-check-inline float-left"
-                                                                 ng-repeat="(index,item) in ares">
-                                                                <input type="checkbox" id="ares{{index}}"
-                                                                       value="{{item.name}}" name="fw">
-                                                                <label for="ares{{index}}">{{item.name}}</label>
-                                                            </div>
-
+                                                            <select data-plugin="customselect"
+                                                                    ng-model="entity.type" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="九成新">九成新</option>
+                                                                <option value="八成新">八成新</option>
+                                                                <option value="七成新">七成新</option>
+                                                                <option value="六成新">六成新</option>
+                                                                <option value="六成新以下">六成新以下</option>
+                                                                <!--<option value="设备">设备</option>-->
+                                                            </select>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
                                                                for="user_qq">价格：</label>
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-9">
                                                             <input type="number" class="form-control" id="price"
                                                                    name="price" ng-model="entity.price" value=""
                                                                    placeholder="请输入价格"></input>
                                                         </div>
-                                                        <div class="col-md-6 text-left" style="padding-top: 10px;">
-                                                            <span style="font-size: 14px; color: #d0d0d0;">(计价方式)加工按平方/米/天计算</span>
-                                                        </div>
                                                     </div>
 
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-3 col-form-label"> 有无发票<i
+                                                                style="color: red;">*</i></label>
+                                                        <div class="col-md-9" style="padding-left: 20px;">
+                                                            <select data-plugin="customselect"
+                                                                    ng-model="entity.isExit" required
+                                                                    class="form-control">
+                                                                <option value="">请选择</option>
+                                                                <option value="">是</option>
+                                                                <option value="">无</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end col -->
+                                            </div> <!-- end row -->
+                                        </div>
+
+                                        <div class="tab-pane active" id="profile-tab-2">
+                                            <div class="row">
+                                                <div class="col-12">
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
                                                                for="user_qq">QQ：</label>
@@ -197,30 +222,6 @@
                                                             <input type="text" class="form-control" id="link"
                                                                    name="link" ng-model="entity.link" value=""
                                                                    placeholder="请输入联系人" required/>
-                                                        </div>
-                                                    </div>
-
-                                                </div> <!-- end col -->
-                                            </div> <!-- end row -->
-                                        </div>
-
-                                        <div class="tab-pane active" id="profile-tab-2">
-                                            <div class="row">
-                                                <div class="col-12">
-
-                                                    <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label"
-                                                               for="company_name">所属<i
-                                                                style="color: red;">*</i></label>
-                                                        <div class="col-md-9">
-                                                            <select data-plugin="customselect" id="company_name"
-                                                                    ng-model="entity.company_name" required
-                                                                    class="form-control d-inline-block float-left">
-                                                                <option value="">请选择</option>
-                                                                <option value="个人">个人</option>
-                                                                <option value="团队">团队</option>
-                                                                <option value="公司">公司</option>
-                                                            </select>
                                                         </div>
                                                     </div>
 
@@ -274,7 +275,7 @@
 
                                                     <div class="form-group row mb-3">
                                                         <label class="col-md-3 col-form-label"
-                                                               for="details">服务描述：</label>
+                                                               for="details">物品描述：</label>
                                                         <div class="col-md-9">
                                                             <textarea type="text" rows="5" class="form-control"
                                                                       id="details" required
@@ -291,7 +292,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">广告图片</label>
+                                                        <label class="col-md-3 col-form-label">展示图片</label>
                                                         <div class="col-md-9">
                                                             <input type="file" id="gg_src" name="gg_src" class="dropify"
                                                                    data-max-file-size="1M" enctype="multipart/form-data"
@@ -300,7 +301,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">作品图片</label>
+                                                        <label class="col-md-3 col-form-label">商品图片</label>
                                                         <div class="col-md-3">
                                                             <input type="file" name="z_img" class="dropify"
                                                                    data-max-file-size="1M"
@@ -319,7 +320,7 @@
                                                     </div>
 
                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-3 col-form-label">案例图片</label>
+                                                        <label class="col-md-3 col-form-label"></label>
                                                         <div class="col-md-3">
                                                             <input type="file" name="a_img" class="dropify"
                                                                    data-max-file-size="1M"
@@ -433,7 +434,7 @@ var search_type = "shenghuo";</script>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 
 <script src="/static/html/anguarl/public.js"></script>
-<script src="/static/html/anguarl/release.js"></script>
+<script src="/static/html/anguarl/relSb.js"></script>
 
 </body>
 </html>

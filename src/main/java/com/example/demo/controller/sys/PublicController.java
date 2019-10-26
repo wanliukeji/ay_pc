@@ -128,6 +128,16 @@ public class PublicController {
     }
 
     /**
+     * 设备出租转让
+     *
+     * @return
+     */
+    @GetMapping("/relSb")
+    public String relSb() {
+        return "ay/relSb";
+    }
+
+    /**
      * 出租转让
      *
      * @return

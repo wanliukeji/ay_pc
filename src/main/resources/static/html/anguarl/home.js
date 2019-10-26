@@ -60,6 +60,11 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     $scope.sendCz = function () {
         href('/relCz')
     };
+    // 发布设备
+    $scope.sendSb = function () {
+        alert(1);
+        href('/relSb')
+    };
 
     $scope.outlogin = function () {
         removeUser("user");
