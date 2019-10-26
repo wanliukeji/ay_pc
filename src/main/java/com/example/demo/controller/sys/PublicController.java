@@ -157,6 +157,15 @@ public class PublicController {
         return "ay/info_cl";
     }
 
+    /**
+     * 设备
+     *
+     * @return
+     */
+    @GetMapping("/info_sb")
+    public String info_sb() {
+        return "ay/info_sb";
+    }
 
     /**
      * 信息发布页

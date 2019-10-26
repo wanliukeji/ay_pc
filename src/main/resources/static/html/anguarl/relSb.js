@@ -57,7 +57,7 @@ var app = angular.module('RelSb', []).controller('RelSbCtrl', function ($scope, 
         haveOther:'',
         nature:'',
         isExit:'',
-        type:''
+        type:'设备'
     };
 
     $scope.show_num_prv = 0;
@@ -90,11 +90,6 @@ var app = angular.module('RelSb', []).controller('RelSbCtrl', function ($scope, 
                     return;
                 }
 
-                if (!$scope.entity.company_name) {
-                    msg_error('公司名不能为空');
-                    return;
-                }
-
                 if (!$scope.entity.phone) {
                     msg_error('手机号不能为空');
                     return;
@@ -110,8 +105,18 @@ var app = angular.module('RelSb', []).controller('RelSbCtrl', function ($scope, 
                     return;
                 }
 
-                if (!$scope.entity.facility) {
-                    msg_error('请选择设施');
+                if (!$scope.entity.nature) {
+                    msg_error('请选择性质');
+                    return;
+                }
+
+                if (!$scope.entity.fw) {
+                    msg_error('请选择转让');
+                    return;
+                }
+
+                if (!$scope.entity.service) {
+                    msg_error('请选择新旧程度');
                     return;
                 }
 

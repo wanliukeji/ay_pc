@@ -62,7 +62,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     };
     // 发布设备
     $scope.sendSb = function () {
-        alert(1);
         href('/relSb')
     };
 
@@ -102,23 +101,29 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         }
     }
 
-    $scope.goInfo = function (id,type) {
-            if (angular.equals('加工',type)||angular.equals('点工',type)||angular.equals('安装',type)) {
-                var url = 'api/fied/getInfoVo?id=' + id;
-                var msg = ajax_http_get(url);
-                setSessionObj('entity', msg.data);
-                href('/info');
-            } else if (angular.equals('门窗厂',type)||angular.equals('玻璃厂',type)||angular.equals('配件商',type)) {
-                var url = 'api/fied/getInfoVo?id=' + id;
-                var msg = ajax_http_get(url);
-                setSessionObj('entity', msg.data);
-                href('/info_cl');
-            } else if (angular.equals('定点',type)||angular.equals('店铺',type)||angular.equals('厂房',type)) {
-                var url = '/api/rent/getInfo?id=' + Number.parseInt(id);
-                var msg = ajax_http_get(url);
-                setSessionObj('entity', msg.data);
-                href('/info_cz');
-            }
+    $scope.goInfo = function (id, type) {
+        console.log(type);
+        if (angular.equals('加工', type) || angular.equals('点工', type) || angular.equals('安装', type)) {
+            var url = 'api/fied/getInfoVo?id=' + id;
+            var msg = ajax_http_get(url);
+            setSessionObj('entity', msg.data);
+            href('/info');
+        } else if (angular.equals('门窗厂', type) || angular.equals('玻璃厂', type) || angular.equals('配件商', type)) {
+            var url = 'api/fied/getInfoVo?id=' + id;
+            var msg = ajax_http_get(url);
+            setSessionObj('entity', msg.data);
+            href('/info_cl');
+        } else if (angular.equals('定点', type) || angular.equals('店铺', type) || angular.equals('厂房', type)) {
+            var url = '/api/rent/getInfo?id=' + Number.parseInt(id);
+            var msg = ajax_http_get(url);
+            setSessionObj('entity', msg.data);
+            href('/info_cz');
+        } else if (angular.equals('设备', type)) {
+            var url = '/api/rent/getInfo?id=' + Number.parseInt(id);
+            var msg = ajax_http_get(url);
+            setSessionObj('entity', msg.data);
+            href('/info_sb');
+        }
     }
 
     $scope.goGroup = function (type) {

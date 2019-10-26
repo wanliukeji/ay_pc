@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myInfoCz" ng-controller="infoCzCtrl" ng-init="init()">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>安义门窗网-{{entity.company_name}}</title>
+    <meta name="description" content='安义门窗信息分类网'/>
+    <meta name="mobile-agent" content="安义门窗信息分类网"/>
+    <meta name="mobile-agent" content="安义门窗信息分类网"/>
+    <meta name="mobile-agent" content="安义门窗信息分类网"/>
+    <link href="/static/css/Index.css" rel="stylesheet"/>
+    <link href="/static/css/Jquery-ui.css" rel="stylesheet"/>
+    <link href="/static/css/DetailedPage.css" rel="stylesheet"/>
+    <link href="/static/css/baicons2.css" rel="stylesheet"/>
+    <link href="/static/css/DetailedIcons.css" rel="stylesheet"/>
+    <style type="text/css">
+        .viewad-right {
+            width: 320px;
+            height: 230px;
+            position: absolute;
+            margin-left: 450px;
+            top: 240px;
+        }
+
+        .viewad-right-img {
+            width: 100%;
+            max-height: 230px;
+        }
+
+        .viewad-right-img:hover {
+            transform: scale(1.3);
+            -moz-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+            -o-transform: scale(1.3);
+            cursor: pointer;
+            transition: all 0.6s;
+        }
+
+        .img-al {
+            width: 200px;
+            height: 200px;
+        }
+
+        .img-al:hover {
+            transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            cursor: pointer;
+            transition: all 0.8s;
+        }
+    </style>
+</head>
+<body class="viewad-baomu viewad-fuwu viewad-new">
+<button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
+<header>
+    <div class="tool-bar-ctn" style="background-color: white;">
+        <div class="toolbar">
+            <div class="toolbar-link">
+                <a class="hot-link" id="city"></a>
+            </div>
+            <ul id="user-tools" class="navbar-nav">
+                <li ng-show="user == null">
+                    <a href="/login" rel="nofollow" data-toggle="userAuth" data-type="login"
+                       class="no-padding">登录</a>/
+                    <a href="/register" rel="nofollow" data-toggle="userAuth" data-type="reg"
+                       class="no-padding">注册</a>
+                </li>
+
+                <li class="dropdown" ng-show="user != null">
+                    <a href="javascript:;" target="_blank">个人中心<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">个人账户</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">设置</a></li>
+                        <li><a target='_blank' rel="nofollow" href="/admin">后台入口</a></li>
+                        <li><a ng-click="outlogin()" target='_blank' rel="nofollow">注销</a>
+                        </li>
+                    </ul>
+                </li>
+                <li style="display: none" class="js-separator"></li>
+                <li class="dropdown">
+                    <a href="javascript:;" target="_blank">产品服务<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">推广服务</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站建设</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">软件开发</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" target="_blank">帮助中心<i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">密码找回</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">发新信息</a></li>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">网站协议</a>
+                        <li><a target='_blank' rel="nofollow" title="尚未开发">反馈</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div class="container box">
+    <ul class="search-crumbs">
+        <li><a href="/home">安义门窗网</a></li>
+        <li><i class="icon-arrow-right"></i><a href="/group" ng-bind="entity.type"></a></li>
+        <li><i class="icon-arrow-right"></i><a ng-bind="entity.company_name"></a></li>
+    </ul>
+    <div class="viewad-main">
+        <div class="viewad-content ">
+            <div class="viewad-header">
+                <div class="viewad-title">
+                    <h1 ng-bind="entity.company_name"></h1>
+                </div>
+                <div class="viewad-actions">
+                    <span>信息编号:&nbsp; <span ng-bind="entity.id"></span> &nbsp;</span>
+                    <span ng-bind="entity.createDate">&nbsp;</span>
+                </div>
+            </div>
+            <div class="viewad-digest">
+                <div class="viewad-topMeta" style="width:55%;">
+
+                    <div class="viewad-meta2">
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <table id="Qu114TablePare" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td class="biaoti">项目：</td>
+                                    <td><span ng-bind="entity.type"></span></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>性质：</label>
+                            <div class="content" ng-bind="entity.nature"></div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>设备名：</label>
+                            <div class="content" ng-bind="entity.fw"></div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>新旧程度：</label>
+                            <div class="content" ng-bind="entity.service"></div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>发票：</label>
+                            <div class="content" ng-bind="entity.isExit"></div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>发布时间：</label>
+                            <div class="content" ng-bind="entity.createDate | date:'yyyy-MM-dd'"></div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>详细地址：</label>
+                            <div class="content" ng-bind="entity.address"></div>
+                        </div>
+
+                        <div class="viewad-meta2-item">
+                            <label>联系人：</label>
+                            <div class="content">
+                    <span>
+                        <a target="_blank" ng-bind="entity.link"></a>
+                        </span>
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item">
+                            <label>微信号：</label>
+                            <div class="content">
+                    <span>
+                        <a target="_blank" ng-bind="entity.user_wx"></a>
+                        </span>
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item">
+                            <label>价格：</label>
+                            <div class="content">
+                    <span>
+                        <a target="_blank" ng-bind="entity.price">
+                             元/台
+                        </a>
+                        </span>
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>设施：</label>
+                            <div class="content" ng-bind="entity.facility">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <section class="viewad-contact">
+                        <ul>
+                            <li class="contact-btn-box">
+                                <label>联系电话：</label>
+                                <a class="contact-no" style="margin-left: 12px;" ng-bind="entity.phone">
+                                </a>
+                                <a href="" class="contact-no" style="margin-left: 12px;" title="私信">
+                                    <svg t="1570945466951" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                         xmlns="http://www.w3.org/2000/svg" p-id="2056" width="25" height="25">
+                                        <path d="M512 101.5c-247.4 0-448 173.6-448 387.7 0 108.5 51.5 206.5 134.4 276.9v156.4l165.4-67.3c46.4 14.1 96.3 21.7 148.2 21.7 247.4 0 448-173.6 448-387.7S759.4 101.5 512 101.5z m0 708.4c-44.2 0-87.6-6.3-128.8-18.8l-22.7-6.9-22 9-73.1 29.8v-87.8L241.7 715c-35.1-29.8-62.6-64.4-81.6-102.8-19.3-39-29.1-80.4-29.1-123 0-176.8 170.9-320.7 381-320.7s381 143.9 381 320.7-170.9 320.7-381 320.7z"
+                                              fill="#1afa29" p-id="2057"></path>
+                                        <path d="M306.5 444.5c-37.8 0-68.5 30.7-68.5 68.5s30.7 68.5 68.5 68.5S375 550.8 375 513s-30.7-68.5-68.5-68.5zM512.5 444.5c-37.8 0-68.5 30.7-68.5 68.5s30.7 68.5 68.5 68.5S581 550.8 581 513s-30.7-68.5-68.5-68.5zM717.5 444.5c-37.8 0-68.5 30.7-68.5 68.5s30.7 68.5 68.5 68.5S786 550.8 786 513s-30.7-68.5-68.5-68.5z"
+                                              fill="#1afa29" p-id="2058"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                </div>
+            </div>
+
+            <div class="viewad-right">
+                <img ng-src="{{jpgs[0].path}}" class="viewad-right-img">
+            </div>
+            <br>
+            <div class="viewad-detail">
+                <section class="viewad-description">
+                    <section class="viewad-action">
+                        <ul>
+                            <li class="action-item" title="尚未开放">
+                                <label name="widget-follow-favorite">
+                                    <a href="javascript:void(0)" class="follow-button">
+                                        <i class="icon-unfavor"></i>收藏</a>
+                                </label>
+                            </li>
+                            <li class="action-item" title="尚未开放">
+                                <div class="bdsharebuttonbox bdshare-button-style0-16">
+                                    <a class="bds_more">
+                                        <i class="icon-share"></i>分享
+                                    </a>
+                                </div>
+                                <div class="data-store"></div>
+                            </li>
+                            <li class="action-item" title="尚未开放">
+                                <a rel="nofollow" class="feedback">
+                                    <i class="icon-complaint"></i>举报
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <div class="viewad-common-header">
+                        <div class="section-title">详细信息</div>
+                    </div>
+
+                    <div class="viewad-text" style="color:#333;">
+                        <p ng-bind="entity.details"></p>
+                    </div>
+
+                    <div class="photo-gallery big">
+                        <div class="featured-height">
+                            <div class="photo-item col-5 " style="text-align:center;" ng-repeat="item in files">
+                                <!--<img src="{{item.path}}" width="200" height="200" ng-repeat="item in files"/>-->
+                                <a href="{{item.path}}">
+                                    <img ng-src="{{item.path}}" class="img-al"/>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="viewad-text" style="font-size:14px;">
+                        如果您觉得“<strong ng-bind="entity.company_name"></strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
+                            class="a_res" target="_blank" href="/home" ng-bind="entity.type"></a>频道，将会获得更多的信任！)
+                        <br/>
+                        查看<a href='http://jx.qu114.com/waiyupeixun/' target="_blank">最新发布信息</a> >
+                        <a href="/release" target="_blank"
+                           rel="nofollow">发布加工信息</a>
+                    </div>
+                </section>
+            </div>
+
+
+            <section class="anti-fraud-box">
+                <div class="anti-fraud">
+                    <div class="alert-icon">
+                        <i class="icon-info"></i>
+                    </div>
+                    <div class="alert-msg">
+                        <p>
+                            <strong>安义门窗网提醒您：</strong>
+                            ①请确定对方的发布信息属实、虚假宣传等诈骗行为！②要求预付定金、汇款或网上交易等方式请勿相信，谨防上当受骗！
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="viewad-recommend">
+                <div class="viewad-common-header">
+                    <h3 class="section-title">您可能感兴趣</h3>
+                </div>
+                <div class="viewad-items">
+                    <ul class="block-posts">
+
+                        <li ng-repeat="item in hoppyItem | limitTo:3">
+                            <a href="" ng-click="goInfo(item.id)" target="_blank" class="clearfix">
+                                <p class="title">{{item.company_name}}</p>
+                                <div class="img ">
+                                    <img ng-src="{{item.path}}" width="66" height="66"/></div>
+                                <div class="item-content">
+                                    <p class="price"></p>
+                                    <p class="adress">
+                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
+                                    <p class="create-time"><span ng-bind="item.createDate"> &nbsp;</span></p>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="viewad-prompt">
+            <p>
+                <i class="icon-info"></i>
+                小贴士：本页信息由用户及第三方发布，真实性、合法性由发布人负责。详情请阅读<a href="http://about.qu114.com/duty.aspx" target="_blank"
+                                                        rel="nofollow">去安义门窗网</a>
+            </p>
+        </div>
+
+        <div class="viewad-bottom-banner">
+            <script type="text/javascript">/*880*70-文字*/
+            var cpro_id = "u3209744";</script>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="poster-info-container">
+            <section class="poster-info">
+                <div class="poster-avatar">
+                    <a target="_blank" href="http://user.qu114.com/43201638/">
+                        <img ng-src="{{entity.path}}" class="shangjia"></a>
+                </div>
+                <div class="poster-detail">
+                    <h3>
+                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name" ng-bind="entity.link">
+                        </a>
+                    </h3>
+                    <div class="poster-createTime">
+                        注册时间：<span ng-bind="entity.createDate"></span>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="poster-verify">
+                <div class="poster-common-header">
+                    <div class="line">
+                    </div>
+                    <div class="head">
+                        信用记录&nbsp;
+                    </div>
+                </div>
+                <ul>
+                    <li>
+
+                        <svg t="1570685327042" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" p-id="1894" width="35" height="35">
+                            <path d="M831.333 255.784c35.29 0 64 28.71 64 64v383.855c0 35.29-28.71 64-64 64H192.212c-35.29 0-64-28.71-64-64V319.784c0-35.29 28.71-64 64-64h639.121m0-64H192.212c-70.692 0-128 57.308-128 128v383.855c0 70.693 57.308 128 128 128h639.121c70.692 0 128-57.307 128-128V319.784c0-70.693-57.307-128-128-128z"
+                                  fill="#48c964" p-id="1895"></path>
+                            <path d="M321.295 525.575c-57.093 0-103.541-46.448-103.541-103.541s46.448-103.541 103.541-103.541 103.541 46.448 103.541 103.541-46.448 103.541-103.541 103.541z m0-159.082c-30.625 0-55.541 24.916-55.541 55.541s24.916 55.541 55.541 55.541 55.541-24.916 55.541-55.541-24.916-55.541-55.541-55.541z"
+                                  fill="#48c964" p-id="1896"></path>
+                            <path d="M393.885 717.441H248.706c-30.878 0-56-25.121-56-56v-55.507c0-70.904 57.685-128.588 128.589-128.588s128.589 57.684 128.589 128.588v55.507c0.001 14.957-5.824 29.021-16.401 39.598-10.577 10.577-24.64 16.402-39.598 16.402z m-72.59-192.094c-44.437 0-80.589 36.151-80.589 80.588v55.507c0 4.411 3.589 8 8 8h145.179c2.883 0 4.782-1.468 5.657-2.343s2.342-2.773 2.342-5.656v-55.508c0-44.437-36.152-80.588-80.589-80.588zM680.118 409.074h-144c-13.255 0-24-10.745-24-24s10.745-24 24-24h144c13.255 0 24 10.745 24 24s-10.745 24-24 24zM807.241 576.636H536.118c-13.255 0-24-10.745-24-24s10.745-24 24-24h271.123c13.255 0 24 10.745 24 24s-10.745 24-24 24z"
+                                  fill="#48c964" p-id="1897"></path>
+                            <path d="M742.658 660.417H534.627c-13.255 0-24-10.745-24-24s10.745-24 24-24h208.031c13.255 0 24 10.745 24 24s-10.745 24-24 24zM577.966 492.855h-41.848c-13.255 0-24-10.745-24-24s10.745-24 24-24h41.848c13.255 0 24 10.745 24 24s-10.745 24-24 24z"
+                                  fill="#48c964" p-id="1898"></path>
+                        </svg>
+
+                        <span>身份证</span>
+                    </li>
+                    <li>
+
+                        <svg t="1570685452322" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" p-id="2911" width="35" height="35">
+                            <path d="M180.053333 957.44c-34.133333 0-61.44-27.306667-61.44-61.44V128c0-34.133333 27.306667-61.44 61.44-61.44h665.6c34.133333 0 61.44 27.306667 61.44 61.44v768c0 34.133333-27.306667 61.44-61.44 61.44h-665.6z m0-870.4c-22.186667 0-40.96 18.773333-40.96 40.96v768c0 22.186667 18.773333 40.96 40.96 40.96h665.6c22.186667 0 40.96-18.773333 40.96-40.96V128c0-22.186667-18.773333-40.96-40.96-40.96h-665.6z"
+                                  p-id="2912" fill="#48c964"></path>
+                            <path d="M365.226667 447.146667c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h51.2c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-51.2zM365.226667 528.213333c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h51.2c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-51.2zM365.226667 609.28c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h51.2c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-51.2zM502.613333 447.146667c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h170.666667c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-170.666667zM502.613333 528.213333c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h170.666667c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-170.666667zM502.613333 609.28c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h170.666667c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-170.666667zM365.226667 690.346667c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h51.2c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-51.2zM502.613333 690.346667c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h170.666667c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-170.666667zM500.053333 227.84c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h28.16c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24h-28.16zM471.04 296.96c-4.266667 0-7.68-2.56-9.386667-5.973333-1.706667-5.12 0-11.093333 5.973334-13.653334l42.666666-17.066666c0.853333-0.853333 2.56-0.853333 4.266667-0.853334s2.56 0 4.266667 0.853334l42.666666 17.066666c5.12 1.706667 7.68 8.533333 5.973334 13.653334-1.706667 4.266667-5.12 5.973333-9.386667 5.973333-1.706667 0-2.56 0-4.266667-0.853333l-39.253333-16.213334-39.253333 16.213334c-1.706667 0.853333-3.413333 0.853333-4.266667 0.853333z"
+                                  p-id="2913" fill="#48c964"></path>
+                            <path d="M715.093333 914.773333c-2.56 0-4.266667-0.853333-5.973333-1.706666-3.413333-2.56-5.12-5.973333-4.266667-10.24l7.68-48.64H232.106667c-5.973333 0-10.24-4.266667-10.24-10.24V277.333333c0-5.973333 4.266667-10.24 10.24-10.24h169.813333c-0.853333-4.266667-0.853333-7.68-0.853333-11.093333 0-19.626667 5.12-38.4 14.506666-55.466667H232.106667c-5.973333 0-10.24-4.266667-10.24-10.24s4.266667-10.24 10.24-10.24h198.826666c21.333333-23.893333 52.053333-36.693333 82.773334-36.693333s61.44 13.653333 82.773333 36.693333h198.826667c5.973333 0 10.24 4.266667 10.24 10.24s-4.266667 10.24-10.24 10.24H611.84c9.386667 17.066667 14.506667 35.84 14.506667 55.466667 0 3.413333 0 7.68-0.853334 11.093333h169.813334c5.973333 0 10.24 4.266667 10.24 10.24v497.493334l0.853333 1.706666 58.88 8.533334c4.266667 0.853333 6.826667 3.413333 8.533333 6.826666 0.853333 3.413333 0 7.68-2.56 10.24l-41.813333 41.813334 10.24 58.88c0.853333 4.266667-0.853333 7.68-4.266667 10.24-1.706667 1.706667-4.266667 1.706667-5.973333 1.706666-1.706667 0-3.413333 0-4.266667-0.853333l-52.906666-27.306667-52.053334 28.16h-5.12z m17.066667-81.066666c0.853333 0 0.853333 0.853333 0.853333 1.706666 1.706667 2.56 2.56 5.12 1.706667 7.68l-6.826667 43.52 39.253334-20.48c1.706667-0.853333 3.413333-0.853333 5.12-0.853333 1.706667 0 3.413333 0 5.12 0.853333l39.253333 20.48-7.68-43.52c-0.853333-3.413333 0.853333-6.826667 2.56-9.386666l31.573333-30.72-43.52-5.973334c-3.413333-0.853333-5.973333-2.56-7.68-5.12L771.413333 750.933333l-18.773333 39.253334c-1.706667 3.413333-4.266667 5.12-7.68 5.973333l-43.52 6.826667 30.72 30.72z m-28.16 0.853333l-32.426667-30.72c-2.56-2.56-4.266667-6.826667-2.56-10.24 0.853333-3.413333 4.266667-6.826667 8.533334-6.826667l58.88-9.386666 25.6-53.76c1.706667-3.413333 5.12-5.973333 9.386666-5.973334 4.266667 0 7.68 2.56 9.386667 5.973334L785.066667 733.866667V287.573333H622.08c-14.506667 47.786667-58.026667 81.066667-107.52 81.066667s-93.866667-33.28-107.52-81.066667H242.346667v546.986667h461.653333zM513.706667 163.84c-20.48 0-40.106667 6.826667-56.32 19.626667-5.973333 5.12-11.946667 10.24-16.213334 17.066666-12.8 16.213333-18.773333 35.84-18.773333 56.32 0 4.266667 0 7.68 0.853333 12.8 0.853333 5.973333 2.56 11.093333 4.266667 17.066667 12.8 37.546667 47.786667 62.293333 87.04 62.293333S588.8 324.266667 601.6 286.72c1.706667-5.12 3.413333-11.093333 4.266667-17.066667V256c0-20.48-6.826667-39.253333-18.773334-56.32-5.12-5.973333-10.24-11.946667-16.213333-17.066667-17.066667-12.8-36.693333-18.773333-57.173333-18.773333z"
+                                  p-id="2914" fill="#48c964"></path>
+                        </svg>
+
+                        <span>营业执照</span>
+                    </li>
+                    <li>
+
+                        <svg t="1570685499883" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" p-id="3867" width="35" height="35">
+                            <path d="M873.8 225.2 150.1 225.2c-28.8 0-52.2 23.4-52.2 52.2l0 469.1c0 28.8 23.4 52.2 52.2 52.2l723.7 0c28.8 0 52.3-23.4 52.3-52.2L926.1 277.5C926.1 248.7 902.6 225.2 873.8 225.2zM885.2 266.1l0 491.8L138.8 757.9 138.8 266.1 885.2 266.1z"
+                                  p-id="3868" fill="#48c964"></path>
+                            <path d="M168.9 327.3 168.9 327.3l314.4 278.2c7.9 6.8 18 10.6 28.7 10.6 10.6 0 20.8-3.8 28.7-10.6L855 327.2c8.9-7.8 9.8-21.4 2-30.2-7.8-8.9-21.4-9.8-30.3-2L512.6 573.2c-0.2 0.1-0.8 0.1-1 0L197.2 295.1c-8.9-7.8-22.4-6.9-30.2 2-3.8 4.3-5.7 9.8-5.3 15.5C162 318.3 164.6 323.6 168.9 327.3z"
+                                  p-id="3869" fill="#48c964"></path>
+                        </svg>
+
+                        <span>邮箱账号</span>
+                    </li>
+                </ul>
+            </section>
+
+
+            <section class="user-posts">
+                <div class="poster-common-header">
+                    <div class="line"></div>
+                    <div class="head">该用户的其他信息</div>
+                </div>
+                <ul>
+                    <li></li>
+
+                </ul>
+                <a href="http://user.qu114.com/43201638/" class="more-btn" target="_blank">
+                    查看TA发布的更多信息<em class="icon-arrow-right"></em></a>
+            </section>
+
+        </div>
+
+        <div class="viewad-sidebar">
+            <script type="text/javascript">/*300*250-原生图文3*/
+            var cpro_id = "u3389147";</script>
+            <!--<script type="text/javascript" src="//cpro.baidustatic.com/cpro/ui/c.js"></script>-->
+        </div>
+
+
+        <section class="side-block">
+            <div class="side-common-header">
+                <div class="title">
+                    <i class="icon-eye"></i>
+                    推荐信息
+                    <a href="http://jx.qu114.com/waiyupeixun/" class="show-more">更多<i class="icon-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="side-block-content look-and-look">
+                <ul class="list-items">
+
+                    <li class="list-item" ng-repeat="item in hoppyItem | limitTo:3">
+                        <a href="" ng-click="goInfo(item.id)"
+                           target="_blank" class="">
+                            <div class="img wide-thumb">
+                                <img ng-src="{{item.path}}"/>
+                            </div>
+                            <div class="item-content">
+                                <p class="title" ng-bind="item.company_name">
+                                </p>
+                                <p class="price"></p>
+                                <p class="adress">
+                                    <span>海宁市</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <section class="side-block">
+            <div class="side-common-header">
+                <div class="title">
+                    <i class="icon-link"></i>
+                    相关类目
+                </div>
+            </div>
+            <div class="side-block-content">
+                <ul class="side-related-category">
+                    <li><a href="" target="_blank">塑钢加工</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/jl-footer.js"/>
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="e" id="importModel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style=" padding-bottom: 20px; align-self: center;
+            text-align: center;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" style="text-align: center;">登录</h4>
+            </div>
+            <div class="modal-body" style="padding: 30px;">
+                <p>
+                    <input type="text" style="min-width: 300px;" class="form-control"
+                           placeholder="请输入账号/手机号码/邮箱" ng-model="account"/>
+                </p>
+                <br>
+                <p>
+                    <input type="password" style="min-width: 300px;" class="form-control"
+                           placeholder="请输入密码" ng-model="password"/>
+                </p>
+            </div>
+            <div class="modal-footer" style="margin: 0 auto; text-align: center;">
+                <button style="min-width: 90%; text-align: center; background: #48c964; border: none;
+                    color: #ffffff; padding: 5px;" ng-click="login();">登录
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/baidu_tj.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="/static/js/footer.js"/>
+<script src="/static/html/anguarl/public.js"></script>
+<script src="/static/html/anguarl/info_cz.js"></script>
+<script>
+    $("#Qu114Icon").hover(function () {
+        var href = $(this).attr('#href');
+        $('#href').css('display', 'block');
+    }, function () {
+        $('#href').css('display', 'none');
+    });
+</script>
+</body>
+</html>
