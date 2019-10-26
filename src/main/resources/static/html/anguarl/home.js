@@ -102,7 +102,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     }
 
     $scope.goInfo = function (id, type) {
-        console.log(type);
         if (angular.equals('加工', type) || angular.equals('点工', type) || angular.equals('安装', type)) {
             var url = 'api/fied/getInfoVo?id=' + id;
             var msg = ajax_http_get(url);
@@ -121,6 +120,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
         } else if (angular.equals('设备', type)) {
             var url = '/api/rent/getInfo?id=' + Number.parseInt(id);
             var msg = ajax_http_get(url);
+            console.log(JSON.stringify(msg.data));
             setSessionObj('entity', msg.data);
             href('/info_sb');
         }
