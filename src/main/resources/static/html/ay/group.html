@@ -178,7 +178,7 @@
 
                 <a target="_blank" ng-repeat="item in groupList | limitTo:3" ng-click="goInfo(item.id)">
 
-                    <img src="{{item.path}}" width="160"
+                    <img ng-src="{{item.path}}" width="160"
                          height="160" class="sidebar-buy-url"/>
                     <div class="side-promo-name" ng-bind="item.company_name"></div>
                 </a>
@@ -206,7 +206,7 @@
         <ul id="ctl00_DivInfoListControls" style="border-top: 1px dotted #eee;" class="list-ad-items">
             <li style="height: 170px;" ng-repeat="item in groupList">
                 <a ng-click="goInfo(item.id)" target="_blank" class="media-cap " style="height: 125px;">
-                    <img src="{{item.path}}" width="150" height="125"/>
+                    <img ng-src="{{item.path}}" width="150" height="125"/>
                 </a>
                 <div class="media-body">
                     <div class="media-body-title">

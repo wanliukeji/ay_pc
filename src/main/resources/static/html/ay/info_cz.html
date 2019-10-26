@@ -103,18 +103,18 @@
 <div class="container box">
     <ul class="search-crumbs">
         <li><a href="/home">安义门窗网</a></li>
-        <li><i class="icon-arrow-right"></i><a href="/group">{{entity.type}}</a></li>
-        <li><i class="icon-arrow-right"></i><a>{{entity.company_name}}</a></li>
+        <li><i class="icon-arrow-right"></i><a href="/group" ng-bind="entity.type"></a></li>
+        <li><i class="icon-arrow-right"></i><a ng-bind="entity.company_name"></a></li>
     </ul>
     <div class="viewad-main">
         <div class="viewad-content ">
             <div class="viewad-header">
                 <div class="viewad-title">
-                    <h1>{{entity.company_name}}</h1>
+                    <h1 ng-bind="entity.company_name"></h1>
                 </div>
                 <div class="viewad-actions">
-                    <span>信息编号:&nbsp;{{entity.id}}&nbsp;</span>
-                    <span>{{entity.createDate}} &nbsp;</span>
+                    <span>信息编号:&nbsp; <span ng-bind="entity.id"></span> &nbsp;</span>
+                    <span ng-bind="entity.createDate">&nbsp;</span>
 
                 </div>
             </div>
@@ -127,7 +127,7 @@
                             <table id="Qu114TablePare" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                     <td class="biaoti">项目：</td>
-                                    <td><span>{{entity.type}}</span></td>
+                                    <td><span ng-bind="entity.type"></span></td>
                                 </tr>
                             </table>
 
@@ -135,39 +135,29 @@
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>性质：</label>
-                            <div class="content">
-                                {{entity.nature}}
-                            </div>
+                            <div class="content" ng-bind="entity.nature"></div>
                         </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>付款方式：</label>
-                            <div class="content">
-                                {{entity.pay}}
-                            </div>
+                            <div class="content" ng-bind="entity.pay"></div>
                         </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>发布时间：</label>
-                            <div class="content">
-                                {{entity.createDate | date:'yyyy-MM-dd'}}
-                            </div>
+                            <div class="content" ng-bind="entity.createDate | date:'yyyy-MM-dd'"></div>
                         </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>详细地址：</label>
-                            <div class="content">
-                                {{entity.address}}
-                            </div>
+                            <div class="content" ng-bind="entity.address"></div>
                         </div>
 
                         <div class="viewad-meta2-item">
                             <label>联系人：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank">
-                            {{entity.link}}
-                        </a>
+                        <a target="_blank" ng-bind="entity.link"></a>
                         </span>
                             </div>
                         </div>
@@ -176,9 +166,7 @@
                             <label>微信号：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank">
-                            {{entity.user_wx}}
-                        </a>
+                        <a target="_blank" ng-bind="entity.user_wx"></a>
                         </span>
                             </div>
                         </div>
@@ -187,8 +175,8 @@
                             <label>价格：</label>
                             <div class="content">
                     <span>
-                        <a target="_blank">
-                            {{entity.price}} 元/月
+                        <a target="_blank" ng-bind="entity.price">
+                             元/月
                         </a>
                         </span>
                             </div>
@@ -196,8 +184,7 @@
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>设施：</label>
-                            <div class="content">
-                                {{entity.facility}}
+                            <div class="content" ng-bind="entity.facility">
                             </div>
                         </div>
 
@@ -207,8 +194,7 @@
                         <ul>
                             <li class="contact-btn-box">
                                 <label>联系电话：</label>
-                                <a class="contact-no" style="margin-left: 12px;">
-                                    {{entity.phone}}
+                                <a class="contact-no" style="margin-left: 12px;" ng-bind="entity.phone">
                                 </a>
                                 <a href="" class="contact-no" style="margin-left: 12px;" title="私信">
                                     <svg t="1570945466951" class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -227,7 +213,7 @@
             </div>
 
             <div class="viewad-right">
-                <img src="{{jpgs[0].path}}" class="viewad-right-img">
+                <img ng-src="{{jpgs[0].path}}" class="viewad-right-img">
             </div>
             <br>
             <div class="viewad-detail">
@@ -261,7 +247,7 @@
                     </div>
 
                     <div class="viewad-text" style="color:#333;">
-                        {{entity.details}}
+                        <p ng-bind="entity.details"></p>
                     </div>
 
                     <div class="photo-gallery big">
@@ -269,15 +255,15 @@
                             <div class="photo-item col-5 " style="text-align:center;" ng-repeat="item in files">
                                 <!--<img src="{{item.path}}" width="200" height="200" ng-repeat="item in files"/>-->
                                 <a href="{{item.path}}">
-                                    <img src="{{item.path}}" class="img-al"/>
+                                    <img ng-src="{{item.path}}" class="img-al"/>
                                 </a>
                             </div>
 
                         </div>
                     </div>
                     <div class="viewad-text" style="font-size:14px;">
-                        如果您觉得“<strong>{{entity.company_name}}</strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
-                            class="a_res" target="_blank" href="/home">{{entity.type}}</a>频道，将会获得更多的信任！)
+                        如果您觉得“<strong ng-bind="entity.company_name"></strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
+                            class="a_res" target="_blank" href="/home" ng-bind="entity.type"></a>频道，将会获得更多的信任！)
                         <br/>
                         查看<a href='http://jx.qu114.com/waiyupeixun/' target="_blank">最新发布信息</a> >
                         <a href="/release" target="_blank"
@@ -312,12 +298,12 @@
                             <a href="" ng-click="goInfo(item.id)" target="_blank" class="clearfix">
                                 <p class="title">{{item.company_name}}</p>
                                 <div class="img ">
-                                    <img src="{{item.path}}" width="66" height="66"/></div>
+                                    <img ng-src="{{item.path}}" width="66" height="66"/></div>
                                 <div class="item-content">
                                     <p class="price"></p>
                                     <p class="adress">
-                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span>{{item.address}}</span></p>
-                                    <p class="create-time"><span>{{item.createDate}} &nbsp;</span></p>
+                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
+                                    <p class="create-time"><span ng-bind="item.createDate"> &nbsp;</span></p>
                                 </div>
                             </a>
                         </li>
@@ -346,16 +332,15 @@
             <section class="poster-info">
                 <div class="poster-avatar">
                     <a target="_blank" href="http://user.qu114.com/43201638/">
-                        <img src="{{entity.path}}" class="shangjia"></a>
+                        <img ng-src="{{entity.path}}" class="shangjia"></a>
                 </div>
                 <div class="poster-detail">
                     <h3>
-                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name">
-                            {{entity.link}}
+                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name" ng-bind="entity.link">
                         </a>
                     </h3>
                     <div class="poster-createTime">
-                        注册时间：{{entity.createDate}}
+                        注册时间：<span ng-bind="entity.createDate"></span>
                     </div>
                 </div>
             </section>
@@ -453,15 +438,14 @@
                         <a href="" ng-click="goInfo(item.id)"
                            target="_blank" class="">
                             <div class="img wide-thumb">
-                                <img src="{{item.path}}"/>
+                                <img ng-src="{{item.path}}"/>
                             </div>
                             <div class="item-content">
-                                <p class="title">
-                                    {{item.company_name}}
+                                <p class="title" ng-bind="item.company_name">
                                 </p>
                                 <p class="price"></p>
                                 <p class="adress">
-                                    <span>海宁市</span><span>&nbsp;-&nbsp;</span><span>{{item.address}}</span></p>
+                                    <span>海宁市</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
                             </div>
                         </a>
                     </li>

@@ -201,7 +201,7 @@
             </div>
 
             <div class="viewad-right">
-                <img src="{{jpgs[0].path}}" class="viewad-right-img">
+                <img ng-src="{{jpgs[0].path}}" class="viewad-right-img">
             </div>
             <br>
             <div class="viewad-detail">
@@ -243,7 +243,7 @@
                             <div class="photo-item col-5 " style="text-align:center;" ng-repeat="item in files">
                                 <!--<img src="{{item.path}}" width="200" height="200" ng-repeat="item in files"/>-->
                                 <a href="{{item.path}}">
-                                    <img src="{{item.path}}" class="img-al"/>
+                                    <img ng-src="{{item.path}}" class="img-al"/>
                                 </a>
                             </div>
 
@@ -286,7 +286,7 @@
                             <a href="" ng-click="goInfo(item.id)" target="_blank" class="clearfix">
                                 <p class="title" ng-bind="item.company_name"></p>
                                 <div class="img ">
-                                    <img src="{{item.path}}" width="66" height="66"/></div>
+                                    <img ng-src="{{item.path}}" width="66" height="66"/></div>
                                 <div class="item-content">
                                     <p class="price"></p>
                                     <p class="adress">
@@ -320,7 +320,7 @@
             <section class="poster-info">
                 <div class="poster-avatar">
                     <a target="_blank" href="http://user.qu114.com/43201638/">
-                        <img src="{{entity.path}}" class="shangjia"></a>
+                        <img ng-src="{{entity.path}}" class="shangjia"></a>
                 </div>
                 <div class="poster-detail">
                     <h3>
@@ -425,15 +425,14 @@
                         <a href="" ng-click="goInfo(item.id)"
                            target="_blank" class="">
                             <div class="img wide-thumb">
-                                <img src="{{item.path}}"/>
+                                <img ng-src="{{item.path}}"/>
                             </div>
                             <div class="item-content">
-                                <p class="title">
-                                    {{item.company_name}}
+                                <p class="title" ng-bind="item.company_name">
                                 </p>
                                 <p class="price"></p>
                                 <p class="adress">
-                                    <span>海宁市</span><span>&nbsp;-&nbsp;</span><span>{{item.address}}</span></p>
+                                    <span>海宁市</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
                             </div>
                         </a>
                     </li>
