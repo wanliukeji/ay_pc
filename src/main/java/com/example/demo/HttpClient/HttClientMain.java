@@ -16,19 +16,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static java.util.regex.Pattern.CASE_INSENSITIVE;
 
 /**
  * @author Chenny
@@ -151,28 +140,28 @@ public class HttClientMain {
         String url = "https://nb.58.com/jiazhuang/38807150932633x.shtml?spm=u-2d2yxv86y3v43nkddh1.BDPCPZ_BT&utm_source=market&adtype=1&entinfo=38807150932633_q&adact=3&psid=122789251206157578926992444&iuType=q_2&link_abtest=&ClickID=1&PGTID=0d30678d-0008-74b6-488a-876450699bb3&slot=1000961";
 //         获取标题
         Elements elements = pareHtmlForClass(getHttpHtml(url), "detail-title__name");
-        for (Element e: elements) {
+        for (Element e : elements) {
             System.err.println(e.text());
         }
 //     获取发布时间
 //     Elements elements = pareHtmlForClass(getHttpHtml(url), "bigimg-info");
 //     信息标题
 //      Elements elements = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__title");
-            for (Element e: elements) {
-                System.err.println(e.text());
-            }
+        for (Element e : elements) {
+            System.err.println(e.text());
+        }
 //      信息
-      Elements elementes = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__main");
+        Elements elementes = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__main");
 //     电话号码
 //     Elements elementes = pareHtmlForClass(getHttpHtml(url), "num_cont");
 //     描述
 //     Elements elementes = pareHtmlForClass(getHttpHtml(url), "foldingbox");
 //        Elements elementes = pareHtmlForTag(getHttpHtml(url), "img");
-        for (Element e: elementes) {
+        for (Element e : elementes) {
             System.err.println(e.text());
         }
 //
-        }
+    }
 //     获取
 //
 }
