@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*设置图片大小*/
+        .pics{
+            min-width: 1200px;
+            height: 296px;
+        }
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div id="boxID"><!--焦点图盒子-->
+    <div class="pic"><!--内容列表(li数目可随意增减)，class="pic"不要变-->
+        <ul>
+            <li><a href="#"><img class="pics" src="/static/gif/fl.jpg" alt="凤铝"/></a></li>
+            <li><a href="#"><img class="pics" src="/static/gif/jm.jpg" alt="坚美"/></a></li>
+            <li><a href="#"><img class="pics" src="/static/gif/hl.jpg" alt="海螺"/></a></li>
+            <li><a href="#"><img class="pics" src="/static/gif/ylj.jpg" alt="永利坚"/></a></li>
+            <li><a href="#"><img class="pics" src="/static/gif/zw.jpg" alt="忠旺"/></a></li>
+        </ul>
+    </div>
+</div>
+</body>
+<!--两种引入方式-->
+<!--1.需要jQuery的-->
+<!--<script src="js/jquery-1.9.1.min.js"></script>-->
+<!--<script src="js/myfocus-2.0.4.min.js"></script>-->
+<!--<script>-->
+    <!--$('#boxID').myFocus({-->
+        <!--pattern:'mF_fancy',//风格应用的名称-->
+        <!--time:3,//切换时间间隔(秒)-->
+        <!--trigger:'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)-->
+        <!--width:450,//设置图片区域宽度(像素)-->
+        <!--height:296,//设置图片区域高度(像素)-->
+        <!--txtHeight:'10'//文字层高度设置(像素),'default'为默认高度，0为隐藏-->
+    <!--});-->
+<!--</script>-->
+<!--2.不需要jQuery的-->
+<script src="js/myfocus-2.0.4.min.js"></script>
+<script>
+    myFocus.set({
+        id:'boxID',
+       auto:true,
+        pattern:'mF_fancy',//风格应用的名称 mF_fancy
+        time:3,//切换时间间隔(秒)
+        trigger:'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+        width:1200,//设置图片区域宽度(像素)
+        height:296,//设置图片区域高度(像素)
+        txtHeight:'35'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+    });
+</script>
+</html>

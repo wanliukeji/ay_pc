@@ -1,0 +1,9 @@
+
+	head_line sercode coverage user_qq    user_wx		phone		link	createDate	    company_name  procode  citycode countycode  video_url  			details				address
+    承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:04:23	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
+	承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:06:21	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
+	承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:23:21	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
+	承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:25:26	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
+	承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:30:48	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
+	承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:31:59	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
+	承包门窗点工	1001	1002	789878	jiangxilaoer	1327878909	CHENYI	2019-09-25 16:33:44	南昌阿拉	101	201	301	http://www.baidu.com	包安装不锈钢门窗，塑钢，铝合金门窗	大榭开发区
