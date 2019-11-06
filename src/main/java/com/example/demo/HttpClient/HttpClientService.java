@@ -1,5 +1,6 @@
 package com.example.demo.HttpClient;
 
+import com.example.demo.entity.Fied;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -121,28 +123,43 @@ public class HttpClientService {
         //System.out.println("左侧菜单内容" + title);
     }
 
-    public static void main(String[] args) {
+    public static void saveFild(String url) {
 //        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
-        String url = "https://nb.58.com/huangyezonghe/?key=%E9%97%A8%E7%AA%97&cmcskey=%E9%97%A8%E7%AA%97&final=1&jump=1&specialtype=gls&classpolicy=main_A,service_A";
+//        String url = "https://nb.58.com/huangyezonghe/?key=%E9%97%A8%E7%AA%97&cmcskey=%E9%97%A8%E7%AA%97&final=1&jump=1&specialtype=gls&classpolicy=main_A,service_A";
 
-        // 获取标题
-//        String detail_title__name = getText(url, "detail-title__name");
-////        String bigimg_info = getText(url, "bigimg-info");
-////        String infocard__container__item__title = getText(url, "infocard__container__item__title");
-////        String num_cont = getText(url, "num_cont");
-////        String foldingbox = getText(url, "foldingbox");
-////        String img = getImg(url);
-////        String newpost_price__big = getText(url, "newpost-price__big");
-////        String infocard__container__item__main = getText(url, "infocard__container__item__main");
-////
-////        System.out.println("标题:" + detail_title__name);
-////        System.out.println("发布时间:" + bigimg_info);
-////        System.out.println("发布时间:" + infocard__container__item__title);
-////        System.out.println("号码:" + num_cont);
-////        System.out.println("描述:" + foldingbox);
-////        System.out.println("图片:" + img);
-////        System.out.println("价格:" + newpost_price__big);
-////        System.out.println("服务:" + infocard__container__item__main);
+         //获取标题
+        String detail_title__name = getText(url, "detail-title__name");
+        String bigimg_info = getText(url, "bigimg-info");
+        String infocard__container__item__title = getText(url, "infocard__container__item__title");
+        String num_cont = getText(url, "num_cont");
+        String foldingbox = getText(url, "foldingbox");
+        String img = getImg(url);
+        String newpost_price__big = getText(url, "newpost-price__big");
+        String infocard__container__item__main = getText(url, "infocard__container__item__main");
+
+        Fied entity = new Fied();
+        entity.setStatus(1);
+        entity.setAddress("");
+        entity.setDetails("");
+        entity.setCreateDate(new Date());
+        entity.setLink("");
+        entity.setPhone("");
+        entity.setUser_wx("");
+        entity.setService("");
+        entity.setTelephone("");
+        entity.setHead_line(detail_title__name);
+        entity.setCompany_name(detail_title__name);
+        entity.setFw(infocard__container__item__main);
+        entity.setPrice(newpost_price__big);
+
+        System.out.println("标题:" + detail_title__name);
+        System.out.println("发布时间:" + bigimg_info);
+        System.out.println("发布时间:" + infocard__container__item__title);
+        System.out.println("号码:" + num_cont);
+        System.out.println("描述:" + foldingbox);
+        System.out.println("图片:" + img);
+        System.out.println("价格:" + newpost_price__big);
+        System.out.println("服务:" + infocard__container__item__main);
 
         String urls = getHref(url);
         System.out.println(" 超链接 :" + urls);
