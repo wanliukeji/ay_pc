@@ -18,10 +18,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 /**
  * @author Chenny
@@ -40,24 +42,6 @@ public class HttClientMain {
      * @return 内容
      */
     public static String getHttpHtml(String url) {
-
-
-        String[] ua = {"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:46.0) Gecko/20100101 Firefox/46.0",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36 OPR/37.0.2178.32",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586",
-                "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko",
-                "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)",
-                "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)",
-                "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 BIDUBrowser/8.3 Safari/537.36",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36 Core/1.47.277.400 QQBrowser/9.4.7658.400",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 UBrowser/5.6.12150.8 Safari/537.36",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0",
-                "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36 TheWorld 7",
-                "Mozilla/5.0 (Windows NT 6.1; W…) Gecko/20100101 Firefox/60.0"};
-
 
         String html = "";
         //1.生成httpclient，相当于该打开一个浏览器
@@ -137,55 +121,39 @@ public class HttClientMain {
         Element element = doc.getElementById(id); // 获取tag是a的所有DOM元素，数组
 
         String title = element.text(); // 返回元素的文本
-//        System.out.println("左侧菜单内容" + title);
+        //System.out.println("左侧菜单内容" + title);
     }
 
     public static void main(String[] args) {
-        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
-//         获取标题
+//        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
+        String url = "https://nb.58.com/huangyezonghe/?key=%E9%97%A8%E7%AA%97&cmcskey=%E9%97%A8%E7%AA%97&final=1&jump=1&specialtype=gls&classpolicy=main_A,service_A";
 
-        String detail_title__name = getText(url,"detail-title__name");
-        String bigimg_info = getText(url,"bigimg-info");
-        String infocard__container__item__title = getText(url,"infocard__container__item__title");
-        String num_cont = getText(url,"num_cont");
-        String foldingbox = getText(url,"foldingbox");
-        String img = getImg(url);
-        String newpost_price__big = getText(url,"newpost-price__big");
-        String infocard__container__item__main = getText(url,"infocard__container__item__main");
+        // 获取标题
+//        String detail_title__name = getText(url, "detail-title__name");
+////        String bigimg_info = getText(url, "bigimg-info");
+////        String infocard__container__item__title = getText(url, "infocard__container__item__title");
+////        String num_cont = getText(url, "num_cont");
+////        String foldingbox = getText(url, "foldingbox");
+////        String img = getImg(url);
+////        String newpost_price__big = getText(url, "newpost-price__big");
+////        String infocard__container__item__main = getText(url, "infocard__container__item__main");
+////
+////        System.out.println("标题:" + detail_title__name);
+////        System.out.println("发布时间:" + bigimg_info);
+////        System.out.println("发布时间:" + infocard__container__item__title);
+////        System.out.println("号码:" + num_cont);
+////        System.out.println("描述:" + foldingbox);
+////        System.out.println("图片:" + img);
+////        System.out.println("价格:" + newpost_price__big);
+////        System.out.println("服务:" + infocard__container__item__main);
 
-        System.out.println("标题:" + detail_title__name);
-        System.out.println("发布时间:" + bigimg_info);
-        System.out.println("发布时间:" + infocard__container__item__title);
-        System.out.println("号码:" + num_cont);
-        System.out.println("描述:" + foldingbox);
-        System.out.println("图片:" + img);
-        System.out.println("价格:" + newpost_price__big);
-        System.out.println("服务:" + infocard__container__item__main);
+        String urls = getHref(url);
+        System.out.println(" 超链接 :" + urls);
 
-
-//     获取发布时间
-//     Elements elements = pareHtmlForClass(getHttpHtml(url), "bigimg-info");
-//     信息标题
-//      Elements elements = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__title");
-//        for (Element e : elements) {
-//            System.err.println(e.text());
-//        }
-//      信息
-//        Elements elementes = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__main");
-//     电话号码
-//     Elements elementes = pareHtmlForClass(getHttpHtml(url), "num_cont");
-//     描述
-//     Elements elementes = pareHtmlForClass(getHttpHtml(url), "foldingbox");
-//        Elements elementes = pareHtmlForTag(getHttpHtml(url), "img");
-//        for (Element e : elementes) {
-//            System.err.println(e.text());
-//        }
-//
     }
-//     获取
-//
-//   获取
-    public static String getText(String url,String strName){
+
+    //   获取
+    public static String getText(String url, String strName) {
         Elements elements = pareHtmlForClass(getHttpHtml(url), strName);
         String text = "";
         for (Element e : elements) {
@@ -194,6 +162,7 @@ public class HttClientMain {
         return text;
     }
 
+    //    获取图片
     public static String getImg(String url) {
 
         String htmlStr = getHttpHtml(url);
@@ -217,5 +186,29 @@ public class HttClientMain {
         return list.toString();
     }
 
+    //    获取超链接
+    public static String getHref(String url) {
+        try {
+            Document doc = Jsoup.parse(new URL(url), 1000);
+            Elements hrefs = doc.select("a[href]");
+            List<String> list = match(getHttpHtml(url), "a", "href");
+            return list.toString();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return "";
+        }
+
+    }
+
+    public static List<String> match(String source, String element, String attr) {
+        List<String> result = new ArrayList<String>();
+        String reg = "<" + element + "[^<>]*?\\s" + attr + "=['\"]?(.*?)['\"]?\\s.*?>";
+        Matcher m = Pattern.compile(reg).matcher(source);
+        while (m.find()) {
+            String r = m.group(1);
+            result.add(r);
+        }
+        return result;
+    }
 }
 
