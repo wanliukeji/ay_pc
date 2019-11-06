@@ -18,6 +18,10 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Chenny
@@ -64,9 +68,9 @@ public class HttClientMain {
         //反爬虫 伪装成浏览器
         request.setHeader("User-Agent", " Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36");
         //更换IP代理 反封杀
-        HttpHost proxy = new HttpHost("112.85.168.223", 9999);
-        RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
-        request.setConfig(config);
+//        HttpHost proxy = new HttpHost("112.85.168.223", 9999);
+//        RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
+//        request.setConfig(config);
 
         try {
             //3.执行get请求，相当于在输入地址栏后敲回车键
@@ -133,36 +137,85 @@ public class HttClientMain {
         Element element = doc.getElementById(id); // 获取tag是a的所有DOM元素，数组
 
         String title = element.text(); // 返回元素的文本
-        System.out.println("左侧菜单内容" + title);
+//        System.out.println("左侧菜单内容" + title);
     }
 
     public static void main(String[] args) {
-        String url = "https://nb.58.com/jiazhuang/38807150932633x.shtml?spm=u-2d2yxv86y3v43nkddh1.BDPCPZ_BT&utm_source=market&adtype=1&entinfo=38807150932633_q&adact=3&psid=122789251206157578926992444&iuType=q_2&link_abtest=&ClickID=1&PGTID=0d30678d-0008-74b6-488a-876450699bb3&slot=1000961";
+        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
 //         获取标题
-        Elements elements = pareHtmlForClass(getHttpHtml(url), "detail-title__name");
-        for (Element e : elements) {
-            System.err.println(e.text());
-        }
+
+        String detail_title__name = getText(url,"detail-title__name");
+        String bigimg_info = getText(url,"bigimg-info");
+        String infocard__container__item__title = getText(url,"infocard__container__item__title");
+        String num_cont = getText(url,"num_cont");
+        String foldingbox = getText(url,"foldingbox");
+        String img = getImg(url);
+        String newpost_price__big = getText(url,"newpost-price__big");
+        String infocard__container__item__main = getText(url,"infocard__container__item__main");
+
+        System.out.println("标题:" + detail_title__name);
+        System.out.println("发布时间:" + bigimg_info);
+        System.out.println("发布时间:" + infocard__container__item__title);
+        System.out.println("号码:" + num_cont);
+        System.out.println("描述:" + foldingbox);
+        System.out.println("图片:" + img);
+        System.out.println("价格:" + newpost_price__big);
+        System.out.println("服务:" + infocard__container__item__main);
+
+
 //     获取发布时间
 //     Elements elements = pareHtmlForClass(getHttpHtml(url), "bigimg-info");
 //     信息标题
 //      Elements elements = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__title");
-        for (Element e : elements) {
-            System.err.println(e.text());
-        }
+//        for (Element e : elements) {
+//            System.err.println(e.text());
+//        }
 //      信息
-        Elements elementes = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__main");
+//        Elements elementes = pareHtmlForClass(getHttpHtml(url), "infocard__container__item__main");
 //     电话号码
 //     Elements elementes = pareHtmlForClass(getHttpHtml(url), "num_cont");
 //     描述
 //     Elements elementes = pareHtmlForClass(getHttpHtml(url), "foldingbox");
 //        Elements elementes = pareHtmlForTag(getHttpHtml(url), "img");
-        for (Element e : elementes) {
-            System.err.println(e.text());
-        }
+//        for (Element e : elementes) {
+//            System.err.println(e.text());
+//        }
 //
     }
 //     获取
 //
+//   获取
+    public static String getText(String url,String strName){
+        Elements elements = pareHtmlForClass(getHttpHtml(url), strName);
+        String text = "";
+        for (Element e : elements) {
+            text += e.text();
+        }
+        return text;
+    }
+
+    public static String getImg(String url) {
+
+        String htmlStr = getHttpHtml(url);
+        List<String> list = new ArrayList<>();
+        String img = "";
+        Pattern p_image;
+        Matcher m_image;
+        // String regEx_img = "<img.*src=(.*?)[^>]*?>";
+        String regEx_img = "<img.*src\\s*=\\s*(.*?)[^>]*?>";
+        p_image = Pattern.compile(regEx_img, Pattern.CASE_INSENSITIVE);
+        m_image = p_image.matcher(htmlStr);
+        while (m_image.find()) {
+            // 得到<img />数据
+            img = m_image.group();
+            // 匹配<img>中的src数据
+            Matcher m = Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)").matcher(img);
+            while (m.find()) {
+                list.add(m.group(1));
+            }
+        }
+        return list.toString();
+    }
+
 }
 
