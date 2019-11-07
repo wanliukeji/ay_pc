@@ -20,7 +20,7 @@ public class ListUtil {
      * 获取ArrayList对象
      * @return
      */
-    public static ArrayList<?> ArrayList(){
+    public static ArrayList<Object> ArrayList(){
         return new ArrayList<Object>();
     }
 

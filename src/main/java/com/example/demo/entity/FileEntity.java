@@ -63,4 +63,9 @@ public class FileEntity {
     
     private String msgCode;
 
+    /**
+     * 备用路径
+     */
+    private String imgUrl;
+
 }

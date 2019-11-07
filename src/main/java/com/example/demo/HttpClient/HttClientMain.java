@@ -1,6 +1,9 @@
 package com.example.demo.HttpClient;
 
+import com.example.demo.Utils.ListUtil;
+import io.swagger.models.HttpMethod;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpException;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -12,6 +15,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import org.hibernate.validator.internal.util.privilegedactions.GetMethod;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -49,6 +53,8 @@ public class HttClientMain {
         CloseableHttpResponse response = null;
         //2.创建get请求，相当于在浏览器地址栏输入 网址
         HttpGet request = new HttpGet(url);
+
+
         //反爬虫 伪装成浏览器
         request.setHeader("User-Agent", " Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36");
         //更换IP代理 反封杀
@@ -75,9 +81,21 @@ public class HttClientMain {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            try {
+                // 释放资源
+                if (httpClient != null) {
+                    httpClient.close();
+                }
+                if (response != null) {
+                    response.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             //6.关闭
-            HttpClientUtils.closeQuietly(response);
-            HttpClientUtils.closeQuietly(httpClient);
+//            HttpClientUtils.closeQuietly(response);
+//            HttpClientUtils.closeQuietly(httpClient);
         }
         return html;
     }
@@ -121,34 +139,42 @@ public class HttClientMain {
         Element element = doc.getElementById(id); // 获取tag是a的所有DOM元素，数组
 
         String title = element.text(); // 返回元素的文本
-        //System.out.println("左侧菜单内容" + title);
     }
 
     public static void main(String[] args) {
-        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
-//        String url = "https://nb.58.com/huangyezonghe/?key=%E9%97%A8%E7%AA%97&cmcskey=%E9%97%A8%E7%AA%97&final=1&jump=1&specialtype=gls&classpolicy=main_A,service_A";
+        String url = "https://nb.58.com/jiancai/40077555335973x.shtml?spm=u-2d2yxv86y3v43nkddh1.BDPCPZ_BT&utm_source=market&adtype=1&entinfo=40077555335973_q&adact=3&psid=136300149206191784905597613&iuType=q_2&link_abtest=&ClickID=1&PGTID=0d3000ea-0008-baca-459b-8ad3187f4083&slot=1000616";
+//        String name = get_WB_head_name(url);
+//        String time = get_WB_time(url);
+//        String link = get_WB_lk(url);
+//        String addr = get_WB_addr(url);
+//        String desc = get_WB_desc(url);
+//        String price = get_WB_price(url);
+        String fw = get_WB_fw(url);
+//        String num = get_WB_num(url);
 
-        // 获取标题
-        String detail_title__name = getText(url, "detail-title__name");
-        String bigimg_info = getText(url, "bigimg-info");
-        String infocard__container__item__title = getText(url, "infocard__container__item__title");
-        String num_cont = getText(url, "num_cont");
-        String foldingbox = getText(url, "foldingbox");
-        String img = getImg(url);
-        String newpost_price__big = getText(url, "newpost-price__big");
-        String infocard__container__item__main = getText(url, "infocard__container__item__main");
-        String urls = getHref(url);
+//        System.out.println("正在抓取取数据..........");
+//        System.out.println("标题:" + name);
+//        System.out.println("发布时间:" + time);
+//        System.out.println("联系人:" + link);
+//        System.out.println("地址:" + addr);
+//        System.out.println("描述:" + desc);
+//        System.out.println("价格:" + price);
+        System.out.println("服务:" + fw);
+//        System.out.println("图片:" + imgs);
+//        System.out.println("手机号:" + num);
+//        System.out.println("数据获取..........");
 
-        System.out.println("标题:" + detail_title__name);
-        System.out.println("发布时间:" + bigimg_info);
-        System.out.println("发布时间:" + infocard__container__item__title);
-        System.out.println("号码:" + num_cont);
-        System.out.println("描述:" + foldingbox);
-        System.out.println("图片:" + img);
-        System.out.println("价格:" + newpost_price__big);
-        System.out.println("服务:" + infocard__container__item__main);
-        System.out.println(" 超链接 :" + urls);
-
+//        try {
+//            List imgs = get_WB_imgs(url);
+//            for (int i = 0; i < imgs.size(); i++) {
+//                String img = imgs.get(i).toString();
+//                System.out.println(img);
+//                String fileName = img.substring(27, img.length()-12);
+//                System.out.println(fileName);
+//            }
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
     }
 
     //   获取
@@ -161,8 +187,19 @@ public class HttClientMain {
         return text;
     }
 
+    //   获取
+    public static List<?> getTextArr(String url, String strName) {
+        ArrayList<Object> arr = ListUtil.ArrayList();
+        Elements elements = pareHtmlForClass(getHttpHtml(url), strName);
+        String text = "";
+        for (Element e : elements) {
+            arr.add(e.text());
+        }
+        return arr;
+    }
+
     //    获取图片
-    public static String getImg(String url) {
+    public static List<String> getImg(String url) {
 
         String htmlStr = getHttpHtml(url);
         List<String> list = new ArrayList<>();
@@ -182,7 +219,7 @@ public class HttClientMain {
                 list.add(m.group(1));
             }
         }
-        return list.toString();
+        return list;
     }
 
     //    获取超链接
@@ -208,6 +245,66 @@ public class HttClientMain {
             result.add(r);
         }
         return result;
+    }
+
+    //获取五八同城  标题 SUCCESS
+    public static String get_WB_head_name(String url) {
+        return getText(url, "detail-title__name");
+    }
+
+    //获取五八同城  时间 SUCCESS
+    public static String get_WB_time(String url) {
+        String str = getText(url, "bigimg-info");
+        return str.substring(0, str.indexOf("更") - 1).trim();
+    }
+
+    //获取五八同城  价格 SUCCESS
+    public static String get_WB_price(String url) {
+        String str = getText(url, "newpost-price__big");
+        return str;
+    }
+
+    //获取五八同城  服务 SUCCESS
+    public static String get_WB_fw(String url) {
+        List arr = getTextArr(url, "infocard__container__item__main");
+        return arr.get(1) + "";
+    }
+
+    //获取五八同城  联系人 SUCCESS
+    public static String get_WB_lk(String url) {
+        List arr = getTextArr(url, "infocard__container__item__main");
+        return arr.get(3) + "";
+    }
+
+    //获取五八同城  地址 SUCCESS
+    public static String get_WB_addr(String url) {
+        List arr = getTextArr(url, "infocard__container__item__main");
+        return arr.get(4).toString();
+    }
+
+    //获取五八同城  手机号码 SUCCESS
+    public static String get_WB_num(String url) {
+        String str = getText(url, "free_tel ");
+        return str;
+    }
+
+    //获取五八同城  商家描述 SUCCESS
+    public static String get_WB_desc(String url) {
+        String str = getText(url, "description_con");
+        return str;
+    }
+
+    //获取五八同城  图片展示 SUCCESS
+    public static List<Object> get_WB_imgs(String url) {
+        List imgs = getImg(url);
+        List<Object> jpgs = ListUtil.ArrayList();
+        for (int i = 0; i < imgs.size(); i++) {
+            String img = (String) imgs.get(i);
+            if (img.contains("h=220")) {
+                jpgs.add(img.replace("'", ""));
+            }
+        }
+        return jpgs;
     }
 }
 

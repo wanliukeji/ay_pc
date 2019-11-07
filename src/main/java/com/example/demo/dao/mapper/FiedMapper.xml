@@ -246,6 +246,7 @@
         fied.user_qq,
         fied.user_wx,
         fied.phone,
+        fied.telephone,
         fied.link,
         fied.createDate,
         fied.company_name,
