@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Iterator;
 import javax.servlet.http.HttpServletRequest;
+
 import com.example.demo.entity.FileEntity;
 import lombok.Synchronized;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,15 +26,15 @@ public class FileUploadTool {
     // 文件最大500M
     private static long upload_maxsize = 800 * 1024 * 1024;
     // 文件允许格式
-    private static String[] allowFiles = { ".rar", ".doc", ".docx", ".zip",
+    private static String[] allowFiles = {".rar", ".doc", ".docx", ".zip",
             ".pdf", ".txt", ".swf", ".xlsx", ".gif", ".png", ".jpg", ".jpeg",
             ".bmp", ".xls", ".mp4", ".flv", ".ppt", ".avi", ".mpg", ".wmv",
-            ".3gp", ".mov", ".asf", ".asx", ".vob", ".wmv9", ".rm", ".rmvb" ,".mp3"};
+            ".3gp", ".mov", ".asf", ".asx", ".vob", ".wmv9", ".rm", ".rmvb", ".mp3"};
     // 允许转码的视频格式（ffmpeg）
-    private static String[] allowFLV = { ".avi", ".mpg", ".wmv", ".3gp",
-            ".mov", ".asf", ".asx", ".vob" };
+    private static String[] allowFLV = {".avi", ".mpg", ".wmv", ".3gp",
+            ".mov", ".asf", ".asx", ".vob"};
     // 允许的视频转码格式(mencoder)
-    private static String[] allowAVI = { ".wmv9", ".rm", ".rmvb"};
+    private static String[] allowAVI = {".wmv9", ".rm", ".rmvb"};
 
     public FileEntity createFile(MultipartFile multipartFile, HttpServletRequest request) {
         FileEntity entity = new FileEntity();
@@ -65,7 +66,7 @@ public class FileUploadTool {
 
             String hexName = ConvertUtil.mixStr2Hex(name);
             // 新的文件名
-            String newFileName = this.getName(fileName)  + hexName + DateUtil.getDateYMDHMS();
+            String newFileName = this.getName(fileName) + hexName + DateUtil.getDateYMDHMS();
             // 文件扩展名
             String fileEnd = this.getFileExt(fileName);
             String logoPathDir = logoPathDir(fileEnd);
@@ -88,7 +89,7 @@ public class FileUploadTool {
                 e.printStackTrace();
             }
             // 相对路径
-            entity.setType(fileEnd.replace(".",""));
+            entity.setType(fileEnd.replace(".", ""));
             String fileDir = logoPathDir + newFileName + fileEnd;
             StringBuilder builder = new StringBuilder(fileDir);
             String finalFileDir = builder.substring(1);
@@ -114,7 +115,7 @@ public class FileUploadTool {
                         String codcFilePath = logoRealPathDir + File.separator + newFileName + ".flv";
                         // 获取配置的转换工具（ffmpeg.exe）的存放路径
                         String ffmpegPath = request.getSession().getServletContext().getRealPath("/tools/ffmpeg.exe");
-                        transfMediaTool.processFLV(ffmpegPath, aviPath,    codcFilePath);
+                        transfMediaTool.processFLV(ffmpegPath, aviPath, codcFilePath);
                         fileDir = logoPathDir + newFileName + ".flv";
                         builder = new StringBuilder(fileDir);
                         finalFileDir = builder.substring(1);
@@ -200,6 +201,7 @@ public class FileUploadTool {
 
     /**
      * 依据原始文件名生成新文件名
+     *
      * @return
      */
     private String getName(String fileName) {
@@ -237,28 +239,42 @@ public class FileUploadTool {
 
     /**
      * 根据文件类型分类存储
+     *
      * @param fileEnd
      * @return
      */
-    public String logoPathDir(String fileEnd){
+    public String logoPathDir(String fileEnd) {
         String logoPathDir = "";
         //判断文件属于什么类型
         if (fileEnd.contains("jpg") || fileEnd.contains("png") ||
-                fileEnd.contains("gif") || fileEnd.contains("jpeg")){
+                fileEnd.contains("gif") || fileEnd.contains("jpeg")) {
             logoPathDir = "\\upload";
-        }else if (fileEnd.contains("mp4") || fileEnd.contains("rmvb") ||
-                fileEnd.contains("avi") || fileEnd.contains("flv")){
+        } else if (fileEnd.contains("mp4") || fileEnd.contains("rmvb") ||
+                fileEnd.contains("avi") || fileEnd.contains("flv")) {
             logoPathDir = "\\video";
-        }else if (fileEnd.contains("mp3") || fileEnd.contains("ogg")){
+        } else if (fileEnd.contains("mp3") || fileEnd.contains("ogg")) {
             logoPathDir = "\\audio";
-        }else {
+        } else {
             logoPathDir = "\\file";
         }
         return logoPathDir;
     }
 
-    public Synchronized transferToFile(MultipartFile multipartFile, File file) throws IOException{
+    public Synchronized transferToFile(MultipartFile multipartFile, File file) throws IOException {
+
+        try {
+
             multipartFile.transferTo(file);
-            return null;
+
+        } catch (IllegalStateException e) {
+
+            e.printStackTrace();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+        return null;
     }
 }
