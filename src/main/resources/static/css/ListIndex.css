@@ -1,7 +1,7 @@
 .category-fuwu .contact-button.hover,.category-fuwu .contact-button:hover,.category-gongzuo #listing-fixed-filters .post.hover,.category-gongzuo #listing-fixed-filters .post:hover,.category-gongzuo header .location .post.hover,.category-gongzuo header .location .post:hover,.category-jianzhi #listing-fixed-filters .post.hover,.category-jianzhi #listing-fixed-filters .post:hover,.category-jianzhi header .location .post.hover,.category-jianzhi header .location .post:hover,.category-jiaoyupeixun .contact-button.hover,.category-jiaoyupeixun .contact-button:hover,.category-resume #listing-fixed-filters .post.hover,.category-resume #listing-fixed-filters .post:hover,.category-resume #myResume .resume-head #resume_find_job.hover,.category-resume #myResume .resume-head #resume_find_job:hover,.category-resume .contact-btn.hover,.category-resume .contact-btn:hover,.category-resume .invite-btn.hover,.category-resume .invite-btn:hover,.category-resume header .location .post.hover,.category-resume header .location .post:hover,.fenglin-list .contact-button.hover,.fenglin-list .contact-button:hover,.sidebar-filter .contact-qq.hover,.sidebar-filter .contact-qq:hover {
     text-decoration: none;
-    border-color: #48c964;
-    background-color: #48c964;
+    border-color: #7F4F21;
+    background-color: #7F4F21;
     color: #fff
 }
 
@@ -82,7 +82,7 @@ body header .location h1 a {
 
 body header .location span.slogan {
     font-size: 15px;
-    color: #48c964;
+    color: #7F4F21;
     padding-left: 4px
 }
 
@@ -106,7 +106,7 @@ body header .head-search .search .search-query {
     margin: 0;
     height: 40px;
     line-height: 40px;
-    border: 1px solid #48c964;
+    border: 1px solid #7F4F21;
     width: 425px;
     font-size: 12px
 }
@@ -134,7 +134,7 @@ body header .head-search .search .frontpage-search-trigger {
     margin: 0 0 0 -1px;
     height: 40px;
     line-height: 40px;
-    background: #48c964;
+    background: #7F4F21;
     width: 90px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
@@ -230,7 +230,7 @@ body header .head-search .newline a:first-child {
 
 #email-tips .other-tips {
     float: right;
-    color: #48c964
+    color: #7F4F21
 }
 
 #email-tips .modal-dialog {
@@ -341,7 +341,7 @@ body header .head-search .newline a:first-child {
 
 .sidebar i {
     margin-right: .5em;
-    color: #48c964
+    color: #7F4F21
 }
 
 .sidebar strong {
@@ -472,7 +472,7 @@ body header .head-search .newline a:first-child {
 }
 
 #port-info .icon-gold {
-    color: #48c964;
+    color: #7F4F21;
     vertical-align: middle
 }
 
@@ -555,7 +555,7 @@ body header .head-search .newline a:first-child {
 
 .list-pagination>li>a:focus,.list-pagination>li>a:hover,.list-pagination>li>span:focus,.list-pagination>li>span:hover {
     z-index: 3;
-    color: #48c964;
+    color: #7F4F21;
     background-color: #cdcdcd;
     border-color: #ddd
 }
@@ -563,7 +563,7 @@ body header .head-search .newline a:first-child {
 .list-pagination>.active>a,.list-pagination>.active>a:focus,.list-pagination>.active>a:hover,.list-pagination>.active>span,.list-pagination>.active>span:focus,.list-pagination>.active>span:hover {
     z-index: 2;
     color: #fff;
-    background-color: #48c964;
+    background-color: #7F4F21;
     border-color: #cdcdcd;
     cursor: default
 }
@@ -679,7 +679,7 @@ body header .head-search .newline a:first-child {
 }
 
 .table-view .table-view-body .preview-hover>a.ad-title .keyword {
-    color: #48c964
+    color: #7F4F21
 }
 
 .table-view .table-view-cap {
@@ -695,7 +695,7 @@ body header .head-search .newline a:first-child {
 }
 
 .table-view .highlight {
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700
 }
 
@@ -709,7 +709,7 @@ body header .head-search .newline a:first-child {
 }
 
 .window-item .window-item-moreinfo>a {
-    color: #48c964
+    color: #7F4F21
 }
 
 .window-item ul li {
@@ -858,7 +858,7 @@ body header .head-search .newline a:first-child {
 
 .list-ad-items .highlight {
     float: right;
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700;
     font-size: 16px
 }
@@ -888,7 +888,7 @@ body header .head-search .newline a:first-child {
 }
 
 .list-ad-items .media-body-title>a.ad-title .keyword {
-    color: #48c964
+    color: #7F4F21
 }
 
 .list-ad-items .media-body-title>.tag {
@@ -905,7 +905,7 @@ body header .head-search .newline a:first-child {
 
 .list-ad-items .media-body-title .right-btn {
     float: right;
-    color: #48c964;
+    color: #7F4F21;
     font-size: 16px;
     border: 1px solid;
     line-height: 32px;
@@ -934,12 +934,12 @@ body header .head-search .newline a:first-child {
 }
 
 .list-ad-items .ad-item-detail .source:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 .list-ad-items .ad-item-detail .adsense-list-icon {
     font-size: 16px;
-    color: #48c964;
+    color: #7F4F21;
     vertical-align: middle;
     line-height: 1;
     margin-left: 1.5em;
@@ -967,7 +967,7 @@ ul.list-ad-items>li.item-selected-header div,ul.table-view>li.item-selected-head
 
 ul.list-ad-items>li.item-selected-header div h4,ul.table-view>li.item-selected-header div h4 {
     font-size: 16px;
-    border-left: 4px solid #48c964;
+    border-left: 4px solid #7F4F21;
     margin: 0;
     padding-left: 10px
 }
@@ -1047,7 +1047,7 @@ ul.table-view>li.item-selected-header {
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #fee4c9;
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: none
 }
 
@@ -1065,7 +1065,7 @@ ul.list-ad-items>li.item-youxuan-header div,ul.table-view>li.item-youxuan-header
 
 ul.list-ad-items>li.item-youxuan-header div h4,ul.table-view>li.item-youxuan-header div h4 {
     font-size: 16px;
-    border-left: 4px solid #48c964;
+    border-left: 4px solid #7F4F21;
     margin: 0;
     padding-left: 10px
 }
@@ -1169,7 +1169,7 @@ ul.table-view>li.item-youxuan-header {
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #fee4c9;
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: none
 }
 
@@ -1318,13 +1318,13 @@ a.tag-preferred-guarantee {
 }
 
 .tag-zhizhao {
-    border: 1px solid #48c964;
-    color: #48c964;
+    border: 1px solid #7F4F21;
+    color: #7F4F21;
     cursor: pointer
 }
 
 .tag-zhizhao:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 .tag-daizhao,.tag-jingyinghr {
@@ -1486,7 +1486,7 @@ aside.waterfall-glist {
 }
 
 .waterfall-glist .waterfall-title:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 .waterfall-glist .waterfall-title:visited {
@@ -1514,7 +1514,7 @@ aside.waterfall-glist {
 }
 
 .waterfall-glist .waterfall-meta>.highlight {
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700
 }
 
@@ -1760,7 +1760,7 @@ aside.waterfall-glist {
     font-size: 12px;
     line-height: 1.4;
     border-radius: 4px;
-    background: #48c964;
+    background: #7F4F21;
     color: #fff;
     font-weight: 700;
     text-transform: uppercase
@@ -1800,7 +1800,7 @@ aside.waterfall-glist {
 
 .listing-viewtype-switch .local-guide .highlight {
     display: block;
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700
 }
 
@@ -1877,7 +1877,7 @@ aside.waterfall-glist {
 }
 
 .list-alert a {
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700
 }
 
@@ -1971,7 +1971,7 @@ aside.waterfall-glist {
 }
 
 .list-alert-mini .list-alert-content a {
-    color: #48c964
+    color: #7F4F21
 }
 
 .list-alert-mini .icon-speaker {
@@ -2031,7 +2031,7 @@ aside.waterfall-glist {
 }
 
 .list-sort .sort-item.active {
-    color: #48c964
+    color: #7F4F21
 }
 
 .media-box-fixed.affix {
@@ -2258,12 +2258,12 @@ aside.waterfall-glist {
 }
 
 #v6cn a .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 #listing-fixed-filters a.post,.category-gongzuo #fillresume .resume-submit,.category-gongzuo #listing-fixed-filters .post.resume-btn,.category-gongzuo .listing-fixed-bottom-notice a.post.resume-btn,.category-gongzuo .preview-popover .preview-footer .apply-btn,.category-gongzuo .sidebar-filter.service #open-service,.category-jianzhi #fillresume .resume-submit,.category-jianzhi #listing-fixed-filters .post.resume-btn,.category-jianzhi .listing-fixed-bottom-notice a.post.resume-btn,.category-jianzhi .preview-popover .preview-footer .apply-btn,.category-jianzhi .sidebar-filter.service #open-service,.category-resume #fillresume .resume-submit,.category-resume #listing-fixed-filters .post.resume-btn,.category-resume #myResume .resume-head #resume_confirm_button,.category-resume .confirm-btn,.category-resume .listing-fixed-bottom-notice a.post.resume-btn,.category-resume .preview-popover .preview-footer .apply-btn,.category-resume .sidebar-filter.service #open-service {
-    border: 1px solid #48c964;
-    background-color: #48c964;
+    border: 1px solid #7F4F21;
+    background-color: #7F4F21;
     color: #fff;
     border-radius: 2px;
     font-size: 1em;
@@ -2300,8 +2300,8 @@ aside.waterfall-glist {
 
 .category-fuwu .contact-button.hover,.category-fuwu .contact-button:hover,.category-gongzuo #listing-fixed-filters .post.hover,.category-gongzuo #listing-fixed-filters .post:hover,.category-gongzuo header .location .post.hover,.category-gongzuo header .location .post:hover,.category-jianzhi #listing-fixed-filters .post.hover,.category-jianzhi #listing-fixed-filters .post:hover,.category-jianzhi header .location .post.hover,.category-jianzhi header .location .post:hover,.category-jiaoyupeixun .contact-button.hover,.category-jiaoyupeixun .contact-button:hover,.category-resume #listing-fixed-filters .post.hover,.category-resume #listing-fixed-filters .post:hover,.category-resume #myResume .resume-head #resume_find_job.hover,.category-resume #myResume .resume-head #resume_find_job:hover,.category-resume .contact-btn.hover,.category-resume .contact-btn:hover,.category-resume .invite-btn.hover,.category-resume .invite-btn:hover,.category-resume header .location .post.hover,.category-resume header .location .post:hover,.fenglin-list .contact-button.hover,.fenglin-list .contact-button:hover {
     text-decoration: none;
-    border-color: #48c964;
-    background-color: #48c964;
+    border-color: #7F4F21;
+    background-color: #7F4F21;
     color: #fff
 }
 
@@ -2463,7 +2463,7 @@ form#listing-filters .more-options-folding[disabled] {
 }
 
 #listing-fixed-filters fieldset span.active {
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700
 }
 
@@ -2644,7 +2644,7 @@ form#listing-filters .pinyin-block {
 }
 
 form#listing-filters .pinyin-block .head-letter {
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700;
     padding: .5em
 }
@@ -2763,14 +2763,14 @@ form#listing-filters .range label {
 }
 
 form#listing-filters .checked,form#listing-filters .select,.area_dl .subarea a.select {
-    color: #48c964;
-    border-color: #48c964;
+    color: #7F4F21;
+    border-color: #7F4F21;
     text-decoration: none
 }
 
 form#listing-filters .more-options {
     float: right;
-    color: #48c964;
+    color: #7F4F21;
     cursor: pointer
 }
 
@@ -3157,7 +3157,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo .checked-job-tip .highlight,.category-jianzhi .checked-job-tip .highlight,.category-resume .checked-job-tip .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-gongzuo .table-view .table-view-item,.category-jianzhi .table-view .table-view-item,.category-resume .table-view .table-view-item {
@@ -3234,7 +3234,7 @@ ul.search-history .search-history-title {
 
 .category-gongzuo .table-view .salary,.category-jianzhi .table-view .salary,.category-resume .table-view .salary {
     float: right;
-    color: #48c964;
+    color: #7F4F21;
     font-weight: 700;
     font-size: 18px;
     padding-top: 7px
@@ -3286,7 +3286,7 @@ ul.search-history .search-history-title {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 18px;
-    border-left: 5px solid #48c964
+    border-left: 5px solid #7F4F21
 }
 
 .category-gongzuo .table-view .baixing-preferred span,.category-jianzhi .table-view .baixing-preferred span,.category-resume .table-view .baixing-preferred span {
@@ -3368,7 +3368,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo .preview-popover .header .daizhao-tip,.category-jianzhi .preview-popover .header .daizhao-tip,.category-resume .preview-popover .header .daizhao-tip {
-    color: #48c964;
+    color: #7F4F21;
     margin-top: 5px;
     margin-bottom: 6px
 }
@@ -3402,7 +3402,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo .preview-popover .header .right-header .percentage-wrapper .highlight,.category-jianzhi .preview-popover .header .right-header .percentage-wrapper .highlight,.category-resume .preview-popover .header .right-header .percentage-wrapper .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-gongzuo .preview-popover .metas,.category-jianzhi .preview-popover .metas,.category-resume .preview-popover .metas {
@@ -3429,7 +3429,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo .preview-popover .metas .preview-meta-item .highlight,.category-jianzhi .preview-popover .metas .preview-meta-item .highlight,.category-resume .preview-popover .metas .preview-meta-item .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-gongzuo .preview-popover .content,.category-jianzhi .preview-popover .content,.category-resume .preview-popover .content {
@@ -3581,7 +3581,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo #fillresume .p-line em.error,.category-jianzhi #fillresume .p-line em.error,.category-resume #fillresume .p-line em.error {
-    color: #48c964;
+    color: #7F4F21;
     font-style: normal;
     margin-left: .5em
 }
@@ -3596,7 +3596,7 @@ ul.search-history .search-history-title {
     text-align: center;
     line-height: 18px;
     color: #fff;
-    background-color: #48c964
+    background-color: #7F4F21
 }
 
 .category-gongzuo #fillresume .p-line .p-error,.category-gongzuo #fillresume .p-line .p-error-empty,.category-gongzuo #fillresume .p-line .p-note,.category-jianzhi #fillresume .p-line .p-error,.category-jianzhi #fillresume .p-line .p-error-empty,.category-jianzhi #fillresume .p-line .p-note,.category-resume #fillresume .p-line .p-error,.category-resume #fillresume .p-line .p-error-empty,.category-resume #fillresume .p-line .p-note {
@@ -3717,7 +3717,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo #resumereceived #resume_hint_content .highlight,.category-jianzhi #resumereceived #resume_hint_content .highlight,.category-resume #resumereceived #resume_hint_content .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-gongzuo #resumereceived .suggest-jobs,.category-jianzhi #resumereceived .suggest-jobs,.category-resume #resumereceived .suggest-jobs {
@@ -3735,7 +3735,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo #resumereceived .qingtuan-content p.text .highlight,.category-jianzhi #resumereceived .qingtuan-content p.text .highlight,.category-resume #resumereceived .qingtuan-content p.text .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-gongzuo #resumereceived .qingtuan-content>img,.category-jianzhi #resumereceived .qingtuan-content>img,.category-resume #resumereceived .qingtuan-content>img {
@@ -3775,7 +3775,7 @@ ul.search-history .search-history-title {
 }
 
 .category-gongzuo header .location .post.resume-btn,.category-jianzhi header .location .post.resume-btn,.category-resume header .location .post.resume-btn {
-    color: #48c964;
+    color: #7F4F21;
     width: 160px;
     margin-right: .5em
 }
@@ -3798,7 +3798,7 @@ ul.search-history .search-history-title {
 
 .category-gongzuo .table-view .table-view-item span.keyword,.category-jianzhi .table-view .table-view-item span.keyword,.category-resume .table-view .table-view-item span.keyword {
     padding-left: 0;
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-gongzuo .table-view .table-view-item .window-item,.category-jianzhi .table-view .table-view-item .window-item,.category-resume .table-view .table-view-item .window-item {
@@ -3912,7 +3912,7 @@ ul.search-history .search-history-title {
 }
 
 .category-fuwu .jiameng-listing-cpc a .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-fuwu .contact-button i {
@@ -3982,7 +3982,7 @@ ul.search-history .search-history-title {
 .category-fuwu .contact-button-box .contact-left .contact-zhaobiao-box .zhaobiaoLink {
     font-size: 13px;
     font-weight: 400;
-    color: #48c964;
+    color: #7F4F21;
     display: inline;
     margin-left: 8px;
     margin-top: 6px
@@ -4066,7 +4066,7 @@ ul.search-history .search-history-title {
 }
 
 .category-fuwu .contact-button-box .feedback {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-fuwu .item-vip-ding {
@@ -4190,7 +4190,7 @@ ul.search-history .search-history-title {
     width: 115px;
     height: 160px;
     background: #ffedf0;
-    color: #48c964;
+    color: #7F4F21;
     float: left;
     margin-left: 0;
     margin-right: 30px;
@@ -4237,7 +4237,7 @@ ul.search-history .search-history-title {
     font-size: 22px;
     margin-right: .5em;
     vertical-align: middle;
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-fang form#listing-filters {
@@ -4329,7 +4329,7 @@ ul.search-history .search-history-title {
 }
 
 .category-fang form#listing-filters .filter-conditions-fieldset .cancel-all-condition {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-fang form#listing-filters .community-filter-fieldset button,.category-fang form#listing-filters .community-filter-fieldset input {
@@ -4337,7 +4337,7 @@ ul.search-history .search-history-title {
 }
 
 .category-fang form#listing-filters .community-filter-fieldset input {
-    border-color: #48c964;
+    border-color: #7F4F21;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     height: 22px;
@@ -4347,7 +4347,7 @@ ul.search-history .search-history-title {
 }
 
 .category-fang form#listing-filters .community-filter-fieldset button {
-    background: #48c964;
+    background: #7F4F21;
     color: #fff;
     border: none;
     height: 44px;
@@ -4372,7 +4372,7 @@ ul.search-history .search-history-title {
 }
 
 .category-fang .ui-community-autocomplete li a.ui-state-focus,.category-fang .ui-community-autocomplete li a.ui-state-hover {
-    background: #48c964
+    background: #7F4F21
 }
 
 .category-fang .ui-community-autocomplete li a.ui-state-focus,.category-fang .ui-community-autocomplete li a.ui-state-focus em,.category-fang .ui-community-autocomplete li a.ui-state-hover,.category-fang .ui-community-autocomplete li a.ui-state-hover em {
@@ -4706,7 +4706,7 @@ ul.search-history .search-history-title {
 }
 
 .category-jiaoyupeixun .contact-button-box .feedback {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-jiaoyupeixun .item-vip-ding {
@@ -4885,7 +4885,7 @@ ul.search-history .search-history-title {
 }
 
 .fenglin-list.table-view .table-view-item .wellfares-badges .contact-button-box .contact-left .contact-info {
-    color: #48c964
+    color: #7F4F21
 }
 
 .fenglin-list.table-view .table-view-item .wellfares-badges .contact-button-box .contact-left span {
@@ -4939,8 +4939,8 @@ ul.search-history .search-history-title {
 }
 
 .category-resume #myResume .resume-head #resume_confirm_button,.category-resume .confirm-btn {
-    border: 1px solid #48c964;
-    background-color: #48c964;
+    border: 1px solid #7F4F21;
+    background-color: #7F4F21;
     color: #fff;
     border-radius: 2px;
     font-size: 1em;
@@ -4974,9 +4974,9 @@ ul.search-history .search-history-title {
 }
 
 .category-resume #myResume .resume-head #resume_find_job,.category-resume .contact-btn,.category-resume .invite-btn {
-    border: 1px solid #48c964;
+    border: 1px solid #7F4F21;
     background-color: transparent;
-    color: #48c964;
+    color: #7F4F21;
     border-radius: 2px;
     font-size: 1em;
     text-align: center;
@@ -4993,8 +4993,8 @@ ul.search-history .search-history-title {
 
 .category-resume #myResume .resume-head #resume_find_job.hover,.category-resume #myResume .resume-head #resume_find_job:hover,.category-resume .contact-btn.hover,.category-resume .contact-btn:hover,.category-resume .invite-btn.hover,.category-resume .invite-btn:hover {
     text-decoration: none;
-    border-color: #48c964;
-    background-color: #48c964;
+    border-color: #7F4F21;
+    background-color: #7F4F21;
     color: #fff
 }
 
@@ -5074,7 +5074,7 @@ ul.search-history .search-history-title {
 
 .listing-tab-navi>li.active>a,.listing-tab-navi>li.active>a:focus,.listing-tab-navi>li.active>a:hover,.listing-tab-navi>li.active>h1>a,.listing-tab-navi>li.active>h1>a:focus,.listing-tab-navi>li.active>h1>a:hover {
     color: #333;
-    border-bottom: 4px solid #48c964;
+    border-bottom: 4px solid #7F4F21;
     cursor: default
 }
 
@@ -5132,7 +5132,7 @@ table td[class*=col-],table th[class*=col-] {
 
 #chat-to-app .modal-input {
     color: #fff;
-    background: #48c964;
+    background: #7F4F21;
     width: 200px;
     display: block;
     margin: 0 auto 20px;
@@ -5196,7 +5196,7 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume .resume-list .table-view-block a:hover,.category-resume .resume-list .table-view-cap a:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume .resume-list .table-view-block a.read,.category-resume .resume-list .table-view-cap a.read {
@@ -5266,7 +5266,7 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume .checked-resume-tip .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume .preview-popover span.icon-line i {
@@ -5450,7 +5450,7 @@ table td[class*=col-],table th[class*=col-] {
 
 .category-resume #resume-container .resume-title .qr-code p {
     padding-top: 15px;
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume #resume-container .resume-content {
@@ -5460,7 +5460,7 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume #resume-container .resume-content a {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume #resume-container .resume-table {
@@ -5469,7 +5469,7 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume #resume-container .resume-table .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume #resume-container .resume-table .p-line {
@@ -5525,7 +5525,7 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume #resume-container .resume-table #send-invitation-show .p-line .red {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume #resume-container .resume-table #send-invitation-show .p-line .publish-detail-item {
@@ -5587,12 +5587,12 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume #resume-container .resume-table #send-invitation-show .invite-count,.category-resume #resume-container .resume-table #send-invitation-show .word-count .count {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume #resume-container .resume-table #send-invitation-show .p-error,.category-resume #resume-container .resume-table #send-invitation-show .p-error-empty {
     display: none;
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-resume #resume-container .resume-table #send-invitation-show .empty .p-error {
@@ -5609,7 +5609,7 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 .category-resume #resume-container .resume-table #send-invitation-show .res-message.error {
-    color: #48c964
+    color: #7F4F21
 }
 
 .resume-container-bunch {
@@ -5735,12 +5735,12 @@ table td[class*=col-],table th[class*=col-] {
 }
 
 #resume-side-list ul.tab-resume-title li.active {
-    color: #48c964
+    color: #7F4F21
 }
 
 #resume-side-list ul.tab-resume-title li:hover {
-    background: #48c964;
-    border: 1px solid #48c964;
+    background: #7F4F21;
+    border: 1px solid #7F4F21;
     color: #fff
 }
 
@@ -5759,7 +5759,7 @@ table td[class*=col-],table th[class*=col-] {
 
 #resume-side-list ul.tab-resume-title a.tab-resume {
     display: none;
-    color: #48c964;
+    color: #7F4F21;
     height: 40px;
     line-height: 40px;
     text-decoration: none
@@ -5829,7 +5829,7 @@ table td[class*=col-],table th[class*=col-] {
 
 .resume-report-modal form.modal-body .important {
     font-style: normal;
-    color: #48c964;
+    color: #7F4F21;
     margin-right: 5px
 }
 
@@ -5909,7 +5909,7 @@ body>.container {
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: #fee4c9;
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: none
 }
 

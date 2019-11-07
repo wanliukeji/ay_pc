@@ -5,6 +5,7 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
     $scope.totalPage = 0;
     $scope.total = 0;
     $scope.pageNum = 1;
+    $scope.btnText = '登录';
 
     $scope.currentPage = 0;
 
@@ -146,12 +147,14 @@ var app = angular.module('myGroup', []).controller('groupCtrl', function ($scope
         };
         var msg = ajax_http_post_login(url, date);
 
-        console.log(msg);
         if (msg.code == 200) {
+            $scope.btnText = '正在登录.....';
             setUser(msg.data);
-            href('/group');
+            setTimeout(function () {
+                history.go(0);
+            }, 2000)
         } else {
-            console.error(msg.msg)
+            alert("账户密码不匹配");
         }
     }
 
