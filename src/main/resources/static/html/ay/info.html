@@ -60,7 +60,16 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-
+    <!--[if lt IE 9]>
+    <script src="static/js/html5shiv.js"></script>
+    <script src="static/js/respond.js"></script>
+    <![endif]-->
+    <!-- 引入百度地图API -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=QmcMSpFIvtQyMkkvBQwMyEcWyaAF0dZi"/>
+    <!--  <script type = "text/javascript" src = "http://api.map.baidu.com/api?v=2.0&ak=NP160iZgGFkIGoe3LiQrRWC1L554h1It"/>-->
+    <!--  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=F5g7TtwB3sBzNS7AKWvtCQTtCqlxxtGw"></script>-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
 </head>
 <body class="viewad-baomu viewad-fuwu viewad-new">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
@@ -104,7 +113,7 @@
 </header>
 <div class="container box">
     <ul class="search-crumbs">
-        <li><a href="/home">安义门窗网</a></li>
+        <li><a href="/home">门窗网</a></li>
         <li><i class="icon-arrow-right"></i><a href="/group" ng-bind="entity.type"></a></li>
         <li><i class="icon-arrow-right"></i><a ng-bind="entity.company_name"></a></li>
     </ul>
@@ -251,6 +260,15 @@
 
                         </div>
                     </div>
+
+                    <div class="viewad-common-header">
+                        <div class="section-title">地址</div>
+                    </div>
+
+                    <div class="viewad-text" style="color:#333; width: 100%; height: 500px; border: black 1px solid;" id="container">
+
+                    </div>
+
                     <div class="viewad-text" style="font-size:14px;">
                         如果您觉得“<strong ng-bind="entity.company_name"></strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
                             class="a_res" target="_blank" href="/home"><i ng-bind="entity.type"></i></a>频道，将会获得更多的信任！)
@@ -497,7 +515,7 @@
 <script src="/static/js/footer.js"/>
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/info.js"></script>
-<script>
+<script type="text/javascript">
     $("#Qu114Icon").hover(function () {
         var href = $(this).attr('#href');
         $('#href').css('display', 'block');
