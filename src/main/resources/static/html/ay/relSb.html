@@ -354,12 +354,12 @@
                                             <li class="previous list-inline-item float-left">
                                                 <a ng-click="prve()" ng-show="show_num_next > 0"
                                                    class="btn btn-secondary border-0 text-white"
-                                                   style="background: #7F4F21;">{{info.prv}}</a>
+                                                   style="background: #7F4F21;" ng-bind="info.prv"></a>
                                             </li>
                                             <li class="next list-inline-item float-right">
                                                 <a ng-click="next()" id="next-btn"
                                                    class="btn btn-secondary border-0 text-white"
-                                                   style="background: #7F4F21;">{{info.next}}</a>
+                                                   style="background: #7F4F21;" ng-bind="info.next"></a>
                                             </li>
                                         </ul>
                                     </div> <!-- tab-content -->
