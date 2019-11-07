@@ -125,29 +125,28 @@ public class HttClientMain {
     }
 
     public static void main(String[] args) {
-//        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
-        String url = "https://nb.58.com/huangyezonghe/?key=%E9%97%A8%E7%AA%97&cmcskey=%E9%97%A8%E7%AA%97&final=1&jump=1&specialtype=gls&classpolicy=main_A,service_A";
+        String url = "https://nb.58.com/jiancai/39224222038933x.shtml?link_abtest=&psid=188135889206181254622851042&entinfo=39224222038933_z&slot=1000945&iuType=z_2&PGTID=0d360415-0008-719e-0672-72d74295ec7f&ClickID=1&adtype=3";
+//        String url = "https://nb.58.com/huangyezonghe/?key=%E9%97%A8%E7%AA%97&cmcskey=%E9%97%A8%E7%AA%97&final=1&jump=1&specialtype=gls&classpolicy=main_A,service_A";
 
         // 获取标题
-//        String detail_title__name = getText(url, "detail-title__name");
-////        String bigimg_info = getText(url, "bigimg-info");
-////        String infocard__container__item__title = getText(url, "infocard__container__item__title");
-////        String num_cont = getText(url, "num_cont");
-////        String foldingbox = getText(url, "foldingbox");
-////        String img = getImg(url);
-////        String newpost_price__big = getText(url, "newpost-price__big");
-////        String infocard__container__item__main = getText(url, "infocard__container__item__main");
-////
-////        System.out.println("标题:" + detail_title__name);
-////        System.out.println("发布时间:" + bigimg_info);
-////        System.out.println("发布时间:" + infocard__container__item__title);
-////        System.out.println("号码:" + num_cont);
-////        System.out.println("描述:" + foldingbox);
-////        System.out.println("图片:" + img);
-////        System.out.println("价格:" + newpost_price__big);
-////        System.out.println("服务:" + infocard__container__item__main);
-
+        String detail_title__name = getText(url, "detail-title__name");
+        String bigimg_info = getText(url, "bigimg-info");
+        String infocard__container__item__title = getText(url, "infocard__container__item__title");
+        String num_cont = getText(url, "num_cont");
+        String foldingbox = getText(url, "foldingbox");
+        String img = getImg(url);
+        String newpost_price__big = getText(url, "newpost-price__big");
+        String infocard__container__item__main = getText(url, "infocard__container__item__main");
         String urls = getHref(url);
+
+        System.out.println("标题:" + detail_title__name);
+        System.out.println("发布时间:" + bigimg_info);
+        System.out.println("发布时间:" + infocard__container__item__title);
+        System.out.println("号码:" + num_cont);
+        System.out.println("描述:" + foldingbox);
+        System.out.println("图片:" + img);
+        System.out.println("价格:" + newpost_price__big);
+        System.out.println("服务:" + infocard__container__item__main);
         System.out.println(" 超链接 :" + urls);
 
     }
