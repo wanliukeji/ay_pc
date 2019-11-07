@@ -61,7 +61,7 @@ document.writeln("        </ul>");
 document.writeln("    </section>");
 document.writeln("");
 document.writeln("    <div class=\'copyright\' style=\' color: #bebebe;\'>");
-document.writeln("        <span><span style=\'font-size:16px; position:relative; top:2px;\'>©</span>2019 安义分类信息网&nbsp;276497858（周一至周五，9:00-18:00）</span>");
+document.writeln("        <span><span style=\'font-size:16px; position:relative; top:2px;\'>©</span>2019 门窗网&nbsp;276497858（周一至周五，9:00-18:00）</span>");
 document.writeln("    </div>");
 document.writeln("    <div class=\'icp-number\'>");
 document.writeln("        <span>赣ICP备16019261号-9&nbsp;|&nbsp;公网安备010602001073号</span>");
