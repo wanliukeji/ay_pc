@@ -51,7 +51,7 @@ table td[class*=col-],table th[class*=col-] {
 
 #chat-to-app .modal-input {
     color: #fff;
-    background: #48c964;
+    background: #7F4F21;
     width: 200px;
     display: block;
     margin: 0 auto 20px;
@@ -84,7 +84,7 @@ body header .location h1 a {
 
 body header .location span.slogan {
     font-size: 15px;
-    color: #48c964;
+    color: #7F4F21;
     padding-left: 4px
 }
 
@@ -108,7 +108,7 @@ body header .head-search .search .search-query {
     margin: 0;
     height: 40px;
     line-height: 40px;
-    border: 1px solid #48c964;
+    border: 1px solid #7F4F21;
     font-size: 12px
 }
 
@@ -135,7 +135,7 @@ body header .head-search .search .frontpage-search-trigger {
     margin: 0 0 0 -1px;
     height: 40px;
     line-height: 40px;
-    background: #48c964;
+    background: #7F4F21;
     width: 90px;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
@@ -230,7 +230,7 @@ html body header div.fixed-header {
     z-index: 10;
     width: 100%;
     height: 54px;
-    background: #48c964;
+    background: #7F4F21;
 }
 
 html body header div.fixed-header .location {
@@ -296,7 +296,7 @@ html body header div.fixed-header .search .search-query {
     width: 420px;
     height: 32px;
     line-height: 32px;
-    border: 1px solid #48c964;
+    border: 1px solid #7F4F21;
     border-right: none;
     border-radius: 2px 0 0 2px
 
@@ -307,7 +307,7 @@ html body header div.fixed-header .search .search-trigger {
     border-left: none;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
-    background: #48c964;
+    background: #7F4F21;
     width: 62px;
     height: 32px;
     line-height: 32px;
@@ -334,7 +334,7 @@ html body header div.fixed-header .fixed-header-post {
     line-height: 32px;
     background: #fff;
     text-align: center;
-    color: #48c964;
+    color: #7F4F21;
     border-radius: 2px;
     display: block;
     margin: 11px 0 11px 30px
@@ -357,7 +357,7 @@ html body header div.fixed-header .fixed-header-post {
 .tool-box .title:before {
     position: absolute;
     left: 0;
-    color: #48c964;
+    color: #7F4F21;
     font-size: 24px
 }
 
@@ -417,7 +417,7 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .tool-box .content .box .highlight {
-    color: #48c964
+    color: #7F4F21
 }
 
 .tool-box .content .box:last-of-type {
@@ -481,7 +481,7 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .app-download-block>ul>li.app h3 {
-    color: #48c964
+    color: #7F4F21
 }
 
 .app-download-block>ul>li.weixin {
@@ -489,7 +489,7 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .app-download-block>ul>li.weixin h3 {
-    color: #1ba151
+    color: #7F4F21
 }
 
 .home-row {
@@ -558,7 +558,7 @@ html body header div.fixed-header .fixed-header-post {
     position: absolute;
     left: 0;
     top: 0;
-    background: #48c964;
+    background: #7F4F21;
     width: 4px;
     height: 18px;
     margin-right: 6px
@@ -646,7 +646,7 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .category-container .category-column .category-block .category-item a.hot-link {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-container .category-column .category-block .small-block {
@@ -722,7 +722,7 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .category-container .category-column .app-download ul>li.weixin h3 {
-    color: #1ba151
+    color: #7F4F21
 }
 
 .category-container .category-column .app-download ul>li.app {
@@ -730,7 +730,7 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .category-container .category-column .app-download ul>li.app h3 {
-    color: #48c964
+    color: #7F4F21
 }
 
 .category-huodong {
@@ -780,13 +780,13 @@ html body header div.fixed-header .fixed-header-post {
 }
 
 .container.nav .main-nav>li a:hover {
-    background: #48c964;
+    background: #7F4F21;
     text-decoration: none;
     color: #fff
 }
 
 .container.nav .main-nav>li a.home {
-    background: #48c964
+    background: #7F4F21
 }
 
 .fixed-header+.container.nav {
@@ -993,7 +993,7 @@ ul.search-history li.hover label {
 }
 
 ul.search-history li.hover label:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 ul.search-history li a {
@@ -1046,7 +1046,7 @@ ul.search-history .search-history-title {
 }
 
 .county-notice.two-line .more .more-ctn a:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 .county-notice.two-line .more:hover {
@@ -1071,7 +1071,7 @@ ul.search-history .search-history-title {
 .nav-tabs {
     background: #fff;
     padding-top: 5px;
-    border-bottom: 2px solid #48c964
+    border-bottom: 2px solid #7F4F21
 }
 
 .nav-tabs .nav-content {
@@ -1113,7 +1113,7 @@ ul.search-history .search-history-title {
 }
 
 .nav-tabs .nav-content .nav-item.hot {
-    color: #48c964
+    color: #7F4F21
 }
 
 .nav-tabs .nav-content .nav-item.home {
@@ -1122,7 +1122,7 @@ ul.search-history .search-history-title {
 
 .nav-tabs .nav-content .nav-item.home,.nav-tabs .nav-content .nav-item.normal:hover {
     color: #fff;
-    background: #48c964;
+    background: #7F4F21;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px
 }
@@ -1133,8 +1133,8 @@ ul.search-history .search-history-title {
 }
 
 .nav-tabs .nav-content .nav-item.has-content:hover {
-    color: #48c964;
-    border-color: #48c964
+    color: #7F4F21;
+    border-color: #7F4F21
 }
 
 .nav-tabs .nav-content .nav-item.has-content:hover>.baicons {
@@ -1166,7 +1166,7 @@ ul.search-history .search-history-title {
     display: none;
     position: absolute;
     top: 100%;
-    border: 1px solid #48c964;
+    border: 1px solid #7F4F21;
     background: #fff;
     z-index: 1;
     font-weight: 400
@@ -1207,7 +1207,7 @@ ul.search-history .search-history-title {
 }
 
 .nav-tabs .nav-content .nav-item .hover-content.qrcode .title {
-    color: #48c964;
+    color: #7F4F21;
     margin-top: 20px;
     font-size: 14px;
     margin-bottom: 5px
@@ -1309,7 +1309,7 @@ ul.search-history .search-history-title {
 }
 
 .nav-items .fabu-new .ads-container .one-post:hover .title {
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: underline
 }
 
@@ -1376,7 +1376,7 @@ ul.search-history .search-history-title {
 }
 
 .section-box>.title {
-    color: #48c964;
+    color: #7F4F21;
     font-size: 18px;
     padding: 15px 0 10px;
     border-bottom: 1px solid #f0f0f0;
@@ -1407,7 +1407,7 @@ ul.search-history .search-history-title {
 }
 
 .section-box>.title>.label-container>li>a.hot-link,.section-box>.title>.label-container>li>a:hover {
-    color: #48c964
+    color: #7F4F21
 }
 
 .section-box>.title>.label-container>li .tag-new {
@@ -1417,7 +1417,7 @@ ul.search-history .search-history-title {
     font-size: 10px;
     line-height: 1.4;
     border-radius: 4px;
-    background: #48c964;
+    background: #7F4F21;
     color: #fff;
     font-weight: 400
 }
@@ -1484,7 +1484,7 @@ ul.search-history .search-history-title {
 }
 
 .section-box>.content .category-group .hot {
-    color: #48c964
+    color: #7F4F21
 }
 
 .section-box>.content .category-group:first-child>.title {
@@ -2037,7 +2037,7 @@ body header .tool-bar-ctn .toolbar #user-tools>li {
 .home {
     display: block;
     color: #fff;
-    background: #48c964;
+    background: #7F4F21;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px
 }

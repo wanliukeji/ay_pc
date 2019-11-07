@@ -583,7 +583,7 @@ li,p,ul {
     color: #fff;
     text-decoration: none;
     outline: 0;
-    background-color: #48c964
+    background-color: #7F4F21
 }
 
 .dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover {
@@ -692,7 +692,7 @@ button,input,select,textarea {
 }
 
 a:focus,a:hover {
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: underline
 }
 
@@ -1033,7 +1033,7 @@ button.close {
     vertical-align: middle;
     white-space: nowrap;
     text-align: center;
-    background-color: #48c964;
+    background-color: #7F4F21;
     border-radius: 10px
 }
 
@@ -1134,7 +1134,7 @@ tbody.collapse.in {
 }
 
 #sidebar-buttons>a {
-    color: #48c964;
+    color: #7F4F21;
     display: block;
     height: 52px;
     width: 52px;
@@ -1152,7 +1152,7 @@ tbody.collapse.in {
 }
 
 #sidebar-buttons>a#online-service {
-    background: #48c964
+    background: #7F4F21
 }
 
 #sidebar-buttons>a#online-service.notice {
@@ -1207,7 +1207,7 @@ tbody.collapse.in {
     position: relative;
     top: 3px;
     font-size: 28px;
-    color: #48c964
+    color: #7F4F21
 }
 
 .tinyform {
@@ -1275,7 +1275,7 @@ tbody.collapse.in {
 
 @-webkit-keyframes webim-notice {
     0%,40%,80% {
-        background-color: #48c964
+        background-color: #7F4F21
     }
 
     100%,20%,60% {
@@ -1285,7 +1285,7 @@ tbody.collapse.in {
 
 @keyframes webim-notice {
     0%,40%,80% {
-        background-color: #48c964
+        background-color: #7F4F21
     }
 
     100%,20%,60% {
@@ -1294,8 +1294,8 @@ tbody.collapse.in {
 }
 
 #xiangyang-feedback-modal input[type=submit],#xiangyang-jubao-modal input[type=submit],.modal-body a.button,body .ui-page>header .location .jiameng-group-btn,body .ui-page>header .location a.post,body>header .location .jiameng-group-btn,body>header .location a.post {
-    border: 1px solid #48c964;
-    background-color: #48c964;
+    border: 1px solid #7F4F21;
+    background-color: #7F4F21;
     color: #fff;
     border-radius: 2px;
     font-size: 1em;
@@ -1313,7 +1313,7 @@ tbody.collapse.in {
 
 #xiangyang-feedback-modal input[type=submit].hover,#xiangyang-feedback-modal input[type=submit]:hover,#xiangyang-jubao-modal input[type=submit].hover,#xiangyang-jubao-modal input[type=submit]:hover,.modal-body a.button.hover,.modal-body a.button:hover,body .ui-page>header .location .jiameng-group-btn.hover,body .ui-page>header .location .jiameng-group-btn:hover,body .ui-page>header .location a.post.hover,body .ui-page>header .location a.post:hover,body>header .location .jiameng-group-btn.hover,body>header .location .jiameng-group-btn:hover,body>header .location a.post.hover,body>header .location a.post:hover {
     text-decoration: none;
-    border-color: #48c964;
+    border-color: #7F4F21;
     color: #fff
 }
 
@@ -1609,7 +1609,7 @@ aside {
 
 #chat-to-app .modal-input {
     color: #fff;
-    background: #48c964;
+    background: #7F4F21;
     width: 200px;
     display: block;
     margin: 0 auto 20px;
@@ -1704,7 +1704,7 @@ a {
 }
 
 a:hover {
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: underline
 }
 
@@ -1812,7 +1812,7 @@ body .ui-page>header .toolbar .toolbar-link,body>header .toolbar .toolbar-link {
 }
 
 body .ui-page>header .toolbar .toolbar-link .hot-link,body>header .toolbar .toolbar-link .hot-link {
-    color: #48c964;
+    color: #7F4F21;
     0000000006
 }
 
@@ -1822,7 +1822,7 @@ body .ui-page>header .toolbar .toolbar-link .dropdown,body>header .toolbar .tool
 }
 
 body .ui-page>header .toolbar .toolbar-link .dropdown.mobile>a,body>header .toolbar .toolbar-link .dropdown.mobile>a {
-    color: #48c964
+    color: #7F4F21
 }
 
 body .ui-page>header .toolbar .toolbar-link .dropdown .dropdown-block,body>header .toolbar .toolbar-link .dropdown .dropdown-block {
@@ -1874,7 +1874,7 @@ body .ui-page>header .toolbar .toolbar-link .dropdown .dropdown-block .one-block
 }
 
 body .ui-page>header .toolbar .toolbar-link .dropdown .dropdown-block .one-block .dropdown-title,body>header .toolbar .toolbar-link .dropdown .dropdown-block .one-block .dropdown-title {
-    color: #48c964;
+    color: #7F4F21;
     font-size: 18px;
     line-height: 1.4;
     white-space: normal
@@ -1978,7 +1978,7 @@ body .ui-page>header .toolbar #user-tools .topbar-user-info .notification,body>h
     display: inline-block;
     min-width: 18px;
     height: 18px;
-    background-color: #48c964;
+    background-color: #7F4F21;
     border-radius: 18px;
     line-height: 1;
     vertical-align: middle;
@@ -2059,7 +2059,7 @@ body .ui-page>header .location #chat-to-app .modal-body .tip,body>header .locati
 
 body .ui-page>header .location #chat-to-app .modal-input,body>header .location #chat-to-app .modal-input {
     color: #fff;
-    background: #48c964;
+    background: #7F4F21;
     width: 200px;
     display: block;
     margin: 0 auto 20px;
@@ -2107,7 +2107,7 @@ body .ui-page>header .location .primary-logo span.city-logo,body>header .locatio
     font-family: Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
     font-weight: 700;
     font-size: 20px;
-    color: #48c964
+    color: #7F4F21
 }
 
 body .ui-page>header .location .primary-logo img,body>header .location .primary-logo img {
@@ -2136,7 +2136,7 @@ body .ui-page>header .location .color-white,body>header .location .color-white {
 
 body .ui-page>header .location a.other-post,body>header .location a.other-post {
     background: #fff;
-    color: #48c964
+    color: #7F4F21
 }
 
 body .ui-page>header .location a.other-post:hover,body>header .location a.other-post:hover {
@@ -2346,7 +2346,7 @@ textarea {
     display: none;
     font-size: 12px;
     padding-left: 5px;
-    color: #48c964
+    color: #7F4F21
 }
 
 #xiangyang-feedback-modal .error .p-error,#xiangyang-jubao-modal .error .p-error {
@@ -2358,11 +2358,11 @@ textarea {
 }
 
 #xiangyang-feedback-modal .error .p-label,#xiangyang-jubao-modal .error .p-label {
-    color: #48c964
+    color: #7F4F21
 }
 
 #xiangyang-feedback-modal .error textarea,#xiangyang-jubao-modal .error textarea {
-    border: 1px solid #48c964
+    border: 1px solid #7F4F21
 }
 
 #xiangyang-feedback-modal .empty .p-error,#xiangyang-jubao-modal .empty .p-error {
@@ -2380,7 +2380,7 @@ textarea {
 #xiangyang-feedback-modal a.public-review,#xiangyang-jubao-modal a.public-review {
     margin-left: 20px;
     background: 0 0;
-    color: #48c964;
+    color: #7F4F21;
     text-decoration: underline
 }
 

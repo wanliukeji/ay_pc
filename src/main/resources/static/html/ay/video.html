@@ -31,7 +31,7 @@
     .model-btn {
         min-width: 100%;
         text-align: center;
-        background: #48c964;
+        background: #7F4F21;
         border: none;
         color: #ffffff;
         padding: 7px;
@@ -44,18 +44,18 @@
 
     .vip-btn {
         border: none;
-        background-color: #48c964;
+        background-color: #7F4F21;
         color: white;
         padding: 7px;
         width: 100px;
         border-radius: 2px;
     }
 </style>
-<body class="homepage" ng-app="myVideo" ng-controller="videoCtrl" ng-init="init()">
+<body class="homepage" ng-app="myVideo" style="background-color: black;" ng-controller="videoCtrl" ng-init="init()">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden>点击登录</button>
 <button data-target="#selectModel" id="queryModel" data-toggle="modal" hidden>选择发布</button>
 
-<header>
+<header style="background-color: black;">
     <div class="tool-bar-ctn">
         <div class="toolbar">
             <div class="toolbar-link">
@@ -101,13 +101,13 @@
             </ul>
         </div>
     </div>
-    <div class="header">
+    <div class="header" style="background-color: white;">
         <div class="top-banner full-banner"></div>
         <div class="location" style="height: 115px;">
             <span class="breadcrumb" style="background-color: white;">
-                <a class="primary-logo">
-                    <img src="/static/image/anny_logo.png" alt="安义分类信息网"
-                         width="300" height="200" style="margin-top:-72px;"/>
+                 <a class="primary-logo" href="/home">
+                     <img src="/static/image/win.png" alt="" style=" z-index: 100;
+                        margin-top: -50px; width:300px; height: 160px;">
                     </a>
             </span>
             <div class="head-search">
@@ -128,18 +128,18 @@
     </div>
 </header>
 
-<section class="nav-tabs" style="border-bottom: 10px solid #48c964;">
+<section class="nav-tabs" style="border-bottom: 10px solid #7F4F21;">
     <ul class="nav-content clearfix">
         <li class="nav-item"><a href="/" target="_blank">首页</a></li>
         <li class="nav-item"><a href="/company" target="_blank">企业名录</a></li>
         <li class="nav-item home"><a target="_blank" style="color: white;" href="/video">VIP解析</a></li>
         <li class="nav-item"><a target="_blank" href="/static/html/ay/anyi.html">门窗之乡</a></li>
-        <li class="nav-item has-content"><a href="/video" target="_blank">联系我们</a></li>
+        <li class="nav-item has-content"><a href="/about" target="_blank">关于我们</a></li>
     </ul>
 </section>
 
 <div class="row" style="margin: 0 auto; padding-left: 10%; min-width: 1200px;">
-    <p style="text-align: center;font-size: 26px;padding: 15px; font-weight: bolder;">视频解析</p>
+    <p style="text-align: center;font-size: 26px;padding: 15px; font-weight: bolder; color: white;">视频解析</p>
     <div class="modal-body" style="min-width: 1200px; white-space: nowrap;">
         <div class="col-lg-10">
             <input type="text" ng-model="v_url" placeholder="请输入各大网站VIP视频路径" class="form-control">
@@ -150,7 +150,7 @@
     </div>
 </div>
 
-<div class="row" style="margin: 0 auto; padding-left: 10%; min-width: 1200px;">
+<div class="row" style="margin: 0 auto; padding-left: 10%; min-width: 1200px; color: white;">
     <p style="text-align: center;font-size: 26px;padding: 15px; font-weight: bolder;">第三方解析入口</p>
     <div class="modal-body">
         <div class="col-lg-12">
@@ -209,7 +209,7 @@
                 </p>
             </div>
             <div class="modal-footer" style="margin: 0 auto; text-align: center;">
-                <button style="min-width: 95%; text-align: center; background: #48c964; border: none;
+                <button style="min-width: 95%; text-align: center; background: #7F4F21; border: none;
                     color: #ffffff; padding: 5px;" ng-click="login();">{{stauts}}
                 </button>
             </div>
