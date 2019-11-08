@@ -1,7 +1,7 @@
 var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $http, $q) {
 
     $scope.user = getUser();
-    $scope.stauts = '执行';
+    $scope.stauts = '登录';
     $scope.reqUrl = 'https://nb.58.com/jiancai/40077555335973x.shtml?adtype=1&entinfo=40077555335973_q&adact=3&psid=130675282206199536058918698&iuType=q_2&link_abtest=&ClickID=1&PGTID=0d360415-0008-76eb-cfcb-5d9ea22e78ac&slot=1000933';
     $scope.phone = '4008194669';
     $scope.type = '';
@@ -18,7 +18,6 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
             angular.element("#showModel").click();
         } else {
             angular.element("#queryModel").click();
-            // href('/release');
         }
     };
 
@@ -105,7 +104,6 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
         } else {
             history.go(0);
         }
-        // setSessionObj()
     }
 
     $scope.search = function () {
@@ -116,21 +114,25 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
 
     document.onkeydown = function (e) {
         if ((e.keyCode || e.which) == 13) {
-            angular.element("#search-btn").click();
+            angular.element("#btn").click();
         }
     }
 
-    // is_Exist()
-
-    // $scope.getData = function () {
-    //     alert(1);
-    //     if (!$scope.reqUrl) {
-    //         msg_error("请输入网址")
-    //     }
-    //     alert(1);
-    // }
-
     $("#btn").click(function () {
+        $("#btn").attr("disable","disable");
+        setTimeout(function () {
+            $("#btn").text('执行中.....');
+        },2000);
+        setTimeout(exec(),5000);
+        setTimeout(function () {
+            $("#btn").text('执行完毕');
+        },3000)
+        setTimeout(function () {
+            $("#btn").text('执行');
+        },5000);
+    });
+
+    function exec() {
         if (!is_Exist($scope.user)) {
             angular.element("#showModel").click();
             return;
@@ -154,11 +156,12 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
 
         var url = "/api/http/get_WB?reqUrl=" + $scope.reqUrl + "&phone=" + $scope.phone + "&type=" + $scope.type;
         var msg = ajax_http_get(url);
+
+        $("#text").show(1000);
         $scope.info = JSON.stringify(msg);
         $scope.imgs = msg.data[1];
-        $scope.stauts = '执行';
         console.log($scope.imgs)
-    });
+    }
 
 
     function getURL(url) {

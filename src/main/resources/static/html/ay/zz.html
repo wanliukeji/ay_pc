@@ -289,7 +289,8 @@
         <section class="section-box category-jiaoyupeixun section-box-div" id="djg"
                  style="padding: 5px; min-height: 500px;">
             <div style="width: 100%; height: 100%; margin: 0 auto;">
-                <p style="width: 100%; text-align: center; color: black; font-weight: bolder; font-size: 22px;">五八采集</p>
+                <p style="width: 100%; text-align: center; color: black; font-weight: bolder; font-size: 22px; margin-top: 20px;">
+                    五八采集</p>
                 <table style="margin: 0 auto; width: 70%;">
                     <tr style="line-height: 30px; font-size: 18px;">
                         <td align="center" style="font-size: 24px;">网址:</td>
@@ -297,7 +298,7 @@
                     </tr>
                     <tr style="line-height: 30px; font-size: 18px;">
                         <td></td>
-                        <td colspan="2"  id="url_span" style="color: red; font-size: 12px; text-align: left;"></td>
+                        <td colspan="2" id="url_span" style="color: red; font-size: 12px; text-align: left;"></td>
                     </tr>
                     <tr style="line-height: 30px; font-size: 18px; margin-bottom: 30px;">
                         <td align="center" style="font-size: 24px;">号码:</td>
@@ -305,51 +306,80 @@
                     </tr>
                     <tr style="line-height: 30px; font-size: 18px;">
                         <td></td>
-                        <td colspan="2"  id="phone_span" style="color: red; font-size: 12px; text-align: left;"></td>
+                        <td colspan="2" id="phone_span" style="color: red; font-size: 12px; text-align: left;"></td>
                     </tr>
                     <tr style="line-height: 30px; font-size: 18px; margin-bottom: 30px;">
                         <td align="center" style="font-size: 24px;">请选择类型:</td>
                         <td>
-                            <select placeholder="请输入网址" style=" width: 100%;" ng-model="type">
-                                <option value="">加工</option>
-                                <option value="">安装</option>
-                                <option value="">点工</option>
-                                <option value="">定点</option>
-                                <option value="">门窗厂</option>
-                                <option value="">玻璃厂</option>
-                                <option value="">店铺</option>
-                                <option value="">厂房</option>
-                                <option value="">设备</option>
+                            <select style=" width: 100%;" ng-model="type">
+                                <option value="">请选择</option>
+                                <option value="加工">加工</option>
+                                <option value="安装">安装</option>
+                                <option value="点工">点工</option>
+                                <option value="定点">定点</option>
+                                <option value="门窗厂">门窗厂</option>
+                                <option value="玻璃厂">玻璃厂</option>
+                                <option value="店铺">店铺</option>
+                                <option value="厂房">厂房</option>
+                                <option value="设备">设备</option>
                             </select>
                         </td>
                     </tr>
                     <tr style="line-height: 30px; font-size: 18px;">
                         <td></td>
-                        <td colspan="2"  id="type_span" style="color: red; font-size: 12px; text-align: left;"></td>
+                        <td colspan="2" id="type_span" style="color: red; font-size: 12px; text-align: left;"></td>
                     </tr>
                     <tr style="line-height: 30px; font-size: 18px;">
                         <td></td>
                         <td>
                             <button style="padding: 9.5px; width: 100%; color: white; background-color: #7F4F21; border: none;"
-                                    ng-bind="stauts" ng-click="getData" id="btn"></button>
+                                    ng-click="getData" id="btn">执行
+                            </button>
                         </td>
                     </tr>
                 </table>
-                <div>
-                    <p ng-bind="info" style="margin: 10px; font-size: 16px; line-height: 25px; color: #7F4F21;"></p>
-                </div>
-                <div>
-                    <img ng-repeat="item in imgs" ng-src="{{item.imgUrl}}" width="130" height="130" style="padding: 5px;">
-                </div>
-            </div>
-            <br>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75"
-                     aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                    <span class="sr-only">75% Complete</span>
-                </div>
-            </div>
 
+                <p style="text-align: center; line-height: 35px;color: #ff3211;">本功能仅用于58网个人发布信息快速搬迁</p>
+                <p style="padding-left: 20px; font-size: 16px;">
+                    <b>操作流程:</b>
+                    <br>
+                    1: 账户登录;
+                    <br>
+                    2. 打开目标网站详细页面(仅限58同城)
+                    <br>
+                    3: 点击该信息发布的查看电话号码
+                    <br>
+                    4: 复制目标网址并粘贴至网址输入框
+                    <br>
+                    5: 复制目标网页的联系号码并复制于号码输入框
+                    <br>
+                    6: 按回车键 或者点击执行按钮进行数据抓取
+                    <br>
+                    7: 尽心等待按钮提示
+                    <br>
+                    8: 若成功在下方显示抓取数据则该信息已被成功抓取并同步于服务器中,您可以返回首页进行查询 查看
+                    <br>
+                    温馨提示: 若该功能涉及到您的个人隐私请联系我们工作人员并尽快删除,紧急联系QQ:1193227758 微信:jiangxishoufu
+                </p>
+
+                <br>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <span class="sr-only">75% Complete</span>
+                    </div>
+                </div>
+
+                <div id="text" style=" display: none;">
+                    <h3 style="border-bottom: 1px saddlebrown solid;">以下是您成功抓取的数据&nbsp;&nbsp;&nbsp;&nbsp;已成功发布于门窗网如有问题请联系站长及开发人员</h3>
+                    <p ng-bind="info" style="margin: 10px; font-size: 16px; line-height: 25px; color: #7F4F21;">
+                    </p>
+                </div>
+                <div>
+                    <img ng-repeat="item in imgs" ng-src="{{item.imgUrl}}" width="20%" height="150"
+                         style="padding: 5px;">
+                </div>
+            </div>
         </section>
     </section>
 </div>
