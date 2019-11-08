@@ -255,7 +255,8 @@ public class HttClientMain {
     //获取五八同城  时间 SUCCESS
     public static String get_WB_time(String url) {
         String str = getText(url, "bigimg-info");
-        return str.substring(0, str.indexOf("更") - 1).trim();
+//        return str.substring(0, str.indexOf("更") - 1).trim();
+        return str.replace("更新","").replace("|","").trim();
     }
 
     //获取五八同城  价格 SUCCESS
