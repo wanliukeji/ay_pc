@@ -74,7 +74,10 @@ public class HttpClientService {
             entity.setCompany_name(name);
             entity.setMsgCode(msgCode);
             entity.setPhone(phone);
-            if (!StringUtil.isEmty(type)) {
+            entity.setProcode(2);
+            entity.setCitycode(52);
+            entity.setCountycode(501);
+            if (StringUtil.isEmty(type)) {
                 entity.setType(StringUtil.get_Feid_type(name));
             } else {
                 entity.setType(type);
