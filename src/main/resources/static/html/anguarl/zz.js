@@ -100,12 +100,6 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
         }
     }
 
-    $scope.search = function () {
-        var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
-        var msg = ajax_http_get(url);
-        console.log(msg);
-    }
-
     document.onkeydown = function (e) {
         if ((e.keyCode || e.which) == 13) {
             angular.element("#btn").click();
@@ -149,7 +143,6 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
 
         $("#text").show(1000);
         $scope.info = JSON.stringify(msg);
-        console.log(msg.data);
         if (msg.data == null) {
             $scope.showMsg = false;
             setTimeout(function () {
@@ -175,6 +168,13 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
             $("#btn").text('执行');
         }, 5000);
 
+    }
+    $scope.search = function () {
+        var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
+        var msg = ajax_http_get(url);
+        $scope.groupList = msg.data;
+        setSessionObj('groupList', $scope.groupList);
+        href('/group');
     }
 
 

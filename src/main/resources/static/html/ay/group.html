@@ -179,9 +179,8 @@
             <div class="sidebar-filter-block">
 
                 <a target="_blank" ng-repeat="item in groupList | limitTo:3" ng-click="goInfo(item.id)">
-                    {{item.path}}
-                    <!--<img ng-src="{{item.path}}" width="160"-->
-                         <!--height="160" class="sidebar-buy-url"/>-->
+                    <img ng-src="{{item.path}}" width="160"
+                         height="160" class="sidebar-buy-url"/>
                     <div class="side-promo-name" ng-bind="item.company_name"></div>
                 </a>
 
