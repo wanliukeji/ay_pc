@@ -24,9 +24,9 @@ import java.util.List;
 @Slf4j
 public class FileService extends ServiceImpl<FileMapper, FileEntity> implements Serializable {
 
-    public ResultJSON<?> getInfos(String userId) {
+    public ResultJSON<?> getInfos(String fiedId) {
         try {
-            List <FileEntity> files = baseMapper.getInfoList(userId);
+            List <FileEntity> files = baseMapper.getInfoList(fiedId);
             return ResultJSON.success(files);
         } catch (Exception ex) {
             return ResultJSON.error(CodeMsg.QUERY_ERROR);

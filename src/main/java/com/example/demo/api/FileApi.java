@@ -24,7 +24,7 @@ public interface FileApi {
     @GetMapping(value = "/api/file/getInfos", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "文件信息数据接口", notes = "文件信息数据接口")
     @Transactional
-    public ResultJSON<?> getInfos(@RequestParam("userId") String userId) throws Exception;
+    public ResultJSON<?> getInfos(@RequestParam("fiedId") String fiedId) throws Exception;
 
     @GetMapping(value = "/api/file/gethoppyList", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "文件信息数据接口", notes = "文件信息数据接口")

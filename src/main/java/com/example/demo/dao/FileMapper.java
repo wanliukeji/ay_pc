@@ -18,7 +18,7 @@ import java.util.List;
 @Mapper
 public interface FileMapper extends BaseMapper<FileEntity> {
 
-    List<FileEntity> getInfoList(@Param("userId") String userId);
+    List<FileEntity> getInfoList(@Param("fiedId") String fiedId);
 
     List<FileEntity> gethoppyList(@Param("text") String text);
 }

@@ -74,7 +74,7 @@ public class HttpClientService {
             entity.setCompany_name(name);
             entity.setMsgCode(msgCode);
             entity.setPhone(phone);
-            if (StringUtil.isEmty(type)) {
+            if (!StringUtil.isEmty(type)) {
                 entity.setType(StringUtil.get_Feid_type(name));
             } else {
                 entity.setType(type);
@@ -102,6 +102,7 @@ public class HttpClientService {
             Timestamp ts = new Timestamp(new Date().getTime());
             fileEntity.setUploadTime(ts);
             fileEntity.setSize("100KB");
+            fileEntity.setFiedId(fied.getId());
             if (i == 0) {
                 fileEntity.setType("G");
             } else {

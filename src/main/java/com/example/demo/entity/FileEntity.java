@@ -68,4 +68,9 @@ public class FileEntity {
      */
     private String imgUrl;
 
+    /**
+     * 信息编号
+     */
+    private Long fiedId;
+
 }

@@ -26,8 +26,8 @@ public class FileController implements FileApi {
     private FileService fileService;
 
     @Override
-    public ResultJSON<?> getInfos(String userId) throws Exception {
-        return fileService.getInfos(userId);
+    public ResultJSON<?> getInfos(String fiedId) throws Exception {
+        return fileService.getInfos(fiedId);
     }
 
     @Override

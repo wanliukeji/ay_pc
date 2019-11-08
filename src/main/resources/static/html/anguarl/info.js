@@ -3,8 +3,8 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
     $scope.hoppyItem = [];
     $scope.init = function () {
         $scope.entity = getSessionObj('entity');
-        $scope.files = getFiles($scope.entity.userId);
-        $scope.jpgs = getFiles($scope.entity.userId);
+        $scope.files = getFiles($scope.entity.id);
+        $scope.jpgs = getFiles($scope.entity.id);
 
         $scope.user = getUser();
         var userAddr = getCity();
@@ -17,8 +17,8 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
         }
     }
 
-    function getFiles(userId) {
-        var url = '/api/file/getInfos?userId=' + userId;
+    function getFiles(fiedId) {
+        var url = '/api/file/getInfos?fiedId=' + fiedId;
         var msg = ajax_http_get(url);
         return msg.data;
     }
