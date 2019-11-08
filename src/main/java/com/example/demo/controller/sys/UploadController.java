@@ -48,12 +48,12 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_g_img")
     @ResponseBody
-    public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,String userId, String msgCode) {
+    public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String userId, String msgCode, String fiedId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
-            entity = fileUploadTool.createFile(multipartFile, request);
+            entity = fileUploadTool.createFile(multipartFile, request, Long.valueOf(fiedId));
             if (null != userId && entity != null) {
                 entity.setUserId(userId);
                 entity.setType("G");
@@ -77,12 +77,12 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_z_img")
     @ResponseBody
-    public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,String userId, String msgCode) {
+    public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String userId, String msgCode, String fiedId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
-            entity = fileUploadTool.createFile(multipartFile, request);
+            entity = fileUploadTool.createFile(multipartFile, request, Long.valueOf(fiedId));
             if (null != userId && entity != null) {
                 entity.setUserId(userId);
                 entity.setType("Z");
@@ -103,12 +103,12 @@ public class UploadController {
      */
     @PostMapping(value = "/uploadfile_a_img")
     @ResponseBody
-    public void uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile,String userId, String msgCode) {
+    public void uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String userId, String msgCode, String fiedId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
         FileEntity entity = new FileEntity();
         FileUploadTool fileUploadTool = new FileUploadTool();
         try {
-            entity = fileUploadTool.createFile(multipartFile, request);
+            entity = fileUploadTool.createFile(multipartFile, request, Long.valueOf(fiedId));
             if (null != userId && entity != null) {
                 entity.setUserId(userId);
                 entity.setType("A");
@@ -134,14 +134,14 @@ public class UploadController {
     })
     @PostMapping(value = "/uploadfile_txt")
     @ResponseBody
-    public ResultJSON<Boolean> uploadfile_txt(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile) {
+    public ResultJSON<Boolean> uploadfile_txt(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String fiedId) {
         BufferedReader input;
         HttpServletRequest req = HttpServletRequestUtil.getRequest();
         try {
 
             FileEntity entity = new FileEntity();
             FileUploadTool fileUploadTool = new FileUploadTool();
-            entity = fileUploadTool.createFile(multipartFile, req);
+            entity = fileUploadTool.createFile(multipartFile, req, Long.valueOf(fiedId));
 
             String s = new String();
             input = new BufferedReader(new FileReader(entity.getPath()));

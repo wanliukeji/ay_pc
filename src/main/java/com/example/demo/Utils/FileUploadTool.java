@@ -36,7 +36,7 @@ public class FileUploadTool {
     // 允许的视频转码格式(mencoder)
     private static String[] allowAVI = {".wmv9", ".rm", ".rmvb"};
 
-    public FileEntity createFile(MultipartFile multipartFile, HttpServletRequest request) {
+    public FileEntity createFile(MultipartFile multipartFile, HttpServletRequest request, Long fiedId) {
         FileEntity entity = new FileEntity();
         boolean bflag = false;
         String fileName = multipartFile.getOriginalFilename().toString();
@@ -129,6 +129,7 @@ public class FileUploadTool {
                 entity.setNfileName(newFileName);
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 entity.setUploadTime(timestamp);
+                entity.setFiedId(fiedId);
                 return entity;
             } else {
                 return null;

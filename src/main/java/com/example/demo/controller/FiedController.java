@@ -41,8 +41,8 @@ public class FiedController implements FiedApi {
     @Override
     public ApiJSON saveFied(Fied entity) throws Exception {
         try {
-            boolean flag = relService.save(entity);
-            return ApiJSON.data(flag);
+            relService.save(entity);
+            return ApiJSON.data(entity);
         } catch (Exception ex) {
             ex.printStackTrace();
             return ApiJSON.error(ex.getMessage());

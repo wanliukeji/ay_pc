@@ -180,7 +180,7 @@ public class MenuService extends ServiceImpl<MenuMapper, SysMenu> implements Ser
         try {
             FileEntity entity = new FileEntity();
             FileUploadTool fileUploadTool = new FileUploadTool();
-            entity = fileUploadTool.createFile(multipartFile, req);
+            entity = fileUploadTool.createFile(multipartFile, req, null);
             String s = new String();
             InputStreamReader isr = new InputStreamReader(new FileInputStream(entity.getPath()), "GBK");
             input = new BufferedReader(isr);

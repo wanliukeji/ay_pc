@@ -28,6 +28,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         href('/login');
     }
 
+    $scope.fiedId = '';
+
     $scope.entity = {
         head_line: '宁波铝合金门窗--新桥门窗加工厂,终身保修',
         telephone: '4008900126',
@@ -155,6 +157,8 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
                     data: $scope.entity,
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
+                    $scope.fiedId = res.data.id;
+                    console.log($scope.fiedId);
                     if (status == 200) {
                         upload_g_img();
                         upload_z_img();
@@ -185,6 +189,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
+        form.append('fiedId',$scope.fiedId);
         form.append('userId', $scope.user.id);
         form.append('msgCode', $scope.entity.msgCode);
         var url = 'uploadfile_g_img';
@@ -193,6 +198,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             form.delete("fileName");
             form.delete("userId");
             form.delete('msgCode');
+            form.delete('fiedId');
         }
     }
 
@@ -206,12 +212,14 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             var file = nodes[i].files[0];
             if (null != file) {
                 form.append("fileName", file);
+                form.append('fiedId',$scope.fiedId);
                 form.append('userId', $scope.user.id);
                 form.append('msgCode', $scope.entity.msgCode);
                 upload(url, method_post, form);
                 form.delete("fileName");
                 form.delete("userId");
                 form.delete('msgCode');
+                form.delete('fiedId');
             }
         }
     }
