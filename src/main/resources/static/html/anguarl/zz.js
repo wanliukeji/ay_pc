@@ -6,6 +6,7 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
     $scope.phone = '4008194669';
     $scope.type = '';
     $scope.imgs = [];
+    $scope.lon = 0;
 
 
     var userip = getIp();
@@ -21,13 +22,6 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
         }
     };
 
-    $scope.sendMsg = function () {
-        if (!is_Exist($scope.user)) {
-            angular.element("#showModel").click();
-        } else {
-            angular.element("#queryModel").click();
-        }
-    };
     // 发布安装加工
     $scope.sendAz = function () {
         href('/release')
@@ -119,17 +113,11 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
     }
 
     $("#btn").click(function () {
-        $("#btn").attr("disable","disable");
+        $('#show_span').text("正在采集数据请稍等.......");
+        setTimeout(exec(), 5000);
         setTimeout(function () {
-            $("#btn").text('执行中.....');
-        },2000);
-        setTimeout(exec(),5000);
-        setTimeout(function () {
-            $("#btn").text('执行完毕');
-        },3000)
-        setTimeout(function () {
-            $("#btn").text('执行');
-        },5000);
+            $('#show_span').text("本功能仅用于58网个人发布信息快速搬迁");
+        }, 5000);
     });
 
     function exec() {
@@ -152,15 +140,41 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
             $("#phone_span").text("");
         }
 
-        $scope.stauts = '执行中....';
+        setTimeout(function () {
+            $("#btn").text('执行中.....');
+        }, 3000);
 
         var url = "/api/http/get_WB?reqUrl=" + $scope.reqUrl + "&phone=" + $scope.phone + "&type=" + $scope.type;
         var msg = ajax_http_get(url);
 
         $("#text").show(1000);
         $scope.info = JSON.stringify(msg);
+        console.log(msg.data);
+        if (msg.data == null) {
+            $scope.showMsg = false;
+            setTimeout(function () {
+                $("#btn").text('执行完毕');
+            }, 5000)
+            setTimeout(function () {
+                $("#btn").text('执行');
+            }, 5000);
+            $('#show_span').text("本功能仅用于58网个人发布信息快速搬迁");
+            return;
+        }
+        $scope.showMsg = true;
         $scope.imgs = msg.data[1];
-        console.log($scope.imgs)
+
+
+        setTime();
+        $("#btn").attr("disable", "disable");
+
+        setTimeout(function () {
+            $("#btn").text('执行完毕');
+        }, 5000)
+        setTimeout(function () {
+            $("#btn").text('执行');
+        }, 5000);
+
     }
 
 
@@ -179,6 +193,17 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
                 return false;
             }
         });
+    }
+
+    function setTime() {
+        $('.progress').show();
+        setInterval(function () {
+            $scope.lon += 20;
+            $('#jdt').css({"width": $scope.lon + "%"});
+            if ($scope.lon >= 100) {
+                return;
+            }
+        }, 1000);
     }
 });
 

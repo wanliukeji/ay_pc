@@ -177,6 +177,7 @@
 
         html, body {
             background-color: #020202;
+            overflow-x: hidden;
         }
     </style>
     <script>
@@ -290,7 +291,9 @@
                  style="padding: 5px; min-height: 500px;">
             <div style="width: 100%; height: 100%; margin: 0 auto;">
                 <p style="width: 100%; text-align: center; color: black; font-weight: bolder; font-size: 22px; margin-top: 20px;">
-                    五八数据采集</p>
+                    五八数据采集
+                    <a href="https://nb.58.com/jiancai/40077555335973x.shtml?adtype=1&entinfo=40077555335973_q&adact=3&psid=196657190206201016852015062&iuType=q_2&link_abtest=&ClickID=1&PGTID=0d3000ea-0008-d534-9307-5c389707e410&slot=1000616" style="color: red; float: right; margin-right: 200px; font-size: 16px;">进入目标网站</a>
+                </p>
                 <table style="margin: 0 auto; width: 70%;">
                     <tr style="line-height: 30px; font-size: 18px;">
                         <td align="center" style="font-size: 24px;">网址:</td>
@@ -339,7 +342,7 @@
                     </tr>
                 </table>
 
-                <p style="text-align: center; line-height: 35px;color: #ff3211;">本功能仅用于58网个人发布信息快速搬迁</p>
+                <p style="text-align: center; line-height: 35px;color: #ff3211;"><span id="show_span">本功能仅用于58网个人发布信息快速搬迁</span></p>
                 <p style="padding-left: 20px; font-size: 16px;">
                     <b>操作流程:</b>
                     <br>
@@ -359,25 +362,30 @@
                     <br>
                     8: 若成功在下方显示抓取数据则该信息已被成功抓取并同步于服务器中,您可以返回首页进行查询 查看
                     <br>
+                    9: <span style="color: red;">抓取完成后 请按F5  或 Ctrl + R 进行页面刷新,更换网页进行下一轮数据抓取</span>
+                    <br>
                     温馨提示: 若该功能涉及到您的个人隐私请联系我们工作人员并尽快删除,紧急联系QQ:1193227758 微信:jiangxishoufu
                 </p>
 
                 <br>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75"
-                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                        <span class="sr-only">75% Complete</span>
+                <div class="progress" ng-show="showMsg == true" style="margin-bottom: 20px; display: none;">
+                    <div id="jdt" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="75"
+                         aria-valuemin="0" aria-valuemax="100">
+                        <!--<span class="sr-only" ng-bind="lon"></span>-->
                     </div>
                 </div>
 
-                <div id="text" style=" display: none;">
-                    <h3 style="border-bottom: 1px saddlebrown solid;">以下是您成功抓取的数据&nbsp;&nbsp;&nbsp;&nbsp;已成功发布于门窗网如有问题请联系站长及开发人员</h3>
-                    <p ng-bind="info" style="margin: 10px; font-size: 16px; line-height: 25px; color: #7F4F21;">
-                    </p>
+                <div ng-show="showMsg == true">
+                    <h3 style="border-bottom: 1px saddlebrown solid; padding-bottom: 10px;">以下是您成功抓取的数据&nbsp;&nbsp;&nbsp;&nbsp;已成功发布于门窗网如有问题请联系站长及开发人员</h3>
+                    <p ng-bind="info" style="margin: 10px; font-size: 16px; line-height: 25px; color: #7F4F21;"></p>
                 </div>
-                <div>
+                <div ng-show="showMsg == true">
                     <img ng-repeat="item in imgs" ng-src="{{item.imgUrl}}" width="20%" height="150"
                          style="padding: 5px;">
+                </div>
+
+                <div id="text" ng-show="showMsg == false">
+                    <h3 style="border-bottom: 1px saddlebrown solid; padding-bottom: 10px;">你还还未抓取到任何数据&nbsp;&nbsp;&nbsp;&nbsp;请更换网址,或进入网址查看是否有验证码并验证通过后再次操作</h3>
                 </div>
             </div>
         </section>
