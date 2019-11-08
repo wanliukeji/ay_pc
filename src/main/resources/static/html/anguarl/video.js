@@ -137,7 +137,7 @@ var app = angular.module('myVideo', []).controller('videoCtrl', function ($scope
 
     $scope.search = function () {
         var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
-        var msg = ajax_http(url, method_get, null);
+        var msg = ajax_http_get(url);
         $scope.groupList = msg.data;
         setSessionObj('groupList', $scope.groupList);
         href('/group');
