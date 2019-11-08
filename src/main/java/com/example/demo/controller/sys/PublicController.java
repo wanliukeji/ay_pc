@@ -250,4 +250,13 @@ public class PublicController {
     public String about() {
         return "ay/about";
     }
+
+    /**
+     * 蜘蛛页面
+     * @return
+     */
+    @GetMapping("/zz")
+    public String zz() {
+        return "ay/zz";
+    }
 }

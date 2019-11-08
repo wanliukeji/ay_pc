@@ -3,6 +3,7 @@ package com.example.demo.HttpClient;
 import java.io.IOException;
 import java.util.List;
 
+import com.example.demo.Utils.ListUtil;
 import com.example.demo.entity.Fied;
 import com.example.demo.entity.FileEntity;
 import com.example.demo.json.ApiJSON;
@@ -52,16 +53,21 @@ public class HttpClientController implements HttpClientApi {
 
     @Override
     @Transactional
-    public ApiJSON get_WB(String url, String phone, String type) {
+    public ApiJSON get_WB( String reqUrl, String phone, String type) {
         try {
+            String url = reqUrl;
             Fied fied = service.get_WB_fied(url, phone, type);
             fiedService.save(fied);
             List<FileEntity> files = service.get_WB_file(url, fied);
             for (int i = 0; i < files.size(); i++) {
                 fileService.save(files.get(i));
             }
-            return ApiJSON.success("抓取成功");
+            List ls = ListUtil.ArrayList();
+            ls.add(fied);
+            ls.add(files);
+            return ApiJSON.data(ls);
         } catch (Exception ex) {
+            ex.printStackTrace();
             return ApiJSON.error(ex.getMessage());
         }
     }

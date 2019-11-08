@@ -102,7 +102,7 @@ public class HttpClientService {
             Timestamp ts = new Timestamp(new Date().getTime());
             fileEntity.setUploadTime(ts);
             fileEntity.setSize("100KB");
-            if (i == 1) {
+            if (i == 0) {
                 fileEntity.setType("G");
             } else {
                 fileEntity.setType("z");
