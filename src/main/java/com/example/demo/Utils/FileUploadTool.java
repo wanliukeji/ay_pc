@@ -124,7 +124,7 @@ public class FileUploadTool {
                     }
                 }
                 entity.setSize(size);
-                entity.setPath(fileNamedirs);
+                entity.setPath("\\static\\upload"+File.separator + newFileName + fileEnd);
                 entity.setFileName(name);
                 entity.setNfileName(newFileName);
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
