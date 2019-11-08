@@ -12,7 +12,7 @@
     <link href="/static/css/ListBaicons.css" rel="stylesheet"/>
     <link href="/static/css/ListIndex.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/css/public.css">
-    <link rel="shortcut icon" href=" /static/ico/mc.ico" />
+    <link rel="shortcut icon" href=" /static/ico/mc.ico"/>
     <style type="text/css">
         img:hover {
             transform: scale(1.1);
@@ -40,7 +40,7 @@
     </style>
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?241360c342d65af9bbcb864d8e72311e";
             var s = document.getElementsByTagName("script")[0];
@@ -50,7 +50,8 @@
 
 </head>
 
-<body style="background-color: black;" class="category-xiaoshou category-gongzuo view-table" ng-app="myGroup" ng-controller="groupCtrl" ng-init="init()">
+<body style="background-color: black;" class="category-xiaoshou category-gongzuo view-table" ng-app="myGroup"
+      ng-controller="groupCtrl" ng-init="init()">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
 <button data-target="#selectModel" id="queryModel" data-toggle="modal" hidden>选择发布</button>
 <header style="background-color: black;">
@@ -118,7 +119,7 @@
 </header>
 <ul class="search-crumbs">
     <li><a href="/home" style="color: white;">门窗网</a></li>
-    <li><i class="icon-arrow-right"></i><a  style="color: white;" ng-bind="type"></a></li>
+    <li><i class="icon-arrow-right"></i><a style="color: white;" ng-bind="type"></a></li>
 </ul>
 <section>
 
@@ -178,9 +179,9 @@
             <div class="sidebar-filter-block">
 
                 <a target="_blank" ng-repeat="item in groupList | limitTo:3" ng-click="goInfo(item.id)">
-
-                    <img ng-src="{{item.path}}" width="160"
-                         height="160" class="sidebar-buy-url"/>
+                    {{item.path}}
+                    <!--<img ng-src="{{item.path}}" width="160"-->
+                         <!--height="160" class="sidebar-buy-url"/>-->
                     <div class="side-promo-name" ng-bind="item.company_name"></div>
                 </a>
 
@@ -199,12 +200,14 @@
                     <a title="尚未开发" target="_blank">优质商家</a>
                 </li>
             </ul>
-            <div class="list-sort"><span class="sort-label" style="color: white;">共 <span class="sort-label" style="color: white;"
-                                                                    ng-bind="groupList.size()"></span> 条加工门窗信息</span>
+            <div class="list-sort"><span class="sort-label" style="color: white;">共 <span class="sort-label"
+                                                                                          style="color: white;"
+                                                                                          ng-bind="groupList.size()"></span> 条加工门窗信息</span>
             </div>
         </section>
 
-        <ul id="ctl00_DivInfoListControls" style="border-top: 1px dotted #eee; min-height: 130px;" class="list-ad-items">
+        <ul id="ctl00_DivInfoListControls" style="border-top: 1px dotted #eee; min-height: 130px;"
+            class="list-ad-items">
             <li style="height: 170px;" ng-repeat="item in groupList">
                 <a ng-click="goInfo(item.id)" target="_blank" class="media-cap " style="height: 125px;">
                     <img ng-src="{{item.path}}" width="150" height="125"/>
@@ -271,7 +274,7 @@
 
 <script type="text/javascript" src="/static/js/jl-footer.js"></script>
 <div id="sidebar-buttons">
-    <a id="Qu114Icon" ><i class="icon-mobile2"></i></a>
+    <a id="Qu114Icon"><i class="icon-mobile2"></i></a>
     <div id="href" class="qrcode-login-dialog in left fade" style="display: none;">
         <img src="/static/image/wechatqrc.png" width="110" height="110">
         <img src="/static/image/ljf.png" width="110" height="110">

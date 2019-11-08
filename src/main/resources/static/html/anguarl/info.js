@@ -32,7 +32,6 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
     $scope.goInfo = function (id) {
         var url = 'api/fied/getInfoVo?id=' + id;
         var msg = ajax_http_get(url);
-        console.log(msg);
         if (msg.code = 200) {
             $scope.entity = msg.date;
             $scope.entity.company_name = '西部门窗';

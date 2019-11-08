@@ -142,11 +142,9 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     $scope.search = function () {
         var url = '/api/fied/getPageAll?searchVal=' + $scope.searchVal;
         var msg = ajax_http_get(url);
-        console.log(msg);
-
-        // $scope.groupList = msg.data;
-        // setSessionObj('groupList', $scope.groupList);
-        // href('/group');
+        $scope.groupList = msg.data;
+        setSessionObj('groupList', $scope.groupList);
+        href('/group');
     }
 
     document.onkeydown = function (e) {
