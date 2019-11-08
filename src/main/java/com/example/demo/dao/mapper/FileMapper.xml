@@ -7,7 +7,7 @@
         file.id,
         file.type,
         file.size,
-        SUBSTRING(file.path,33) as path,
+        file.path,
         file.fileName,
         file.nfileName,
         file.uploadTime,
