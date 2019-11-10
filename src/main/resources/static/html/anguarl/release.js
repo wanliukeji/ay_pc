@@ -189,7 +189,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
         form.append('fileName', file);
-        form.append('fiedId',$scope.fiedId);
+        form.append('fiedId', $scope.fiedId);
         form.append('userId', $scope.user.id);
         form.append('msgCode', $scope.entity.msgCode);
         var url = 'uploadfile_g_img';
@@ -212,7 +212,7 @@ var app = angular.module('myRel', []).controller('relCtrl', function ($scope, $h
             var file = nodes[i].files[0];
             if (null != file) {
                 form.append("fileName", file);
-                form.append('fiedId',$scope.fiedId);
+                form.append('fiedId', $scope.fiedId);
                 form.append('userId', $scope.user.id);
                 form.append('msgCode', $scope.entity.msgCode);
                 upload(url, method_post, form);

@@ -1,5 +1,4 @@
 var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, $http, $q) {
-
     $scope.user = getUser();
     $scope.stauts = '登录';
 

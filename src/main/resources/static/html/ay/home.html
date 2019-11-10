@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>门窗网</title>
-    <meta name="Keywords" content="安义门窗网-免费发布门窗信息"/>
+    <meta name="Keywords" content="门窗网-免费发布门窗信息"/>
     <meta name="Description"
-          content="安义门窗网-免费发布门窗信息"/>
+          content="门窗网-免费发布门窗信息"/>
     <script src="https://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
     <link href="/static/css/Jquery-ui.css" type="text/css" rel="stylesheet"/>
     <link href="/static/css/Index.css" type="text/css" rel="stylesheet"/>
@@ -565,11 +565,9 @@
                 <a class="more-form" style="float: right; font-size: 12px; color: #7F4F21;" ng-click="goGroup('加工')">了解更多>></a>
             </div>
             <div class="section-box-div-1">
-                <!--{{jgItems[1].path}}-->
                 <div>
                     <a ng-click="goInfo(jgItems[0].id,jgItems[0].type)">
                         <img class="div-4-img div-1-img" ng-src="{{jgItems[0].path}}">
-                        <!--<img class="div-4-img div-1-img" src="\static\upload\门窗C3C5B4B020191108142922.png">-->
                     </a>
                 </div>
                 <div>
@@ -633,7 +631,7 @@
                     </a>
                 </div>
                 <div>
-                    <p class="section-box-div-4-name"  title="{{dgItems[0].head_line}}" style="text-align: center; overflow: hidden; padding-right: 5px; text-overflow:ellipsis;">
+                    <p class="section-box-div-4-name"  title="{{dgItems[0].head_line}}" style=" overflow: hidden; padding-right: 5px; text-overflow:ellipsis;">
                         <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)" ng-bind="dgItems[0].head_line"></a>
                     </p>
                     <a ng-click="goInfo(dgItems[0].id,dgItems[0].type)">
@@ -655,7 +653,7 @@
                     </a>
                 </div>
                 <div class="section-box-div-4-info">
-                    <p class="section-box-div-4-name" title="{{item.head_line}}" style="text-align: center; overflow: hidden; padding-right: 5px; text-overflow:ellipsis;">
+                    <p class="section-box-div-4-name"  title="{{dgItems[0].head_line}}" style="text-align: center; overflow: hidden; padding-right: 5px; text-overflow:ellipsis;">
                         <a ng-click="goInfo(item.id,item.type)" ng-bind="item.head_line"></a>
                     </p>
                     <a ng-click="goInfo(item.id,item.type)">
@@ -694,7 +692,7 @@
                     </a>
                 </div>
                 <div>
-                    <p class="section-box-div-4-name" title="{{azItems[0].head_line}}" style="text-align: center; overflow: hidden;  text-overflow:ellipsis;" >
+                    <p class="section-box-div-4-name" title="{{azItems[0].head_line}}" style="overflow: hidden;  text-overflow:ellipsis;" >
                         <a ng-click="goInfo(azItems[0].id,azItems[0].type)" ng-bind="azItems[0].head_line"></a>
                     </p>
                     <a ng-click="goInfo(azItems[0].id,azItems[0].type)">

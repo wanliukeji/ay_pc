@@ -157,6 +157,7 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
                     data: $scope.entity,
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
+                    $scope.fiedId = res.data.id;
                     if (status == 200) {
                         upload_g_img();
                         upload_z_img();
@@ -176,67 +177,75 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
             }
             ;
 
+
+            //上传广告图片
+            function upload_g_img() {
+                var form = new FormData();
+                var file = document.getElementById("gg_src").files[0];
+                form.append('fileName', file);
+                form.append('fiedId', $scope.fiedId);
+                form.append('userId', $scope.user.id);
+                form.append('msgCode', $scope.entity.msgCode);
+                var url = 'uploadfile_g_img';
+                if (null != file) {
+                    upload(url, method_post, form);
+                    form.delete("fileName");
+                    form.delete("userId");
+                    form.delete('msgCode');
+                    form.delete('fiedId');
+                }
+            }
+
+
+            //上传作品图片
+            function upload_z_img(node) {
+                var form = new FormData();
+                var url = '/uploadfile_z_img';
+                var nodes = document.getElementsByName("z_img");
+                for (let i = 0; i < nodes.length; i++) {
+                    var file = nodes[i].files[0];
+                    if (null != file) {
+                        form.append("fileName", file);
+                        form.append('fiedId', $scope.fiedId);
+                        form.append('userId', $scope.user.id);
+                        form.append('msgCode', $scope.entity.msgCode);
+                        upload(url, method_post, form);
+                        form.delete("fileName");
+                        form.delete("userId");
+                        form.delete('msgCode');
+                        form.delete('fiedId');
+                    }
+                }
+            }
+
+
+            //上传案例图片
+            function upload_a_img() {
+                var form = new FormData();
+                var url = '/uploadfile_a_img';
+                var nodes = document.getElementsByName("a_img");
+                for (let i = 0; i < nodes.length; i++) {
+                    var file = nodes[i].files[0];
+                    if (null != file) {
+                        form.append("fileName", file);
+                        form.append('userId', $scope.user.id);
+                        form.append('msgCode', $scope.entity.msgCode);
+                        upload(url, method_post, form);
+                        form.delete("fileName");
+                        form.delete("userId");
+                        form.delete('msgCode');
+                    }
+                }
+            }
+
+
             if ($scope.show_num_next > 3) {
                 $scope.show_num_next = 0;
             }
         }
     }
 
-    //上传广告图片
-    function upload_g_img() {
-        var form = new FormData();
-        var file = document.getElementById("gg_src").files[0];
-        form.append('fileName', file);
-        form.append('userId', $scope.user.id);
-        form.append('msgCode', $scope.entity.msgCode);
-        var url = 'uploadfile_g_img';
-        if (null != file) {
-            upload(url, method_post, form);
-            form.delete("fileName");
-            form.delete("userId");
-            form.delete('msgCode');
-        }
-    }
 
-
-    //上传作品图片
-    function upload_z_img(node) {
-        var form = new FormData();
-        var url = '/uploadfile_z_img';
-        var nodes = document.getElementsByName("z_img");
-        for (let i = 0; i < nodes.length; i++) {
-            var file = nodes[i].files[0];
-            if (null != file) {
-                form.append("fileName", file);
-                form.append('userId', $scope.user.id);
-                form.append('msgCode', $scope.entity.msgCode);
-                upload(url, method_post, form);
-                form.delete("fileName");
-                form.delete("userId");
-                form.delete('msgCode');
-            }
-        }
-    }
-
-
-    //上传案例图片
-    function upload_a_img() {
-        var form = new FormData();
-        var url = '/uploadfile_a_img';
-        var nodes = document.getElementsByName("a_img");
-        for (let i = 0; i < nodes.length; i++) {
-            var file = nodes[i].files[0];
-            if (null != file) {
-                form.append("fileName", file);
-                form.append('userId', $scope.user.id);
-                form.append('msgCode', $scope.entity.msgCode);
-                upload(url, method_post, form);
-                form.delete("fileName");
-                form.delete("userId");
-                form.delete('msgCode');
-            }
-        }
-    }
 
     //获取服务范围区域
     function getAre() {
