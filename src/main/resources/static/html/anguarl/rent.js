@@ -142,8 +142,6 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
 
                 var time = dateFomat_YYMMDDHHFFMM();
                 $scope.entity.msgCode = time + $scope.user.id;
-
-                alert(1);
                 $http({
                     url: '/api/rent/save',
                     method: "POST",

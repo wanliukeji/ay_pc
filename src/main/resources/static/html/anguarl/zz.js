@@ -8,7 +8,6 @@ var app = angular.module('myZZ', []).controller('ZZCtrl', function ($scope, $htt
     $scope.imgs = [];
     $scope.lon = 0;
 
-
     var userip = getIp();
 
     var userAddr = getCity();
