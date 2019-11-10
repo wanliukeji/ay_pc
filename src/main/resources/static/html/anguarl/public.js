@@ -295,14 +295,24 @@ function getServiceItem(url) {
 }
 
 function getIp() {
-    var ip = returnCitySN.cip;
-    return ip;
+    try {
+        var ip = returnCitySN.cip;
+        return ip;
+    } catch (e) {
+        console.log(e.message)
+        return '';
+    }
 }
 
 function getCity() {
-    var city = returnCitySN.cname;
-    city = city.substring(city.indexOf("省") + 1 || city.indexOf("区") + 1, city.indexOf("市"));
-    return city;
+    try {
+        var city = returnCitySN.cname;
+        city = city.substring(city.indexOf("省") + 1 || city.indexOf("区") + 1, city.indexOf("市"));
+        return city;
+    } catch (e) {
+        console.log(e.message);
+        return '';
+    }
 }
 
 function getUserAddr() {

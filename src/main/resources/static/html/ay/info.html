@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>门窗网-{{entity.company_name}}</title>
+    <title>门窗网-{{entity.head_line}}</title>
     <meta name="description" content='门窗信息分类网'/>
     <meta name="mobile-agent" content="门窗信息分类网"/>
     <meta name="mobile-agent" content="门窗信息分类网"/>
@@ -13,7 +13,7 @@
     <link href="/static/css/DetailedPage.css" rel="stylesheet"/>
     <link href="/static/css/baicons2.css" rel="stylesheet"/>
     <link href="/static/css/DetailedIcons.css" rel="stylesheet"/>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <style type="text/css">
         .viewad-right {
             width: 320px;
@@ -51,10 +51,10 @@
             transition: all 0.8s;
         }
     </style>
-    <link rel="shortcut icon" href=" /static/ico/mc.ico" />
+    <link rel="shortcut icon" href=" /static/ico/mc.ico"/>
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?241360c342d65af9bbcb864d8e72311e";
             var s = document.getElementsByTagName("script")[0];
@@ -69,8 +69,9 @@
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=QmcMSpFIvtQyMkkvBQwMyEcWyaAF0dZi"/>
     <!--  <script type = "text/javascript" src = "http://api.map.baidu.com/api?v=2.0&ak=NP160iZgGFkIGoe3LiQrRWC1L554h1It"/>-->
     <!--  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=F5g7TtwB3sBzNS7AKWvtCQTtCqlxxtGw"></script>-->
-    <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
-    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css"/>
 </head>
 <body class="viewad-baomu viewad-fuwu viewad-new">
 <button data-target="#importModel" id="showModel" data-toggle="modal" hidden> 点击登录</button>
@@ -122,7 +123,7 @@
         <div class="viewad-content ">
             <div class="viewad-header">
                 <div class="viewad-title">
-                    <h1  ng-bind="entity.company_name"></h1>
+                    <h1 ng-bind="entity.head_line"></h1>
                 </div>
                 <div class="viewad-actions">
                     <span>信息编号:&nbsp;<i ng-bind="entity.id"></i>&nbsp;</span>
@@ -136,22 +137,27 @@
                     <div class="viewad-meta2">
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
-                            <table id="Qu114TablePare" cellpadding="0" cellspacing="0" border="0">
-                                <tr>
-                                    <td class="biaoti">项目：</td>
-                                    <td><span ng-bind="entity.type"></span></td>
-                                </tr>
-                            </table>
+                            <label>项目：</label>
+                            <div class="content" ng-bind="entity.type">
+                            </div>
+                        </div>
 
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>服务类型：</label>
+                            <div class="content" ng-bind="entity.service">
+                            </div>
                         </div>
 
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
                             <label>服务区域：</label>
                             <div class="content" ng-bind="entity.fw">
-                                <!--<a href='/haining/waiyupeixun/'>北仑区</a> - -->
-                                <!--<a href='/hainzb/waiyupeixun/'>北仑周边</a>-->
                             </div>
+                        </div>
+
+                        <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
+                            <label>所在地：</label>
+                            <div class="content" ng-bind="entity.procode + entity.city + entity.countycode"></div>
                         </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
@@ -173,6 +179,15 @@
                             <div class="content">
                     <span>
                         <a target="_blank" ng-bind="entity.user_wx"></a>
+                        </span>
+                            </div>
+                        </div>
+
+                        <div class="viewad-meta2-item">
+                            <label>QQ号：</label>
+                            <div class="content">
+                    <span>
+                        <a target="_blank" ng-bind="entity.user_qq"></a>
                         </span>
                             </div>
                         </div>
@@ -249,7 +264,7 @@
                     </div>
 
                     <div class="viewad-text" style="color:#333;">
-                       <p ng-bind="entity.details"></p>
+                        <p ng-bind="entity.details"></p>
                     </div>
 
                     <div class="photo-gallery big">
@@ -268,7 +283,8 @@
                         <div class="section-title">地址</div>
                     </div>
 
-                    <div class="viewad-text" style="color:#333; width: 100%; height: 500px; border: black 1px solid;" id="container">
+                    <div class="viewad-text" style="color:#333; width: 100%; height: 500px; border: black 1px solid;"
+                         id="container">
 
                     </div>
 
@@ -313,7 +329,8 @@
                                 <div class="item-content">
                                     <p class="price"></p>
                                     <p class="adress">
-                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span></p>
+                                        <span>南湖区</span><span>&nbsp;-&nbsp;</span><span ng-bind="item.address"></span>
+                                    </p>
                                     <p class="create-time"><span ng-bind="item.createDate">&nbsp;</span></p>
                                 </div>
                             </a>
@@ -347,7 +364,8 @@
                 </div>
                 <div class="poster-detail">
                     <h3>
-                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name" ng-bind="entity.link"></a>
+                        <a target="_blank" href="http://user.qu114.com/43201638/" class="poster-name"
+                           ng-bind="entity.link"></a>
                     </h3>
                     <div class="poster-createTime">
                         注册时间：<i ng-bind="entity.createDate"></i>

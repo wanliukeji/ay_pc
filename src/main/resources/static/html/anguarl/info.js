@@ -5,6 +5,7 @@ var app = angular.module('myInfo', []).controller('infoCtrl', function ($scope, 
         $scope.entity = getSessionObj('entity');
         $scope.files = getFiles($scope.entity.id);
         $scope.jpgs = getFiles($scope.entity.id);
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>:' + JSON.stringify($scope.entity));
 
         $scope.user = getUser();
         var userAddr = getCity();
