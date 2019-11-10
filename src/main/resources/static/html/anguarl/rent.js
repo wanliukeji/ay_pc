@@ -149,6 +149,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
                     data: $scope.entity,
                     headers: {"Content-Type": "application/json;charset=utf-8"}
                 }).success(function (res, status, header, config) {
+                    $scope.fiedId = res.data.id;
                     if (status == 200) {
                         upload_g_img();
                         upload_z_img();
@@ -178,6 +179,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
     function upload_g_img() {
         var form = new FormData();
         var file = document.getElementById("gg_src").files[0];
+        form.append('fiedId', $scope.fiedId);
         form.append('fileName', file);
         form.append('userId', $scope.user.id);
         form.append('msgCode', $scope.entity.msgCode);
@@ -200,6 +202,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
             var file = nodes[i].files[0];
             if (null != file) {
                 form.append("fileName", file);
+                form.append('fiedId', $scope.fiedId);
                 form.append('userId', $scope.user.id);
                 form.append('msgCode', $scope.entity.msgCode);
                 upload(url, method_post, form);
@@ -220,6 +223,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
             var file = nodes[i].files[0];
             if (null != file) {
                 form.append("fileName", file);
+                form.append('fiedId', $scope.fiedId);
                 form.append('userId', $scope.user.id);
                 form.append('msgCode', $scope.entity.msgCode);
                 upload(url, method_post, form);
