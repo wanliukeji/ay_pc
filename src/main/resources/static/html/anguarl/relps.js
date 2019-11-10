@@ -18,6 +18,10 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
         $scope.disList = getAddr(id);
     }
 
+    if (angular.equals(userAddr, "")) {
+        userAddr = '宁波';
+    }
+
     angular.element("#city").html(userAddr);
     angular.element("#userIp").html(userip);
 
@@ -44,6 +48,7 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
         address: '宁波市,海曙区,永寿街36号',
         video_url: '',
         gg_src: '',
+        timeNum: '',
         details: '\n' +
         '宁波新桥门窗主要从事建筑门窗工程施工设计安装。我们主要生产铝合金、感应门、木铝门窗、节能门窗、阳光房、艺术玻璃采光顶、艺术阳光房玻璃房及附加代理产品壁柜移动门、隔断墙。\n' +
         '上门测量、安装提供样品，可根据用户需要订做、加工、安装。只有想得到没有做不到！\n' +
@@ -150,7 +155,7 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
 
                 var time = dateFomat_YYMMDDHHFFMM();
                 $scope.entity.msgCode = time + $scope.user.id;
-
+                console.log(JSON.stringify($scope.entity));
                 $http({
                     url: '/api/fied/save',
                     method: "POST",
@@ -244,7 +249,6 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
             }
         }
     }
-
 
 
     //获取服务范围区域

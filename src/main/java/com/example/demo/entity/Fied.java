@@ -72,4 +72,6 @@ public class Fied implements Serializable {
 
     private String msgCode;
 
+    private String timeNum;
+
 }
