@@ -143,6 +143,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
                 var time = dateFomat_YYMMDDHHFFMM();
                 $scope.entity.msgCode = time + $scope.user.id;
 
+                alert(1);
                 $http({
                     url: '/api/rent/save',
                     method: "POST",
@@ -189,6 +190,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
             form.delete("fileName");
             form.delete("userId");
             form.delete('msgCode');
+            form.delete('fiedId');
         }
     }
 
@@ -209,6 +211,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
                 form.delete("fileName");
                 form.delete("userId");
                 form.delete('msgCode');
+                form.delete('fiedId');
             }
         }
     }
@@ -230,6 +233,7 @@ var app = angular.module('Rent', []).controller('RentCtrl', function ($scope, $h
                 form.delete("fileName");
                 form.delete("userId");
                 form.delete('msgCode');
+                form.delete('fiedId');
             }
         }
     }

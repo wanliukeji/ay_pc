@@ -78,6 +78,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     function getRentVos(type) {
         var url = "/api/rent/getRentInfoVos?type=" + type;
         var msg = ajax_http_get(url);
+        console.log(JSON.stringify(msg));
         return msg.data;
     }
 
@@ -112,9 +113,11 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
             setSessionObj('entity', msg.data);
             href('/info_cl');
         } else if (angular.equals('定点', type) || angular.equals('店铺', type) || angular.equals('厂房', type)) {
+            console.log(id);
             var url = '/api/rent/getInfo?id=' + Number.parseInt(id);
             var msg = ajax_http_get(url);
             setSessionObj('entity', msg.data);
+            console.log(msg.data);
             href('/info_cz');
         } else if (angular.equals('设备', type)) {
             var url = '/api/rent/getInfo?id=' + Number.parseInt(id);

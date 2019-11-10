@@ -16,9 +16,9 @@
         rent.link,
         rent.createDate,
         rent.company_name,
-        rent.procode,
-        rent.citycode,
-        rent.countycode,
+        (SELECT i.`name` FROM tb_china i WHERE i.id = procode) AS procode,
+        (SELECT i.`name` FROM tb_china i WHERE i.id = citycode) AS citycode,
+        (SELECT i.`name` FROM tb_china i WHERE i.id = countycode) AS countycode,
         rent.video_url,
         rent.details,
         rent.address,
@@ -34,7 +34,7 @@
         rent.nature,
         rent.isExit,
         rent.type,
-        SUBSTRING(file.path,33) as path
+        file.path
         FROM
         rent
         INNER JOIN
@@ -63,9 +63,9 @@
         rent.link,
         rent.createDate,
         rent.company_name,
-        rent.procode,
-        rent.citycode,
-        rent.countycode,
+        (SELECT i.`name` FROM tb_china i WHERE i.id = procode) AS procode,
+        (SELECT i.`name` FROM tb_china i WHERE i.id = citycode) AS citycode,
+        (SELECT i.`name` FROM tb_china i WHERE i.id = countycode) AS countycode,
         rent.video_url,
         rent.details,
         rent.address,
@@ -81,7 +81,7 @@
         rent.nature,
         rent.isExit,
         rent.type,
-        SUBSTRING(file.path,33) as path
+        file.path
         FROM
         rent
         INNER JOIN

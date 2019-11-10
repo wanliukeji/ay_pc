@@ -34,8 +34,8 @@ public class RentController implements RentApi {
     @Override
     public ApiJSON saveRent(Rent entity) throws Exception {
         try {
-            boolean flag = rentService.save(entity);
-            return ApiJSON.data(flag);
+             rentService.save(entity);
+            return ApiJSON.data(entity);
         } catch (Exception ex) {
             ex.printStackTrace();
             return ApiJSON.error(ex.getMessage());

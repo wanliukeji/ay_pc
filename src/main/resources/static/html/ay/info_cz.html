@@ -3,11 +3,11 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>安义门窗网-{{entity.company_name}}</title>
-    <meta name="description" content='安义门窗信息分类网'/>
-    <meta name="mobile-agent" content="安义门窗信息分类网"/>
-    <meta name="mobile-agent" content="安义门窗信息分类网"/>
-    <meta name="mobile-agent" content="安义门窗信息分类网"/>
+    <title> 门窗网-{{entity.head_line}}</title>
+    <meta name="description" content=' 门窗信息分类网'/>
+    <meta name="mobile-agent" content=" 门窗信息分类网"/>
+    <meta name="mobile-agent" content=" 门窗信息分类网"/>
+    <meta name="mobile-agent" content=" 门窗信息分类网"/>
     <link href="/static/css/Index.css" rel="stylesheet"/>
     <link href="/static/css/Jquery-ui.css" rel="stylesheet"/>
     <link href="/static/css/DetailedPage.css" rel="stylesheet"/>
@@ -122,15 +122,15 @@
 </header>
 <div class="container box">
     <ul class="search-crumbs">
-        <li><a href="/home">安义门窗网</a></li>
+        <li><a href="/home"> 门窗网</a></li>
         <li><i class="icon-arrow-right"></i><a href="/group" ng-bind="entity.type"></a></li>
-        <li><i class="icon-arrow-right"></i><a ng-bind="entity.company_name"></a></li>
+        <li><i class="icon-arrow-right"></i><a ng-bind="entity.head_line"></a></li>
     </ul>
     <div class="viewad-main">
         <div class="viewad-content ">
             <div class="viewad-header">
                 <div class="viewad-title">
-                    <h1 ng-bind="entity.company_name"></h1>
+                    <h1 ng-bind="entity.head_line"></h1>
                 </div>
                 <div class="viewad-actions">
                     <span>信息编号:&nbsp; <span ng-bind="entity.id"></span> &nbsp;</span>
@@ -144,13 +144,8 @@
                     <div class="viewad-meta2">
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
-                            <table id="Qu114TablePare" cellpadding="0" cellspacing="0" border="0">
-                                <tr>
-                                    <td class="biaoti">项目：</td>
-                                    <td><span ng-bind="entity.type"></span></td>
-                                </tr>
-                            </table>
-
+                            <label>项目：</label>
+                            <div class="content" ng-bind="entity.type"></div>
                         </div>
 
                         <div class="viewad-meta2-item fuwu-content" style="width: 425px;">
@@ -291,7 +286,7 @@
                     </div>
 
                     <div class="viewad-text" style="font-size:14px;">
-                        如果您觉得“<strong ng-bind="entity.company_name"></strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去安义门窗网<a
+                        如果您觉得“<strong ng-bind="entity.head_line"></strong>”描述不够全，请联系我获取详细资料。(联系时请说明来自去 门窗网<a
                             class="a_res" target="_blank" href="/home" ng-bind="entity.type"></a>频道，将会获得更多的信任！)
                         <br/>
                         查看<a href='http://jx.qu114.com/waiyupeixun/' target="_blank">最新发布信息</a> >
@@ -309,7 +304,7 @@
                     </div>
                     <div class="alert-msg">
                         <p>
-                            <strong>安义门窗网提醒您：</strong>
+                            <strong> 门窗网提醒您：</strong>
                             ①请确定对方的发布信息属实、虚假宣传等诈骗行为！②要求预付定金、汇款或网上交易等方式请勿相信，谨防上当受骗！
                         </p>
                     </div>
@@ -325,7 +320,7 @@
 
                         <li ng-repeat="item in hoppyItem | limitTo:3">
                             <a href="" ng-click="goInfo(item.id)" target="_blank" class="clearfix">
-                                <p class="title">{{item.company_name}}</p>
+                                <p class="title">{{item.head_line}}</p>
                                 <div class="img ">
                                     <img ng-src="{{item.path}}" width="66" height="66"/></div>
                                 <div class="item-content">
@@ -346,7 +341,7 @@
             <p>
                 <i class="icon-info"></i>
                 小贴士：本页信息由用户及第三方发布，真实性、合法性由发布人负责。详情请阅读<a href="http://about.qu114.com/duty.aspx" target="_blank"
-                                                        rel="nofollow">去安义门窗网</a>
+                                                        rel="nofollow">去 门窗网</a>
             </p>
         </div>
 
@@ -470,7 +465,7 @@
                                 <img ng-src="{{item.path}}"/>
                             </div>
                             <div class="item-content">
-                                <p class="title" ng-bind="item.company_name">
+                                <p class="title" ng-bind="item.head_line">
                                 </p>
                                 <p class="price"></p>
                                 <p class="adress">

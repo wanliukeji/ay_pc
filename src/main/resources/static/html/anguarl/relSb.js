@@ -192,6 +192,7 @@ var app = angular.module('RelSb', []).controller('RelSbCtrl', function ($scope, 
             form.delete("fileName");
             form.delete("userId");
             form.delete('msgCode');
+            form.delete('fiedId');
         }
     }
 
@@ -211,6 +212,7 @@ var app = angular.module('RelSb', []).controller('RelSbCtrl', function ($scope, 
                 form.delete("fileName");
                 form.delete("userId");
                 form.delete('msgCode');
+                form.delete('fiedId');
             }
         }
     }
@@ -231,6 +233,7 @@ var app = angular.module('RelSb', []).controller('RelSbCtrl', function ($scope, 
                 form.delete("fileName");
                 form.delete("userId");
                 form.delete('msgCode');
+                form.delete('fiedId');
             }
         }
     }

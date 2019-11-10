@@ -239,6 +239,7 @@ var app = angular.module('myRelc', []).controller('relcCtrl', function ($scope, 
                         form.delete("fileName");
                         form.delete("userId");
                         form.delete('msgCode');
+                        form.delete('fiedId');
                     }
                 }
             }

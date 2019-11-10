@@ -37,11 +37,11 @@ public class RentVo implements Serializable {
 
     private String companyName;
 
-    private Integer procode;
+    private String procode;
 
-    private Integer citycode;
+    private String citycode;
 
-    private Integer countycode;
+    private String countycode;
 
     private String videoUrl;
 
