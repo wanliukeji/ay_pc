@@ -168,6 +168,26 @@ function upload(url, method, form) {
             console.log(err);
         }
     });
+
+};
+
+//通用文件上传
+function UPLOAD_POST(url, form) {
+    $.ajax({
+        url: url,
+        method: method_post,
+        data: form,
+        dataType: 'formData',
+        cache: false,//上传文件无需缓存
+        processData: false, // 使数据不做处理
+        contentType: false, // 不要设置Content-Type请求头
+        success: function (res) {
+            return res;
+        },
+        error: function (err) {
+            return JSON.stringify(err);
+        }
+    });
 };
 
 //判断集合是否为空

@@ -259,4 +259,13 @@ public class PublicController {
     public String zz() {
         return "ay/zz";
     }
+
+    /**
+     * 测试页面
+     * @return
+     */
+    @GetMapping("/model")
+    public String model() {
+        return "other/model";
+    }
 }

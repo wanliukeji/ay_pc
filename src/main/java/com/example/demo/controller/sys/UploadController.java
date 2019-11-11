@@ -1,15 +1,15 @@
 package com.example.demo.controller.sys;
 
+import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.FileUploadTool;
 import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.entity.FileEntity;
-import com.example.demo.entity.SysUser;
-import com.example.demo.entity.Users;
 import com.example.demo.exception.CodeMsg;
+import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
 //import com.example.demo.service.FileService;
 import com.example.demo.service.FileService;
-import com.example.demo.service.SysUserService;
+import io.lettuce.core.dynamic.annotation.Value;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,10 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author Chenny
@@ -160,4 +157,58 @@ public class UploadController {
         }
         return null;
     }
+
+// --------------------------------------------upload-start----------------------------------------------------------------------------
+
+    @RequestMapping(path = "/uploadfile_save", method = {RequestMethod.POST})
+    @ApiOperation(value = "文件上传", notes = "文件上传")
+    public ApiJSON addDish(@RequestParam("fileName") MultipartFile file) throws Exception {
+        String path = null;// 文件路径
+        double fileSize = file.getSize();
+        System.out.println("文件的大小是" + fileSize);
+
+        byte[] sizebyte = file.getBytes();
+        System.out.println("文件的byte大小是" + sizebyte.toString());
+
+
+        if (file != null) {// 判断上传的文件是否为空
+            String type = null;// 文件类型
+            String fileName = file.getOriginalFilename();// 文件原名称
+            System.out.println("上传的文件原名称:" + fileName);
+            HttpServletRequest request = HttpServletRequestUtil.getRequest();
+            // 判断文件类型
+            type = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length()) : null;
+            if (type != null) {// 判断文件类型是否为空
+
+                if ("GIF".equals(type.toUpperCase()) || "PNG".equals(type.toUpperCase()) || "JPG".equals(type.toUpperCase())) {
+
+                    // 项目在容器中实际发布运行的根路径
+                    String realPath = request.getSession().getServletContext().getRealPath("/");
+                    // 自定义的文件名称
+                    String trueFileName = String.valueOf(System.currentTimeMillis()) + "." + type;
+                    // 设置存放图片文件的路径
+                    String logoRealPathDir = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\loadFile\\1_" + fileName;
+//                    path = "/static/upload/"+fileName;
+
+                    String path2 = request.getSession().getServletContext().getRealPath("\\loadFile\\1") + DateUtil.getDateYMDHMS() + fileName;
+                    System.out.println("存放图片文件的路径:" + path2);
+
+                    file.transferTo(new File(path2));
+                    System.out.println("文件成功上传到指定目录下");
+
+                    return ApiJSON.data(path2);
+
+                }
+
+            } else {
+                System.out.println("不是我们想要的文件类型,请按要求重新上传");
+                return ApiJSON.data("不是我们想要的文件类型,请按要求重新上传");
+            }
+        } else {
+            System.out.println("文件类型为空");
+            return ApiJSON.data("文件类型为空");
+        }
+        return ApiJSON.data("已经成功上传到指定目录");
+    }
+// --------------------------------------------upload-end----------------------------------------------------------------------------
 }

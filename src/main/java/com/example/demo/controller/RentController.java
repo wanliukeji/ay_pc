@@ -1,15 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.api.FiedApi;
 import com.example.demo.api.RentApi;
-import com.example.demo.entity.Fied;
 import com.example.demo.entity.Rent;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
-import com.example.demo.req.ReqFiedParam;
-import com.example.demo.req.ReqParam;
-import com.example.demo.service.FiedService;
-import com.example.demo.service.RelService;
 import com.example.demo.service.RentService;
 import com.example.demo.vo.RentVo;
 import lombok.extern.slf4j.Slf4j;
