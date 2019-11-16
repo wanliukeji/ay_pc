@@ -143,38 +143,7 @@ public class HttClientMain {
 
     public static void main(String[] args) {
         String url = "https://nb.58.com/jiancai/40077555335973x.shtml?spm=u-2d2yxv86y3v43nkddh1.BDPCPZ_BT&utm_source=market&adtype=1&entinfo=40077555335973_q&adact=3&psid=136300149206191784905597613&iuType=q_2&link_abtest=&ClickID=1&PGTID=0d3000ea-0008-baca-459b-8ad3187f4083&slot=1000616";
-//        String name = get_WB_head_name(url);
-//        String time = get_WB_time(url);
-//        String link = get_WB_lk(url);
-//        String addr = get_WB_addr(url);
-//        String desc = get_WB_desc(url);
-//        String price = get_WB_price(url);
         String fw = get_WB_fw(url);
-//        String num = get_WB_num(url);
-
-//        System.out.println("正在抓取取数据..........");
-//        System.out.println("标题:" + name);
-//        System.out.println("发布时间:" + time);
-//        System.out.println("联系人:" + link);
-//        System.out.println("地址:" + addr);
-//        System.out.println("描述:" + desc);
-//        System.out.println("价格:" + price);
-        System.out.println("服务:" + fw);
-//        System.out.println("图片:" + imgs);
-//        System.out.println("手机号:" + num);
-//        System.out.println("数据获取..........");
-
-//        try {
-//            List imgs = get_WB_imgs(url);
-//            for (int i = 0; i < imgs.size(); i++) {
-//                String img = imgs.get(i).toString();
-//                System.out.println(img);
-//                String fileName = img.substring(27, img.length()-12);
-//                System.out.println(fileName);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
     }
 
     //   获取

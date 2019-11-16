@@ -78,7 +78,6 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
     function getRentVos(type) {
         var url = "/api/rent/getRentInfoVos?type=" + type;
         var msg = ajax_http_get(url);
-        console.log(JSON.stringify(msg));
         return msg.data;
     }
 

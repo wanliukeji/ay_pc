@@ -1,6 +1,6 @@
 #服务配置
 server:
-  port: 80
+  port: 8011
   tomcat:
     uri-encoding: UTF-8
   error:
@@ -12,7 +12,8 @@ spring:
 #    url: jdbc:mysql://106.12.38.131:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+# 高版本数据库   driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       auto-commit: false

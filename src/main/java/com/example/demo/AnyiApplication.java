@@ -26,10 +26,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @ComponentScan(basePackages = {
         "com.example.demo.*"})
 @EnableSwagger2
-@EnableCaching //redis 缓存机制
+//@EnableCaching //redis 缓存机制
 
-@EnableWebSocket //开启WebSocket
-public class AnyiApplication {
+//@EnableWebSocket
+//开启WebSocket
+public class AnyiApplication extends  ServletInitializer{
 
     public static void main(String[] args) {
 

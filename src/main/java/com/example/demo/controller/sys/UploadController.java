@@ -16,9 +16,11 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 
@@ -159,7 +161,7 @@ public class UploadController {
     }
 
 // --------------------------------------------upload-start----------------------------------------------------------------------------
-
+// ERROR
     @RequestMapping(path = "/uploadfile_save", method = {RequestMethod.POST})
     @ApiOperation(value = "文件上传", notes = "文件上传")
     public ApiJSON addDish(@RequestParam("fileName") MultipartFile file) throws Exception {
@@ -187,16 +189,13 @@ public class UploadController {
                     // 自定义的文件名称
                     String trueFileName = String.valueOf(System.currentTimeMillis()) + "." + type;
                     // 设置存放图片文件的路径
-                    String logoRealPathDir = "D:\\Work\\ay_pc\\src\\main\\resources\\static\\loadFile\\1_" + fileName;
-//                    path = "/static/upload/"+fileName;
+                    String filePath = request.getSession().getServletContext().getRealPath("\\loadFile\\1") + DateUtil.getDateYMDHMS() + fileName;
+                    System.out.println("项目的路径:" + filePath);
 
-                    String path2 = request.getSession().getServletContext().getRealPath("\\loadFile\\1") + DateUtil.getDateYMDHMS() + fileName;
-                    System.out.println("存放图片文件的路径:" + path2);
-
-                    file.transferTo(new File(path2));
+                    file.transferTo(new File(filePath));
                     System.out.println("文件成功上传到指定目录下");
 
-                    return ApiJSON.data(path2);
+                    return ApiJSON.data(filePath);
 
                 }
 
