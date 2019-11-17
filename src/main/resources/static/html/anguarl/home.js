@@ -96,7 +96,7 @@ var app = angular.module('myHome', []).controller('homeCtrl', function ($scope, 
                 history.go(0);
             }, 2000)
         } else {
-            alert("账户密码不匹配      " + msg.message);
+            alert("账户密码不匹配" + msg.message);
         }
     }
 
