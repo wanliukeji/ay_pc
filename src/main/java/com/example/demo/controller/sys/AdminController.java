@@ -28,7 +28,7 @@ public class AdminController implements AdminApi {
     @Autowired
     private SysUserService sysUserService;
 
-    public ResultJSON<Boolean> login(String account,String password) {
+    public ResultJSON<Boolean> admin(String account,String password) {
         boolean flag = false;
         //解密
         try {

@@ -18,7 +18,7 @@ import java.io.Serializable;
  * @address http://106.12.38.131:8011
  * @describe 登录
  */
-@Api(value = "登录模块", description = "登录接口")
+@Api(value = "后台登录模块", description = "后台登录接口")
 public interface AdminApi extends Serializable {
 
     /**
@@ -31,8 +31,8 @@ public interface AdminApi extends Serializable {
             @ApiImplicitParam(name = "account", value = "账户"),
             @ApiImplicitParam(name = "password", value = "密码")
     })
-    @PostMapping(value = "/api/admin", produces = {"application/json;charset=UTF-8"})
-    public ResultJSON<Boolean> login(@RequestParam("account") String account,
+    @PostMapping(value = "/api/user/admin")
+    public ResultJSON<Boolean> admin(@RequestParam("account") String account,
                                      @RequestParam("password") String password);
 
 }

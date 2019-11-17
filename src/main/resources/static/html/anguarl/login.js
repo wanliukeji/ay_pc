@@ -4,6 +4,13 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
         $scope.stauts = '登录';
     };
 
+
+    document.onkeydown = function (e) {
+        if ((e.keyCode || e.which) == 13) {
+            angular.element("#btn").click();
+        }
+    }
+
     $scope.login = function () {
         var url = '/api/user/login';
         var date = {
@@ -22,6 +29,9 @@ var app = angular.module('myLogin', []).controller('loginCtrl', function ($scope
 
         } else {
             msg_error("账户密码输入不匹配,请重新输入");
+            setTimeout(function () {
+                history.go(0);
+            },2000);
         }
     }
 
