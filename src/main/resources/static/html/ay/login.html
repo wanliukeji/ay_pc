@@ -7,13 +7,19 @@
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
     <meta content="Coderthemes" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.min.css" rel="stylesheet">
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- App css -->
     <link href="/static/ui/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/icons.min.css" rel="stylesheet" type="text/css"/>
     <link href="/static/ui/css/app.min.css" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href=" /static/ico/mc.ico" />
+    <link rel="shortcut icon" href=" /static/ico/mc.ico"/>
     <style type="text/css">
         .v-p {
             margin-left: 31.5%;
@@ -27,10 +33,13 @@
             overflow-y: hidden;
             overflow-x: hidden;
         }
+        label {
+            font-size: 15px;
+        }
     </style>
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?241360c342d65af9bbcb864d8e72311e";
             var s = document.getElementsByTagName("script")[0];
@@ -45,7 +54,7 @@
       ng-controller="loginCtrl" ng-init="init()">
 <div class="account-pages mt-5 mb-5 w-25 left" style="margin-right: 20px; min-width: 360px; float: right;">
     <div class="container right">
-        <div class="row right" style="margin-top: 60px;">
+        <div class="row right" style="margin-top: 35%; background: white;">
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="card bg-pattern">
 
@@ -54,11 +63,10 @@
                         <div class="text-center m-auto">
                             <a href="index.html">
                             </a>
-                            <h3 class="title">登录</h3>
+                            <h3 class="title" style="font-size: 22px;">登录</h3>
                         </div>
 
                         <div action="#">
-
                             <div class="form-group mb-3">
                                 <label for="username">账户：</label>
                                 <input class="form-control" type="text" ng-model="account" id="username"
@@ -71,20 +79,20 @@
                                        placeholder="请输入您的密码">
                             </div>
 
-                            <div class="form-group mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
-                                    <label class="custom-control-label" for="checkbox-signin">记住我</label>
-                                </div>
-                            </div>
+                            <!--<div class="form-group mb-3">-->
+                                <!--<div class="custom-control custom-checkbox">-->
+                                    <!--<input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>-->
+                                    <!--<label class="custom-control-label" for="checkbox-signin">记住我</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="form-group mb-3">
+                            <div class="form-group mb-3" style="font-size: 13px;">
                                 <p>忘记密码? <span class="text-right float-right">没有账号&nbsp;&nbsp;&nbsp;<a
                                         href="/static/html/ay/register.html"><b>立即注册</b></a></span></p>
                             </div>
 
                             <div class="form-group mb-0 text-center">
-                                <button class="btn btn-block" style="background-color: #7F4F21; min-height: 40px;"
+                                <button class="btn btn-block" style="background-color: #7F4F21; min-height: 40px; font-size: 14px;"
                                         type="button" id="btn"
                                         ng-click="login()"> {{stauts}}
                                 </button>
@@ -105,7 +113,7 @@
 
 
 <footer class="footer footer-alt text-white">
-    2019 - 2025 &copy;  门窗网<a href="" class="text-white-50"></a>
+    2019 - 2025 &copy; 门窗网<a href="" class="text-white-50"></a>
 </footer>
 
 <!-- Vendor js -->
@@ -123,58 +131,6 @@
 <script src="/static/html/anguarl/public.js"></script>
 <script src="/static/html/anguarl/login.js"></script>
 <!--雪花-->
-<script type="text/javascript">
-    //    窗口大小
-    var oPageX = window.screen.width;
-    var oPageY = window.screen.height;
-    var aSnow = [];
-
-    //    雪花模板
-    function snow(x, y, xspeed, yspeed, xsin, size) {//x水平位置,y垂直位置,xspeed水平步距,yspeed垂直步距,xsin振幅,size雪花大小
-        this.node = document.createElement('div');
-        this.x = x;
-        this.y = y;
-        this.xspeed = xspeed;
-        this.yspeed = yspeed;
-        this.xsin = xsin;
-        this.size = size;
-        this.createSnow = function () {
-            this.node.style.position = 'absolute';
-            this.node.style.top = this.y + 'px';
-            this.node.style.left = this.x + 'px';
-            var w = Math.floor(Math.random() * 60 + 10);
-            // this.node.innerHTML = '*';
-            this.node.innerHTML = '<svg t="1571355764310" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1667" width="' + w + '" height="20"><path d="M496 30.4L472 72v880l24 41.6 24-41.6V72z" fill="#ffffff" p-id="1668"></path><path d="M496 240l-96-64v-48l96 64zM496 336L368 256v-48l128 80zM496 240l96-64v-48l-96 64zM496 336l128-80v-48L496 288zM496 784l-96 64v48l96-64zM496 688L368 768v48l128-80zM496 784l96 64v48l-96-64zM496 688l128 80v48L496 736z" fill="#ffffff" p-id="1669"></path><path d="M79.2 752.8h48l761.6-440 24-41.6h-48l-761.6 440z" fill="#ffffff" p-id="1670"></path><path d="M260 648l-7.2 115.2-41.6 24 7.2-115.2zM343.2 600l-5.6 151.2-41.6 24 5.6-151.2z" fill="#ffffff" p-id="1671"></path><path d="M260 648l-103.2-51.2-41.6 24L218.4 672zM343.2 600l-133.6-70.4-41.6 24L301.6 624zM731.2 376l103.2 51.2 41.6-24L772.8 352zM648 424l133.6 71.2 41.6-24L689.6 400z" fill="#ffffff" p-id="1672"></path><path d="M731.2 376l7.2-115.2 41.6-24-7.2 115.2zM648 424l5.6-150.4 41.6-24-5.6 150.4z" fill="#ffffff" p-id="1673"></path><path d="M912.8 752.8h-48l-761.6-440-24-41.6h48l761.6 440z" fill="#ffffff" p-id="1674"></path><path d="M732 648l7.2 115.2 41.6 24-7.2-115.2zM648.8 600l5.6 151.2 41.6 24-5.6-151.2z" fill="#ffffff" p-id="1675"></path><path d="M732 648l103.2-51.2 41.6 24L773.6 672zM648.8 600l133.6-70.4 41.6 24L690.4 624zM260.8 376l-103.2 51.2-41.6-24L219.2 352zM344 424l-133.6 71.2-41.6-24L302.4 400zM260.8 376l-7.2-115.2-41.6-24 7.2 115.2z" fill="#ffffff" p-id="1676"></path><path d="M344 424l-5.6-150.4-41.6-24 5.6 150.4z" fill="#ffffff" p-id="1677"></path><path d="M496 663.2l-131.2-75.2V436.8L496 360.8l131.2 75.2v151.2L496 663.2zM404.8 564.8L496 616.8l91.2-52.8v-104L496 407.2l-91.2 52.8v104.8z" fill="#ffffff" p-id="1678"></path></svg>';
-            document.body.appendChild(this.node);
-        };
-        this.createSnow();
-        this.snowMove = function () {
-            this.node.style.top = parseInt(this.node.style.top) + this.yspeed + 'px';//垂直方向运动
-            this.node.style.left = parseInt(this.node.style.left) + this.xsin * Math.sin(this.xspeed) + 'px';
-            this.node.style.fontSize = this.size + 'px';
-//            this.node.style.color='rgb('+Math.ceil(Math.random()*255)+','+Math.ceil(Math.random()*255)+','+Math.ceil(Math.random()*255)+')';
-        };
-    }
-
-    //    创建雪花
-    function createSnow() {
-        aSnow.push(new snow(Math.random() * oPageX, -50, 0.02 + Math.random() / 10, 1 + Math.random(), Math.random() * 30, 20 + Math.random() * 30));
-    }
-
-    setInterval(createSnow, 1000);//一秒钟创建一个雪花
-    //    雪花移动函数
-    function snowMove() {
-        for (var j = 0; j < aSnow.length; j++) {
-            aSnow[j].snowMove();
-            if (parseInt(aSnow[j].node.style.top) > oPageY || parseInt(aSnow[j].node.style.left) > oPageX) {
-                aSnow[j].node.parentNode.removeChild(aSnow[j].node);
-                aSnow.splice(j, 1);
-            }
-        }
-    }
-
-    setInterval(snowMove, 10);
-
-</script>
+<script type="text/javascript" src="/static/js/snow.js"/>
 </body>
 </html>
