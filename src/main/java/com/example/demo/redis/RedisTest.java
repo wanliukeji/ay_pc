@@ -8,6 +8,7 @@ import com.example.demo.service.SysUserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
 import org.junit.runner.RunWith;
@@ -63,6 +64,15 @@ public class RedisTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    /**
+     * @CachePut 一般用于更新查插入操作，每次都会请求db  数据保存/更新至Redis缓存机制内
+     */
+    @CachePut(key = "'currentTime'+#id")
+    public long updateTime(String id) {
+        return System.currentTimeMillis();
     }
 
 
