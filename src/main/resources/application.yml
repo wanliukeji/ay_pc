@@ -1,6 +1,6 @@
 #服务配置
 server:
-  port: 8011
+  port: 8080
   tomcat:
     uri-encoding: UTF-8
   error:
@@ -70,7 +70,7 @@ spring:
 # 连接池中的最小空闲连接
 # 连接超时时间（毫秒）
   redis:
-    host: localhost
+    host: 106.12.38.131
     database: 0
     port: 6379
     jedis:
