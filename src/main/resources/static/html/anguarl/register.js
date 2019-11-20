@@ -11,7 +11,6 @@ var app = angular.module('myReg', []).controller('regCtrl', function ($scope, $h
     $scope.password2 = '';
 
     $scope.register = function () {
-
         if (!$scope.entity.account) {
             msg_error("账号不能为空");
             return;
