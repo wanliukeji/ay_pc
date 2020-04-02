@@ -70,7 +70,7 @@ spring:
 # 连接池中的最小空闲连接
 # 连接超时时间（毫秒）
   redis:
-    host: 106.12.38.131
+    host: 127.0.0.1
     database: 0
     port: 6379
     jedis:
@@ -80,7 +80,7 @@ spring:
         max-idle: 20
         min-idle: 2
     timeout: 5000
-    password: root
+    password: redis
 
 #  jackson:
 #    mapper: true

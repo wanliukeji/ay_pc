@@ -292,4 +292,9 @@ public class EncryptUtil {
     public static String Base64Decode(String res) {
         return new String(Base64.decode(res));
     }
+
+    public static void main(String[] args) {
+        String str = EncryptUtil.Base64Decode("MTExMTEx");
+        System.err.println(str);
+    }
 }
