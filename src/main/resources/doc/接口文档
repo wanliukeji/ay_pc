@@ -1,0 +1,133 @@
+   状态码说明     200,"SUCCESS";
+                  100,"系统异常：%s"
+                  101,"(绑定异常)参数校验异常：%s
+                  102,"没有SESSION！
+                  103,"非法请求！
+                  104,"请求次数过多！
+                  105,"登录失败"
+                  106,"该账户已被注册"
+                  107,"该邮箱已被注册"
+                  108,"该手机已被注册"
+                  109,"注册失败"
+                  110,"查询失败"
+
+   统一JOS格式 : {
+                    "code": 200,
+                    "message": "SUCCESS",
+                    "data": {}
+                 }
+
+
+ < ___________________________ 用户接口_start  ___________________________ >
+
+账户密码登录接口: /mk/api/user/login
+请求 POST
+
+参数 :  {
+            account : String
+            password : String
+        }
+
+成功 JSON : {
+          "code": 200,
+          "message": "SUCCESS",
+          "data": {
+            "id": 1,
+            "accout": "cheny",
+            "pwd": "MTExMTEx",
+            "name": null,
+            "userName": null,
+            "imgUrl": null,
+            "sex": 0,
+            "phone": null,
+            "email": null,
+            "createDate": "2020-06-30T12:37:14.000+0000",
+            "ctype": 0,
+            "incomeId": 0,
+            "amount": 0,
+            "empCode": 0,
+            "fileId": 0,
+            "idcard": null
+          }
+        }
+
+失败 JSON  {
+               "code": 105,
+               "message": "登录失败",
+               "data": null
+           }
+
+
+用户退出登录 : /mk/api/user/loginOut
+  参数无 JSON  {
+                 "code": 200,
+                 "message": "退出成功",
+                 "data": null
+               }
+
+               {
+                    "code": 100,
+                    "message": "注销失败",
+                    "data": null
+                }
+
+
+获取用户信息 : /mk/api/user/getUserInfo
+
+  参数 :  {
+              account : String
+              password : String
+          }
+
+  成功 JSON : {
+            "code": 200,
+            "message": "SUCCESS",
+            "data": {
+              "id": 1,
+              "accout": "cheny",
+              "pwd": "MTExMTEx",
+              "name": null,
+              "userName": null,
+              "imgUrl": null,
+              "sex": 0,
+              "phone": null,
+              "email": null,
+              "createDate": "2020-06-30T12:37:14.000+0000",
+              "ctype": 0,
+              "incomeId": 0,
+              "amount": 0,
+              "empCode": 0,
+              "fileId": 0,
+              "idcard": null
+            }
+          }
+
+  失败 JSON  {
+                 "code": 105,
+                 "message": "登录失败",
+                 "data": null
+             }
+
+
+用户身份认证接口 /mk/api/user/verify
+参数 :  {
+            userId : Int
+            ctype : String (身份类别 1: 个人房东  2: 职业房东 3:企业机构)
+            name : String
+            iDcard : 身份证号
+        }
+
+
+  成功 {
+    "code": 113,
+    "message": "更新数据成功",
+    "data": null
+  }
+
+  失败 {
+    "code": 111,
+    "message": "更新数据失败",
+    "data": null
+  }
+
+   < ___________________________ 用户接口_end  ___________________________ >
