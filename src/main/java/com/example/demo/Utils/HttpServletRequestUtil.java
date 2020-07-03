@@ -1,6 +1,7 @@
 package com.example.demo.Utils;
 
 import com.example.demo.entity.SysUser;
+import com.example.demo.entity.mk.MkUser;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -45,8 +46,12 @@ public class HttpServletRequestUtil {
         }
     }
 
-    public static void  setSessionUser(SysUser user) {
+    public static void  setSessionUser(MkUser user) {
         HttpServletRequestUtil.getRequest().getSession().setAttribute("user", user);
+    }
+
+    public static void  delSessionUser() {
+        HttpServletRequestUtil.getRequest().getSession().removeAttribute("user");
     }
 
     /**

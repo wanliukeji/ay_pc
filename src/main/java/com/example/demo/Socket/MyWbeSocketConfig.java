@@ -1,10 +1,9 @@
 package com.example.demo.Socket;
 
-import java.util.Set;
-
 import javax.websocket.Endpoint;
 import javax.websocket.server.ServerApplicationConfig;
 import javax.websocket.server.ServerEndpointConfig;
+import java.util.Set;
 
 /**
  * 1, webSocket 的配置类, 需要实现接口 ServerApplicationConfig

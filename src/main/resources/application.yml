@@ -8,7 +8,7 @@ server:
 spring:
     #数据配置
   datasource:
-    url: jdbc:mysql://localhost:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://localhost:3306/mkzf?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
 #    url: jdbc:mysql://106.12.38.131:3306/aymc?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
@@ -59,6 +59,12 @@ spring:
  #启动对@AspectJ注解的支持
   aop:
     proxy-target-class: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+
+
 
 # Redis 开启缓存配置详情
 # Redis服务器地址 localhost
@@ -80,7 +86,7 @@ spring:
         max-idle: 20
         min-idle: 2
     timeout: 5000
-    password: redis
+#    password: redis
 
 #  jackson:
 #    mapper: true
@@ -89,12 +95,16 @@ jackson:
     date-format: yyyy-MM-dd HH:mm:ss
 #mybatis插件
 mybatis-plus:
-  mapper-locations: classpath:com/example/demo/dao/mapper/*Mapper.xml
+  mapper-locations: classpath:com/example/demo/dao/mapper/*Mapper.xml, com/example/demo/dao/mapper/mk/*Mapper.xml
+#  mapper-locations: classpath:com/example/demo/dao/mapper/*Mapper.xml
   type-aliases-package: com.example.demo.entity
+#  type-aliases-package: com.example.demo.entity
   executor-type: reuse
   configuration:
     map-underscore-to-camel-case: false
     cache-enabled: false
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 #    引用mybatis配置文件
 #  config-location: classpath:mybatis-config.xml
 #分页插件插件配置
@@ -110,6 +120,5 @@ trace: false
 
 logging:
   config: classpath:logback-spring.xml
-
 
 

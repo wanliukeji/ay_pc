@@ -25,7 +25,7 @@ public class CodeMsg {
         this.msg = msg;
     }
     /*服务端异常*/
-    public static CodeMsg SUCCESS = new CodeMsg(200,"SUCCESS");
+    public static CodeMsg SUCCESS = new CodeMsg(200,"操作成功");
     public static CodeMsg SERVER_ERROR = new CodeMsg(100,"系统异常：%s");
     public static CodeMsg BIND_ERROR = new CodeMsg(101,"(绑定异常)参数校验异常：%s"); /*用占位符 传入一个参数*/
     public static CodeMsg SESSION_ERROR = new CodeMsg(102,"没有SESSION！"); /*用占位符 传入一个参数*/
@@ -37,6 +37,10 @@ public class CodeMsg {
     public static CodeMsg REG_PHONE_ERROR = new CodeMsg(108,"该手机已被注册"); /*用占位符 传入一个参数*/
     public static CodeMsg REG_ERROR = new CodeMsg(109,"注册失败"); /*用占位符 传入一个参数*/
     public static CodeMsg QUERY_ERROR = new CodeMsg(110,"查询失败"); /*用占位符 传入一个参数*/
+    public static CodeMsg EMPTY_ERROR = new CodeMsg(111,"请将数据填写完整"); /*用占位符 传入一个参数*/
+    public static CodeMsg NULL_ERROR = new CodeMsg(111,"该对象不存在"); /*用占位符 传入一个参数*/
+    public static CodeMsg UPDATE_ERROR = new CodeMsg(112,"更新数据失败"); /*用占位符 传入一个参数*/
+    public static CodeMsg UPDATE_SUCCESS = new CodeMsg(113,"更新数据成功"); /*用占位符 传入一个参数*/
 
     private CodeMsg( ) {
     }

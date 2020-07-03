@@ -48,6 +48,16 @@ public class ResultJSON<T> implements Serializable{
     }
 
     /**
+     * 成功时候的调用
+     * @param data data
+     * @param <T> t
+     * @return ResultJSON
+     */
+    public static <T> ResultJSON<T> success(CodeMsg CodeMsg){
+        return new ResultJSON<T>(CodeMsg);
+    }
+
+    /**
      * 失败时候的调用
      * @param CodeMsg CodeMsg
      * @param <T> t

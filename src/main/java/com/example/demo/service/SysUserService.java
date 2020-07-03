@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.EncryptUtil;
-import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.dao.SysUSerMapper;
 import com.example.demo.entity.SysUser;
 import com.example.demo.exception.CodeMsg;
@@ -33,7 +32,7 @@ public class SysUserService extends ServiceImpl<SysUSerMapper, SysUser> {
                     //解密
                     String pwd = EncryptUtil.Base64Decode(user.getPassword());
                     if (password.equalsIgnoreCase(password)) {
-                        HttpServletRequestUtil.setSessionUser(user);
+//                        HttpServletRequestUtil.setSessionUser(user);
                         return ResultJSON.success(user);
                     }
                 } else {

@@ -1,16 +1,17 @@
 package com.example.demo.Utils;
 
+import com.example.demo.entity.FileEntity;
+import com.example.demo.entity.mk.MkFile;
+import lombok.Synchronized;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Iterator;
-import javax.servlet.http.HttpServletRequest;
-
-import com.example.demo.entity.FileEntity;
-import lombok.Synchronized;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author Chenny
@@ -130,6 +131,111 @@ public class FileUploadTool {
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 entity.setUploadTime(timestamp);
                 entity.setFiedId(fiedId);
+                return entity;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+
+    }
+
+
+    public MkFile createFile(MultipartFile multipartFile, HttpServletRequest request) {
+        MkFile entity = new MkFile();
+        boolean bflag = false;
+        String fileName = multipartFile.getOriginalFilename().toString();
+        // 判断文件不为空
+        if (multipartFile.getSize() != 0 && !multipartFile.isEmpty()) {
+            bflag = true;
+            // 判断文件大小
+            if (multipartFile.getSize() <= upload_maxsize) {
+                bflag = true;
+                // 文件类型判断
+                if (this.checkFileType(fileName)) {
+                    bflag = true;
+                } else {
+                    bflag = false;
+                    System.out.println("文件类型不允许");
+                }
+            } else {
+                bflag = false;
+                System.out.println("文件大小超范围");
+            }
+        } else {
+            bflag = false;
+            System.out.println("文件为空");
+        }
+        if (bflag) {
+            String name = fileName.substring(0, fileName.lastIndexOf("."));
+
+            String hexName = ConvertUtil.mixStr2Hex(name);
+            // 新的文件名
+            String newFileName = this.getName(fileName) + hexName + DateUtil.getDateYMDHMS();
+            // 文件扩展名
+            String fileEnd = this.getFileExt(fileName);
+            String logoPathDir = logoPathDir(fileEnd);
+            //保存本地项目
+            String logoRealPathDir = "D:\\Work\\ay_pc\\src\\main\\resources\\static" + logoPathDir;
+            File logoSaveFile = new File(logoRealPathDir);
+
+            if (!logoSaveFile.exists()) {
+                logoSaveFile.mkdirs();
+            }
+            // 绝对路径
+            String fileNamedirs = logoRealPathDir + File.separator + newFileName + fileEnd;
+            File filedirs = new File(fileNamedirs);
+            // 上传文件
+            try {
+                transferToFile(multipartFile, filedirs);
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // 相对路径
+            entity.setFtype(fileEnd.replace(".", ""));
+            String fileDir = logoPathDir + newFileName + fileEnd;
+            StringBuilder builder = new StringBuilder(fileDir);
+            String finalFileDir = builder.substring(1);
+            // size存储为String
+            String size = this.getSize(filedirs);
+            // 源文件保存路径
+            String aviPath = filedirs.getAbsolutePath();
+            // 转码Avi
+//            boolean flag = false;
+            if (this.checkAVIType(fileEnd)) {
+                // 设置转换为AVI格式后文件的保存路径
+                String codcAviPath = logoRealPathDir + File.separator + newFileName + ".avi";
+                // 获取配置的转换工具（mencoder.exe）的存放路径
+                String mencoderPath = request.getSession().getServletContext().getRealPath("/tools/mencoder.exe");
+                aviPath = transfMediaTool.processAVI(mencoderPath, filedirs.getAbsolutePath(), codcAviPath);
+                fileEnd = this.getFileExt(codcAviPath);
+            }
+            if (aviPath != null) {
+                // 转码Flv
+                if (this.checkMediaType(fileEnd)) {
+                    try {
+                        // 设置转换为flv格式后文件的保存路径
+                        String codcFilePath = logoRealPathDir + File.separator + newFileName + ".flv";
+                        // 获取配置的转换工具（ffmpeg.exe）的存放路径
+                        String ffmpegPath = request.getSession().getServletContext().getRealPath("/tools/ffmpeg.exe");
+                        transfMediaTool.processFLV(ffmpegPath, aviPath, codcFilePath);
+                        fileDir = logoPathDir + newFileName + ".flv";
+                        builder = new StringBuilder(fileDir);
+                        finalFileDir = builder.substring(1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                entity.setFsize(size);
+//                entity.setFpath("\\static\\upload"+File.separator + newFileName + fileEnd);
+                entity.setFpath(aviPath);
+                entity.setFileName(name);
+                entity.setRemark(newFileName);
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                entity.setCreadDate(timestamp);
                 return entity;
             } else {
                 return null;

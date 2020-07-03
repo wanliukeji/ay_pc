@@ -2,8 +2,6 @@ package com.example.demo.Utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Vector;
 
 /**
  * @author Chenny
@@ -30,7 +28,7 @@ public class StringUtil {
      */
     public static boolean isNotEmty(Object data) {
 
-        if (null != data || !"".equals(data)) {
+        if (null != data && !"".equals(data)) {
             return true;
         }
         return false;

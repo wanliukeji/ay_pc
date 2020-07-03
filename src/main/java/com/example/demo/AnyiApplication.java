@@ -5,12 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
@@ -32,6 +29,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 //@EnableWebSocket
 //开启WebSocket
+// 禁用redis
+//@SpringBootApplication(exclude = { RedisAutoConfiguration.class })
 public class AnyiApplication extends  ServletInitializer{
 
     public static void main(String[] args) {
