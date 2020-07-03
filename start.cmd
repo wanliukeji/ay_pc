@@ -1,0 +1,1 @@
+java -jar D:\Work\ay_pc\target\demo-0.0.1-SNAPSHOT.jar

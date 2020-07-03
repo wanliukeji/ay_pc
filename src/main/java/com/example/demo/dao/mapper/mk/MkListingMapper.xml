@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mk.MkListingMapper">
+
+    <select id="getByPage" resultType="java.util.Map">
+        SELECT
+        `t`.`id` AS `id`,
+        `t`.`units` AS `units`,
+        `t`.`unitTypeA` AS `unitTypeA`,
+        `t`.`unitTypeB` AS `unitTypeB`,
+        `t`.`creadCode` AS `creadCode`,
+        `t`.`fcreateDate` AS `fcreateDate`,
+        `t`.`rentType` AS `rentType`,
+        `t`.`fidentity` AS `fidentity`,
+        `t`.`rentCollection` AS `rentCollection`,
+        `t`.`remark` AS `remark`,
+        `t`.`depositMethod` AS `depositMethod`,
+        `t`.`fileCodes` AS `fileCodes`,
+        `t`.`filePath` AS `filePath`,
+        `t`.`area` AS `area`,
+        `t`.`leaseType` AS `leaseType`,
+        `t`.`labels` AS `labels`,
+        `t`.`bounty` AS `bounty`,
+        `t`.`unitTypeC` AS `unitTypeC`,
+        `t`.`longCode` AS `longCode`,
+        `t`.`payType` AS `payType`,
+        `t`.`decoration` AS `decoration`,
+        `t`.`towards` AS `towards`,
+        `t`.`supporting` AS `supporting`,
+        `t`.`features` AS `features`,
+        `t`.`expectations` AS `expectations`,
+        `t`.`hostType` AS `hostType`,
+        `t`.`apartmentId` AS `apartmentId`,
+        `t`.`rentalId` AS `rentalId`,
+        `t`.`addrId` AS `addrId`,
+        `t`.`yPay` AS `yPay`,
+        `t`.`jPay` AS `jPay`,
+        `t`.`bPay` AS `bPay`,
+        `t`.`nPay` AS `nPay`,
+        `t`.`payTime` AS `payTime`,
+        `t`.`fstatus` AS `fstatus`,
+        `t`.`jstatus` AS `jstatus`,
+        `t`.`tstatus` AS `tstatus`,
+        `t`.`sortNo` AS `sortNo`,
+        `t`.`countryCode` AS `countryCode`,
+        `t`.`countryName` AS `countryName`,
+        `t`.`proName` AS `proName`,
+        `t`.`proCode` AS `proCode`,
+        `t`.`cityCode` AS `cityCode`,
+        `t`.`cityName` AS `cityName`,
+        `t`.`streetName` AS `streetName`,
+        `t`.`streetCode` AS `streetCode`,
+        `t`.`comName` AS `comName`,
+        `t`.`addrName` AS `addrName`,
+        `t`.`dong` AS `dong`,
+        `t`.`floors` AS `floors`,
+        `t`.`floorSum` AS `floorSum`,
+        `t`.`roomNo` AS `roomNo`,
+        `t`.`creatDate` AS `creatDate`,
+        `t`.`creatCode` AS `creatCode`,
+        `t`.`astatus` AS `astatus`,
+        `t`.`townCode` AS `townCode`,
+        `t`.`unit` AS `unit`,
+        `t`.`areaCode` AS `areaCode`,
+        ( SELECT `k`.`name` FROM `mk_address` `k` WHERE ( `k`.`code` = `t`.`areaCode` ) ) AS `areaName`,
+        `t`.`zqType` AS `zqType`,
+        `t`.`zqPay` AS `zqPay`,
+        `t`.`zAmount` AS `zAmount`,
+        `t`.`zyAmount` AS `zyAmount`,
+        `t`.`sdAmount` AS `sdAmount`,
+        `t`.`wxAmount` AS `wxAmount`,
+        `t`.`kdCosts` AS `kdCosts`,
+        `t`.`dCosts` AS `dCosts`,
+        `t`.`sCosts` AS `sCosts`,
+        `t`.`wyCosts` AS `wyCosts`,
+        `t`.`tcCosts` AS `tcCosts`,
+        `t`.`rqCosts` AS `rqCosts`,
+        `t`.`firstAmount` AS `firstAmount`,
+        `t`.`fAmount` AS `fAmount`,
+        `t`.`fOther` AS `fOther`,
+        `t`.`userId` AS `userId`,
+        `t`.`rcreartDate` AS `rcreartDate`,
+        `t`.`deposit` AS `deposit`,
+        `t`.`otherDeposit` AS `otherDeposit`
+        FROM
+        v_listing_addr_rent t
+
+        WHERE 1= 1
+
+        <if test="leaseType != null">
+            AND t.leaseType = #{leaseType}
+        </if>
+
+        <if test="areaCode != null">
+            AND t.areaCode = #{areaCode}
+        </if>
+
+        <if test="townCode != null">
+            AND t.townCode = #{townCode}
+        </if>
+
+        <if test="maxPrice != null">
+            AND t.zAmount &lt; #{maxPrice}
+        </if>
+
+        <if test="minPrice != null">
+            AND t.zAmount &gt; #{minPrice}
+        </if>
+
+        <if test="unitTypeA != null">
+            AND t.unitTypeA like concat('%',#{unitTypeA},'%')
+        </if>
+
+        <if test="longCode != null">
+            AND t.longCode like concat('%',#{longCode},'%')
+        </if>
+
+        <if test="val != null">
+            AND
+            (
+            t.unitTypeA like concat('%',#{val},'%')
+            or
+            t.addrName like concat('%',#{val},'%')
+            or
+            t.comName like concat('%',#{val},'%')
+            or
+            t.areaName like concat('%',#{val},'%')
+            )
+        </if>
+
+        <if test="maxArea != null">
+            AND t.area &lt; #{maxArea}
+        </if>
+
+        <if test="minArea != null">
+            AND t.area &gt; #{minArea}
+        </if>
+
+        <if test="hostType != null">
+            AND t.hostType = #{hostType}
+        </if>
+
+        <if test="apartmentId != null">
+            AND t.apartmentId = #{apartmentId}
+        </if>
+
+        <if test="decoration != null">
+            AND t.decoration = #{decoration}
+        </if>
+
+        <if test="jstatus != null">
+            AND t.jstatus = #{jstatus}
+        </if>
+
+        <if test="tstatus != null">
+            AND t.tstatus = #{tstatus}
+        </if>
+
+        <if test="fid != null">
+            AND t.id = #{fid}
+        </if>
+
+        ORDER BY t.sortNo, t.fcreateDate desc
+
+        LIMIT #{limit}, #{row}
+
+    </select>
+
+
+    <select id="getInfo" resultType="java.util.Map">
+        SELECT
+	`mk_pointxy`.`id` AS `pid`,
+	`mk_pointxy`.`name` AS `name`,
+	`mk_pointxy`.`fid` AS `fid`,
+	`mk_pointxy`.`x` AS `x`,
+	`mk_pointxy`.`y` AS `y`,
+	`mk_pointxy`.`creadDate` AS `creadDate`,
+	`v_listing_addr_rent`.`id` AS `id`,
+	`v_listing_addr_rent`.`units` AS `units`,
+	`v_listing_addr_rent`.`unitTypeA` AS `unitTypeA`,
+	`v_listing_addr_rent`.`unitTypeB` AS `unitTypeB`,
+	`v_listing_addr_rent`.`creadCode` AS `creadCode`,
+	`v_listing_addr_rent`.`fcreateDate` AS `fcreateDate`,
+	`v_listing_addr_rent`.`rentType` AS `rentType`,
+	`v_listing_addr_rent`.`fidentity` AS `fidentity`,
+	`v_listing_addr_rent`.`rentCollection` AS `rentCollection`,
+	`v_listing_addr_rent`.`remark` AS `remark`,
+	`v_listing_addr_rent`.`depositMethod` AS `depositMethod`,
+	`v_listing_addr_rent`.`fileCodes` AS `fileCodes`,
+	`v_listing_addr_rent`.`filePath` AS `filePath`,
+	`v_listing_addr_rent`.`area` AS `area`,
+	`v_listing_addr_rent`.`leaseType` AS `leaseType`,
+	`v_listing_addr_rent`.`labels` AS `labels`,
+	`v_listing_addr_rent`.`bounty` AS `bounty`,
+	`v_listing_addr_rent`.`unitTypeC` AS `unitTypeC`,
+	`v_listing_addr_rent`.`longCode` AS `longCode`,
+	`v_listing_addr_rent`.`payType` AS `payType`,
+	`v_listing_addr_rent`.`decoration` AS `decoration`,
+	`v_listing_addr_rent`.`towards` AS `towards`,
+	`v_listing_addr_rent`.`supporting` AS `supporting`,
+	`v_listing_addr_rent`.`features` AS `features`,
+	`v_listing_addr_rent`.`expectations` AS `expectations`,
+	`v_listing_addr_rent`.`hostType` AS `hostType`,
+	`v_listing_addr_rent`.`apartmentId` AS `apartmentId`,
+	`v_listing_addr_rent`.`rentalId` AS `rentalId`,
+	`v_listing_addr_rent`.`addrId` AS `addrId`,
+	`v_listing_addr_rent`.`yPay` AS `yPay`,
+	`v_listing_addr_rent`.`jPay` AS `jPay`,
+	`v_listing_addr_rent`.`bPay` AS `bPay`,
+	`v_listing_addr_rent`.`nPay` AS `nPay`,
+	`v_listing_addr_rent`.`payTime` AS `payTime`,
+	`v_listing_addr_rent`.`fstatus` AS `fstatus`,
+	`v_listing_addr_rent`.`jstatus` AS `jstatus`,
+	`v_listing_addr_rent`.`tstatus` AS `tstatus`,
+	`v_listing_addr_rent`.`sortNo` AS `sortNo`,
+	`v_listing_addr_rent`.`countryCode` AS `countryCode`,
+	`v_listing_addr_rent`.`countryName` AS `countryName`,
+	`v_listing_addr_rent`.`proName` AS `proName`,
+	`v_listing_addr_rent`.`proCode` AS `proCode`,
+	`v_listing_addr_rent`.`cityCode` AS `cityCode`,
+	`v_listing_addr_rent`.`cityName` AS `cityName`,
+	`v_listing_addr_rent`.`streetName` AS `streetName`,
+	`v_listing_addr_rent`.`streetCode` AS `streetCode`,
+	`v_listing_addr_rent`.`comName` AS `comName`,
+	`v_listing_addr_rent`.`addrName` AS `addrName`,
+	`v_listing_addr_rent`.`dong` AS `dong`,
+	`v_listing_addr_rent`.`floors` AS `floors`,
+	`v_listing_addr_rent`.`floorSum` AS `floorSum`,
+	`v_listing_addr_rent`.`roomNo` AS `roomNo`,
+	`v_listing_addr_rent`.`creatDate` AS `creatDate`,
+	`v_listing_addr_rent`.`creatCode` AS `creatCode`,
+	`v_listing_addr_rent`.`astatus` AS `astatus`,
+	`v_listing_addr_rent`.`townCode` AS `townCode`,
+	`v_listing_addr_rent`.`unit` AS `unit`,
+	`v_listing_addr_rent`.`areaCode` AS `areaCode`,
+	`v_listing_addr_rent`.`areaName` AS `areaName`,
+	`v_listing_addr_rent`.`zqType` AS `zqType`,
+	`v_listing_addr_rent`.`zqPay` AS `zqPay`,
+	`v_listing_addr_rent`.`zAmount` AS `zAmount`,
+	`v_listing_addr_rent`.`zyAmount` AS `zyAmount`,
+	`v_listing_addr_rent`.`sdAmount` AS `sdAmount`,
+	`v_listing_addr_rent`.`wxAmount` AS `wxAmount`,
+	`v_listing_addr_rent`.`kdCosts` AS `kdCosts`,
+	`v_listing_addr_rent`.`dCosts` AS `dCosts`,
+	`v_listing_addr_rent`.`sCosts` AS `sCosts`,
+	`v_listing_addr_rent`.`wyCosts` AS `wyCosts`,
+	`v_listing_addr_rent`.`tcCosts` AS `tcCosts`,
+	`v_listing_addr_rent`.`rqCosts` AS `rqCosts`,
+	`v_listing_addr_rent`.`firstAmount` AS `firstAmount`,
+	`v_listing_addr_rent`.`fAmount` AS `fAmount`,
+	`v_listing_addr_rent`.`fOther` AS `fOther`,
+	`v_listing_addr_rent`.`userId` AS `userId`,
+	`v_listing_addr_rent`.`rcreartDate` AS `rcreartDate`,
+	`v_listing_addr_rent`.`deposit` AS `deposit`,
+	`v_listing_addr_rent`.`otherDeposit` AS `otherDeposit`
+FROM
+	( `mk_pointxy` JOIN `v_listing_addr_rent` )
+WHERE
+   1=1
+  AND ( `mk_pointxy`.`fid` = `v_listing_addr_rent`.`id` )
+
+  AND `v_listing_addr_rent`.id = #{id}
+    </select>
+    <select id="getByPage2" resultType="java.util.Map">
+        SELECT
+        `t`.`id` AS `id`,
+        `t`.`units` AS `units`,
+        `t`.`unitTypeA` AS `unitTypeA`,
+        `t`.`unitTypeB` AS `unitTypeB`,
+        `t`.`creadCode` AS `creadCode`,
+        `t`.`fcreateDate` AS `fcreateDate`,
+        `t`.`rentType` AS `rentType`,
+        `t`.`fidentity` AS `fidentity`,
+        `t`.`rentCollection` AS `rentCollection`,
+        `t`.`remark` AS `remark`,
+        `t`.`depositMethod` AS `depositMethod`,
+        `t`.`fileCodes` AS `fileCodes`,
+        `t`.`filePath` AS `filePath`,
+        `t`.`area` AS `area`,
+        `t`.`leaseType` AS `leaseType`,
+        `t`.`labels` AS `labels`,
+        `t`.`bounty` AS `bounty`,
+        `t`.`unitTypeC` AS `unitTypeC`,
+        `t`.`longCode` AS `longCode`,
+        `t`.`payType` AS `payType`,
+        `t`.`decoration` AS `decoration`,
+        `t`.`towards` AS `towards`,
+        `t`.`supporting` AS `supporting`,
+        `t`.`features` AS `features`,
+        `t`.`expectations` AS `expectations`,
+        `t`.`hostType` AS `hostType`,
+        `t`.`apartmentId` AS `apartmentId`,
+        `t`.`rentalId` AS `rentalId`,
+        `t`.`addrId` AS `addrId`,
+        `t`.`yPay` AS `yPay`,
+        `t`.`jPay` AS `jPay`,
+        `t`.`bPay` AS `bPay`,
+        `t`.`nPay` AS `nPay`,
+        `t`.`payTime` AS `payTime`,
+        `t`.`fstatus` AS `fstatus`,
+        `t`.`jstatus` AS `jstatus`,
+        `t`.`tstatus` AS `tstatus`,
+        `t`.`sortNo` AS `sortNo`,
+        `t`.`countryCode` AS `countryCode`,
+        `t`.`countryName` AS `countryName`,
+        `t`.`proName` AS `proName`,
+        `t`.`proCode` AS `proCode`,
+        `t`.`cityCode` AS `cityCode`,
+        `t`.`cityName` AS `cityName`,
+        `t`.`streetName` AS `streetName`,
+        `t`.`streetCode` AS `streetCode`,
+        `t`.`comName` AS `comName`,
+        `t`.`addrName` AS `addrName`,
+        `t`.`dong` AS `dong`,
+        `t`.`floors` AS `floors`,
+        `t`.`floorSum` AS `floorSum`,
+        `t`.`roomNo` AS `roomNo`,
+        `t`.`creatDate` AS `creatDate`,
+        `t`.`creatCode` AS `creatCode`,
+        `t`.`astatus` AS `astatus`,
+        `t`.`townCode` AS `townCode`,
+        `t`.`unit` AS `unit`,
+        `t`.`areaCode` AS `areaCode`,
+        ( SELECT `k`.`name` FROM `mk_address` `k` WHERE ( `k`.`code` = `t`.`areaCode` ) ) AS `areaName`,
+        `t`.`zqType` AS `zqType`,
+        `t`.`zqPay` AS `zqPay`,
+        `t`.`zAmount` AS `zAmount`,
+        `t`.`zyAmount` AS `zyAmount`,
+        `t`.`sdAmount` AS `sdAmount`,
+        `t`.`wxAmount` AS `wxAmount`,
+        `t`.`kdCosts` AS `kdCosts`,
+        `t`.`dCosts` AS `dCosts`,
+        `t`.`sCosts` AS `sCosts`,
+        `t`.`wyCosts` AS `wyCosts`,
+        `t`.`tcCosts` AS `tcCosts`,
+        `t`.`rqCosts` AS `rqCosts`,
+        `t`.`firstAmount` AS `firstAmount`,
+        `t`.`fAmount` AS `fAmount`,
+        `t`.`fOther` AS `fOther`,
+        `t`.`userId` AS `userId`,
+        `t`.`rcreartDate` AS `rcreartDate`,
+        `t`.`deposit` AS `deposit`,
+        `t`.`otherDeposit` AS `otherDeposit`
+        FROM
+        v_listing_addr_rent t
+        WHERE 1= 1
+        <if test="fid != null">
+            AND t.id = #{fid}
+        </if>
+
+        ORDER BY t.sortNo, t.fcreateDate desc
+
+        LIMIT #{limit}, #{row}
+    </select>
+</mapper>
