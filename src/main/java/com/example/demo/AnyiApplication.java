@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @address http://106.12.38.131:8011
  * @describe 程序入口
  */
-@SpringBootApplication
+//@SpringBootApplication
 @EnableTransactionManagement
 @MapperScan("com.example.demo.dao")
 @ComponentScan(basePackages = {
@@ -31,6 +32,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //开启WebSocket
 // 禁用redis
 //@SpringBootApplication(exclude = { RedisAutoConfiguration.class })
+@SpringBootApplication(exclude = PageHelperAutoConfiguration.class)
 public class AnyiApplication extends  ServletInitializer{
 
     public static void main(String[] args) {
