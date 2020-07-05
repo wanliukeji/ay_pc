@@ -1,5 +1,6 @@
 package com.example.demo.service.mk;
 
+import com.example.demo.itextPdf.TestTempletTicket;
 import com.example.demo.json.ResultJSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MkContractService {
 
-
     public ResultJSON<?> gen() {
-        return null;
+        return TestTempletTicket.gen();
     }
 }
 
