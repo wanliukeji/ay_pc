@@ -2,10 +2,11 @@ package com.example.demo.itextPdf;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Data
-public class Ticket {
+public class Ticket implements Serializable {
 
     String idCardA;
     String idCardB;
