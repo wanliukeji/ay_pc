@@ -10,18 +10,13 @@ import javax.annotation.Resource;
 
 @RestController
 @Slf4j
-public class MkContractGen implements MkContractApi {
+public class MkContractContrart implements MkContractApi {
 
-    @Resource
+    @Resource(name = "mkContractService")
     private MkContractService service;
 
     @Override
     public ResultJSON<?> gen() {
-
-
-
-
-
         return service.gen();
     }
 }
