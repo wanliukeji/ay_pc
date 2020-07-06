@@ -70,22 +70,6 @@ public interface MkLoginApi extends Serializable {
     @PostMapping(value = "/mk/api/user/loginOut")
     public ResultJSON loginOut();
 
-
-    /**
-     * 获取用户信息
-     *
-     * @param account
-     */
-    @ApiOperation(value = "获取用户信息", notes = "获取用户信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "account", value = "账户"),
-            @ApiImplicitParam(name = "password", value = "密码")
-    })
-    @PostMapping(value = "/mk/api/user/getUserInfo")
-    public ResultJSON<MkUser> getUserInfo(@RequestParam("account") String account,
-                                          @RequestParam("password") String password);
-
-
     /**
      * 身份认证
      *

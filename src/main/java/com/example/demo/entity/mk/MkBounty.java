@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Table(name = "mk_bounty")
@@ -20,8 +21,10 @@ public class MkBounty implements Serializable {
   @Column
   private long id;
   private long fstatus;
-  private double amount;
+  private double proportion;
   private String bountyType;
-  private String creatCode;
-  private java.sql.Timestamp createDate;
+  private String userId;
+  private Date createDate;
+  private String details;
+  private Integer del;
 }

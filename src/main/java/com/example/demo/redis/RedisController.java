@@ -34,6 +34,11 @@ public class RedisController implements MkRedistApi {
     }
 
     @Override
+    public ResultJSON<?> nearbyXq(String lng, String lat, Integer distance) {
+        return  redisService.nearbyXq(lng, lat, distance);
+    }
+
+    @Override
     public ResultJSON<?> isnNearby(String ax, String ay, String bx, String by) {
         return redisService.isNearby(ax, ay, bx, by);
     }

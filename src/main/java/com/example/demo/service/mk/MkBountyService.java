@@ -2,18 +2,16 @@ package com.example.demo.service.mk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.StringUtil;
-import com.example.demo.dao.mk.MkContractMapper;
-import com.example.demo.entity.mk.MkContract;
+import com.example.demo.dao.mk.MkBountyMapper;
+import com.example.demo.entity.mk.MkBounty;
 import com.example.demo.exception.CodeMsg;
-import com.example.demo.itextPdf.TestTempletTicket;
 import com.example.demo.json.ResultJSON;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
-import java.util.Date;
 import java.util.List;
 
 
@@ -27,59 +25,53 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class MkContractService extends ServiceImpl<MkContractMapper, MkContract> {
+public class MkBountyService extends ServiceImpl<MkBountyMapper, MkBounty> {
 
-    public ResultJSON<?> gen() {
-        return TestTempletTicket.gen();
-    }
-
-    public ResultJSON<?> gen(String zTime, String startDate, String endDate, String fuid, String zuid, String fileId,String addr, String fid) {
-
-        MkContract entity = new MkContract();
+    public ResultJSON<?> add(Double proportion, String bountyType, String userId, String details, Integer fstatus) {
+        MkBounty entity = new MkBounty();
 
         try {
-            if (StringUtil.isNotEmty(fuid) && StringUtil.isNotEmty(zuid) ) {
-                entity.setAddr(addr);
-                entity.setCreatDate(new Date());
-                entity.setEndDate(DateUtil.getStringToDate(endDate));
-                entity.setStartDate(DateUtil.getStringToDate(startDate));
-                entity.setFid(fid);
-                entity.setFuid(fuid);
-                entity.setFileId(fileId);
-                entity.setZTime(zTime);
+            if (StringUtil.isNotEmty(userId)) {
+                entity.setUserId(userId);
                 entity.setDel(1);
+                entity.setFstatus(fstatus);
+                entity.setProportion(proportion);
+                entity.setBountyType(bountyType);
+                entity.setDetails(details);
                 boolean f = this.save(entity);
+
                 if (f) {
-                    TestTempletTicket.gen();
                     return ResultJSON.success(entity);
                 } else {
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                     return ResultJSON.error(CodeMsg.UPDATE_ERROR);
                 }
+
             }
             return ResultJSON.error(CodeMsg.UPDATE_ERROR);
         } catch (Exception e) {
-            // 强制事务回滚
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             e.printStackTrace();
             return ResultJSON.error(CodeMsg.UPDATE_ERROR);
         }
+
     }
 
-    public ResultJSON<?> page(String userId, Integer limit, Integer row) {
-        QueryWrapper<MkContract> qw = new QueryWrapper<MkContract>();
+    public ResultJSON<?> list(String userId) {
+        QueryWrapper<MkBounty> qw = new QueryWrapper<MkBounty>();
         try {
             if (StringUtil.isNotEmty(userId)) {
-                qw.eq("userId", userId);
+                qw.like("userId", userId);
             }
             qw.eq("del", 1);
-            List<MkContract> item = this.list(qw);
-            return ResultJSON.success(item);
+            qw.eq("fstatus", 1);
+            List<MkBounty> infos = this.list(qw);
+            PageInfo<MkBounty> page = new PageInfo<MkBounty>(infos);
+            return ResultJSON.success(page);
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
-
     }
 }
 

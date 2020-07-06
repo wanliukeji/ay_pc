@@ -148,6 +148,24 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.61</version>
         </dependency>
+
+        <dependency>
+            <groupId>commons-codec-1.9</groupId>
+            <artifactId>commons-codec-1.9</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-pay</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>
             <groupId>com.baomidou</groupId>

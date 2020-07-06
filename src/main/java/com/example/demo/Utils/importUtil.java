@@ -1,24 +1,6 @@
 package com.example.demo.Utils;
 
-import com.example.demo.entity.FileEntity;
-import com.example.demo.entity.SysUser;
-import com.example.demo.exception.CodeMsg;
-import com.example.demo.json.ResultJSON;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
+//import com.example.demo.entity.FileEntity;
 /**
  * @author Chenny
  * @version 1.0

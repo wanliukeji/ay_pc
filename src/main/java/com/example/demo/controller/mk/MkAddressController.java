@@ -4,9 +4,8 @@ import com.example.demo.api.mk.MkAddressApi;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.service.mk.MkAddressService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * @author Chenny
@@ -20,7 +19,7 @@ import javax.annotation.Resource;
 @Slf4j
 public class MkAddressController implements MkAddressApi {
 
-    @Resource
+    @Autowired
     private MkAddressService service;
 
     @Override

@@ -1,17 +1,11 @@
 package com.example.demo.controller.sys;
 
 import com.example.demo.Utils.ClassUtil;
-import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.pojoUtil.Service;
 import com.example.demo.pojoUtil.Type;
-import io.swagger.annotations.Api;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -23,10 +17,10 @@ import java.util.List;
  * @describe 异常控制器
  */
 @RestController
-@Api(value = "类属性获取模块", description = "类属性获取接口")
+//@Api(value = "类属性获取模块", description = "类属性获取接口")
 public class ItemsController {
 
-    @GetMapping("/getClassField_fw")
+//    @GetMapping("/getClassField_fw")
     public ApiJSON getClassField_fw() {
         try {
             List<?> list = ClassUtil.getFieldValueByNameToList(new Service());
@@ -38,7 +32,7 @@ public class ItemsController {
 
     }
 
-    @GetMapping("/getClassField_ty")
+//    @GetMapping("/getClassField_ty")
     public ApiJSON getClassField_ty() {
         try {
             List<?> list = ClassUtil.getFieldValueByNameToList(new Type());

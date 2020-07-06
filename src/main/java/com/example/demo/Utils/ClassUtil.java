@@ -1,14 +1,7 @@
 package com.example.demo.Utils;
 
-import com.example.demo.entity.Fied;
-import com.example.demo.pojoUtil.Service;
-import javafx.collections.ObservableMap;
-import org.apache.poi.ss.formula.functions.T;
-import org.apache.tomcat.jni.User;
-
-import java.lang.reflect.Constructor;
+//import com.example.demo.entity.Fied;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

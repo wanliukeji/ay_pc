@@ -1,20 +1,15 @@
 package com.example.demo.redis;
 
-import javax.annotation.Resource;
-
-import com.alibaba.fastjson.JSON;
 import com.example.demo.entity.SysUser;
-import com.example.demo.service.SysUserService;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.EnableCaching;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
 /**
@@ -29,8 +24,8 @@ public class RedisTest {
     @Resource
     private RedisUtil util;
 
-    @Autowired
-    private SysUserService userService;
+//    @Autowired
+//    private SysUserService userService;
 
     @Test
 //    @Cacheable 查询redis里有没有该对象 有的话就从缓存里读取不再执行方法 没有的话继续从后台取
@@ -47,7 +42,7 @@ public class RedisTest {
             user.setPhone("123232454");
             user.setRemark("REDIS");
             user.setUpdateBy("chenyi");
-            boolean f = userService.save(user);
+//            boolean f = userService.save(user);
             // System.out.println(RedisUtil.set("CHENYU",JSON.toJSONString(user)));
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +54,7 @@ public class RedisTest {
     @CacheEvict(cacheNames = "user", key = "'user_'+ #user")
     public void dele(SysUser user) {
         try {
-            boolean f = userService.removeById(user.getId());
+//            boolean f = userService.removeById(user.getId());
             // System.out.println(RedisUtil.set("CHENYU",JSON.toJSONString(user)));
         } catch (Exception e) {
             e.printStackTrace();

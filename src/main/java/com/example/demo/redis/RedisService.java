@@ -2,9 +2,11 @@ package com.example.demo.redis;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Utils.StringUtil;
+import com.example.demo.entity.mk.MkApartment;
 import com.example.demo.entity.mk.MkPointxy;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.service.mk.MkApartService;
 import com.example.demo.service.mk.MkListingService;
 import com.example.demo.service.mk.MkPointXyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,9 @@ public class RedisService {
 
     @Resource(name = "mkListingService")
     private MkListingService mkListingService;
+
+    @Resource(name = "mkApartService")
+    private MkApartService apartService;
 
     final String GEO_KEY = "cities:locs";
 
@@ -250,7 +255,6 @@ public class RedisService {
 
         GeoResults<RedisGeoCommands.GeoLocation<String>> radius = redisTemplate.opsForGeo()
                 .radius(GEO_KEY, circle, args);
-        List<?> stageDTOS = new ArrayList<>();
 
         Map map = new HashMap();
 
@@ -268,12 +272,57 @@ public class RedisService {
                 QueryWrapper<MkPointxy> qw = new QueryWrapper<MkPointxy>();
                 if (StringUtil.isNotEmty(name)) {
 //                     = mkListingService.getInfo(Integer.valueOf(name));
-
-
                  Map  entity = mkListingService.getInfo2(Integer.valueOf(name));
                    if (null != entity && entity.size() > 0) {
                        map.put(name,entity);
                    }
+                }
+            });
+        }
+        return ResultJSON.success(map);
+    }
+
+    public ResultJSON<?> nearbyXq(String lng, String lat, Integer num) {
+        Point point = new Point(lng != null ? Double.parseDouble(lng) : 0.0,lat != null ? Double.parseDouble(lat) : 0.0);
+
+        Metric metric = RedisGeoCommands.DistanceUnit.KILOMETERS;
+        //方圆10公里
+        num = num == null ? 5 : num;
+        Distance distance = new Distance(num, metric);
+        //posint 为中心
+        Circle circle = new Circle(point, distance);
+        //limit 最近的10个位置
+        RedisGeoCommands.GeoRadiusCommandArgs args = RedisGeoCommands
+                .GeoRadiusCommandArgs
+                .newGeoRadiusArgs()
+                .includeDistance()
+                .includeCoordinates()
+                .sortAscending()
+                .limit(10);
+
+        GeoResults<RedisGeoCommands.GeoLocation<String>> radius = redisTemplate.opsForGeo()
+                .radius(GEO_KEY, circle, args);
+
+        Map map = new HashMap();
+
+        if (radius != null) {
+            radius.forEach(geoLocationGeoResult -> {
+                RedisGeoCommands.GeoLocation<String> content = geoLocationGeoResult.getContent();
+                //member 名称  如  tianjin
+                String name = content.getName();
+                // 对应的经纬度坐标
+                Point pos = content.getPoint();
+                // 距离中心点的距离
+                Distance dis = geoLocationGeoResult.getDistance();
+//                MkPointxy entity = new MkPointxy();
+
+                QueryWrapper<MkPointxy> qw = new QueryWrapper<MkPointxy>();
+                if (StringUtil.isNotEmty(name)) {
+//                     = mkListingService.getInfo(Integer.valueOf(name));
+                    MkApartment entity = apartService.getById(Integer.valueOf(name));
+                    if (null != entity) {
+                        map.put(name,entity);
+                    }
                 }
             });
         }

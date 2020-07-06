@@ -7,22 +7,21 @@ import com.example.demo.entity.FileEntity;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ApiJSON;
 import com.example.demo.json.ResultJSON;
-//import com.example.demo.service.FileService;
 import com.example.demo.service.FileService;
-import io.lettuce.core.dynamic.annotation.Value;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+
+//import com.example.demo.entity.FileEntity;
+//import com.example.demo.service.FileService;
+//import com.example.demo.service.FileService;
 
 /**
  * @author Chenny
@@ -34,7 +33,7 @@ import java.io.*;
  */
 @RestController
 @Slf4j
-@Api(value = "上传模块", description = "上传接口")
+//@Api(value = "上传模块", description = "上传接口")
 public class UploadController {
 
     @Autowired
@@ -45,7 +44,7 @@ public class UploadController {
      *
      * @param multipartFile
      */
-    @PostMapping(value = "/uploadfile_g_img")
+//    @PostMapping(value = "/uploadfile_g_img")
     @ResponseBody
     public ResultJSON<FileEntity> uploadfile(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String userId, String msgCode, String fiedId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
@@ -74,7 +73,7 @@ public class UploadController {
      *
      * @param multipartFile
      */
-    @PostMapping(value = "/uploadfile_z_img")
+//    @PostMapping(value = "/uploadfile_z_img")
     @ResponseBody
     public void uploadfile_z_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String userId, String msgCode, String fiedId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
@@ -100,7 +99,7 @@ public class UploadController {
      *
      * @param multipartFile
      */
-    @PostMapping(value = "/uploadfile_a_img")
+//    @PostMapping(value = "/uploadfile_a_img")
     @ResponseBody
     public void uploadfile_a_img(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String userId, String msgCode, String fiedId) {
         HttpServletRequest request = HttpServletRequestUtil.getRequest();
@@ -127,11 +126,11 @@ public class UploadController {
      *
      * @param multipartFile
      */
-    @ApiOperation(value = "文件导入接口", notes = "文件导入接口")
+//    @ApiOperation(value = "文件导入接口", notes = "文件导入接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "文件", value = "fileName")
     })
-    @PostMapping(value = "/uploadfile_txt")
+//    @PostMapping(value = "/uploadfile_txt")
     @ResponseBody
     public ResultJSON<Boolean> uploadfile_txt(@RequestParam(value = "fileName", required = false) MultipartFile multipartFile, String fiedId) {
         BufferedReader input;
@@ -162,7 +161,7 @@ public class UploadController {
 
 // --------------------------------------------upload-start----------------------------------------------------------------------------
 // ERROR
-    @RequestMapping(path = "/uploadfile_save", method = {RequestMethod.POST})
+//    @RequestMapping(path = "/uploadfile_save", method = {RequestMethod.POST})
     @ApiOperation(value = "文件上传", notes = "文件上传")
     public ApiJSON addDish(@RequestParam("fileName") MultipartFile file) throws Exception {
         String path = null;// 文件路径

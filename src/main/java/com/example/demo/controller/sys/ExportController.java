@@ -5,18 +5,13 @@ import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.entity.FileEntity;
 import com.example.demo.jasper.JasperHelper;
 import com.example.demo.service.FileService;
-import io.swagger.annotations.Api;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +24,7 @@ import java.util.Map;
  * @address http://106.12.38.131:8011
  * @describe 导出控制器
  */
-@Api(value = "导出模板操作", description = "导出模板操作")
+//@Api(value = "导出模板操作", description = "导出模板操作")
 @Controller
 public class ExportController {
 
@@ -40,7 +35,7 @@ public class ExportController {
      * 登录后台
      * @return
      */
-    @GetMapping("/api/export/file")
+//    @GetMapping("/api/export/file")
     public void export() {
         List<FileEntity> list = fileService.list(null);
 

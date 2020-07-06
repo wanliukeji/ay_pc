@@ -2,12 +2,10 @@ package com.example.demo.service.mk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.StringUtil;
-import com.example.demo.dao.mk.MkContractMapper;
-import com.example.demo.entity.mk.MkContract;
+import com.example.demo.dao.mk.MkRuleMapper;
+import com.example.demo.entity.mk.MkRule;
 import com.example.demo.exception.CodeMsg;
-import com.example.demo.itextPdf.TestTempletTicket;
 import com.example.demo.json.ResultJSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,30 +25,20 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class MkContractService extends ServiceImpl<MkContractMapper, MkContract> {
+public class MkRuleService extends ServiceImpl<MkRuleMapper, MkRule> {
 
-    public ResultJSON<?> gen() {
-        return TestTempletTicket.gen();
-    }
-
-    public ResultJSON<?> gen(String zTime, String startDate, String endDate, String fuid, String zuid, String fileId,String addr, String fid) {
-
-        MkContract entity = new MkContract();
+    public ResultJSON<?> add(Integer ftype, String userId, String details, String title) {
+        MkRule entity = new MkRule();
 
         try {
-            if (StringUtil.isNotEmty(fuid) && StringUtil.isNotEmty(zuid) ) {
-                entity.setAddr(addr);
-                entity.setCreatDate(new Date());
-                entity.setEndDate(DateUtil.getStringToDate(endDate));
-                entity.setStartDate(DateUtil.getStringToDate(startDate));
-                entity.setFid(fid);
-                entity.setFuid(fuid);
-                entity.setFileId(fileId);
-                entity.setZTime(zTime);
-                entity.setDel(1);
+            if (StringUtil.isNotEmty(userId)) {
+                entity.setUserId(userId);
+                entity.setFtype(ftype);
+                entity.setCreateDate(new Date());
+                entity.setDetails(details);
+                entity.setTitle(title);
                 boolean f = this.save(entity);
                 if (f) {
-                    TestTempletTicket.gen();
                     return ResultJSON.success(entity);
                 } else {
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
@@ -59,27 +47,25 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
             }
             return ResultJSON.error(CodeMsg.UPDATE_ERROR);
         } catch (Exception e) {
-            // 强制事务回滚
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             e.printStackTrace();
             return ResultJSON.error(CodeMsg.UPDATE_ERROR);
         }
+
     }
 
-    public ResultJSON<?> page(String userId, Integer limit, Integer row) {
-        QueryWrapper<MkContract> qw = new QueryWrapper<MkContract>();
+    public ResultJSON<?> list(Integer ftype) {
+        QueryWrapper<MkRule> qw = new QueryWrapper<MkRule>();
         try {
-            if (StringUtil.isNotEmty(userId)) {
-                qw.eq("userId", userId);
+            if (StringUtil.isNotEmty(ftype)) {
+                qw.like("ftype", ftype);
             }
-            qw.eq("del", 1);
-            List<MkContract> item = this.list(qw);
-            return ResultJSON.success(item);
+            List<MkRule> infos = this.list(qw);
+            return ResultJSON.success(infos);
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
-
     }
 }
 

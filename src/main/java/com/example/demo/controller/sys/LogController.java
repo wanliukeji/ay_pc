@@ -1,16 +1,5 @@
-package com.example.demo.controller.sys;/*
 package com.example.demo.controller.sys;
 
-import com.example.demo.JSON.ApiJSON;
-import com.example.demo.entity.SysUser;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-*/
 /**
  * @author Chenny
  * @version 1.0

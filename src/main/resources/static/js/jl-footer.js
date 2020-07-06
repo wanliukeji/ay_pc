@@ -4,7 +4,7 @@ document.writeln("        <img src=\'/static/image/win.png\' width=\'220\' heigh
 document.writeln("        <ul class=\'right-rules\'>");
 document.writeln("            <li>");
 document.writeln("                <div class=\'bold\'>");
-document.writeln("                    <span>关于门窗网</span>");
+document.writeln("                    <span>关于我们</span>");
 document.writeln("                </div>");
 document.writeln("                <a>了解我们</a>");
 document.writeln("                <a>加入我们</a>");

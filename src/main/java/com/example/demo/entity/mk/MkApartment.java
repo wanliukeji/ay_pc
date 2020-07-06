@@ -26,6 +26,8 @@ public class MkApartment implements Serializable {
   private String areaCode;
   private String townCode;
   private String communityName;
+  private String X;
+  private String Y;
   private String addr;
   private Integer del;
   private Integer fstatus;

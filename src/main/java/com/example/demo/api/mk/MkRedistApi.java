@@ -42,15 +42,33 @@ public interface MkRedistApi extends Serializable {
      * Redis初始化经纬度
      * @return
      */
-    @ApiOperation(value = "MKRedis搜索附近接口", notes = "MKRedis搜索附近接口")
+    @ApiOperation(value = "MKRedis搜索附近房源接口", notes = "MKRedis搜索附近房源接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "x", value = "经度"),
             @ApiImplicitParam(name = "y ", value = "维度"),
             @ApiImplicitParam(name = "distance ", value = "方圆公里数")
     })
     @Transactional(rollbackFor = Exception.class)
-    @PostMapping(value = "/mk/api/redis/nearby")
+    @PostMapping(value = "/mk/api/redis/nearby/fy")
     public ResultJSON<?> nearby(
+            @RequestParam(required = false, value = "x") String lng,
+            @RequestParam(required = false, value = "y") String lat,
+            @RequestParam(required = false, value = "distance") Integer distance
+    );
+
+    /**
+     * Redis初始化经纬度
+     * @return
+     */
+    @ApiOperation(value = "MKRedis搜索附近小区接口", notes = "MKRedis搜索附近小区接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "x", value = "经度"),
+            @ApiImplicitParam(name = "y ", value = "维度"),
+            @ApiImplicitParam(name = "distance ", value = "方圆公里数")
+    })
+    @Transactional(rollbackFor = Exception.class)
+    @PostMapping(value = "/mk/api/redis/nearby/xq")
+    public ResultJSON<?> nearbyXq(
             @RequestParam(required = false, value = "x") String lng,
             @RequestParam(required = false, value = "y") String lat,
             @RequestParam(required = false, value = "distance") Integer distance

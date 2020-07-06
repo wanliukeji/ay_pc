@@ -7,10 +7,7 @@ import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.RegMapper;
 import com.example.demo.entity.SysUser;
-import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ApiJSON;
-import com.example.demo.json.ResultJSON;
-import io.swagger.annotations.Api;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -35,13 +32,6 @@ public class RegService extends ServiceImpl<RegMapper, SysUser> implements Seria
                 return ApiJSON.error("该账号已使用");
             }
         }
-
-//        if (StringUtil.isNotEmty(email)) {
-//            SysUser user = this.getOne(new QueryWrapper<SysUser>().eq("email", email));
-//            if (null != user) {
-//                return ApiJSON.error("该邮箱已注册");
-//            }
-//        }
 
         SysUser user = new SysUser();
         //加密

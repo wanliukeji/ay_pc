@@ -2,10 +2,12 @@ package com.example.demo.api.mk;
 
 import com.example.demo.json.ResultJSON;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.Serializable;
 
@@ -22,39 +24,54 @@ public interface MkContractApi extends Serializable {
      */
     @ApiOperation(value = "MK合同生成接口", notes = "MK合同生成接口")
     @ApiImplicitParams({
-//            @ApiImplicitParam(name = "fileCode", value = "文件ID"),
-//            @ApiImplicitParam(name = "userId", value = "用户ID"),
+            @ApiImplicitParam(name = "zTime" , value = "租期"),
+            @ApiImplicitParam(name = "startDate", value = "起租日期"),
+            @ApiImplicitParam(name = "endDate", value = "结束日期"),
+            @ApiImplicitParam(name = "fuid", value = "房东ID"),
+            @ApiImplicitParam(name = "zuid", value = "租客ID"),
+            @ApiImplicitParam(name = "fileId", value = "合同路径"),
+            @ApiImplicitParam(name = "addr", value = "地址"),
+            @ApiImplicitParam(name = "fid", value = "房源ID")
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/ht/gen")
-    public ResultJSON<?> gen();
+    public ResultJSON<?> gen(
+        @RequestParam(required = false, value = "zTime") String zTime,
+        @RequestParam(required = false, value = "startDate") String startDate,
+        @RequestParam(required = false, value = "endDate") String endDate,
+            @RequestParam(required = false, value = "fuid") String fuid,
+            @RequestParam(required = false, value = "zuid") String zuid,
+            @RequestParam(required = false, value = "fileId") String fileId,
+            @RequestParam(required = false, value = "addr") String addr,
+            @RequestParam(required = false, value = "fid") String fid
+    );
 
-//    /**
-//     * 合同获取
-//     * @return
-//     */
-//    @ApiOperation(value = "MK合同所有信息接口", notes = "MK合同所有信息接口")
-//    @ApiImplicitParams({})
-//    @PostMapping(value = "/mk/api/apart/list")
-//    public ResultJSON<?> list();
-//
-//    /**
-//     * 合同分页获取
-//     * @param limit
-//     * @param row
-//     * @return
-//     */
-//    @ApiOperation(value = "MK合同分页接口", notes = "MK合同添加接口")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(name = "id", value = "编号"),
-//            @ApiImplicitParam(name = "limit", value = "起始页"),
-//            @ApiImplicitParam(name = "row", value = "行数")
-//    })
-//    @PostMapping(value = "/mk/api/apart/page")
-//    public ResultJSON<?> page(
-//            @RequestParam(required = false, value = "val") String val,
-//            @RequestParam(required = false, value = "limit") Integer limit,
-//            @RequestParam(required = false, value = "row") Integer row);
+    /**
+     * 合同获取
+     * @return
+     */
+    @ApiOperation(value = "MK合同所有信息接口", notes = "MK合同所有信息接口")
+    @ApiImplicitParams({})
+    @PostMapping(value = "/mk/api/ht/list")
+    public ResultJSON<?> list();
+
+    /**
+     * 合同分页获取
+     * @param limit
+     * @param row
+     * @return
+     */
+    @ApiOperation(value = "MK合同分页接口", notes = "MK合同添加接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "编号"),
+            @ApiImplicitParam(name = "limit", value = "起始页"),
+            @ApiImplicitParam(name = "row", value = "行数")
+    })
+    @PostMapping(value = "/mk/api/ht/page")
+    public ResultJSON<?> page(
+            @RequestParam(required = false, value = "userId") String userId,
+            @RequestParam(required = false, value = "limit") Integer limit,
+            @RequestParam(required = false, value = "row") Integer row);
 //
 //    /**
 //     * 合同分页删除

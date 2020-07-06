@@ -102,4 +102,9 @@ public class StringUtil {
 
     }
 
+    public String setOpenId (String userId, String code) {
+
+            return "";
+    }
+
 }

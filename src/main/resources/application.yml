@@ -49,6 +49,7 @@ spring:
     cache: false
     suffix: .html
     prefix: classpath:/static/html/
+#    prefix: classpath:/static/html/
 #    mode: LEGACYHTML5
     enabled: true
     check-template-location: true

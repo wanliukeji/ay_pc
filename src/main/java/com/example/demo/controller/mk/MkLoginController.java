@@ -42,10 +42,10 @@ public class MkLoginController implements MkLoginApi {
         return mkUserService.loginOut();
     }
 
-    @Override
-    public ResultJSON<MkUser> getUserInfo(String account, String password) {
-        return mkUserService.login(account, password);
-    }
+//    @Override
+//    public ResultJSON<MkUser> getUserInfo(Integer id) {
+//        return mkUserService.getUserInfo(id);
+//    }
 
     @Override
     public ResultJSON<MkUser> verify(Integer userId, String ctype, String name, String iDcard) {
