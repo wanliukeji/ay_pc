@@ -29,7 +29,7 @@ public interface MkContractApi extends Serializable {
             @ApiImplicitParam(name = "endDate", value = "结束日期"),
             @ApiImplicitParam(name = "fuid", value = "房东ID"),
             @ApiImplicitParam(name = "zuid", value = "租客ID"),
-            @ApiImplicitParam(name = "fileId", value = "合同路径"),
+            @ApiImplicitParam(name = "fileUrl", value = "合同路径"),
             @ApiImplicitParam(name = "addr", value = "地址"),
             @ApiImplicitParam(name = "fid", value = "房源ID")
     })
@@ -41,7 +41,7 @@ public interface MkContractApi extends Serializable {
         @RequestParam(required = false, value = "endDate") String endDate,
             @RequestParam(required = false, value = "fuid") String fuid,
             @RequestParam(required = false, value = "zuid") String zuid,
-            @RequestParam(required = false, value = "fileId") String fileId,
+            @RequestParam(required = false, value = "fileUrl") String fileUrl,
             @RequestParam(required = false, value = "addr") String addr,
             @RequestParam(required = false, value = "fid") String fid
     );
@@ -50,9 +50,9 @@ public interface MkContractApi extends Serializable {
      * 合同获取
      * @return
      */
-    @ApiOperation(value = "MK合同所有信息接口", notes = "MK合同所有信息接口")
-    @ApiImplicitParams({})
-    @PostMapping(value = "/mk/api/ht/list")
+//    @ApiOperation(value = "MK合同所有信息接口", notes = "MK合同所有信息接口")
+//    @ApiImplicitParams({})
+//    @PostMapping(value = "/mk/api/ht/list")
     public ResultJSON<?> list();
 
     /**
@@ -63,7 +63,7 @@ public interface MkContractApi extends Serializable {
      */
     @ApiOperation(value = "MK合同分页接口", notes = "MK合同添加接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "编号"),
+            @ApiImplicitParam(name = "userId", value = "编号"),
             @ApiImplicitParam(name = "limit", value = "起始页"),
             @ApiImplicitParam(name = "row", value = "行数")
     })

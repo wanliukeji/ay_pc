@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mk.MkContractMapper">
+    <select id="getByPage" resultType="java.util.Map">
+        SELECT
+        `t`.`id`,
+        `t`.`zTime`,
+        `t`.`startDate`,
+        `t`.`endDate`,
+        `t`.`creatDate`,
+        `t`.`fuid`,
+        `t`.`zuid`,
+        `t`.`fileUrl`,
+        `t`.`addr`,
+        `t`.`fid`,
+        `t`.`del`,
+        `t`.`overDate`
+        FROM
+        v_mk_contract t
+        WHERE 1= 1
+        <if test="userId != null">
+            AND t.zuid = #{userId}
+        </if>
+        AND t.del = 1
+        ORDER BY t.creatDate desc
+        LIMIT #{limit}, #{row}
+    </select>
+</mapper>

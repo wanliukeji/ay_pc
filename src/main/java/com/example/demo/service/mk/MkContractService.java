@@ -1,6 +1,5 @@
 package com.example.demo.service.mk;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.StringUtil;
@@ -15,6 +14,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -33,7 +33,7 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
         return TestTempletTicket.gen();
     }
 
-    public ResultJSON<?> gen(String zTime, String startDate, String endDate, String fuid, String zuid, String fileId,String addr, String fid) {
+    public ResultJSON<?> gen(String zTime, String startDate, String endDate, String fuid, String zuid, String fileUrl,String addr, String fid) {
 
         MkContract entity = new MkContract();
 
@@ -45,7 +45,7 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
                 entity.setStartDate(DateUtil.getStringToDate(startDate));
                 entity.setFid(fid);
                 entity.setFuid(fuid);
-                entity.setFileId(fileId);
+                entity.setFileUrl(fileUrl);
                 entity.setZTime(zTime);
                 entity.setDel(1);
                 boolean f = this.save(entity);
@@ -67,13 +67,10 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
     }
 
     public ResultJSON<?> page(String userId, Integer limit, Integer row) {
-        QueryWrapper<MkContract> qw = new QueryWrapper<MkContract>();
         try {
-            if (StringUtil.isNotEmty(userId)) {
-                qw.eq("userId", userId);
-            }
-            qw.eq("del", 1);
-            List<MkContract> item = this.list(qw);
+            limit = limit == null ? 0 : limit;
+            row = row == null ? 30 : row;
+            List<Map<String, Object>> item = this.baseMapper.getByPage(userId, limit, row);
             return ResultJSON.success(item);
         } catch (Exception ex) {
             ex.printStackTrace();
