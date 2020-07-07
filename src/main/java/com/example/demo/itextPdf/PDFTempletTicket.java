@@ -1,6 +1,7 @@
 package com.example.demo.itextPdf;
 
 
+import com.example.demo.Utils.StringUtil;
 import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfReader;
@@ -48,25 +49,46 @@ public class PDFTempletTicket {
 
         AcroFields s = ps.getAcroFields();
         s.setSubstitutionFonts(fontList);
-
-        s.setField("idCardA", ticket.getIdCardA());
-        s.setField("idCardB", ticket.getIdCardB());
-        s.setField("addrInfo", ticket.getAddrInfo());
-        s.setField("startDate", ticket.getStartDate()+"");
-        s.setField("endDate", ticket.getEndDate() + "");
-        s.setField("amount", ticket.getAmount() + "");
-        s.setField("bAmount", ticket.getBAmount() + "");
-        s.setField("mouth", ticket.getMouth() + "");
-        s.setField("day", ticket.getDay() + "");
-        s.setField("phone", ticket.getPhone() + "");
-        s.setField("qm", ticket.getQm() + "");
-        s.setField("creatDate", ticket.getCreadDate() + "");
+        s.setField("addr", ticket.getAddr());
+        s.setField("area", StringUtil.toString(ticket.getArea()));
+        s.setField("startDate", StringUtil.toString(ticket.getStartDate()));
+        s.setField("endDate", StringUtil.toString(ticket.getEndDate()));
+        s.setField("payDate", StringUtil.toString(ticket.getPayDate()));
+        s.setField("amount", StringUtil.toString(ticket.getAmount()));
+        s.setField("payDay", StringUtil.toString(ticket.getPayDate()));
+        s.setField("yamount", StringUtil.toString(ticket.getYamount()));
+        s.setField("startDay", StringUtil.toString(ticket.getStartDay()));
+        s.setField("aName", ticket.getAName());
+        s.setField("aIdCard", ticket.getAIdCard());
+        s.setField("aphone", ticket.getAphone());
+        s.setField("bName", ticket.getBName());
+        s.setField("bIdCard", ticket.getBIdCard());
+        s.setField("bphone", ticket.getBphone());
+        s.setField("sy", ticket.getSy());
+        s.setField("sm", ticket.getSm());
+        s.setField("sd", ticket.getSd());
+        s.setField("ey", ticket.getEy());
+        s.setField("em", ticket.getEm());
+        s.setField("ed", ticket.getEd());
+//        String imgUrl = "D:\\Work\\ay_pc\\src\\main\\resources\\pdf\\gz.gif";
+//        s.setField("imgUrl", imgUrl);
 
         ps.setFormFlattening(false);
         ps.close();
-
         FileOutputStream fos = new FileOutputStream(file);
         fos.write(bos.toByteArray());
         fos.close();
     }
+
+
+    public static void main(String[] args) {
+        String pdfUrl = "D:\\Work\\ay_pc\\target\\classes\\pdf\\contractPdf20200707152412.pdf";
+        String imgUrl = "D:\\Work\\ay_pc\\src\\main\\resources\\pdf\\gz.gif";
+        try {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

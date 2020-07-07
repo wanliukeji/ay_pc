@@ -113,7 +113,7 @@ public class DateUtil {
 
 
     public static String getNowDate() {
-        return formatter3.format(new Date());
+        return dateFormatter.format(new Date());
     }
 
     /**
@@ -401,6 +401,18 @@ public class DateUtil {
     /**
      * 字符串转时间
      *
+     * @return
+     */
+    public static String getStringToYY_MM_DD(String time) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            // 注意格式需要与上面一致，不然会出现异常
+        return  sdf.format(time);
+    }
+
+
+    /**
+     * 字符串转时间
+     *
      * @return "yyyy年MM月dd日 HH时mm分ss秒"
      * "yy/MM/dd HH:mm"
      * "yyyy-MM-dd HH:mm:ss"
@@ -458,5 +470,7 @@ public class DateUtil {
         Date strtodate = formatter.parse(strDate, pos);
         return strtodate;
     }
+
+
 
 }

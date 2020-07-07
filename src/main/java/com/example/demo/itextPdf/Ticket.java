@@ -7,19 +7,24 @@ import java.math.BigDecimal;
 
 @Data
 public class Ticket implements Serializable {
-
-    String idCardA;
-    String idCardB;
-    String addrInfo;
-    String startDate;
-    String endDate;
-    BigDecimal amount;
-    BigDecimal bAmount;
-    Integer mouth;
-    Integer day;
-    String phone;
-    String qm;
-    String creadDate;
-
-
+    private String addr;
+    private Double area;
+    private String startDate;
+    private String endDate;
+    private String payDate;
+    private BigDecimal amount;
+    private BigDecimal yamount;
+    private Integer startDay;
+    private String aName;
+    private String aIdCard;
+    private String aphone;
+    private String sy;
+    private String sm;
+    private String sd;
+    private String bName;
+    private String bIdCard;
+    private String bphone;
+    private String ey;
+    private String em;
+    private String ed;
 }

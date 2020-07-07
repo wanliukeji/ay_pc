@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 合同接口
@@ -24,25 +25,33 @@ public interface MkContractApi extends Serializable {
      */
     @ApiOperation(value = "MK合同生成接口", notes = "MK合同生成接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "zTime" , value = "租期"),
+            @ApiImplicitParam(name = "addr", value = "地址"),
+            @ApiImplicitParam(name = "area", value = "面积"),
             @ApiImplicitParam(name = "startDate", value = "起租日期"),
             @ApiImplicitParam(name = "endDate", value = "结束日期"),
+            @ApiImplicitParam(name = "payDate", value = "最晚支付日期"),
+            @ApiImplicitParam(name = "amount", value = "支付金额"),
+            @ApiImplicitParam(name = "payDay", value = "每月支付几日"),
+            @ApiImplicitParam(name = "yamount", value = "押金"),
+            @ApiImplicitParam(name = "startDay", value = "提前天数"),
             @ApiImplicitParam(name = "fuid", value = "房东ID"),
             @ApiImplicitParam(name = "zuid", value = "租客ID"),
-            @ApiImplicitParam(name = "fileUrl", value = "合同路径"),
-            @ApiImplicitParam(name = "addr", value = "地址"),
             @ApiImplicitParam(name = "fid", value = "房源ID")
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/ht/gen")
     public ResultJSON<?> gen(
-        @RequestParam(required = false, value = "zTime") String zTime,
+        @RequestParam(required = false, value = "addr") String addr,
+        @RequestParam(required = false, value = "area") Double area,
         @RequestParam(required = false, value = "startDate") String startDate,
         @RequestParam(required = false, value = "endDate") String endDate,
+        @RequestParam(required = false, value = "payDate") String payDate,
+        @RequestParam(required = false, value = "payDay") Integer payDay,
+        @RequestParam(required = false, value = "amount") BigDecimal amount,
+        @RequestParam(required = false, value = "yamount") BigDecimal yamount,
+            @RequestParam(required = false, value = "startDay") Integer startDay,
             @RequestParam(required = false, value = "fuid") String fuid,
             @RequestParam(required = false, value = "zuid") String zuid,
-            @RequestParam(required = false, value = "fileUrl") String fileUrl,
-            @RequestParam(required = false, value = "addr") String addr,
             @RequestParam(required = false, value = "fid") String fid
     );
 

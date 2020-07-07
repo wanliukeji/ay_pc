@@ -37,19 +37,6 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
             if (null != account && password != null) {
                 MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("accout", account).or().or().eq("phone", account));
                 if (null != user) {
-                    // 判断是不是子账户
-                   if (null != user && user.getUtype() == 4) {
-                       //解密
-                       String pwd = EncryptUtil.Base64Decode(user.getPwd());
-                       if (password.equalsIgnoreCase(pwd)) {
-                           HttpServletRequestUtil.setSessionUser(user);
-
-
-                           return ResultJSON.success(user);
-                       } else {
-                           return ResultJSON.error(CodeMsg.LOGIN_ERROR);
-                       }
-                   } else {
                        //解密
                        String pwd = EncryptUtil.Base64Decode(user.getPwd());
                        if (password.equalsIgnoreCase(pwd)) {
@@ -58,7 +45,6 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
                        } else {
                            return ResultJSON.error(CodeMsg.LOGIN_ERROR);
                        }
-                   }
                 } else {
                     return ResultJSON.error(CodeMsg.LOGIN_ERROR);
                 }

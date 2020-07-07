@@ -4,27 +4,25 @@ import com.example.demo.api.mk.MkContractApi;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.service.mk.MkContractService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
+import java.math.BigDecimal;
 
 @RestController
 @Slf4j
 public class MkContractController implements MkContractApi {
 
-    @Resource(name = "mkContractService")
+    @Autowired
     private MkContractService service;
 
-//    @Override
-//    public ResultJSON<?> gen() {
-//        return service.gen();
-//    }
-
-
     @Override
-    public ResultJSON<?> gen(String zTime, String startDate, String endDate, String fuid,
-                             String zuid, String fileId, String addr, String fid) {
-        return service.gen(zTime,startDate,endDate,fuid,zuid,fileId,addr,fid);
+    public ResultJSON<?> gen(String addr, Double area,
+                             String startDate, String endDate, String payDate,
+                             Integer payDay, BigDecimal amount,
+                             BigDecimal yamount, Integer startDay,
+                             String fuid, String zuid, String fid) {
+        return service.gen(addr,area,startDate,endDate,payDate,payDay,amount,yamount,startDay,fuid,zuid,fid);
     }
 
     @Override
