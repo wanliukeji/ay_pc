@@ -33,17 +33,15 @@ public class MkAddrService extends ServiceImpl<MkAddrMapper, MkAddr> {
             addr.setUnit(unit);
             addr.setRoomNo(roomNo);
             addr.setFloors(floors);
-            addr.setCreatCode(userId);
+            addr.setUserId(userId);
             addr.setProCode(proCode);
             addr.setCityCode(cityCode);
-            addr.setStreetCode(areaCode);
+            addr.setAreaCode(areaCode);
             addr.setFloorSum(floosSum);
             addr.setAddrName(addrName);
-
             addr.setCreatDate(new Date());
-
+            addr.setDel(1);
             boolean f = this.save(addr);
-
             if (f) {
                 return addr;
             } else {

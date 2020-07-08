@@ -27,13 +27,14 @@ import java.util.*;
 public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
 
     @Resource
-    private  MkFacilityService facilityService;
+    private MkFacilityService facilityService;
 
     @Resource(name = "mkFileService")
     private MkFileService fileService;
 
     /**
      * 添加数据
+     *
      * @param area
      * @param unitType
      * @param mPay
@@ -53,20 +54,16 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
      * @throws Exception
      */
     public MkListing add(Double area, String unitType, String mPay, String jPay, String bPay,
-                       String nPay, String decoration, String towards,
-                       String supporting, String features, String expectations,
-                       Integer fidentity,
-                       String userId,
-                       Integer fileId,Integer leaseType,
-                       String labeles, String apartmentId, Long addrId, Long rId, String remark) throws Exception {
+                         String nPay, String decoration, String towards,
+                         String supporting, String features, String expectations,
+                         Integer fidentity,
+                         String userId,
+                         Integer fileId, Integer leaseType,
+                         String labeles, Long apartmentId, Long addrId, Long rId, String remark) throws Exception {
         MkListing entity = new MkListing();
 
-        if (StringUtil.isNotEmty(area)) {
-            entity.setArea(Double.valueOf(area));
-        }
-        if (StringUtil.isNotEmty(leaseType)) {
-            entity.setLeaseType(leaseType);
-        }
+        entity.setArea(Double.valueOf(area));
+        entity.setLeaseType(leaseType);
         entity.setUnitType(unitType);
         entity.setFidentity(fidentity);
         entity.setYPay(mPay);
@@ -86,18 +83,20 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         entity.setFstatus(0);
         entity.setLabels(labeles);
         entity.setRemark(remark);
+        entity.setDel(1);
+
 
         if (StringUtil.isNotEmty(apartmentId)) {
-            entity.setApartmentId(Long.valueOf(apartmentId));
+            entity.setApartmentId(apartmentId);
         }
         this.saveOrUpdate(entity);
         return entity;
     }
 
     public List<Map<String, Object>> page(Integer leaseType, Integer areaCode, Integer townCode, Integer maxPrice, Integer minPrice,
-                              String unitTypeA, Integer limit, Integer row, String longCode, Double maxArea, Double minArea,
-                              Integer hostType, Integer apartmentId, Integer decoration, Integer jstatus, Integer tstatus,
-                              String val, Integer id) throws Exception{
+                                          String unitTypeA, Integer limit, Integer row, String longCode, Double maxArea, Double minArea,
+                                          Integer hostType, Integer apartmentId, Integer decoration, Integer jstatus, Integer tstatus,
+                                          String val, Integer id) throws Exception {
 
         Map<String, Object> paraMap = new HashMap<String, Object>();
         limit = limit == null ? 0 : limit;
@@ -108,13 +107,13 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = this.baseMapper.getByPage(leaseType, areaCode, townCode, maxPrice, minPrice,
                     unitTypeA, limit, row, longCode, maxArea, minArea, hostType,
                     apartmentId, decoration, jstatus, tstatus, val, id);
-            list = facilityService.getInfos("labels",list);
-            list = facilityService.getInfos("decoration",list);
-            list = facilityService.getInfos("towards",list);
-            list = facilityService.getInfos("supporting",list);
-            list = facilityService.getInfos("features",list);
-            list = facilityService.getInfos("expectations",list);
-           return list;
+            list = facilityService.getInfos("labels", list);
+            list = facilityService.getInfos("decoration", list);
+            list = facilityService.getInfos("towards", list);
+            list = facilityService.getInfos("supporting", list);
+            list = facilityService.getInfos("features", list);
+            list = facilityService.getInfos("expectations", list);
+            return list;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -122,7 +121,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
     }
 
 
-    public Map page2(Integer limit, Integer row, String fid) throws Exception{
+    public Map page2(Integer limit, Integer row, String fid) throws Exception {
 
         Map<String, Object> paraMap = new HashMap<String, Object>();
         limit = limit == null ? 0 : limit;
@@ -132,19 +131,18 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         try {
             Map map = this.baseMapper.getByPage2(limit, row, fid);
             list.add(map);
-            list = facilityService.getInfos("labels",list);
-            list = facilityService.getInfos("decoration",list);
-            list = facilityService.getInfos("towards",list);
-            list = facilityService.getInfos("supporting",list);
-            list = facilityService.getInfos("features",list);
-            list = facilityService.getInfos("expectations",list);
+            list = facilityService.getInfos("labels", list);
+            list = facilityService.getInfos("decoration", list);
+            list = facilityService.getInfos("towards", list);
+            list = facilityService.getInfos("supporting", list);
+            list = facilityService.getInfos("features", list);
+            list = facilityService.getInfos("expectations", list);
             return list.get(0);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
     }
-
 
 
     public ResultJSON<?> getInfo(Integer id) {
@@ -154,13 +152,13 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = this.baseMapper.getByPage(null, null, null, null, null,
                     null, 0, 1, null, null, null, null,
                     null, null, null, null, null, id);
-            list = fileService.getInfos("fileCodes",list);
-            list = facilityService.getInfos("labels",list);
-            list = facilityService.getInfos("decoration",list);
-            list = facilityService.getInfos("towards",list);
-            list = facilityService.getInfos("supporting",list);
-            list = facilityService.getInfos("features",list);
-            list = facilityService.getInfos("expectations",list);
+            list = fileService.getInfos("fileCodes", list);
+            list = facilityService.getInfos("labels", list);
+            list = facilityService.getInfos("decoration", list);
+            list = facilityService.getInfos("towards", list);
+            list = facilityService.getInfos("supporting", list);
+            list = facilityService.getInfos("features", list);
+            list = facilityService.getInfos("expectations", list);
             return ResultJSON.success(list);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -177,13 +175,13 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         try {
             Map map = this.baseMapper.getInfo(id);
             list.add(map);
-            list = fileService.getInfos("fileCodes",list);
-            list = facilityService.getInfos("labels",list);
-            list = facilityService.getInfos("decoration",list);
-            list = facilityService.getInfos("towards",list);
-            list = facilityService.getInfos("supporting",list);
-            list = facilityService.getInfos("features",list);
-            list = facilityService.getInfos("expectations",list);
+            list = fileService.getInfos("fileCodes", list);
+            list = facilityService.getInfos("labels", list);
+            list = facilityService.getInfos("decoration", list);
+            list = facilityService.getInfos("towards", list);
+            list = facilityService.getInfos("supporting", list);
+            list = facilityService.getInfos("features", list);
+            list = facilityService.getInfos("expectations", list);
             return list.get(0);
         } catch (Exception ex) {
             ex.printStackTrace();

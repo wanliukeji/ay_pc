@@ -20,27 +20,19 @@ public class MkAddr implements Serializable {
   @TableId(type = IdType.AUTO)
   @Column
   private long id;
-  private long countryCode;
-  private String countryName;
   private String proName;
   private String proCode;
   private String cityCode;
-  private String cityName;
-  private String streetName;
-  private String streetCode;
   private String areaCode;
   private String comName;
   private String addrName;
   private String dong;
-  private long floors;
-  private long floorSum;
+  private Integer floors;
+  private Integer floorSum;
   private String roomNo;
   private Date creatDate;
-  private String creatCode;
-  private long del;
-  private long astatus;
-  private String townCode;
+  private String userId;
+  private Integer del;
   private String areaName;
-  private long unit;
-
+  private Integer unit;
 }

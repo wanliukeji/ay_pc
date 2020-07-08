@@ -28,7 +28,7 @@ public class MkListing implements Serializable {
   private String remark;
   private Integer fileId;
   private double area;
-  private long leaseType;
+  private Integer leaseType;
   private String labels;
   private String decoration;
   private String towards;
@@ -46,4 +46,5 @@ public class MkListing implements Serializable {
   private Integer jstatus;
   private Integer tstatus;
   private Integer sortNo;
+  private Integer del;
 }

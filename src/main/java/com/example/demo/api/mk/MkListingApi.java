@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * MK房源模块接口
@@ -51,12 +52,12 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "supporting", value = "配套(mk_facility_id)"),
             @ApiImplicitParam(name = "features", value = "房屋特色(mk_facility_id)"),
             @ApiImplicitParam(name = "expectations", value = "期望(mk_facility_id)"),
-            @ApiImplicitParam(name = "fidentity", value = "身份类型(1 个人 2 房东 3 机构/企业)"),
+            @ApiImplicitParam(name = "fidentity", value = "身份类型(1 个人 2 机构/企业)"),
             @ApiImplicitParam(name = "userId", value = "用户ID(mk_user_id)"),
             @ApiImplicitParam(name = "fileId", value = "文件ID(mk_file_id)"),
             @ApiImplicitParam(name = "proCode", value = "省份编号(mk_address_id)"),
             @ApiImplicitParam(name = "cityCode", value = "城市编号(mk_address_id)"),
-            @ApiImplicitParam(name = "areaCode", value = "街道编号(mk_address_id)"),
+            @ApiImplicitParam(name = "areaCode", value = "县区编号(mk_address_id)"),
             @ApiImplicitParam(name = "addrName", value = "具体地址"),
             @ApiImplicitParam(name = "leaseType", value = "整租类型(1整租,2 合租)"),
             @ApiImplicitParam(name = "labeles", value = "房源标签(mk_facility_id)"),
@@ -64,12 +65,13 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "y", value = "坐标纬度(mk_pointxy_id)"),
             @ApiImplicitParam(name = "floosSum", value = "楼层总数"),
             @ApiImplicitParam(name = "remark", value = "备注"),
+            @ApiImplicitParam(name = "zAmount", value = "租金"),
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/mkListing/add")
     @ResponseBody
     public ResultJSON<?> add(
-            @RequestParam(required = false, name = "apartmentId") String apartmentId,
+            @RequestParam(required = false, name = "apartmentId") Long apartmentId,
             @RequestParam(required = false, name = "dong") Integer dong,
             @RequestParam(required = false, name = "unit") Integer unit,
             @RequestParam(required = false, name = "roomNo") String roomNo,
@@ -84,12 +86,12 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "jPay") String jPay,
             @RequestParam(required = false, name = "bPay") String bPay,
             @RequestParam(required = false, name = "nPay") String nPay,
-            @RequestParam(required = false, name = "kdCosts") Double kdCosts,
-            @RequestParam(required = false, name = "dCosts") Double dCosts,
-            @RequestParam(required = false, name = "sCosts") Double sCosts,
-            @RequestParam(required = false, name = "wyCosts") Double wyCosts,
-            @RequestParam(required = false, name = "tcCosts") Double tcCosts,
-            @RequestParam(required = false, name = "rqCosts") Double rqCosts,
+            @RequestParam(required = false, name = "kdCosts") BigDecimal kdCosts,
+            @RequestParam(required = false, name = "dCosts") BigDecimal dCosts,
+            @RequestParam(required = false, name = "sCosts") BigDecimal sCosts,
+            @RequestParam(required = false, name = "wyCosts") BigDecimal wyCosts,
+            @RequestParam(required = false, name = "tcCosts") BigDecimal tcCosts,
+            @RequestParam(required = false, name = "rqCosts") BigDecimal rqCosts,
             @RequestParam(required = false, name = "decoration") String decoration,
             @RequestParam(required = false, name = "towards") String towards,
             @RequestParam(required = false, name = "supporting") String supporting,
@@ -107,7 +109,9 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "x") String x,
             @RequestParam(required = false, name = "y") String y,
             @RequestParam(required = false, name = "floosSum") Integer floosSum,
-            @RequestParam(required = false, name = "remark") String remark
+            @RequestParam(required = false, name = "remark") String remark,
+            @RequestParam(required = true, name = "zAmount") BigDecimal zAmount,
+            @RequestParam(required = true, name = "yAmount") BigDecimal yAmount
             );
 
     /**

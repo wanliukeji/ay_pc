@@ -1,7 +1,6 @@
 package com.example.demo.service.mk;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.mk.MkRentalMapper;
 import com.example.demo.entity.mk.MkRental;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +22,10 @@ import java.util.Date;
 @Slf4j
 public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
 
-    public MkRental add(String otherAmount, Double kdCosts, Double dCosts,
-                        Double sCosts, Double wyCosts, Double tcCosts,
-                        Double rqCosts, String userId, String longType,
-                        String depositMethod, Integer payDay) {
+    public MkRental add(String otherAmount, BigDecimal kdCosts, BigDecimal dCosts,
+                        BigDecimal sCosts, BigDecimal wyCosts, BigDecimal tcCosts,
+                        BigDecimal rqCosts, String userId, String longType,
+                        String depositMethod, Integer payDay, BigDecimal zAmount, BigDecimal yAmount) {
         MkRental entity = new MkRental();
 
         try {
@@ -40,29 +39,21 @@ public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
             entity.setLongType(longType);
 
 
-            if (StringUtil.isNotEmty(kdCosts)) {
-                entity.setKdCosts(BigDecimal.valueOf(kdCosts));
-            }
+            entity.setKdCosts(kdCosts);
 
-            if (StringUtil.isNotEmty(dCosts)) {
-                entity.setDCosts(BigDecimal.valueOf(dCosts));
-            }
+            entity.setDCosts(dCosts);
 
-            if (StringUtil.isNotEmty(sCosts)) {
-                entity.setSCosts(BigDecimal.valueOf(sCosts));
-            }
+            entity.setSCosts(sCosts);
 
-            if (StringUtil.isNotEmty(wyCosts)) {
-                entity.setWyCosts(BigDecimal.valueOf(wyCosts));
-            }
+            entity.setWyCosts(wyCosts);
 
-            if (StringUtil.isNotEmty(tcCosts)) {
-                entity.setTcCosts(BigDecimal.valueOf(tcCosts));
-            }
+            entity.setTcCosts(tcCosts);
 
-            if (StringUtil.isNotEmty(rqCosts)) {
-                entity.setRqCosts(BigDecimal.valueOf(rqCosts));
-            }
+            entity.setRqCosts(rqCosts);
+
+            entity.setZAmount(zAmount);
+
+            entity.setYAmount(yAmount);
 
             entity.setCreartDate(new Date());
             entity.setUserId(userId + "");

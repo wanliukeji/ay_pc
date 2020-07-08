@@ -22,7 +22,7 @@ public class MkRental implements Serializable {
   @Column
   private long id;
   private BigDecimal zAmount;
-  private BigDecimal zyAmount;
+  private BigDecimal yAmount;
   private BigDecimal sdAmount;
   private BigDecimal wxAmount;
   private BigDecimal kdCosts;

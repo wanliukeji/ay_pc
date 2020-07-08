@@ -27,10 +27,8 @@ public class MkApartment implements Serializable {
   private String areaCode;
   private String townCode;
   private String communityName;
-  @Column(name = "x")
-  private String xz;
-  @Column(name = "y")
-  private String yz;
+  private String x;
+  private String y;
   private String addr;
   private Integer del;
   private Integer fstatus;

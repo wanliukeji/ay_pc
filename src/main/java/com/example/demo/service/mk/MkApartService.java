@@ -50,8 +50,8 @@ public class MkApartService extends ServiceImpl<MkApartMapper, MkApartment> {
                 entity.setCommunityName(communityName);
                 entity.setDel(1);
                 entity.setFstatus(0);
-                entity.setXz(x);
-                entity.setYz(y);
+                entity.setX(x);
+                entity.setY(y);
                 boolean f = this.save(entity);
                 if (f) {
                     redisService.initia(communityName, x, y, String.valueOf(entity.getId()));

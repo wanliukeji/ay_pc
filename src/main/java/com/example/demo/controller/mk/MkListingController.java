@@ -1,7 +1,10 @@
 package com.example.demo.controller.mk;
 
 import com.example.demo.api.mk.MkListingApi;
-import com.example.demo.entity.mk.*;
+import com.example.demo.entity.mk.MkAddr;
+import com.example.demo.entity.mk.MkApartment;
+import com.example.demo.entity.mk.MkListing;
+import com.example.demo.entity.mk.MkRental;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.redis.RedisService;
@@ -13,7 +16,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -51,7 +54,7 @@ public class MkListingController implements MkListingApi {
 
     @Override
     public ResultJSON<?> add(
-                             String apartmentId,
+            Long apartmentId,
                              Integer dong,
                              Integer unit,
                              String  roomNo,
@@ -66,12 +69,12 @@ public class MkListingController implements MkListingApi {
                              String jPay,
                              String bPay,
                              String nPay,
-                             Double kdCosts,
-                             Double dCosts,
-                             Double sCosts,
-                             Double wyCosts,
-                             Double tcCosts,
-                             Double rqCosts,
+                             BigDecimal kdCosts,
+                             BigDecimal dCosts,
+                             BigDecimal sCosts,
+                             BigDecimal wyCosts,
+                             BigDecimal tcCosts,
+                             BigDecimal rqCosts,
                              String decoration,
                              String towards,
                              String supporting,
@@ -89,7 +92,9 @@ public class MkListingController implements MkListingApi {
                              String x,
                              String y,
                              Integer floosSum,
-                             String remark
+                             String remark,
+                             BigDecimal zAmount,
+                             BigDecimal yAmount
     ) {
         try {
             // 公寓信息
@@ -100,7 +105,7 @@ public class MkListingController implements MkListingApi {
                 MkRental rental = rfservice.add(otherAmount, kdCosts, dCosts,
                         sCosts, wyCosts, tcCosts,
                         rqCosts, userId, longType,
-                        depositMethod, payDay);
+                        depositMethod, payDay, zAmount,yAmount);
                 if (null != addr && rental != null) {
                     //添加房源
                     MkListing enitty = fservice.add(area, unitType,
@@ -110,13 +115,13 @@ public class MkListingController implements MkListingApi {
                                                     userId,fileId, leaseType, labeles, apartmentId,
                                                     addr.getId(), rental.getId(), remark);
                     if (null != enitty) {
-                        MkPointxy pointxy = new MkPointxy();
-                        pointxy.setName(apartment.getCommunityName());
-                        pointxy.setY(y);
-                        pointxy.setX(x);
-                        pointxy.setCreadDate(new Date());
-                        pointxy.setFid(enitty.getId() + "");
-                        pointXyService.save(pointxy);
+//                        MkPointxy pointxy = new MkPointxy();
+//                        pointxy.setName(apartment.getCommunityName());
+//                        pointxy.setY(y);
+//                        pointxy.setX(x);
+//                        pointxy.setCreadDate(new Date());
+//                        pointxy.setFid(enitty.getId() + "");
+//                        pointXyService.save(pointxy);
                         redisService.initia(apartment.getCommunityName(), x, y, String.valueOf(enitty.getId()));
                         apartment.setRoomNum((apartment.getRoomNum() != null ? apartment.getRoomNum() + 1 : 1));
                         apartService.saveOrUpdate(apartment);
