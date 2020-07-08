@@ -121,17 +121,18 @@ public interface MkListingApi extends Serializable {
      * @param row
      * @return
      */
-    @ApiOperation(value = "MK房屋基本配置分页接口", notes = "MK房屋基本配置添加接口")
+    @ApiOperation(value = "MK房源分页接口", notes = "MK房源分页接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "leaseType", value = "租房类型"),
-            @ApiImplicitParam(name = "areaCode", value = "县区"),
+            @ApiImplicitParam(name = "areaCode", value = "县区编号"),
             @ApiImplicitParam(name = "maxPrice", value = "最大价格"),
             @ApiImplicitParam(name = "minPrice", value = "最小价格"),
             @ApiImplicitParam(name = "unitType", value = "户型"),
             @ApiImplicitParam(name = "limit", value = "起始页"),
             @ApiImplicitParam(name = "row", value = "行数"),
             @ApiImplicitParam(name = "longType", value = "租期"),
-            @ApiImplicitParam(name = "area", value = "面积"),
+            @ApiImplicitParam(name = "maxArea", value = "最大面积"),
+            @ApiImplicitParam(name = "minArea", value = "最小面积"),
             @ApiImplicitParam(name = "fidentity", value = "房东类型"),
             @ApiImplicitParam(name = "apartmentId", value = "品牌公寓"),
             @ApiImplicitParam(name = "decoration", value = "装修程度"),
@@ -143,7 +144,7 @@ public interface MkListingApi extends Serializable {
     @PostMapping(value = "/mk/api/listing/page")
     public ResultJSON<?> page(
             @RequestParam(required = false, value = "leaseType") Integer leaseType,
-            @RequestParam(required = false, value = "areaCode") Integer areaCode,
+            @RequestParam(required = false, value = "areaCode") String areaCode,
             @RequestParam(required = false, value = "maxPrice") Integer maxPrice,
             @RequestParam(required = false, value = "minPrice") Integer minPrice,
             @RequestParam(required = false, value = "unitType") String unitType,

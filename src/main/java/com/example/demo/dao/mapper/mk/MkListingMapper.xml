@@ -16,7 +16,6 @@
         t.`creatDate` AS `creatDate`,
         t.`unit` AS `unit`,
         t.`areaCode` AS `areaCode`,
-        (SELECT i.name FROM mk_address i WHERE 1=1 AND i.code = t.areaCode) as areaName,
         t.`id` AS `id`,
         t.`unitType` AS `unitType`,
         t.`userId` AS `userId`,
@@ -66,9 +65,9 @@
         t.`payDay` AS `payDay`,
         t.`longType` AS `longType`,
         t.`x` as `x`,
-        t.`y` as `y`
+        t.`y` as `y`,
+        t.`areaName` as areaName
         FROM
-
         v_list_rent_addr t
         WHERE 1= 1
 
@@ -81,11 +80,11 @@
         </if>
 
         <if test="maxPrice != null">
-            AND t.zAmount &lt; #{maxPrice}
+            AND t.zAmount &lt;= #{maxPrice}
         </if>
 
         <if test="minPrice != null">
-            AND t.zAmount &gt; #{minPrice}
+            AND t.zAmount &gt;= #{minPrice}
         </if>
 
         <if test="unitType != null">
@@ -110,11 +109,11 @@
         </if>
 
         <if test="maxArea != null">
-            AND t.area &lt; #{maxArea}
+            AND t.area &lt;= #{maxArea}
         </if>
 
         <if test="minArea != null">
-            AND t.area &gt; #{minArea}
+            AND t.area &gt;= #{minArea}
         </if>
 
         <if test="fidentity != null">

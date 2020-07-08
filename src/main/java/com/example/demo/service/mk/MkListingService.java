@@ -94,7 +94,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
     }
 
     public List<Map<String, Object>> page(Integer leaseType,
-                                          Integer areaCode,
+                                          String areaCode,
                                           Integer maxPrice,
                                           Integer minPrice,
                                           String unitType,
@@ -111,7 +111,6 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                                           String val,
                                           Integer id) throws Exception {
 
-        Map<String, Object> paraMap = new HashMap<String, Object>();
         limit = limit == null ? 0 : limit;
         row = row == null ? 30 : row;
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();

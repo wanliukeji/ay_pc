@@ -28,7 +28,7 @@ public interface MkListingMapper extends BaseMapper<MkListing>, Serializable {
 
     List<Map<String, Object>> getByPage(
             @Param("leaseType") Integer leaseType,
-            @Param("areaCode") Integer areaCode,
+            @Param("areaCode") String areaCode,
             @Param("maxPrice") Integer maxPrice,
             @Param("minPrice") Integer minPrice,
             @Param("unitType") String unitType,

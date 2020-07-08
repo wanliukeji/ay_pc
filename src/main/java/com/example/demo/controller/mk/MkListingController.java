@@ -150,7 +150,7 @@ public class MkListingController implements MkListingApi {
 
     @Override
     public ResultJSON<?> page(Integer leaseType,
-                              Integer areaCode,
+                              String areaCode,
                               Integer maxPrice,
                               Integer minPrice,
                               String unitType,
