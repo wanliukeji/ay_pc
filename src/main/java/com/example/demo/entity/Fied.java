@@ -8,12 +8,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@Table(name = "fied")
+//@Table(name = "fied")
 public class Fied implements Serializable {
 
     @Getter
@@ -24,7 +23,7 @@ public class Fied implements Serializable {
     @Column
     private Long id;
 
-    @Column(name = "headline")
+//    @Column(name = "headline")
     private String head_line;
 
     private String telephone;

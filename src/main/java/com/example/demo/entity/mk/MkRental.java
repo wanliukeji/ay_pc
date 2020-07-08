@@ -21,8 +21,6 @@ public class MkRental implements Serializable {
   @TableId(type = IdType.AUTO)
   @Column
   private long id;
-  private String zqType;
-  private String zqPay;
   private BigDecimal zAmount;
   private BigDecimal zyAmount;
   private BigDecimal sdAmount;
@@ -35,12 +33,14 @@ public class MkRental implements Serializable {
   private BigDecimal rqCosts;
   private BigDecimal firstAmount;
   private BigDecimal fAmount;
-  private String fOther;
+  private String otherAmount;
   private String userId;
   private Date creartDate;
-  private long del;
-  private long fstatus;
+  private Integer del;
   private String deposit;
   private String otherDeposit;
   private Date payTime;
+  private String depositMethod;
+  private Integer payDay;
+  private String longType;
 }

@@ -45,7 +45,7 @@ public class MkFileService extends ServiceImpl<MkFileMapper, MkFile> {
                 entity.setCreadCode(userId);
                 entity.setCreadDate(new Date());
                 entity.setDel(1);
-                this.saveOrUpdate(entity);
+                this.save(entity);
                 return ResultJSON.success(entity);
             }
             return ResultJSON.error(CodeMsg.SESSION_ERROR);

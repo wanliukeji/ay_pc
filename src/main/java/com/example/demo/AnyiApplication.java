@@ -43,4 +43,5 @@ public class AnyiApplication extends  ServletInitializer{
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(AnyiApplication.class);
     };
+
 }

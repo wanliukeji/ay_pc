@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Table(name = "mk_apartment")
@@ -19,15 +20,17 @@ public class MkApartment implements Serializable {
   @Column
   private long id;
   private String fileCode;
-  private long userId;
-  private java.sql.Timestamp createDate;
-  private long roomNum;
+  private String userId;
+  private Date createDate;
+  private Integer roomNum;
   private String cityCode;
   private String areaCode;
   private String townCode;
   private String communityName;
-  private String X;
-  private String Y;
+  @Column(name = "x")
+  private String xz;
+  @Column(name = "y")
+  private String yz;
   private String addr;
   private Integer del;
   private Integer fstatus;

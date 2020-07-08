@@ -21,30 +21,20 @@ public class MkListing implements Serializable {
   @TableId(type = IdType.AUTO)
   @Column
   private long id;
-  private String units;
-  private String unitTypeA;
-  private String unitTypeB;
-  private String creadCode;
+  private String unitType;
+  private String userId;
   private Date createDate;
-  private String rentType;
   private long fidentity;
-  private String rentCollection;
   private String remark;
-  private String depositMethod;
-  private String fileCodes;
+  private Integer fileId;
   private double area;
   private long leaseType;
   private String labels;
-  private double bounty;
-  private String unitTypeC;
-  private String longCode;
-  private String payType;
   private String decoration;
   private String towards;
   private String supporting;
   private String features;
   private String expectations;
-  private String hostType;
   private Long apartmentId;
   private Long rentalId;
   private Long addrId;
@@ -52,10 +42,8 @@ public class MkListing implements Serializable {
   private String jPay;
   private String nPay;
   private String bPay;
-  private Date payTime;
   private Integer fstatus;
   private Integer jstatus;
   private Integer tstatus;
   private Integer sortNo;
-  private Integer xyNo;
 }

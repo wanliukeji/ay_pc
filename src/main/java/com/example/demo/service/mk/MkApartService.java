@@ -41,12 +41,8 @@ public class MkApartService extends ServiceImpl<MkApartMapper, MkApartment> {
         try {
             entity.setFileCode(fileCode);
             if (StringUtil.isNotEmty(userId)) {
-                entity.setUserId(Long.valueOf(userId));
-
-                if (StringUtil.isNotEmty(roomNum)) {
-                    entity.setRoomNum(Long.valueOf(roomNum));
-                }
-
+                entity.setUserId(userId);
+                entity.setRoomNum(roomNum);
                 entity.setCityCode(cityCode);
                 entity.setAreaCode(areaCode);
                 entity.setTownCode(townCode);
@@ -54,8 +50,9 @@ public class MkApartService extends ServiceImpl<MkApartMapper, MkApartment> {
                 entity.setCommunityName(communityName);
                 entity.setDel(1);
                 entity.setFstatus(0);
+                entity.setXz(x);
+                entity.setYz(y);
                 boolean f = this.save(entity);
-
                 if (f) {
                     redisService.initia(communityName, x, y, String.valueOf(entity.getId()));
                     return ResultJSON.success(entity);

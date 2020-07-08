@@ -2,7 +2,6 @@ package com.example.demo.service.mk;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.mk.MkListingMapper;
 import com.example.demo.entity.mk.MkListing;
@@ -37,9 +36,6 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
      * 添加数据
      * @param area
      * @param unitType
-     * @param depositMethod
-     * @param payTime
-     * @param zqType
      * @param mPay
      * @param jPay
      * @param bPay
@@ -49,60 +45,47 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
      * @param supporting
      * @param features
      * @param expectations
-     * @param hostType
-     * @param aId
-     * @param rId
+     * @param fidentity
      * @param userId
      * @param fileId
      * @param leaseType
      * @return
      * @throws Exception
      */
-    public MkListing add(String area,
-                       String unitType, String depositMethod, String payTime,
-                       String zqType, String mPay, String jPay, String bPay,
+    public MkListing add(Double area, String unitType, String mPay, String jPay, String bPay,
                        String nPay, String decoration, String towards,
                        String supporting, String features, String expectations,
-                       String hostType,
-                       Long aId, Long rId, Integer userId,
+                       Integer fidentity,
+                       String userId,
                        Integer fileId,Integer leaseType,
-                       Integer apartmentId,
-                       String labeles) throws Exception {
+                       String labeles, String apartmentId, Long addrId, Long rId, String remark) throws Exception {
         MkListing entity = new MkListing();
-
 
         if (StringUtil.isNotEmty(area)) {
             entity.setArea(Double.valueOf(area));
         }
-
-        if (StringUtil.isNotEmty(unitType)) {
-            entity.setUnitTypeA(unitType);
-        }
-
         if (StringUtil.isNotEmty(leaseType)) {
             entity.setLeaseType(leaseType);
         }
-
-        entity.setDepositMethod(depositMethod);
+        entity.setUnitType(unitType);
+        entity.setFidentity(fidentity);
         entity.setYPay(mPay);
         entity.setJPay(jPay);
         entity.setBPay(bPay);
         entity.setNPay(nPay);
-        entity.setLongCode(zqType);
         entity.setDecoration(decoration);
         entity.setTowards(towards);
         entity.setSupporting(supporting);
         entity.setFeatures(features);
         entity.setExpectations(expectations);
-        entity.setHostType(hostType);
-        entity.setCreadCode(userId + "");
+        entity.setUserId(userId);
         entity.setCreateDate(new Date());
-        entity.setAddrId(aId);
+        entity.setAddrId(addrId);
         entity.setRentalId(rId);
-        entity.setFileCodes(fileId + "");
-        entity.setPayTime(DateUtil.strToDateLong(payTime));
+        entity.setFileId(fileId);
         entity.setFstatus(0);
         entity.setLabels(labeles);
+        entity.setRemark(remark);
 
         if (StringUtil.isNotEmty(apartmentId)) {
             entity.setApartmentId(Long.valueOf(apartmentId));

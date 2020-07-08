@@ -22,17 +22,18 @@ import java.util.Date;
 public class MkAddrService extends ServiceImpl<MkAddrMapper, MkAddr> {
 
 
-    public MkAddr add(String comName, Integer dong, Integer unit, Integer roomNo, Integer floors,
-                      Integer userId,
-                      String proCode, String cityCode, String areaCode, Integer floosSum, String addrName) throws Exception {
+    public MkAddr add(String comName, Integer dong, Integer unit, String roomNo, Integer floors,
+                      String userId,
+                      String proCode, String cityCode, String areaCode, Integer floosSum,
+                      String addrName) throws Exception {
         MkAddr addr = new MkAddr();
         try {
             addr.setComName(comName);
             addr.setDong(dong + "");
             addr.setUnit(unit);
-            addr.setRoomNo(roomNo + "");
+            addr.setRoomNo(roomNo);
             addr.setFloors(floors);
-            addr.setCreatCode(userId + "");
+            addr.setCreatCode(userId);
             addr.setProCode(proCode);
             addr.setCityCode(cityCode);
             addr.setStreetCode(areaCode);

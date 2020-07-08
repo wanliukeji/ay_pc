@@ -1,7 +1,6 @@
 package com.example.demo.service.mk;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.mk.MkRentalMapper;
 import com.example.demo.entity.mk.MkRental;
@@ -24,17 +23,22 @@ import java.util.Date;
 @Slf4j
 public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
 
-    public MkRental add(String payTime, String fOther, String zqType, Double kdCosts, Double dCosts,
-                        Double sCosts, Double wyCosts, Double tcCosts, Double rqCosts, Integer userId) {
+    public MkRental add(String otherAmount, Double kdCosts, Double dCosts,
+                        Double sCosts, Double wyCosts, Double tcCosts,
+                        Double rqCosts, String userId, String longType,
+                        String depositMethod, Integer payDay) {
         MkRental entity = new MkRental();
 
         try {
-            entity.setPayTime(DateUtil.getStringToDate(payTime));
 
-            if (StringUtil.isNotEmty(fOther)) {
-                entity.setFOther(fOther);
-            }
-            entity.setZqType(zqType);
+            entity.setOtherAmount(otherAmount);
+
+            entity.setDepositMethod(depositMethod);
+
+            entity.setPayDay(payDay);
+
+            entity.setLongType(longType);
+
 
             if (StringUtil.isNotEmty(kdCosts)) {
                 entity.setKdCosts(BigDecimal.valueOf(kdCosts));
