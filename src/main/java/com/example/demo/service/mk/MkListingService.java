@@ -93,10 +93,23 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         return entity;
     }
 
-    public List<Map<String, Object>> page(Integer leaseType, Integer areaCode, Integer townCode, Integer maxPrice, Integer minPrice,
-                                          String unitTypeA, Integer limit, Integer row, String longCode, Double maxArea, Double minArea,
-                                          Integer hostType, Integer apartmentId, Integer decoration, Integer jstatus, Integer tstatus,
-                                          String val, Integer id) throws Exception {
+    public List<Map<String, Object>> page(Integer leaseType,
+                                          Integer areaCode,
+                                          Integer maxPrice,
+                                          Integer minPrice,
+                                          String unitType,
+                                          Integer limit,
+                                          Integer row,
+                                          String longType,
+                                          Double maxArea,
+                                          Double minArea,
+                                          Integer fidentity,
+                                          Integer apartmentId,
+                                          Integer decoration,
+                                          Integer jstatus,
+                                          Integer tstatus,
+                                          String val,
+                                          Integer id) throws Exception {
 
         Map<String, Object> paraMap = new HashMap<String, Object>();
         limit = limit == null ? 0 : limit;
@@ -104,8 +117,8 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         QueryWrapper<MkListing> qw = new QueryWrapper<MkListing>();
         try {
-            list = this.baseMapper.getByPage(leaseType, areaCode, townCode, maxPrice, minPrice,
-                    unitTypeA, limit, row, longCode, maxArea, minArea, hostType,
+            list = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
+                    unitType, limit, row, longType, maxArea, minArea, fidentity,
                     apartmentId, decoration, jstatus, tstatus, val, id);
             list = facilityService.getInfos("labels", list);
             list = facilityService.getInfos("decoration", list);
@@ -149,10 +162,11 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         QueryWrapper<MkListing> qw = new QueryWrapper<MkListing>();
         try {
-            list = this.baseMapper.getByPage(null, null, null, null, null,
-                    null, 0, 1, null, null, null, null,
-                    null, null, null, null, null, id);
-            list = fileService.getInfos("fileCodes", list);
+            list = this.baseMapper.getByPage(null,
+                    null, null, null, null,
+                    null, 0, null, null, null, null, null,
+                    null, null, null, null, id);
+            list = fileService.getInfos("fileId", list);
             list = facilityService.getInfos("labels", list);
             list = facilityService.getInfos("decoration", list);
             list = facilityService.getInfos("towards", list);
@@ -175,7 +189,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         try {
             Map map = this.baseMapper.getInfo(id);
             list.add(map);
-            list = fileService.getInfos("fileCodes", list);
+            list = fileService.getInfos("fileId", list);
             list = facilityService.getInfos("labels", list);
             list = facilityService.getInfos("decoration", list);
             list = facilityService.getInfos("towards", list);

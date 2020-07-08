@@ -189,9 +189,9 @@ public class MkFacilityService extends ServiceImpl<MkFacilityMapper, MkFacility>
 
 
     public List<Map<String, Object>> getInfos(String name, List list) {
-            List item = new ArrayList();
             for (int i = 0; i < list.size(); i++) {
                 Map map = (Map) list.get(i);
+                List item = new ArrayList();
                 if (StringUtil.isNotEmty(map.get(name))) {
                     String []str = map.get(name).toString().split(",");
                     for (int j = 0; j < str.length; j++) {

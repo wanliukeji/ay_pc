@@ -4,87 +4,72 @@
 
     <select id="getByPage" resultType="java.util.Map">
         SELECT
-        `t`.`id` AS `id`,
-        `t`.`units` AS `units`,
-        `t`.`unitTypeA` AS `unitTypeA`,
-        `t`.`unitTypeB` AS `unitTypeB`,
-        `t`.`creadCode` AS `creadCode`,
-        `t`.`fcreateDate` AS `fcreateDate`,
-        `t`.`rentType` AS `rentType`,
-        `t`.`fidentity` AS `fidentity`,
-        `t`.`rentCollection` AS `rentCollection`,
-        `t`.`remark` AS `remark`,
-        `t`.`depositMethod` AS `depositMethod`,
-        `t`.`fileCodes` AS `fileCodes`,
-        `t`.`filePath` AS `filePath`,
-        `t`.`area` AS `area`,
-        `t`.`leaseType` AS `leaseType`,
-        `t`.`labels` AS `labels`,
-        `t`.`bounty` AS `bounty`,
-        `t`.`unitTypeC` AS `unitTypeC`,
-        `t`.`longCode` AS `longCode`,
-        `t`.`payType` AS `payType`,
-        `t`.`decoration` AS `decoration`,
-        `t`.`towards` AS `towards`,
-        `t`.`supporting` AS `supporting`,
-        `t`.`features` AS `features`,
-        `t`.`expectations` AS `expectations`,
-        `t`.`hostType` AS `hostType`,
-        `t`.`apartmentId` AS `apartmentId`,
-        `t`.`rentalId` AS `rentalId`,
-        `t`.`addrId` AS `addrId`,
-        `t`.`yPay` AS `yPay`,
-        `t`.`jPay` AS `jPay`,
-        `t`.`bPay` AS `bPay`,
-        `t`.`nPay` AS `nPay`,
-        `t`.`payTime` AS `payTime`,
-        `t`.`fstatus` AS `fstatus`,
-        `t`.`jstatus` AS `jstatus`,
-        `t`.`tstatus` AS `tstatus`,
-        `t`.`sortNo` AS `sortNo`,
-        `t`.`countryCode` AS `countryCode`,
-        `t`.`countryName` AS `countryName`,
-        `t`.`proName` AS `proName`,
-        `t`.`proCode` AS `proCode`,
-        `t`.`cityCode` AS `cityCode`,
-        `t`.`cityName` AS `cityName`,
-        `t`.`streetName` AS `streetName`,
-        `t`.`streetCode` AS `streetCode`,
-        `t`.`comName` AS `comName`,
-        `t`.`addrName` AS `addrName`,
-        `t`.`dong` AS `dong`,
-        `t`.`floors` AS `floors`,
-        `t`.`floorSum` AS `floorSum`,
-        `t`.`roomNo` AS `roomNo`,
-        `t`.`creatDate` AS `creatDate`,
-        `t`.`creatCode` AS `creatCode`,
-        `t`.`astatus` AS `astatus`,
-        `t`.`townCode` AS `townCode`,
-        `t`.`unit` AS `unit`,
-        `t`.`areaCode` AS `areaCode`,
-        ( SELECT `k`.`name` FROM `mk_address` `k` WHERE ( `k`.`code` = `t`.`areaCode` ) ) AS `areaName`,
-        `t`.`zqType` AS `zqType`,
-        `t`.`zqPay` AS `zqPay`,
-        `t`.`zAmount` AS `zAmount`,
-        `t`.`zyAmount` AS `zyAmount`,
-        `t`.`sdAmount` AS `sdAmount`,
-        `t`.`wxAmount` AS `wxAmount`,
-        `t`.`kdCosts` AS `kdCosts`,
-        `t`.`dCosts` AS `dCosts`,
-        `t`.`sCosts` AS `sCosts`,
-        `t`.`wyCosts` AS `wyCosts`,
-        `t`.`tcCosts` AS `tcCosts`,
-        `t`.`rqCosts` AS `rqCosts`,
-        `t`.`firstAmount` AS `firstAmount`,
-        `t`.`fAmount` AS `fAmount`,
-        `t`.`fOther` AS `fOther`,
-        `t`.`userId` AS `userId`,
-        `t`.`rcreartDate` AS `rcreartDate`,
-        `t`.`deposit` AS `deposit`,
-        `t`.`otherDeposit` AS `otherDeposit`
+        t.`id` AS `aid`,
+        t.`proCode` AS `proCode`,
+        t.`cityCode` AS `cityCode`,
+        t.`comName` AS `comName`,
+        t.`addrName` AS `addrName`,
+        t.`dong` AS `dong`,
+        t.`floors` AS `floors`,
+        t.`floorSum` AS `floorSum`,
+        t.`roomNo` AS `roomNo`,
+        t.`creatDate` AS `creatDate`,
+        t.`unit` AS `unit`,
+        t.`areaCode` AS `areaCode`,
+        (SELECT i.name FROM mk_address i WHERE 1=1 AND i.code = t.areaCode) as areaName,
+        t.`id` AS `id`,
+        t.`unitType` AS `unitType`,
+        t.`userId` AS `userId`,
+        t.`createDate` AS `createDate`,
+        t.`fidentity` AS `fidentity`,
+        t.`remark` AS `remark`,
+        t.`fileId` AS `fileId`,
+        t.`area` AS `area`,
+        t.`leaseType` AS `leaseType`,
+        t.`labels` AS `labels`,
+        t.`decoration` AS `decoration`,
+        t.`towards` AS `towards`,
+        t.`supporting` AS `supporting`,
+        t.`features` AS `features`,
+        t.`expectations` AS `expectations`,
+        t.`apartmentId` AS `apartmentId`,
+        t.`rentalId` AS `rentalId`,
+        t.`addrId` AS `addrId`,
+        t.`yPay` AS `yPay`,
+        t.`jPay` AS `jPay`,
+        t.`bPay` AS `bPay`,
+        t.`nPay` AS `nPay`,
+        t.`fstatus` AS `fstatus`,
+        t.`del` AS `del`,
+        t.`jstatus` AS `jstatus`,
+        t.`tstatus` AS `tstatus`,
+        t.`sortNo` AS `sortNo`,
+        t.`id` AS `rid`,
+        t.`zAmount` AS `zAmount`,
+        t.`yAmount` AS `yAmount`,
+        t.`sdAmount` AS `sdAmount`,
+        t.`wxAmount` AS `wxAmount`,
+        t.`kdCosts` AS `kdCosts`,
+        t.`dCosts` AS `dCosts`,
+        t.`sCosts` AS `sCosts`,
+        t.`wyCosts` AS `wyCosts`,
+        t.`tcCosts` AS `tcCosts`,
+        t.`rqCosts` AS `rqCosts`,
+        t.`firstAmount` AS `firstAmount`,
+        t.`fAmount` AS `fAmount`,
+        t.`otherAmount` AS `otherAmount`,
+        t.`creartDate` AS `creartDate`,
+        t.`deposit` AS `deposit`,
+        t.`otherDeposit` AS `otherDeposit`,
+        t.`payTime` AS `payTime`,
+        t.`depositMethod` AS `depositMethod`,
+        t.`payDay` AS `payDay`,
+        t.`longType` AS `longType`,
+        t.`x` as `x`,
+        t.`y` as `y`
         FROM
-        v_listing_addr_rent t
 
+        v_list_rent_addr t
         WHERE 1= 1
 
         <if test="leaseType != null">
@@ -95,10 +80,6 @@
             AND t.areaCode = #{areaCode}
         </if>
 
-        <if test="townCode != null">
-            AND t.townCode = #{townCode}
-        </if>
-
         <if test="maxPrice != null">
             AND t.zAmount &lt; #{maxPrice}
         </if>
@@ -107,18 +88,18 @@
             AND t.zAmount &gt; #{minPrice}
         </if>
 
-        <if test="unitTypeA != null">
-            AND t.unitTypeA like concat('%',#{unitTypeA},'%')
+        <if test="unitType != null">
+            AND t.unitType like concat('%',#{unitType},'%')
         </if>
 
-        <if test="longCode != null">
-            AND t.longCode like concat('%',#{longCode},'%')
+        <if test="longType != null">
+            AND t.longType like concat('%',#{longType},'%')
         </if>
 
         <if test="val != null">
             AND
             (
-            t.unitTypeA like concat('%',#{val},'%')
+            t.unitType like concat('%',#{val},'%')
             or
             t.addrName like concat('%',#{val},'%')
             or
@@ -136,8 +117,8 @@
             AND t.area &gt; #{minArea}
         </if>
 
-        <if test="hostType != null">
-            AND t.hostType = #{hostType}
+        <if test="fidentity != null">
+            AND t.fidentity = #{fidentity}
         </if>
 
         <if test="apartmentId != null">
@@ -160,7 +141,7 @@
             AND t.id = #{fid}
         </if>
 
-        ORDER BY t.sortNo, t.fcreateDate desc
+        ORDER BY t.sortNo, t.createDate desc
 
         LIMIT #{limit}, #{row}
 

@@ -149,14 +149,26 @@ public class MkListingController implements MkListingApi {
 
 
     @Override
-    public ResultJSON<?> page(Integer leaseType, Integer areaCode, Integer townCode, Integer maxPrice, Integer minPrice,
-                              String unitTypeA, Integer limit, Integer row, String longCode,
-                              Double maxArea, Double minArea, Integer hostType, Integer apartmentId,
-                              Integer decoration, Integer jstatus, Integer tstatus, String val,
+    public ResultJSON<?> page(Integer leaseType,
+                              Integer areaCode,
+                              Integer maxPrice,
+                              Integer minPrice,
+                              String unitType,
+                              Integer limit,
+                              Integer row,
+                              String longType,
+                              Double maxArea,
+                              Double minArea,
+                              Integer fidentity,
+                              Integer apartmentId,
+                              Integer decoration,
+                              Integer jstatus,
+                              Integer tstatus,
+                              String val,
                               Integer id) {
         try {
-            List item = fservice.page(leaseType, areaCode, townCode, maxPrice, minPrice, unitTypeA,
-                    limit, row, longCode, maxArea, minArea, hostType, apartmentId, decoration,
+            List item = fservice.page(leaseType, areaCode, maxPrice, minPrice, unitType,
+                    limit, row, longType, maxArea, minArea, fidentity, apartmentId, decoration,
                     jstatus, tstatus, val, id);
             item = fileService.getInfos("fileCodes", item);
             PageInfo<?> page = new PageInfo(item);
