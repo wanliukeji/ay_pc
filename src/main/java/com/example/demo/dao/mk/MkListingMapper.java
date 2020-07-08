@@ -24,7 +24,7 @@ public interface MkListingMapper extends BaseMapper<MkListing>, Serializable {
 //    List<Map<String, Object>> getByPage(Map<String, Object> paramMap);
 
 
-    Map<String, Object> getInfo(@Param("id") Integer id);
+    Map<String, Object> getInfo(@Param("fid") Integer id);
 
     List<Map<String, Object>> getByPage(
             @Param("leaseType") Integer leaseType,
@@ -49,7 +49,7 @@ public interface MkListingMapper extends BaseMapper<MkListing>, Serializable {
     Map<String, Object> getByPage2(
             @Param("limit") Integer limit,
             @Param("row") Integer row,
-            @Param("fid") String fid
+            @Param("fid") String id
     );
 }
 

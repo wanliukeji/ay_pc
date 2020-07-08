@@ -163,7 +163,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         try {
             list = this.baseMapper.getByPage(null,
                     null, null, null, null,
-                    null, 0, null, null, null, null, null,
+                    0, 1, null, null, null, null, null,
                     null, null, null, null, id);
             list = fileService.getInfos("fileId", list);
             list = facilityService.getInfos("labels", list);
