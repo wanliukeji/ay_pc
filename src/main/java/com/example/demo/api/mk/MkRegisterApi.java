@@ -20,34 +20,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Api(value = "注册模块", description = "注册接口")
 public interface MkRegisterApi {
 
-    @PostMapping(value = "/mk/api/user/register")
     @ApiOperation(value = "注册接口", notes = "注册接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "account", paramType="path", value = "账号"),
-            @ApiImplicitParam(name = "email", paramType="path", value = "邮箱"),
-            @ApiImplicitParam(name = "pwd", paramType="path", value = "密码"),
-            @ApiImplicitParam(name = "name", paramType="path", value = "真实姓名"),
-            @ApiImplicitParam(name = "userName", paramType="path", value = "用户名"),
-            @ApiImplicitParam(name = "imgUrl", paramType="path", value = "头像路径"),
-            @ApiImplicitParam(name = "sex", paramType="path", value = "性别"),
-            @ApiImplicitParam(name = "phone", paramType="path", value = "电话号码"),
-            @ApiImplicitParam(name = "iDcard", paramType="path", value = "身份证号"),
-            @ApiImplicitParam(name = "ctype", paramType="path", value = "身份类型(1个人 2 房东 3 企业 4 企业子账户)"),
-            @ApiImplicitParam(name = "openId", paramType="path", value = "OPENID 唯一标识"),
-            @ApiImplicitParam(name = "age", value = "年龄")
+            @ApiImplicitParam(name = "account",  value = "账号"),
+            @ApiImplicitParam(name = "email",  value = "邮箱"),
+            @ApiImplicitParam(name = "pwd",  value = "密码"),
+            @ApiImplicitParam(name = "name",  value = "真实姓名"),
+            @ApiImplicitParam(name = "userName",  value = "用户名"),
+            @ApiImplicitParam(name = "imgUrl",  value = "头像路径"),
+            @ApiImplicitParam(name = "sex",  value = "性别"),
+            @ApiImplicitParam(name = "phone",  value = "电话号码"),
+            @ApiImplicitParam(name = "iDcard",  value = "身份证号"),
+            @ApiImplicitParam(name = "ctype",  value = "身份类型(1个人 2 房东 3 企业)"),
+            @ApiImplicitParam(name = "openId",  value = "OPENID 唯一标识"),
+            @ApiImplicitParam(name = "age",  value = "年龄")
     })
+    @PostMapping(value = "/mk/api/user/register")
     @Transactional(rollbackFor = Exception.class)
-    ApiJSON<?> register(@RequestParam( required = true, value = "account") String account,
-                        @RequestParam( required = false, value = "email") String email,
-                        @RequestParam( required = true, value = "pwd") String pwd,
-                        @RequestParam( required = false, value = "name") String name,
-                        @RequestParam( required = false, value = "userName") String userName,
-                        @RequestParam( required = false, value = "imgUrl") String imgUrl,
-                        @RequestParam( required = false, value = "sex") Integer sex,
-                        @RequestParam( required = false, value = "phone") String phone,
-                        @RequestParam( required = false, value = "iDcard") String iDcard,
-                        @RequestParam( required = false, value = "ctype") Integer ctype,
-                        @RequestParam( required = false, value = "openId") String openId,
-                        @RequestParam( required = false, value = "age") Integer age
+    ApiJSON<?> register(@RequestParam(required = false, value = "account") String account,
+                        @RequestParam(required = false, value = "email") String email,
+                        @RequestParam(required = false, value = "pwd") String pwd,
+                        @RequestParam(required = false, value = "name") String name,
+                        @RequestParam(required = false, value = "userName") String userName,
+                        @RequestParam(required = false, value = "imgUrl") String imgUrl,
+                        @RequestParam(required = false, value = "sex") String sex,
+                        @RequestParam(required = false, value = "phone") String phone,
+                        @RequestParam(required = false, value = "iDcard") String iDcard,
+                        @RequestParam(required = false, value = "ctype") Integer ctype,
+                        @RequestParam(required = false, value = "openId") String openId,
+                        @RequestParam(required = false, value = "age") Integer age
     );
 }

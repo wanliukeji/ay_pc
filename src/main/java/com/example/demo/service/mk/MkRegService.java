@@ -24,11 +24,11 @@ import java.util.Date;
 public class MkRegService extends ServiceImpl<MkUSerMapper, MkUser> implements Serializable {
 
 
-    public ApiJSON<?> register(String account, String email, String pwd, String name, String userName, String imgUrl, Integer sex, String phone, String iDcard, Integer ctype, String openId, Integer age) {
+    public ApiJSON<?> register(String account, String email, String pwd, String name, String userName, String imgUrl, String sex, String phone, String iDcard, Integer ctype, String openId, Integer age) {
 
         try {
             if (StringUtil.isNotEmty(account)) {
-                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("accout", account));
+                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("account", account));
                 if (null != user) {
                     return ApiJSON.error("该账号已注册");
                 }
@@ -49,7 +49,7 @@ public class MkRegService extends ServiceImpl<MkUSerMapper, MkUser> implements S
                 entity.setPwd(pwd);
                 entity.setUname(name);
                 entity.setIDcard(iDcard);
-                entity.setAccout(account);
+                entity.setAccount(account);
                 entity.setUtype(ctype);
                 entity.setEmail(email);
                 entity.setImgUrl(imgUrl);

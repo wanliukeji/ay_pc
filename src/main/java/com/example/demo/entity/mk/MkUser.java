@@ -21,12 +21,12 @@ public class MkUser  implements Serializable {
   @TableId(type = IdType.AUTO)
   @Column
   private Integer id;
-  private String accout;
+  private String account;
   private String pwd;
   private String uname;
   private String userName;
   private String imgUrl;
-  private Integer sex;
+  private String sex;
   private String phone;
   private String iDcard;
   private Date createDate;

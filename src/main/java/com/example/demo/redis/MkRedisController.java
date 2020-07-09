@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(value = "Redis模块", description = "Redis接口")
-public class RedisController implements MkRedistApi {
+public class MkRedisController implements MkRedistApi {
 
 
     @Autowired

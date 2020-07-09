@@ -48,7 +48,7 @@ public interface MkUserApi extends Serializable {
             @RequestParam( required = false, value = "name") String name,
             @RequestParam( required = false, value = "userName") String userName,
             @RequestParam( required = false, value = "imgUrl") String imgUrl,
-            @RequestParam( required = false, value = "sex") Integer sex,
+            @RequestParam( required = false, value = "sex") String sex,
             @RequestParam( required = false, value = "phone") String phone,
             @RequestParam( required = false, value = "ctype") Integer ctype,
             @RequestParam( required = false, value = "age") Integer age

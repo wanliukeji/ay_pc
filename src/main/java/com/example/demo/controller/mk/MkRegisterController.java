@@ -32,7 +32,7 @@ public class MkRegisterController implements MkRegisterApi {
                                String name,
                                String userName,
                                String imgUrl,
-                               Integer sex,
+                               String sex,
                                String phone,
                                String iDcard,
                                Integer ctype,

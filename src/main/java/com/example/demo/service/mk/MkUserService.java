@@ -155,7 +155,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         }
     }
 
-    public ResultJSON<?> edit(String email, String pwd, String name, String userName, String imgUrl, Integer sex, String phone, Integer ctype, Integer age) {
+    public ResultJSON<?> edit(String email, String pwd, String name, String userName, String imgUrl, String sex, String phone, Integer ctype, Integer age) {
         try {
             MkUser entity = new MkUser();
             //加密
@@ -237,7 +237,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
                 if (flag) {
                     pant.setCompnyChilds(StringUtil.isNotEmty(pant.getCompnyChilds()) ? pant.getCompnyChilds() + ","+ entity.getId() : entity.getId() + "");
                     this.saveOrUpdate(pant);
-                    return ResultJSON.success(pant);
+                    return ResultJSON.success(entity);
                 }
             }
             return ResultJSON.error(CodeMsg.UPDATE_ERROR);

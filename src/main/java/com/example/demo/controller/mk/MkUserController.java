@@ -26,7 +26,7 @@ public class MkUserController implements MkUserApi {
 
 
     @Override
-    public ResultJSON<?> edit(String email, String pwd, String name, String userName, String imgUrl, Integer sex, String phone,
+    public ResultJSON<?> edit(String email, String pwd, String name, String userName, String imgUrl, String sex, String phone,
                               Integer ctype, Integer age) {
         return service.edit(email, pwd, name, userName, imgUrl, sex, phone, ctype, age);
     }
