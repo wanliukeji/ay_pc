@@ -68,6 +68,52 @@ public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
         return null;
     }
 
+    public MkRental edit(String otherAmount, BigDecimal kdCosts, BigDecimal dCosts,
+                        BigDecimal sCosts, BigDecimal wyCosts, BigDecimal tcCosts,
+                        BigDecimal rqCosts, String longType,
+                        String depositMethod, Integer payDay, BigDecimal zAmount, BigDecimal yAmount, Long id) {
+
+        try {
+
+            MkRental entity = this.getById(id);
+
+            if (null != entity) {
+                entity.setOtherAmount(otherAmount);
+
+                entity.setDepositMethod(depositMethod);
+
+                entity.setPayDay(payDay);
+
+                entity.setLongType(longType);
+
+
+                entity.setKdCosts(kdCosts);
+
+                entity.setDCosts(dCosts);
+
+                entity.setSCosts(sCosts);
+
+                entity.setWyCosts(wyCosts);
+
+                entity.setTcCosts(tcCosts);
+
+                entity.setRqCosts(rqCosts);
+
+                entity.setZAmount(zAmount);
+
+                entity.setYAmount(yAmount);
+
+                boolean f = this.saveOrUpdate(entity);
+                if (f) {
+                    return entity;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * 添加数据
      *

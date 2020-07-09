@@ -179,6 +179,101 @@ public interface MkListingApi extends Serializable {
 
 
     /**
+     * 房源模块添加
+     * @return
+     */
+    @ApiOperation(value = "MK房源模块修改接口", notes = "MK房源修改添加接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "apartmentId", value = "小区ID/公寓ID(mk_apartment_id)"),
+            @ApiImplicitParam(name = "dong", value = "栋/幢 (单位)"),
+            @ApiImplicitParam(name = "unit", value = "单元(几单元)"),
+            @ApiImplicitParam(name = "roomNo", value = "房门号"),
+            @ApiImplicitParam(name = "area", value = "房屋面积"),
+            @ApiImplicitParam(name = "floors", value = "楼层(第几层)"),
+            @ApiImplicitParam(name = "unitType", value = "户型"),
+            @ApiImplicitParam(name = "depositMethod", value = "押金方式"),
+            @ApiImplicitParam(name = "payDay", value = "房租支付时间(账单前几天收租)"),
+            @ApiImplicitParam(name = "otherAmount", value = "其他费用"),
+            @ApiImplicitParam(name = "longType", value = "起租时长"),
+            @ApiImplicitParam(name = "mPay", value = "月付(mk_bounty_id) -付款方式及赏金"),
+            @ApiImplicitParam(name = "jPay", value = "季付(mk_bounty_id) -付款方式及赏金"),
+            @ApiImplicitParam(name = "bPay", value = "半年付(mk_bounty_id) -付款方式及赏金"),
+            @ApiImplicitParam(name = "nPay", value = "年付(mk_bounty_id) -付款方式及赏金"),
+            @ApiImplicitParam(name = "kdCosts", value = "宽带费"),
+            @ApiImplicitParam(name = "dCosts", value = "电费"),
+            @ApiImplicitParam(name = "sCosts", value = "水费"),
+            @ApiImplicitParam(name = "wyCosts", value = "物业费"),
+            @ApiImplicitParam(name = "tcCosts", value = "停车费"),
+            @ApiImplicitParam(name = "rqCosts", value = "燃气费"),
+            @ApiImplicitParam(name = "decoration", value = "装修程度(mk_facility_id)"),
+            @ApiImplicitParam(name = "towards", value = "朝向(mk_facility_id)"),
+            @ApiImplicitParam(name = "supporting", value = "配套(mk_facility_id)"),
+            @ApiImplicitParam(name = "features", value = "房屋特色(mk_facility_id)"),
+            @ApiImplicitParam(name = "expectations", value = "期望(mk_facility_id)"),
+            @ApiImplicitParam(name = "fidentity", value = "身份类型(1 个人 2 机构/企业)"),
+            @ApiImplicitParam(name = "fileId", value = "文件ID(mk_file_id)"),
+            @ApiImplicitParam(name = "proCode", value = "省份编号(mk_address_id)"),
+            @ApiImplicitParam(name = "cityCode", value = "城市编号(mk_address_id)"),
+            @ApiImplicitParam(name = "areaCode", value = "县区编号(mk_address_id)"),
+            @ApiImplicitParam(name = "addrName", value = "具体地址"),
+            @ApiImplicitParam(name = "leaseType", value = "整租类型(1整租,2 合租)"),
+            @ApiImplicitParam(name = "labeles", value = "房源标签(mk_facility_id)"),
+            @ApiImplicitParam(name = "x", value = "坐标经度(mk_pointxy_id)"),
+            @ApiImplicitParam(name = "y", value = "坐标纬度(mk_pointxy_id)"),
+            @ApiImplicitParam(name = "floosSum", value = "楼层总数"),
+            @ApiImplicitParam(name = "remark", value = "备注"),
+            @ApiImplicitParam(name = "zAmount", value = "租金"),
+            @ApiImplicitParam(name = "fid", value = "房源ID")
+    })
+    @Transactional(rollbackFor = Exception.class)
+    @PostMapping(value = "/mk/api/mkListing/edit")
+    @ResponseBody
+    public ResultJSON<?> edit(
+            @RequestParam(required = false, name = "apartmentId") Long apartmentId,
+            @RequestParam(required = false, name = "dong") Integer dong,
+            @RequestParam(required = false, name = "unit") Integer unit,
+            @RequestParam(required = false, name = "roomNo") String roomNo,
+            @RequestParam(required = false, name = "area") Double area,
+            @RequestParam(required = false, name = "floors") Integer floors,
+            @RequestParam(required = false, name = "unitType") String unitType,
+            @RequestParam(required = false, name = "depositMethod") String depositMethod,
+            @RequestParam(required = false, name = "payDay") Integer payDay,
+            @RequestParam(required = false, name = "otherAmount") String otherAmount,
+            @RequestParam(required = false, name = "longType") String longType,
+            @RequestParam(required = false, name = "mPay") String mPay,
+            @RequestParam(required = false, name = "jPay") String jPay,
+            @RequestParam(required = false, name = "bPay") String bPay,
+            @RequestParam(required = false, name = "nPay") String nPay,
+            @RequestParam(required = false, name = "kdCosts") BigDecimal kdCosts,
+            @RequestParam(required = false, name = "dCosts") BigDecimal dCosts,
+            @RequestParam(required = false, name = "sCosts") BigDecimal sCosts,
+            @RequestParam(required = false, name = "wyCosts") BigDecimal wyCosts,
+            @RequestParam(required = false, name = "tcCosts") BigDecimal tcCosts,
+            @RequestParam(required = false, name = "rqCosts") BigDecimal rqCosts,
+            @RequestParam(required = false, name = "decoration") String decoration,
+            @RequestParam(required = false, name = "towards") String towards,
+            @RequestParam(required = false, name = "supporting") String supporting,
+            @RequestParam(required = false, name = "features") String features,
+            @RequestParam(required = false, name = "expectations") String expectations,
+            @RequestParam(required = false, name = "fidentity") Integer fidentity,
+            @RequestParam(required = false, name = "fileId") Integer fileId,
+            @RequestParam(required = false, name = "proCode") String proCode,
+            @RequestParam(required = false, name = "cityCode") String cityCode,
+            @RequestParam(required = false, name = "areaCode") String areaCode,
+            @RequestParam(required = false, name = "addrName") String addrName,
+            @RequestParam(required = false, name = "leaseType") Integer leaseType,
+            @RequestParam(required = false, name = "labeles") String labeles,
+            @RequestParam(required = false, name = "x") String x,
+            @RequestParam(required = false, name = "y") String y,
+            @RequestParam(required = false, name = "floosSum") Integer floosSum,
+            @RequestParam(required = false, name = "remark") String remark,
+            @RequestParam(required = false, name = "zAmount") BigDecimal zAmount,
+            @RequestParam(required = false, name = "yAmount") BigDecimal yAmount,
+            @RequestParam(required = true, name = "fid") String fid
+    );
+
+
+    /**
      * MK房源模块详情获取
      * leaseType 1 整租 2 合租 3短租
      * @return

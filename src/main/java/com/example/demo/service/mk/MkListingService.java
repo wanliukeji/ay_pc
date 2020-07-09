@@ -93,6 +93,49 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         return entity;
     }
 
+    public MkListing edit(Double area, String unitType, String mPay, String jPay, String bPay,
+                         String nPay, String decoration, String towards,
+                         String supporting, String features, String expectations,
+                         Integer fidentity, Integer fileId, Integer leaseType,
+                         String labeles, Long apartmentId, Long addrId,
+                          Long rId, String remark, Long id) throws Exception {
+        try {
+            MkListing entity = this.getById(id);
+
+            if (null != entity) {
+                entity.setArea(Double.valueOf(area));
+                entity.setLeaseType(leaseType);
+                entity.setUnitType(unitType);
+                entity.setFidentity(fidentity);
+                entity.setYPay(mPay);
+                entity.setJPay(jPay);
+                entity.setBPay(bPay);
+                entity.setNPay(nPay);
+                entity.setDecoration(decoration);
+                entity.setTowards(towards);
+                entity.setSupporting(supporting);
+                entity.setFeatures(features);
+                entity.setExpectations(expectations);
+                entity.setAddrId(addrId);
+                entity.setRentalId(rId);
+                entity.setFileId(fileId);
+                entity.setLabels(labeles);
+                entity.setRemark(remark);
+                if (StringUtil.isNotEmty(apartmentId)) {
+                    entity.setApartmentId(apartmentId);
+                }
+               boolean f = this.saveOrUpdate(entity);
+                if (f) {
+                    return  entity;
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+
     public List<Map<String, Object>> page(Integer leaseType,
                                           String areaCode,
                                           Integer maxPrice,

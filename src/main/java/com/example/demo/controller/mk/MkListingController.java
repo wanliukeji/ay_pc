@@ -184,6 +184,66 @@ public class MkListingController implements MkListingApi {
         return fservice.getInfo(id);
     }
 
+    @Override
+    public ResultJSON<?> edit(Long apartmentId, Integer dong, Integer unit,
+                              String roomNo, Double area, Integer floors,
+                              String unitType, String depositMethod, Integer payDay,
+                              String otherAmount, String longType, String mPay,
+                              String jPay, String bPay, String nPay, BigDecimal kdCosts,
+                              BigDecimal dCosts, BigDecimal sCosts, BigDecimal wyCosts,
+                              BigDecimal tcCosts, BigDecimal rqCosts, String decoration,
+                              String towards, String supporting, String features, String expectations,
+                              Integer fidentity, Integer fileId, String proCode,
+                              String cityCode, String areaCode, String addrName, Integer leaseType,
+                              String labeles, String x, String y, Integer floosSum, String remark,
+                              BigDecimal zAmount, BigDecimal yAmount, String fid) {
+        try {
+            // 公寓信息
+            MkApartment apartment = apartService.getById(apartmentId);
+
+            MkListing pojo = fservice.getById(fid);
+
+            if (null != pojo && null != apartment) {
+                MkAddr addr = afservice.edit(apartment.getCommunityName() , dong, unit, roomNo,
+                        floors,  proCode, cityCode, areaCode, floosSum, addrName, pojo.getAddrId());
+                MkRental rental = rfservice.edit(otherAmount, kdCosts, dCosts,
+                        sCosts, wyCosts, tcCosts,
+                        rqCosts, longType,
+                        depositMethod, payDay, zAmount,yAmount, pojo.getRentalId());
+                if (null != addr && rental != null) {
+                    //添加房源
+                    MkListing enitty = fservice.edit(area, unitType,
+                            mPay, jPay, bPay, nPay,
+                            decoration, towards, supporting,
+                            features, expectations, fidentity,
+                            fileId, leaseType, labeles, apartmentId,
+                            addr.getId(), rental.getId(), remark, pojo.getId());
+                    if (null != enitty) {
+                        redisService.initia(apartment.getCommunityName(), x, y, String.valueOf(enitty.getId()));
+                        apartment.setRoomNum((apartment.getRoomNum() != null ? apartment.getRoomNum() + 1 : 1));
+                        apartService.saveOrUpdate(apartment);
+                        return ResultJSON.success(CodeMsg.UPDATE_SUCCESS);
+                    } else {
+                        //强制事务回滚
+                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                        return ResultJSON.success(CodeMsg.UPDATE_ERROR);
+                    }
+                } else {
+                    //强制事务回滚
+                    TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                    return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+                }
+
+            }
+        } catch (Exception ex) {
+            //强制事务回滚
+            ex.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+        }
+        return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+    }
+
 //    public ResultJSON<?> page(Integer leaseType, Integer areaCode, Integer townCode, Integer maxPrice, Integer minPrice, String unitTypeA, Integer limit, Integer row,Integer longCode, Double area, String hostType,Integer apartmentId,String decoration) {
 //        return fservice.page(leaseType, areaCode, townCode, maxPrice, minPrice, unitTypeA, limit, row, longCode, area, hostType, apartmentId, decoration );
 //    }

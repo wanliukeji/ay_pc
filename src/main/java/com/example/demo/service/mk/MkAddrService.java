@@ -53,6 +53,35 @@ public class MkAddrService extends ServiceImpl<MkAddrMapper, MkAddr> {
 
     }
 
+
+    public MkAddr edit(String comName, Integer dong, Integer unit, String roomNo, Integer floors,
+                      String proCode, String cityCode, String areaCode, Integer floosSum,
+                      String addrName, Long id) throws Exception {
+        try {
+            MkAddr entity = this.getById(id);
+            if (null != entity) {
+                entity.setComName(comName);
+                entity.setDong(dong + "");
+                entity.setUnit(unit);
+                entity.setRoomNo(roomNo);
+                entity.setFloors(floors);
+                entity.setProCode(proCode);
+                entity.setCityCode(cityCode);
+                entity.setAreaCode(areaCode);
+                entity.setFloorSum(floosSum);
+                entity.setAddrName(addrName);
+                boolean f = this.saveOrUpdate(entity);
+                if (f) {
+                    return entity;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
     /**
      * 添加数据
      *
