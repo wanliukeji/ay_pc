@@ -1,5 +1,6 @@
 package com.example.demo.service.mk;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.EncryptUtil;
@@ -9,13 +10,15 @@ import com.example.demo.dao.mk.MkUSerMapper;
 import com.example.demo.entity.mk.MkUser;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.wx.HttpClientUtil;
+import com.github.qcloudsms.SmsSingleSender;
+import com.github.qcloudsms.SmsSingleSenderResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Chenny
@@ -29,7 +32,16 @@ import java.util.List;
 @Slf4j
 public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
 
-    //    账户密码
+    // 请求的网址
+    public static final String WX_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
+    // 你的appid
+    public static final String WX_LOGIN_APPID = "xxxxxxxxxxxxxxxxxx";
+    // 你的密匙
+    public static final String WX_LOGIN_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    // 固定参数
+    public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
+
+    // 账户密码 登录
     public ResultJSON<MkUser> login(String account, String password) {
         boolean flag = false;
         //解密
@@ -37,14 +49,14 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
             if (null != account && password != null) {
                 MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("accout", account).or().or().eq("phone", account));
                 if (null != user) {
-                       //解密
-                       String pwd = EncryptUtil.Base64Decode(user.getPwd());
-                       if (password.equalsIgnoreCase(pwd)) {
-                           HttpServletRequestUtil.setSessionUser(user);
-                           return ResultJSON.success(user);
-                       } else {
-                           return ResultJSON.error(CodeMsg.LOGIN_ERROR);
-                       }
+                    //解密
+                    String pwd = EncryptUtil.Base64Decode(user.getPwd());
+                    if (password.equalsIgnoreCase(pwd)) {
+                        HttpServletRequestUtil.setSessionUser(user);
+                        return ResultJSON.success(user);
+                    } else {
+                        return ResultJSON.error(CodeMsg.LOGIN_ERROR);
+                    }
                 } else {
                     return ResultJSON.error(CodeMsg.LOGIN_ERROR);
                 }
@@ -57,59 +69,113 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         return ResultJSON.error(CodeMsg.LOGIN_ERROR);
     }
 
-    //微信
-    public ResultJSON<MkUser> wclogin(String account, String password) {
-        boolean flag = false;
-        //解密
+    //微信 一键登录
+    public ResultJSON<?> wxlogin(
+            @RequestParam("code") String code,
+            @RequestParam( required = false, value = "email") String email,
+            @RequestParam( required = false, value = "name") String name,
+            @RequestParam( required = false, value = "userName") String userName,
+            @RequestParam( required = false, value = "imgUrl") String imgUrl,
+            @RequestParam( required = false, value = "sex") String sex,
+            @RequestParam( required = false, value = "phone") String phone,
+            @RequestParam( required = false, value = "iDcard") String iDcard,
+            @RequestParam( required = false, value = "ctype") Integer ctype,
+            @RequestParam( required = false, value = "openId") String openId,
+            @RequestParam( required = false, value = "age") Integer age
+    ) {
         try {
-            if (null != account && password != null) {
-                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("account", account).or().eq("email", account).or().eq("phone", account));
-                if (null != user) {
-                    //解密
-                    String pwd = EncryptUtil.Base64Decode(user.getPwd());
-                    if (password.equalsIgnoreCase(password)) {
-                        HttpServletRequestUtil.setSessionUser(user);
-                        return ResultJSON.success(user);
-                    }
-                } else {
-                    return ResultJSON.error(CodeMsg.LOGIN_ERROR);
+            // 配置请求参数
+            Map<String, String> param = new HashMap<>();
+            param.put("appid", WX_LOGIN_APPID);
+            param.put("secret", WX_LOGIN_SECRET);
+            param.put("js_code", code);
+            param.put("grant_type", WX_LOGIN_GRANT_TYPE);
+            // 发送请求
+            String wxResult = HttpClientUtil.doGet(WX_LOGIN_URL, param);
+            JSONObject jsonObject = JSONObject.parseObject(wxResult);
+            // 获取参数返回的
+            String session_key = jsonObject.get("session_key").toString();
+            String open_id = jsonObject.get("openId").toString();
+            // 根据返回的user实体类，判断用户是否是新用户，不是的话，更新最新登录时间，是的话，将用户信息存到数据库
+            MkUser user = getUseroForOpenId(open_id);
+            if(user != null){
+                this.updateById(user);
+            }else{
+                MkUser entity = new MkUser();
+                System.out.println("entity:"+entity.toString());
+                // 添加到数据库
+                entity.setUname(name);
+                entity.setIDcard(iDcard);
+                entity.setUtype(ctype);
+                entity.setEmail(email);
+                entity.setImgUrl(imgUrl);
+                entity.setOpenId(openId);
+                entity.setCreateDate(new Date());
+                entity.setPhone(phone);
+                entity.setAge(age);
+                entity.setSex(sex);
+                entity.setUserName(userName);
+                boolean flag = this.save(entity);
+                if(flag){
+                    // 封装返回小程序
+                    Map<String, Object> result = new HashMap<>();
+                    result.put("session_key", session_key);
+                    result.put("open_id", open_id);
+                    result.put("entity", entity);
+                    return ResultJSON.success(result);
                 }
+                return ResultJSON.error("登录失败");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error(e.getMessage());
-            return ResultJSON.error(CodeMsg.SERVER_ERROR);
+            return ResultJSON.error("登录失败");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error("登录失败");
         }
-        return ResultJSON.error(CodeMsg.SERVER_ERROR);
     }
 
-    //    手机验证
-    public ResultJSON<MkUser> codelogin(String account, String password) {
-        boolean flag = false;
-        //解密
+
+    /**
+     * @param phone
+     * @return void
+     */
+    public static ResultJSON<?> codelogin(String phone) {
+
         try {
-            if (null != account && password != null) {
-                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("account", account).or().eq("email", account).or().eq("phone", account));
-                if (null != user) {
-                    //解密
-                    String pwd = EncryptUtil.Base64Decode(user.getPwd());
-                    if (password.equalsIgnoreCase(password)) {
-                        HttpServletRequestUtil.setSessionUser(user);
-                        return ResultJSON.success(user);
-                    }
-                } else {
-                    return ResultJSON.error(CodeMsg.LOGIN_ERROR);
-                }
+
+            // 短信应用SDK AppID
+            // 1400开头
+            final Integer APP_ID = 1402126548;
+
+            // 短信应用SDK AppKey
+            String APP_KEY = "b67d0bf7876c1d42121ca561953532";
+
+            Integer TEMPLATEID = 148464;
+
+            // 需要发送短信的手机号码
+            // String[] phoneNumbers = {"15212111830"};
+
+            // 短信模板ID，需要在短信应用中申请
+            //NOTE: 这里的模板ID`7839`只是一个示例，真实的模板ID需要在短信控制台中申请
+            // 签名
+            // NOTE: 这里的签名"腾讯云"只是一个示例，真实的签名需要在短信控制台中申请，另外签名参数使用的是`签名内容`，而不是`签名ID`
+            String smsSign = "觅客找房";
+
+            SmsSingleSender sSender = new SmsSingleSender(APP_ID, APP_KEY);
+            //第一个参数0表示普通短信,1表示营销短信
+            SmsSingleSenderResult result = sSender.send(0, "86",
+                    phone,
+                    "为您的登录验证码，请于" + 10 + "分钟内填写。如非本人操作，请忽略本短信。", "", "");
+            if (result.result != 0) {
+                return ResultJSON.error(result.errMsg);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error(e.getMessage());
-            return ResultJSON.error(CodeMsg.SERVER_ERROR);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error("发送失败");
         }
-        return ResultJSON.error(CodeMsg.SERVER_ERROR);
+        return ResultJSON.success("验证码发送成功");
     }
 
-    //    手机验证
+    // 用户退出
     public ResultJSON loginOut() {
         boolean flag = false;
         //解密
@@ -201,7 +267,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
 
         try {
             if (StringUtil.isNotEmty(openId)) {
-                MkUser entity = this.getOne(new QueryWrapper<MkUser>().eq("openId",openId));
+                MkUser entity = this.getOne(new QueryWrapper<MkUser>().eq("openId", openId));
                 if (entity != null) {
                     return entity;
                 }
@@ -235,7 +301,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
                 entity.setPOpenid(pant.getOpenId());
                 boolean flag = this.save(entity);
                 if (flag) {
-                    pant.setCompnyChilds(StringUtil.isNotEmty(pant.getCompnyChilds()) ? pant.getCompnyChilds() + ","+ entity.getId() : entity.getId() + "");
+                    pant.setCompnyChilds(StringUtil.isNotEmty(pant.getCompnyChilds()) ? pant.getCompnyChilds() + "," + entity.getId() : entity.getId() + "");
                     this.saveOrUpdate(pant);
                     return ResultJSON.success(entity);
                 }
@@ -252,7 +318,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         try {
             MkUser entity = this.getById(userId);
             if (null != entity && null != entity.getCompnyChilds()) {
-                String [] ids = entity.getCompnyChilds().split(",");
+                String[] ids = entity.getCompnyChilds().split(",");
                 Collection id = CollectionUtils.arrayToList(ids);
                 List item = (List) this.listByIds(id);
                 return ResultJSON.success(item);
@@ -267,31 +333,32 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     public ResultJSON<?> delChilds(String userId) {
 
         try {
-            MkUser pant =  this.getOne(new QueryWrapper<MkUser>().like("compnyChilds", userId));
-           boolean flag = this.removeById(Integer.valueOf(userId));
-           if (flag) {
-                  String str = pant.getCompnyChilds();
-                  if (StringUtil.isNotEmty(str)) {
-                      String []ids = str.split(",");
-                      String val = "";
-                      for (int i = 0; i < ids.length ; i++) {
-                          if (ids[i].equals(userId)) {
-                              ids[i] = "";
-                          }
-                          val += ids.length > 0 ? ids[i]  + "," : "" ;
-                      }
+            MkUser pant = this.getOne(new QueryWrapper<MkUser>().like("compnyChilds", userId));
+            boolean flag = this.removeById(Integer.valueOf(userId));
+            if (flag) {
+                String str = pant.getCompnyChilds();
+                if (StringUtil.isNotEmty(str)) {
+                    String[] ids = str.split(",");
+                    String val = "";
+                    for (int i = 0; i < ids.length; i++) {
+                        if (ids[i].equals(userId)) {
+                            ids[i] = "";
+                        }
+                        val += ids.length > 0 ? ids[i] + "," : "";
+                    }
 
-                      pant.setCompnyChilds(val);
-                      this.saveOrUpdate(pant);
-                      return ResultJSON.success(CodeMsg.UPDATE_SUCCESS);
-                  }
-              }
+                    pant.setCompnyChilds(val);
+                    this.saveOrUpdate(pant);
+                    return ResultJSON.success(CodeMsg.UPDATE_SUCCESS);
+                }
+            }
             return ResultJSON.error(CodeMsg.UPDATE_ERROR);
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
     }
+
 }
 
 

@@ -369,6 +369,12 @@
             <version>1.10.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.qcloudsms</groupId>
+            <artifactId>qcloudsms</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
         <!-- 聊天 -->
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
