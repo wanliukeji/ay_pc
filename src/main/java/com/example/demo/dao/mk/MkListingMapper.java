@@ -45,7 +45,8 @@ public interface MkListingMapper extends BaseMapper<MkListing>, Serializable {
             @Param("val") String val,
             @Param("fid") Integer id,
             @Param("cityCode") String cityCode,
-            @Param("comName") String comName
+            @Param("comName") String comName,
+            @Param("userId") String userId
     );
 
     Map<String, Object> getByPage2(

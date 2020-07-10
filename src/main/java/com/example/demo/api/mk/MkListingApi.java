@@ -141,7 +141,8 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "val", value = "搜索内容"),
             @ApiImplicitParam(name = "id", value = "房源ID"),
             @ApiImplicitParam(name = "cityCode", value = "城市编号"),
-            @ApiImplicitParam(name = "comName", value = "小区名称")
+            @ApiImplicitParam(name = "comName", value = "小区名称"),
+            @ApiImplicitParam(name = "userId", value = "用户ID")
     })
     @PostMapping(value = "/mk/api/listing/page")
     public ResultJSON<?> page(
@@ -163,7 +164,8 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, value = "val") String val,
             @RequestParam(required = false, value = "id") Integer id,
             @RequestParam(required = false, value = "cityCode") String cityCode,
-            @RequestParam(required = false, value = "comName") String comName
+            @RequestParam(required = false, value = "comName") String comName,
+            @RequestParam(required = false, value = "userId") String userId
     );
 
 

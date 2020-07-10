@@ -148,6 +148,10 @@
             AND t.id = #{fid}
         </if>
 
+        <if test="userId != null">
+            AND t.userId = #{userId}
+        </if>
+
         ORDER BY t.sortNo, t.createDate desc
 
         LIMIT #{limit}, #{row}

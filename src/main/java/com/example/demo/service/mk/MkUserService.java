@@ -47,7 +47,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         //解密
         try {
             if (null != account && password != null) {
-                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("accout", account).or().or().eq("phone", account));
+                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("account", account).or().eq("uname", account).or().eq("phone", account));
                 if (null != user) {
                     //解密
                     String pwd = EncryptUtil.Base64Decode(user.getPwd());

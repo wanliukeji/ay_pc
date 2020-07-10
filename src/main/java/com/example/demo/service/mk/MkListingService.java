@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.mk.MkListingMapper;
 import com.example.demo.entity.mk.MkListing;
+import com.example.demo.entity.mk.MkUser;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
 
     @Resource(name = "mkFileService")
     private MkFileService fileService;
+
+    @Resource(name = "mkUserService")
+    private MkUserService mkUserService;
 
     /**
      * 添加数据
@@ -94,10 +98,10 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
     }
 
     public MkListing edit(Double area, String unitType, String mPay, String jPay, String bPay,
-                         String nPay, String decoration, String towards,
-                         String supporting, String features, String expectations,
-                         Integer fidentity, Integer fileId, Integer leaseType,
-                         String labeles, Long apartmentId, Long addrId,
+                          String nPay, String decoration, String towards,
+                          String supporting, String features, String expectations,
+                          Integer fidentity, Integer fileId, Integer leaseType,
+                          String labeles, Long apartmentId, Long addrId,
                           Long rId, String remark, Long id) throws Exception {
         try {
             MkListing entity = this.getById(id);
@@ -124,9 +128,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                 if (StringUtil.isNotEmty(apartmentId)) {
                     entity.setApartmentId(apartmentId);
                 }
-               boolean f = this.saveOrUpdate(entity);
+                boolean f = this.saveOrUpdate(entity);
                 if (f) {
-                    return  entity;
+                    return entity;
                 }
             }
         } catch (Exception ex) {
@@ -154,23 +158,53 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                                           String val,
                                           Integer id,
                                           String cityCode,
-                                          String comName) throws Exception {
-
+                                          String comName,
+                                          String userId
+    ) throws Exception {
+        try {
         limit = limit == null ? 0 : limit;
         row = row == null ? 30 : row;
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         QueryWrapper<MkListing> qw = new QueryWrapper<MkListing>();
-        try {
-            list = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
-                    unitType, limit, row, longType, maxArea, minArea, fidentity,
-                    apartmentId, decoration, jstatus, tstatus, val, id, cityCode, comName);
-            list = facilityService.getInfos("labels", list);
-            list = facilityService.getInfos("decoration", list);
-            list = facilityService.getInfos("towards", list);
-            list = facilityService.getInfos("supporting", list);
-            list = facilityService.getInfos("features", list);
-            list = facilityService.getInfos("expectations", list);
-            return list;
+        if (StringUtil.isNotEmty(userId)) {
+            MkUser user = mkUserService.getById(userId);
+            if (null != user && user.getUtype() != 3) {
+                List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+                list = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
+                        unitType, limit, row, longType, maxArea, minArea, fidentity,
+                        apartmentId, decoration, jstatus, tstatus, val, id, cityCode,
+                        comName, userId);
+                list = facilityService.getInfos("labels", list);
+                list = facilityService.getInfos("decoration", list);
+                list = facilityService.getInfos("towards", list);
+                list = facilityService.getInfos("supporting", list);
+                list = facilityService.getInfos("features", list);
+                list = facilityService.getInfos("expectations", list);
+                return list;
+            } else if (null != user){
+                List<MkUser> chidrens = mkUserService.list(new QueryWrapper<MkUser>().eq("pOpenid", user.getOpenId()).or().eq("openId",user.getOpenId()));
+                List<Map<String, Object>> item = new ArrayList<Map<String, Object>>();
+                List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+                for (int i = 0; i < chidrens.size(); i++) {
+                    MkUser entity = chidrens.get(i);
+                    item = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
+                            unitType, limit, row, longType, maxArea, minArea, fidentity,
+                            apartmentId, decoration, jstatus, tstatus, val, id, cityCode,
+                            comName, StringUtil.toString(entity.getId()));
+                    item = facilityService.getInfos("labels", item);
+                    item = facilityService.getInfos("decoration", item);
+                    item = facilityService.getInfos("towards", item);
+                    item = facilityService.getInfos("supporting", item);
+                    item = facilityService.getInfos("features", item);
+                    item = facilityService.getInfos("expectations", item);
+
+                    if (null != item && item.size() > 0) {
+                        list.addAll(item);
+                    }
+                }
+                return list;
+            }
+        }
+        return null;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -209,7 +243,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = this.baseMapper.getByPage(null,
                     null, null, null, null,
                     0, 1, null, null, null, null, null,
-                    null, null, null, null, id, null, null);
+                    null, null, null, null, id, null, null, null);
             list = fileService.getInfos("fileId", list);
             list = facilityService.getInfos("labels", list);
             list = facilityService.getInfos("decoration", list);
