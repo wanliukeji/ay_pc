@@ -162,12 +162,48 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                                           String userId
     ) throws Exception {
         try {
-        limit = limit == null ? 0 : limit;
-        row = row == null ? 30 : row;
-        QueryWrapper<MkListing> qw = new QueryWrapper<MkListing>();
-        if (StringUtil.isNotEmty(userId)) {
-            MkUser user = mkUserService.getById(userId);
-            if (null != user && user.getUtype() != 3) {
+            limit = limit == null ? 0 : limit;
+            row = row == null ? 30 : row;
+            QueryWrapper<MkListing> qw = new QueryWrapper<MkListing>();
+            if (StringUtil.isNotEmty(userId)) {
+                MkUser user = mkUserService.getById(userId);
+                if (null != user && user.getUtype() != 3) {
+                    List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+                    list = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
+                            unitType, limit, row, longType, maxArea, minArea, fidentity,
+                            apartmentId, decoration, jstatus, tstatus, val, id, cityCode,
+                            comName, userId);
+                    list = facilityService.getInfos("labels", list);
+                    list = facilityService.getInfos("decoration", list);
+                    list = facilityService.getInfos("towards", list);
+                    list = facilityService.getInfos("supporting", list);
+                    list = facilityService.getInfos("features", list);
+                    list = facilityService.getInfos("expectations", list);
+                    return list;
+                } else if (null != user) {
+                    List<MkUser> chidrens = mkUserService.list(new QueryWrapper<MkUser>().eq("pOpenid", user.getOpenId()).or().eq("openId", user.getOpenId()));
+                    List<Map<String, Object>> item = new ArrayList<Map<String, Object>>();
+                    List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+                    for (int i = 0; i < chidrens.size(); i++) {
+                        MkUser entity = chidrens.get(i);
+                        item = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
+                                unitType, limit, row, longType, maxArea, minArea, fidentity,
+                                apartmentId, decoration, jstatus, tstatus, val, id, cityCode,
+                                comName, StringUtil.toString(entity.getId()));
+                        item = facilityService.getInfos("labels", item);
+                        item = facilityService.getInfos("decoration", item);
+                        item = facilityService.getInfos("towards", item);
+                        item = facilityService.getInfos("supporting", item);
+                        item = facilityService.getInfos("features", item);
+                        item = facilityService.getInfos("expectations", item);
+
+                        if (null != item && item.size() > 0) {
+                            list.addAll(item);
+                        }
+                    }
+                    return list;
+                }
+            } else {
                 List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
                 list = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
                         unitType, limit, row, longType, maxArea, minArea, fidentity,
@@ -180,31 +216,8 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                 list = facilityService.getInfos("features", list);
                 list = facilityService.getInfos("expectations", list);
                 return list;
-            } else if (null != user){
-                List<MkUser> chidrens = mkUserService.list(new QueryWrapper<MkUser>().eq("pOpenid", user.getOpenId()).or().eq("openId",user.getOpenId()));
-                List<Map<String, Object>> item = new ArrayList<Map<String, Object>>();
-                List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-                for (int i = 0; i < chidrens.size(); i++) {
-                    MkUser entity = chidrens.get(i);
-                    item = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
-                            unitType, limit, row, longType, maxArea, minArea, fidentity,
-                            apartmentId, decoration, jstatus, tstatus, val, id, cityCode,
-                            comName, StringUtil.toString(entity.getId()));
-                    item = facilityService.getInfos("labels", item);
-                    item = facilityService.getInfos("decoration", item);
-                    item = facilityService.getInfos("towards", item);
-                    item = facilityService.getInfos("supporting", item);
-                    item = facilityService.getInfos("features", item);
-                    item = facilityService.getInfos("expectations", item);
-
-                    if (null != item && item.size() > 0) {
-                        list.addAll(item);
-                    }
-                }
-                return list;
             }
-        }
-        return null;
+            return null;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

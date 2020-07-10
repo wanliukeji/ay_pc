@@ -55,12 +55,12 @@ public interface MkApartApi extends Serializable {
      */
     @ApiOperation(value = "MK品牌公寓/小区所有信息接口", notes = "MK品牌公寓/小区所有信息接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "userId", value = "用户ID"),
-            @ApiImplicitParam(name = "communityName", value = "小区/公寓名称")
+            @ApiImplicitParam(name = "communityName", value = "小区/公寓名称"),
+            @ApiImplicitParam(name = "cityCode", value = "城市编号"),
+            @ApiImplicitParam(name = "areaCode", value = "县区编号")
     })
     @PostMapping(value = "/mk/api/apart/list")
     public ResultJSON<?> list(
-            @RequestParam(required = false, value = "userId") String userId,
             @RequestParam(required = false, value = "communityName") String communityName,
             @RequestParam(required = false, value = "cityCode") String cityCode,
             @RequestParam(required = false, value = "areaCode") String areaCode
