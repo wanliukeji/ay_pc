@@ -1,0 +1,94 @@
+
+  ______________________________________________________ 发布房源接口_start  ______________________________________________________
+
+   API : /mk/api/mkListing/add
+
+      参数名                     数据类型                     是否必填(1 是  /  0  否)               字段说明
+    yAmount                     BigDecimal                              1                           押金
+    apartmentId                 Integer                                 1                           小区/公寓 ID
+    dong                        Integer                                 1                           栋/幢 (单位)
+    unit                        Integer                                 0                           单元(几单元)
+    roomNo                      String                                  1                           房门编号
+    area                        Double                                  1                           房屋面积
+    floors                      Integer                                 1                           楼层(第几层)
+    unitType                    String                                  1                           户型(三室两厅一厨一卫)
+    depositMethod               String                                  1                           押金方式(押一付三)
+    payDay                      Integer                                 1                           房租支付时间(账单前几天收租)
+    otherAmount                 String                                  0                           其他费用
+    longType                    String                                  1                           起租时长(一年起租)
+    mPay                        String                                  1                           月付(mk_bounty_id) -付款方式及赏金
+    jPay                        String                                  1                           季付(mk_bounty_id) -付款方式及赏金
+    bPay                        String                                  1                           半年付(mk_bounty_id) -付款方式及赏金
+    nPay                        String                                  1                           年付(mk_bounty_id) -付款方式及赏金
+    kdCosts                     BigDecimal                              1                           宽带费
+    dCosts                      BigDecimal                              1                           电费
+    sCosts                      BigDecimal                              1                           水费
+    wyCosts                     BigDecimal                              1                           物业费
+    tcCosts                     BigDecimal                              1                           停车费
+    rqCosts                     BigDecimal                              1                           燃气费
+    decoration                  String (id数组转字符串 (1,2,3))           1                           装修程度(mk_facility_id) = (1,2,3)
+    towards                     String (id数组转字符串 (1,2,3))           1                           朝向(mk_facility_id) = (1,2,3)
+    supporting                  String (id数组转字符串 (1,2,3))           1                           配套(mk_facility_id) = (1,2,3)
+    features                    String (id数组转字符串 (1,2,3))           1                           房屋特色(mk_facility_id) = (1,2,3)
+    expectations                String (id数组转字符串 (1,2,3))           1                           期望(mk_facility_id) = (1,2,3)
+    fidentity                   Integer                                 1                            身份类型(1 个人 2 机构/企业)
+    userId                      String                                  1                            用户ID(mk_user_id)
+    fileId                      Integer                                 0                            文件ID(mk_file_id)
+    proCode                     String                                  0                            省份编号(mk_address_id)
+    cityCode                    String                                  1                            城市编号(mk_address_id)
+    areaCode                    String                                  1                            县区编号(mk_address_id)
+    addrName                    String                                  1                            具体地址
+    leaseType                   Integer                                 1                            出租类型(1整租,2合租,3合租)
+    labeles                     String (id数组转字符串 (1,2,3))           0                            房源标签(mk_facility_id) (房东直租, 通风性好)
+    x                           String                                  1                             经度
+    y                           String                                  1                             纬度
+    floosSum                    Integer                                 1                            楼层总数
+    remark                      String                                  1                            备注 (距离地铁13号线地铁口500米)
+    zAmount                     BigDecimal                              1                            租金
+  ______________________________________________________ 发布房源接口_end  ______________________________________________________
+
+
+  ______________________________________________________ 房源配置列表接口_start  ______________________________________________________
+
+   API : /mk/api/facility/list
+
+   参数无
+  ______________________________________________________ 房源配置列表接口_end  ______________________________________________________
+
+
+  ______________________________________________________ 房源赏金列表接口_start  ______________________________________________________
+
+   API : /mk/api/bounty/list
+
+   参数名                     数据类型                     是否必填(1 是  /  0  否)               字段说明
+   userId                     String                              1                              用户ID
+  ______________________________________________________ 房源赏金列表接口_end  ______________________________________________________
+
+  ______________________________________________________ 房源小区公寓添加接口_start  ______________________________________________________
+
+   API : /mk/api/apart/add
+
+   参数名                     数据类型                     是否必填(1 是  /  0  否)               字段说明
+   fileCode                   String                              1                              文件ID
+   userId                     String                              1                              用户ID
+   roomNum                    String                              0                              房源数(不填 系统自动计算数量)
+   cityCode                   String                              1                              城市编号
+   areaCode                   String                              1                              县区编号
+   addr                       String                              1                              地址
+   communityName              String                              1                              公寓名称
+   x                          String                              1                              经度
+   y                          String                              1                              纬度
+  ______________________________________________________ 房源小区公寓添加接口_end  ______________________________________________________
+
+
+______________________________________________________ 品牌公寓/小区所有信息接口_start  ______________________________________________________
+
+   API : /mk/api/apart/list
+
+   无
+  ______________________________________________________ 品牌公寓/小区所有信息接口_end  ______________________________________________________
+
+
+
+
+

@@ -61,7 +61,9 @@ public interface MkApartApi extends Serializable {
     @PostMapping(value = "/mk/api/apart/list")
     public ResultJSON<?> list(
             @RequestParam(required = false, value = "userId") String userId,
-            @RequestParam(required = false, value = "communityName") String communityName
+            @RequestParam(required = false, value = "communityName") String communityName,
+            @RequestParam(required = false, value = "cityCode") String cityCode,
+            @RequestParam(required = false, value = "areaCode") String areaCode
     );
 
     /**

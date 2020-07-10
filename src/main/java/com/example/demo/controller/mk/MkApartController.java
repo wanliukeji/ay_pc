@@ -30,8 +30,8 @@ public class MkApartController implements MkApartApi {
     }
 
     @Override
-    public ResultJSON<?> list(String userId, String communityName) {
-        return service.list(userId, communityName);
+    public ResultJSON<?> list(String userId, String communityName, String cityCode, String areaCode) {
+        return service.list(userId, communityName, cityCode, areaCode);
     }
 
     @Override

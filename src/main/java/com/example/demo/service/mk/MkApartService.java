@@ -94,7 +94,7 @@ public class MkApartService extends ServiceImpl<MkApartMapper, MkApartment> {
 
     }
 
-    public ResultJSON<?> list(String userId, String communityName) {
+    public ResultJSON<?> list(String userId, String communityName, String cityCode, String areaCode) {
 
         QueryWrapper<MkApartment> qw = new QueryWrapper<MkApartment>();
         try {
@@ -104,6 +104,15 @@ public class MkApartService extends ServiceImpl<MkApartMapper, MkApartment> {
             if (StringUtil.isNotEmty(communityName)) {
                 qw.like("communityName", communityName);
             }
+
+            if (StringUtil.isNotEmty(cityCode)) {
+                qw.eq("cityCode", cityCode);
+            }
+
+            if (StringUtil.isNotEmty(areaCode)) {
+                qw.eq("areaCode", areaCode);
+            }
+
             qw.eq("del", 1);
             List<MkApartment> infos = this.list(qw);
             return ResultJSON.success(infos);
