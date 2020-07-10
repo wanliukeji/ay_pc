@@ -152,7 +152,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                                           Integer jstatus,
                                           Integer tstatus,
                                           String val,
-                                          Integer id) throws Exception {
+                                          Integer id,
+                                          String cityCode,
+                                          String comName) throws Exception {
 
         limit = limit == null ? 0 : limit;
         row = row == null ? 30 : row;
@@ -161,7 +163,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         try {
             list = this.baseMapper.getByPage(leaseType, areaCode, maxPrice, minPrice,
                     unitType, limit, row, longType, maxArea, minArea, fidentity,
-                    apartmentId, decoration, jstatus, tstatus, val, id);
+                    apartmentId, decoration, jstatus, tstatus, val, id, cityCode, comName);
             list = facilityService.getInfos("labels", list);
             list = facilityService.getInfos("decoration", list);
             list = facilityService.getInfos("towards", list);
@@ -207,7 +209,7 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = this.baseMapper.getByPage(null,
                     null, null, null, null,
                     0, 1, null, null, null, null, null,
-                    null, null, null, null, id);
+                    null, null, null, null, id, null, null);
             list = fileService.getInfos("fileId", list);
             list = facilityService.getInfos("labels", list);
             list = facilityService.getInfos("decoration", list);

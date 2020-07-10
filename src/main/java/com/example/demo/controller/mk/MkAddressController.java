@@ -26,4 +26,9 @@ public class MkAddressController implements MkAddressApi {
     public ResultJSON<?> list() {
         return service.list();
     }
+
+    @Override
+    public ResultJSON<?> getInfo(String name) {
+        return service.getInfo(name);
+    }
 }

@@ -44,6 +44,22 @@ public class MkAddressService extends ServiceImpl<MkAddressMapper, MkAddress> {
             return ResultJSON.error("获取数据失败");
         }
     }
+
+    public ResultJSON<?> getInfo(String name) {
+        QueryWrapper<MkAddress> qw = new QueryWrapper<MkAddress>();
+        try {
+//            qw.eq("level",1).or().eq("level",2).or().eq("level",3);
+            qw.eq("name", name);
+//            qw.notIn("level",5);
+//            qw.notIn("level",4);
+//            qw.notIn("level",3);
+            MkAddress info = this.getOne(qw);
+            return ResultJSON.success(info);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error("获取数据失败");
+        }
+    }
 }
 
 

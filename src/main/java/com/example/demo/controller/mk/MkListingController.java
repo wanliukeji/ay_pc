@@ -165,11 +165,14 @@ public class MkListingController implements MkListingApi {
                               Integer jstatus,
                               Integer tstatus,
                               String val,
-                              Integer id) {
+                              Integer id,
+                              String cityCode,
+                              String comName
+                              ) {
         try {
             List item = fservice.page(leaseType, areaCode, maxPrice, minPrice, unitType,
                     limit, row, longType, maxArea, minArea, fidentity, apartmentId, decoration,
-                    jstatus, tstatus, val, id);
+                    jstatus, tstatus, val, id, cityCode, comName);
             item = fileService.getInfos("fileCodes", item);
             PageInfo<?> page = new PageInfo(item);
             return ResultJSON.success(page);

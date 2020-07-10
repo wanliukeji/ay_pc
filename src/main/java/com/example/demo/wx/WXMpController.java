@@ -31,7 +31,6 @@ public class WXMpController {
     @Autowired
     private MkUserService userService;
 
-
     @PostMapping("/api/mk/wx/login")
     public ResultJSON<?> user_login(
             @RequestParam("code") String code,

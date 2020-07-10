@@ -136,6 +136,14 @@
             AND t.tstatus = #{tstatus}
         </if>
 
+        <if test="cityCode != null">
+            AND t.cityCode = #{cityCode}
+        </if>
+
+        <if test="comName != null">
+            AND t.comName = #{comName}
+        </if>
+
         <if test="fid != null">
             AND t.id = #{fid}
         </if>
