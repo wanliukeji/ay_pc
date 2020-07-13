@@ -54,6 +54,9 @@ public class MkListingController implements MkListingApi {
     @Resource(name = "mkPointXyService")
     private MkPointXyService pointXyService;
 
+    @Resource(name = "mkBountyService")
+    private MkBountyService bountyService;
+
     @Override
     public ResultJSON<?> add(
                              Long apartmentId,

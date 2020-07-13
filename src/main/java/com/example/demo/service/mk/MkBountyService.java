@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -73,6 +75,22 @@ public class MkBountyService extends ServiceImpl<MkBountyMapper, MkBounty> {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
+    }
+
+    public List<Map<String, Object>> getInfos(String name, List list) {
+        for (int i = 0; i < list.size(); i++) {
+            Map map = (Map) list.get(i);
+            List item = new ArrayList();
+            if (StringUtil.isNotEmty(map.get(name))) {
+                String []str = map.get(name).toString().split(",");
+                for (int j = 0; j < str.length; j++) {
+                    MkBounty entity = this.getById(str[j]);
+                    item.add(entity);
+                }
+                map.put(name, item);
+            }
+        }
+        return  list;
     }
 }
 

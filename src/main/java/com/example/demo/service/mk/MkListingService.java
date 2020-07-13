@@ -36,6 +36,11 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
     @Resource(name = "mkUserService")
     private MkUserService mkUserService;
 
+    @Resource(name = "mkBountyService")
+    private MkBountyService bountyService;
+
+    @Resource(name = "mkOtherBountyService")
+    private MkOtherBountyService otherBountyService;
     /**
      * 添加数据
      *
@@ -183,6 +188,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                     list = facilityService.getInfos("supporting", list);
                     list = facilityService.getInfos("features", list);
                     list = facilityService.getInfos("expectations", list);
+                    list = bountyService.getInfos("bountyId", list);
+                    list = otherBountyService.getInfos("otheryjId", list);
+                    list = otherBountyService.getInfos("otherfyId", list);
                     return list;
                 } else if (null != user) {
                     List<MkUser> chidrens = mkUserService.list(new QueryWrapper<MkUser>().eq("pOpenid", user.getOpenId()).or().eq("openId", user.getOpenId()));
@@ -200,6 +208,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                         item = facilityService.getInfos("supporting", item);
                         item = facilityService.getInfos("features", item);
                         item = facilityService.getInfos("expectations", item);
+                        list = bountyService.getInfos("bountyId", list);
+                        list = otherBountyService.getInfos("otheryjId", list);
+                        list = otherBountyService.getInfos("otherfyId", list);
 
                         if (null != item && item.size() > 0) {
                             list.addAll(item);
@@ -219,6 +230,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                 list = facilityService.getInfos("supporting", list);
                 list = facilityService.getInfos("features", list);
                 list = facilityService.getInfos("expectations", list);
+                list = bountyService.getInfos("bountyId", list);
+                list = otherBountyService.getInfos("otheryjId", list);
+                list = otherBountyService.getInfos("otherfyId", list);
                 return list;
             }
             return null;
@@ -245,6 +259,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = facilityService.getInfos("supporting", list);
             list = facilityService.getInfos("features", list);
             list = facilityService.getInfos("expectations", list);
+            list = bountyService.getInfos("bountyId", list);
+            list = otherBountyService.getInfos("otheryjId", list);
+            list = otherBountyService.getInfos("otherfyId", list);
             return list.get(0);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -268,6 +285,10 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = facilityService.getInfos("supporting", list);
             list = facilityService.getInfos("features", list);
             list = facilityService.getInfos("expectations", list);
+            list = facilityService.getInfos("expectations", list);
+            list = bountyService.getInfos("bountyId", list);
+            list = otherBountyService.getInfos("otheryjId", list);
+            list = otherBountyService.getInfos("otherfyId", list);
             return ResultJSON.success(list);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -291,6 +312,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = facilityService.getInfos("supporting", list);
             list = facilityService.getInfos("features", list);
             list = facilityService.getInfos("expectations", list);
+            list = bountyService.getInfos("bountyId", list);
+            list = otherBountyService.getInfos("otheryjId", list);
+            list = otherBountyService.getInfos("otherfyId", list);
             return list.get(0);
         } catch (Exception ex) {
             ex.printStackTrace();
