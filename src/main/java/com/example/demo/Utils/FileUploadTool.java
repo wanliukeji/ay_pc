@@ -5,6 +5,7 @@ package com.example.demo.Utils;
 import com.example.demo.entity.FileEntity;
 import com.example.demo.entity.mk.MkFile;
 import lombok.Synchronized;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,7 +75,11 @@ public class FileUploadTool {
             String fileEnd = this.getFileExt(fileName);
             String logoPathDir = logoPathDir(fileEnd);
             //保存本地项目
-            String logoRealPathDir = "D:\\Work\\ay_pc\\src\\main\\resources\\static" + logoPathDir;
+            //保存本地项目
+            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+
+            String logoRealPathDir = path + "/src/main/resources/static" + logoPathDir;
+
             File logoSaveFile = new File(logoRealPathDir);
 
             if (!logoSaveFile.exists()) {
@@ -179,7 +184,10 @@ public class FileUploadTool {
             String fileEnd = this.getFileExt(fileName);
             String logoPathDir = logoPathDir(fileEnd);
             //保存本地项目
-            String logoRealPathDir = "D:\\Work\\ay_pc\\src\\main\\resources\\static" + logoPathDir;
+            //保存本地项目
+            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
+
+            String logoRealPathDir = path + "/src/main/resources/static" + logoPathDir;
             File logoSaveFile = new File(logoRealPathDir);
 
             if (!logoSaveFile.exists()) {
@@ -385,5 +393,16 @@ public class FileUploadTool {
 
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        try {
+
+        } catch (Exception e) {
+
+        }
+
+//       String path =  ClassUtils.getDefaultClassLoader().getResource("static").getPath();
+
     }
 }
