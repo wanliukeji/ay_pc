@@ -6,7 +6,16 @@
       "fAmount": null,
       "payTime": null,
       "fidentity": 1,
-      "otheryjId": 4,
+      "otheryjId": [
+        {
+          "id": 4,
+          "fname": "物业费用",
+          "amount": 1600,
+          "fstatus": 1,
+          "remark": "月付",
+          "ftype": 2
+        }
+      ],
       "del": 1,
       "floorSum": 18,
       "rid": 17,
@@ -98,9 +107,30 @@
       "unitType": "两室一厅一厨一卫",
       "fstatus": 0,
       "leaseType": 1,
-      "otherfyId": 3,
+      "otherfyId": [
+        {
+          "id": 3,
+          "fname": "水电押金",
+          "amount": 800,
+          "fstatus": 1,
+          "remark": "一次性付清",
+          "ftype": 1
+        }
+      ],
       "floors": 10,
-      "bountyId": 1,
+      "bountyId": [
+        {
+          "id": 1,
+          "fstatus": 1,
+          "proportion": 0.1,
+          "bountyType": "月租",
+          "userId": "1",
+          "createDate": "2020-07-06T00:57:27.000+0000",
+          "details": "租金的百分之十",
+          "del": 1,
+          "amount": null
+        }
+      ],
       "yPay": "1",
       "addrId": 17,
       "supporting": [
@@ -196,15 +226,13 @@
         }
       ],
       "expectations": [
-        {
-          "id": 35,
-          "ftype": 1004,
-          "name": "限女生",
-          "createDate": "2005-12-14T16:00:00.000+0000",
-          "creatCode": "1",
-          "del": 1,
-          "children": null
-        }
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ],
       "depositMethod": "押一付三",
       "createDate": "2020-07-13T08:38:31.000+0000",

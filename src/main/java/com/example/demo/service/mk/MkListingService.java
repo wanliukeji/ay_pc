@@ -285,7 +285,6 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
             list = facilityService.getInfos("supporting", list);
             list = facilityService.getInfos("features", list);
             list = facilityService.getInfos("expectations", list);
-            list = facilityService.getInfos("expectations", list);
             list = bountyService.getInfos("bountyId", list);
             list = otherBountyService.getInfos("otheryjId", list);
             list = otherBountyService.getInfos("otherfyId", list);
