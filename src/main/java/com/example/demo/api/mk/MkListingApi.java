@@ -69,7 +69,8 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "bountyId", value = "赏金ID"),
             @ApiImplicitParam(name = "comName", value = "小区名称"),
             @ApiImplicitParam(name = "otherfyId", value = "其他费用ID"),
-            @ApiImplicitParam(name = "otheryjId", value = "其他押金ID")
+            @ApiImplicitParam(name = "otheryjId", value = "其他押金ID"),
+            @ApiImplicitParam(name = "otherfyMethod", value = "其他费用付款方式"),
 
     })
     @Transactional(rollbackFor = Exception.class)
@@ -119,7 +120,8 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "bountyId") Integer bountyId,
             @RequestParam(required = false, name = "comName") String comName,
             @RequestParam(required = false, name = "otherfyId") Integer otherfyId,
-            @RequestParam(required = false, name = "otheryjId") Integer otheryjId
+            @RequestParam(required = false, name = "otheryjId") Integer otheryjId,
+            @RequestParam(required = false, name = "otherfyMethod") String otherfyMethod
             );
 
     /**

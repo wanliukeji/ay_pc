@@ -3,10 +3,7 @@ package com.example.demo.controller.mk;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.api.mk.MkListingApi;
-import com.example.demo.entity.mk.MkAddr;
-import com.example.demo.entity.mk.MkApartment;
-import com.example.demo.entity.mk.MkListing;
-import com.example.demo.entity.mk.MkRental;
+import com.example.demo.entity.mk.*;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.redis.RedisService;
@@ -41,6 +38,9 @@ public class MkListingController implements MkListingApi {
 
     @Autowired
     private MkRentalService rfservice;
+
+    @Autowired
+    private MkOtherBountyService otherBountyService;
 
     @Resource(name = "mkFileService")
     private MkFileService fileService;
@@ -99,7 +99,8 @@ public class MkListingController implements MkListingApi {
                              Integer bountyId,
                              String comName,
                              Integer otherfyId,
-                             Integer otheryjId
+                             Integer otheryjId,
+                             String otherfyMethod
 
             ) {
         try {
@@ -133,6 +134,12 @@ public class MkListingController implements MkListingApi {
                     TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
                     return ResultJSON.error(CodeMsg.UPDATE_ERROR);
                 }
+            }
+
+            if (null != otherfyId  && StringUtil.isNotEmty(otherfyMethod)) {
+                MkOtherBounty otherBounty = otherBountyService.getById(otherfyId);
+                otherBounty.setRemark(otherfyMethod);
+                otherBountyService.updateById(otherBounty);
             }
 
             if (null != apartment) {
