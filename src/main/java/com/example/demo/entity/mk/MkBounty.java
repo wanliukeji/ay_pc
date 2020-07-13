@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -27,4 +28,5 @@ public class MkBounty implements Serializable {
   private Date createDate;
   private String details;
   private Integer del;
+  private BigDecimal amount;
 }

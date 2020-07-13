@@ -35,7 +35,6 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "unitType", value = "户型"),
             @ApiImplicitParam(name = "depositMethod", value = "押金方式"),
             @ApiImplicitParam(name = "payDay", value = "房租支付时间(账单前几天收租)"),
-            @ApiImplicitParam(name = "otherAmount", value = "其他费用"),
             @ApiImplicitParam(name = "longType", value = "起租时长"),
             @ApiImplicitParam(name = "mPay", value = "月付(mk_bounty_id) -付款方式及赏金"),
             @ApiImplicitParam(name = "jPay", value = "季付(mk_bounty_id) -付款方式及赏金"),
@@ -66,6 +65,12 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "floosSum", value = "楼层总数"),
             @ApiImplicitParam(name = "remark", value = "备注"),
             @ApiImplicitParam(name = "zAmount", value = "租金"),
+            @ApiImplicitParam(name = "yAmount", value = "押金"),
+            @ApiImplicitParam(name = "bountyId", value = "赏金ID"),
+            @ApiImplicitParam(name = "comName", value = "小区名称"),
+            @ApiImplicitParam(name = "otherfyId", value = "其他费用ID"),
+            @ApiImplicitParam(name = "otheryjId", value = "其他押金ID")
+
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/mkListing/add")
@@ -80,7 +85,6 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "unitType") String unitType,
             @RequestParam(required = false, name = "depositMethod") String depositMethod,
             @RequestParam(required = false, name = "payDay") Integer payDay,
-            @RequestParam(required = false, name = "otherAmount") String otherAmount,
             @RequestParam(required = false, name = "longType") String longType,
             @RequestParam(required = false, name = "mPay") String mPay,
             @RequestParam(required = false, name = "jPay") String jPay,
@@ -98,7 +102,7 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "features") String features,
             @RequestParam(required = false, name = "expectations") String expectations,
             @RequestParam(required = false, name = "fidentity") Integer fidentity,
-            @RequestParam(required = true, name = "userId") String userId,
+            @RequestParam(required = false, name = "userId") String userId,
             @RequestParam(required = false, name = "fileId") Integer fileId,
             @RequestParam(required = false, name = "proCode") String proCode,
             @RequestParam(required = false, name = "cityCode") String cityCode,
@@ -110,8 +114,12 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "y") String y,
             @RequestParam(required = false, name = "floosSum") Integer floosSum,
             @RequestParam(required = false, name = "remark") String remark,
-            @RequestParam(required = true, name = "zAmount") BigDecimal zAmount,
-            @RequestParam(required = true, name = "yAmount") BigDecimal yAmount
+            @RequestParam(required = false, name = "zAmount") BigDecimal zAmount,
+            @RequestParam(required = false, name = "yAmount") BigDecimal yAmount,
+            @RequestParam(required = false, name = "bountyId") Integer bountyId,
+            @RequestParam(required = false, name = "comName") String comName,
+            @RequestParam(required = false, name = "otherfyId") Integer otherfyId,
+            @RequestParam(required = false, name = "otheryjId") Integer otheryjId
             );
 
     /**
@@ -229,7 +237,13 @@ public interface MkListingApi extends Serializable {
             @ApiImplicitParam(name = "floosSum", value = "楼层总数"),
             @ApiImplicitParam(name = "remark", value = "备注"),
             @ApiImplicitParam(name = "zAmount", value = "租金"),
-            @ApiImplicitParam(name = "fid", value = "房源ID")
+            @ApiImplicitParam(name = "fid", value = "房源ID"),
+            @ApiImplicitParam(name = "bountyId", value = "赏金ID"),
+            @ApiImplicitParam(name = "comName", value = "小区名称"),
+            @ApiImplicitParam(name = "otherName", value = "其他费用名称"),
+            @ApiImplicitParam(name = "otherAmount", value = "其他费用金额"),
+            @ApiImplicitParam(name = "otheryName", value = "其他押金名称"),
+            @ApiImplicitParam(name = "otheryAmount", value = "其他押金金额")
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/mkListing/edit")
@@ -244,7 +258,6 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "unitType") String unitType,
             @RequestParam(required = false, name = "depositMethod") String depositMethod,
             @RequestParam(required = false, name = "payDay") Integer payDay,
-            @RequestParam(required = false, name = "otherAmount") String otherAmount,
             @RequestParam(required = false, name = "longType") String longType,
             @RequestParam(required = false, name = "mPay") String mPay,
             @RequestParam(required = false, name = "jPay") String jPay,
@@ -275,7 +288,12 @@ public interface MkListingApi extends Serializable {
             @RequestParam(required = false, name = "remark") String remark,
             @RequestParam(required = false, name = "zAmount") BigDecimal zAmount,
             @RequestParam(required = false, name = "yAmount") BigDecimal yAmount,
-            @RequestParam(required = true, name = "fid") String fid
+            @RequestParam(required = false, name = "fid") String fid,
+            @RequestParam(required = false, name = "comName") String comName,
+            @RequestParam(required = false, name = "otherName") String otherName,
+            @RequestParam(required = false, name = "otherAmount") BigDecimal otherAmount,
+            @RequestParam(required = false, name = "otheryName") String otheryName,
+            @RequestParam(required = false, name = "otheryAmount") BigDecimal otheryAmount
     );
 
 

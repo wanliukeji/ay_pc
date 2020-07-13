@@ -1,0 +1,254 @@
+{
+  "code": 200,
+  "message": "SUCCESS",
+  "data": {
+    "total": 1,
+    "list": [
+      {
+        "fAmount": null,
+        "payTime": null,
+        "fidentity": 1,
+        "del": 1,
+        "floorSum": 6,
+        "rid": 16,
+        "longType": "一年起租",
+        "features": [
+          {
+            "id": 27,
+            "ftype": 1003,
+            "name": "智能门锁",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 26,
+            "ftype": 1003,
+            "name": "阳台",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          }
+        ],
+        "areaName": "通州区",
+        "id": 16,
+        "decoration": [
+          {
+            "id": 3,
+            "ftype": 1001,
+            "name": "精装修",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          }
+        ],
+        "area": 108,
+        "roomNo": "102",
+        "zAmount": 3000,
+        "dong": "10",
+        "towards": [
+          {
+            "id": 5,
+            "ftype": 1002,
+            "name": "朝东",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          }
+        ],
+        "kdCosts": 50,
+        "labels": [
+          {
+            "id": 1014,
+            "ftype": 1013,
+            "name": "自助看房",
+            "createDate": "2020-07-02T06:07:15.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 1015,
+            "ftype": 1013,
+            "name": "领包入驻",
+            "createDate": "2020-07-02T06:07:30.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 1016,
+            "ftype": 1013,
+            "name": "房东直租",
+            "createDate": "2020-07-02T06:07:40.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          }
+        ],
+        "wxAmount": null,
+        "tcCosts": 45,
+        "unit": 3,
+        "areaCode": "110112000000",
+        "sCosts": 10,
+        "otherAmount": "暂无",
+        "deposit": null,
+        "comName": "玉桥西里",
+        "sdAmount": null,
+        "aid": 16,
+        "fileId": [
+          {
+            "id": 9,
+            "ftype": "gif",
+            "fsize": "11.91KB",
+            "fpath": "D:\\Work\\ay_pc\\src\\main\\resources\\static\\upload\\20200707033146_4220ca6_www.ssbbww.com32303230303730373033333134365F343232306361365F7777772E7373626277772E636F6D20200708112648.gif",
+            "fileName": "20200707033146_4220ca6_www.ssbbww.com",
+            "creadCode": "1",
+            "creadDate": "2020-07-08T03:26:48.000+0000",
+            "remark": "20200707033146_4220ca6_www.ssbbww.com32303230303730373033333134365F343232306361365F7777772E7373626277772E636F6D20200708112648",
+            "del": 1
+          }
+        ],
+        "rentalId": 19,
+        "yAmount": 1000,
+        "proCode": "110000000000",
+        "cityCode": "110000000000",
+        "tstatus": 0,
+        "remark": "距离地铁13号线地铁口500米",
+        "dCosts": 15,
+        "bPay": "3",
+        "creatDate": "2020-07-10T06:59:30.000+0000",
+        "addrName": "黎园路103号",
+        "otherDeposit": null,
+        "unitType": "3室2厅1厨1卫",
+        "fstatus": 0,
+        "leaseType": 1,
+        "floors": 1,
+        "yPay": "1",
+        "addrId": 16,
+        "supporting": [
+          {
+            "id": 10,
+            "ftype": 1003,
+            "name": "床",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 11,
+            "ftype": 1003,
+            "name": "衣柜",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 12,
+            "ftype": 1003,
+            "name": "沙发",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 13,
+            "ftype": 1003,
+            "name": "桌椅",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 14,
+            "ftype": 1003,
+            "name": "电视",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 15,
+            "ftype": 1003,
+            "name": "空调",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 16,
+            "ftype": 1003,
+            "name": "洗衣机",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          }
+        ],
+        "expectations": [
+          {
+            "id": 35,
+            "ftype": 1004,
+            "name": "限女生",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          },
+          {
+            "id": 42,
+            "ftype": 1005,
+            "name": "地铁沿线",
+            "createDate": "2005-12-14T16:00:00.000+0000",
+            "creatCode": "1",
+            "del": 1,
+            "children": null
+          }
+        ],
+        "depositMethod": "押一付三",
+        "createDate": "2020-07-10T06:59:30.000+0000",
+        "wyCosts": 20,
+        "creartDate": "2020-07-10T06:59:30.000+0000",
+        "nPay": "4",
+        "userId": "1",
+        "jPay": "2",
+        "sortNo": null,
+        "x": "116.67635132286833",
+        "rqCosts": 35,
+        "firstAmount": null,
+        "payDay": 5,
+        "y": "39.88917722671751",
+        "apartmentId": 3,
+        "jstatus": 0
+      }
+    ],
+    "pageNum": 1,
+    "pageSize": 1,
+    "size": 1,
+    "startRow": 0,
+    "endRow": 0,
+    "pages": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ],
+    "navigateFirstPage": 1,
+    "navigateLastPage": 1
+  }
+}

@@ -60,6 +60,23 @@ public class MkAddressService extends ServiceImpl<MkAddressMapper, MkAddress> {
             return ResultJSON.error("获取数据失败");
         }
     }
+
+    public ResultJSON<?> getChilds(String code) {
+
+        QueryWrapper<MkAddress> qw = new QueryWrapper<MkAddress>();
+        try {
+//            qw.eq("level",1).or().eq("level",2).or().eq("level",3);
+            qw.eq("pcode", code);
+//            qw.notIn("level",5);p
+//            qw.notIn("level",4);
+//            qw.notIn("level",3);
+            List<MkAddress> infos = this.list(qw);
+            return ResultJSON.success(infos);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error("获取数据失败");
+        }
+    }
 }
 
 

@@ -1,5 +1,7 @@
 package com.example.demo.controller.mk;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.demo.Utils.StringUtil;
 import com.example.demo.api.mk.MkListingApi;
 import com.example.demo.entity.mk.MkAddr;
 import com.example.demo.entity.mk.MkApartment;
@@ -54,7 +56,7 @@ public class MkListingController implements MkListingApi {
 
     @Override
     public ResultJSON<?> add(
-            Long apartmentId,
+                             Long apartmentId,
                              Integer dong,
                              Integer unit,
                              String  roomNo,
@@ -63,7 +65,6 @@ public class MkListingController implements MkListingApi {
                              String unitType,
                              String depositMethod,
                              Integer payDay,
-                             String otherAmount,
                              String longType,
                              String mPay,
                              String jPay,
@@ -94,15 +95,50 @@ public class MkListingController implements MkListingApi {
                              Integer floosSum,
                              String remark,
                              BigDecimal zAmount,
-                             BigDecimal yAmount
-    ) {
+                             BigDecimal yAmount,
+                             Integer bountyId,
+                             String comName,
+                             Integer otherfyId,
+                             Integer otheryjId
+
+            ) {
         try {
             // 公寓信息
-            MkApartment apartment = apartService.getById(apartmentId);
+            MkApartment apartment = new MkApartment();
+
+            if (StringUtil.isNotEmty(apartmentId)) {
+                apartment = apartService.getById(apartmentId);
+            } else {
+                apartment = apartService.getOne(new QueryWrapper<MkApartment>()
+                        .eq("cityCode", cityCode).eq("areaCode",areaCode)
+                .eq("communityName",comName));
+            }
+
+            // 如果没有 自动添加新的小区 或公寓
+            if (apartment == null) {
+                apartment = new MkApartment();
+                apartment.setY(y);
+                apartment.setX(x);
+                apartment.setDel(1);
+                apartment.setCommunityName(comName);
+                apartment.setRoomNum(1);
+                apartment.setAddr(addrName);
+                apartment.setAreaCode(areaCode);
+                apartment.setCityCode(cityCode);
+                apartment.setUserId(userId);
+                apartment.setFileCode(fileId + "");
+                boolean f = apartService.save(apartment);
+                if (!f) {
+                    //强制事务回滚
+                    TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                    return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+                }
+            }
+
             if (null != apartment) {
                 MkAddr addr = afservice.add(apartment.getCommunityName() , dong, unit, roomNo,
                         floors, userId, proCode, cityCode, areaCode, floosSum, addrName);
-                MkRental rental = rfservice.add(otherAmount, kdCosts, dCosts,
+                MkRental rental = rfservice.add( kdCosts, dCosts,
                         sCosts, wyCosts, tcCosts,
                         rqCosts, userId, longType,
                         depositMethod, payDay, zAmount,yAmount);
@@ -113,7 +149,7 @@ public class MkListingController implements MkListingApi {
                                                     decoration, towards, supporting,
                                                     features, expectations, fidentity,
                                                     userId,fileId, leaseType, labeles, apartmentId,
-                                                    addr.getId(), rental.getId(), remark);
+                                                    addr.getId(), rental.getId(), remark, bountyId, otherfyId, otheryjId);
                     if (null != enitty) {
 //                        MkPointxy pointxy = new MkPointxy();
 //                        pointxy.setName(apartment.getCommunityName());
@@ -195,7 +231,7 @@ public class MkListingController implements MkListingApi {
     public ResultJSON<?> edit(Long apartmentId, Integer dong, Integer unit,
                               String roomNo, Double area, Integer floors,
                               String unitType, String depositMethod, Integer payDay,
-                              String otherAmount, String longType, String mPay,
+                              String longType, String mPay,
                               String jPay, String bPay, String nPay, BigDecimal kdCosts,
                               BigDecimal dCosts, BigDecimal sCosts, BigDecimal wyCosts,
                               BigDecimal tcCosts, BigDecimal rqCosts, String decoration,
@@ -203,7 +239,8 @@ public class MkListingController implements MkListingApi {
                               Integer fidentity, Integer fileId, String proCode,
                               String cityCode, String areaCode, String addrName, Integer leaseType,
                               String labeles, String x, String y, Integer floosSum, String remark,
-                              BigDecimal zAmount, BigDecimal yAmount, String fid) {
+                              BigDecimal zAmount, BigDecimal yAmount, String fid, String comName,
+                              String otherName,BigDecimal otherAmount,String otheryName,BigDecimal otheryAmount) {
         try {
             // 公寓信息
             MkApartment apartment = apartService.getById(apartmentId);
@@ -213,10 +250,10 @@ public class MkListingController implements MkListingApi {
             if (null != pojo && null != apartment) {
                 MkAddr addr = afservice.edit(apartment.getCommunityName() , dong, unit, roomNo,
                         floors,  proCode, cityCode, areaCode, floosSum, addrName, pojo.getAddrId());
-                MkRental rental = rfservice.edit(otherAmount, kdCosts, dCosts,
+                MkRental rental = rfservice.edit(kdCosts, dCosts,
                         sCosts, wyCosts, tcCosts,
                         rqCosts, longType,
-                        depositMethod, payDay, zAmount,yAmount, pojo.getRentalId());
+                        depositMethod, payDay, zAmount,yAmount, pojo.getRentalId(), otherName, otherAmount, otheryName, otheryAmount);
                 if (null != addr && rental != null) {
                     //添加房源
                     MkListing enitty = fservice.edit(area, unitType,

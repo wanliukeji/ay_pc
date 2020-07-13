@@ -56,7 +56,6 @@
         t.`rqCosts` AS `rqCosts`,
         t.`firstAmount` AS `firstAmount`,
         t.`fAmount` AS `fAmount`,
-        t.`otherAmount` AS `otherAmount`,
         t.`creartDate` AS `creartDate`,
         t.`deposit` AS `deposit`,
         t.`otherDeposit` AS `otherDeposit`,
@@ -66,7 +65,9 @@
         t.`longType` AS `longType`,
         t.`x` as `x`,
         t.`y` as `y`,
-        t.`areaName` as areaName
+        t.`areaName` as areaName,
+        t.`otheryjId` as otheryjId,
+        t.`otherfyId` as otherfyId
         FROM
         v_list_rent_addr t
         WHERE 1= 1
@@ -213,7 +214,6 @@
         t.`rqCosts` AS `rqCosts`,
         t.`firstAmount` AS `firstAmount`,
         t.`fAmount` AS `fAmount`,
-        t.`otherAmount` AS `otherAmount`,
         t.`creartDate` AS `creartDate`,
         t.`deposit` AS `deposit`,
         t.`otherDeposit` AS `otherDeposit`,
@@ -223,7 +223,9 @@
         t.`longType` AS `longType`,
         t.`x` as `x`,
         t.`y` as `y`,
-        t.`areaName` as areaName
+        t.`areaName` as areaName,
+        t.`otheryjId` as otheryjId,
+        t.`otherfyId` as otherfyId
 FROM
 	( `mk_pointxy` JOIN `v_list_rent_addr` )
 WHERE
@@ -286,7 +288,6 @@ WHERE
         t.`rqCosts` AS `rqCosts`,
         t.`firstAmount` AS `firstAmount`,
         t.`fAmount` AS `fAmount`,
-        t.`otherAmount` AS `otherAmount`,
         t.`creartDate` AS `creartDate`,
         t.`deposit` AS `deposit`,
         t.`otherDeposit` AS `otherDeposit`,
@@ -296,7 +297,9 @@ WHERE
         t.`longType` AS `longType`,
         t.`x` as `x`,
         t.`y` as `y`,
-        t.`areaName` as areaName
+        t.`areaName` as areaName,
+        t.`otheryjId` as otheryjId,
+        t.`otherfyId` as otherfyId
         FROM
         v_list_rent_addr t
         WHERE 1= 1

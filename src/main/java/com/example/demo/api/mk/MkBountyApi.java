@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 赏金接口
@@ -27,7 +28,9 @@ public interface MkBountyApi extends Serializable {
             @ApiImplicitParam(name = "proportion", value = "租金比例"),
             @ApiImplicitParam(name = "bountyType", value = "租金类型"),
             @ApiImplicitParam(name = "userId", value = "创建人"),
-            @ApiImplicitParam(name = "details", value = "赏金详情")
+            @ApiImplicitParam(name = "details", value = "赏金详情"),
+            @ApiImplicitParam(name = "amount", value = "租金"),
+            @ApiImplicitParam(name = "fstatus", value = "开启状态(0 关闭 1 开启)")
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/bounty/add")
@@ -35,7 +38,8 @@ public interface MkBountyApi extends Serializable {
                              @RequestParam(required = false, value = "bountyType") String bountyType,
                              @RequestParam(required = false, value = "userId") String userId,
                              @RequestParam(required = false, value = "details") String details,
-                             @RequestParam(required = false, value = "details") Integer fstatus
+                             @RequestParam(required = false, value = "amount") BigDecimal amount,
+                             @RequestParam(required = false, value = "fstatus") Integer fstatus
     );
 
 //    /**

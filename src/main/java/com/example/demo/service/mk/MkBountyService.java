@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -27,7 +28,7 @@ import java.util.List;
 @Slf4j
 public class MkBountyService extends ServiceImpl<MkBountyMapper, MkBounty> {
 
-    public ResultJSON<?> add(Double proportion, String bountyType, String userId, String details, Integer fstatus) {
+    public ResultJSON<?> add(Double proportion, String bountyType, String userId, String details, BigDecimal amount, Integer fstatus) {
         MkBounty entity = new MkBounty();
 
         try {
@@ -38,8 +39,8 @@ public class MkBountyService extends ServiceImpl<MkBountyMapper, MkBounty> {
                 entity.setProportion(proportion);
                 entity.setBountyType(bountyType);
                 entity.setDetails(details);
+                entity.setAmount(amount);
                 boolean f = this.save(entity);
-
                 if (f) {
                     return ResultJSON.success(entity);
                 } else {

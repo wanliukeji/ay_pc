@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 
 /**
  * @author Chenny
@@ -25,8 +26,8 @@ public class MkBountyController implements MkBountyApi {
 
 
     @Override
-    public ResultJSON<?> add(Double proportion, String bountyType, String userId, String details, Integer fstatus) {
-        return service.add(proportion, bountyType, userId, details, fstatus);
+    public ResultJSON<?> add(Double proportion, String bountyType, String userId, String details, BigDecimal amount, Integer fstatus) {
+        return service.add(proportion, bountyType, userId, details, amount, fstatus);
     }
 
     @Override

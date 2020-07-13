@@ -63,7 +63,10 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
                          Integer fidentity,
                          String userId,
                          Integer fileId, Integer leaseType,
-                         String labeles, Long apartmentId, Long addrId, Long rId, String remark) throws Exception {
+                         String labeles, Long apartmentId, Long addrId,
+                         Long rId, String remark, Integer bountyId,
+                         Integer otherfyId,
+                         Integer otheryjId) throws Exception {
         MkListing entity = new MkListing();
 
         entity.setArea(Double.valueOf(area));
@@ -88,8 +91,9 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         entity.setLabels(labeles);
         entity.setRemark(remark);
         entity.setDel(1);
-
-
+        entity.setBountyId(bountyId);
+        entity.setOtherfyId(otherfyId);
+        entity.setOtheryjId(otheryjId);
         if (StringUtil.isNotEmty(apartmentId)) {
             entity.setApartmentId(apartmentId);
         }

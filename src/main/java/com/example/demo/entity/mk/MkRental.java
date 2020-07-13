@@ -33,7 +33,6 @@ public class MkRental implements Serializable {
   private BigDecimal rqCosts;
   private BigDecimal firstAmount;
   private BigDecimal fAmount;
-  private String otherAmount;
   private String userId;
   private Date creartDate;
   private Integer del;

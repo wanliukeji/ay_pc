@@ -22,22 +22,21 @@ import java.util.Date;
 @Slf4j
 public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
 
-    public MkRental add(String otherAmount, BigDecimal kdCosts, BigDecimal dCosts,
+    public MkRental add(BigDecimal kdCosts, BigDecimal dCosts,
                         BigDecimal sCosts, BigDecimal wyCosts, BigDecimal tcCosts,
                         BigDecimal rqCosts, String userId, String longType,
-                        String depositMethod, Integer payDay, BigDecimal zAmount, BigDecimal yAmount) {
+                        String depositMethod, Integer payDay, BigDecimal zAmount,
+                        BigDecimal yAmount) {
         MkRental entity = new MkRental();
 
         try {
 
-            entity.setOtherAmount(otherAmount);
 
             entity.setDepositMethod(depositMethod);
 
             entity.setPayDay(payDay);
 
             entity.setLongType(longType);
-
 
             entity.setKdCosts(kdCosts);
 
@@ -56,6 +55,7 @@ public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
             entity.setYAmount(yAmount);
 
             entity.setCreartDate(new Date());
+
             entity.setUserId(userId + "");
 
             boolean f = this.save(entity);
@@ -68,24 +68,24 @@ public class MkRentalService extends ServiceImpl<MkRentalMapper, MkRental> {
         return null;
     }
 
-    public MkRental edit(String otherAmount, BigDecimal kdCosts, BigDecimal dCosts,
+    public MkRental edit(BigDecimal kdCosts, BigDecimal dCosts,
                         BigDecimal sCosts, BigDecimal wyCosts, BigDecimal tcCosts,
                         BigDecimal rqCosts, String longType,
-                        String depositMethod, Integer payDay, BigDecimal zAmount, BigDecimal yAmount, Long id) {
+                        String depositMethod, Integer payDay, BigDecimal zAmount,
+                        BigDecimal yAmount, Long id, String otherName,BigDecimal otherAmount,
+                        String otheryName,BigDecimal otheryAmount) {
 
         try {
 
             MkRental entity = this.getById(id);
 
             if (null != entity) {
-                entity.setOtherAmount(otherAmount);
 
                 entity.setDepositMethod(depositMethod);
 
                 entity.setPayDay(payDay);
 
                 entity.setLongType(longType);
-
 
                 entity.setKdCosts(kdCosts);
 

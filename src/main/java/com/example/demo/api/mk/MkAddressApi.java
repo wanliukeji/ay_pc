@@ -2,6 +2,7 @@ package com.example.demo.api.mk;
 
 import com.example.demo.json.ResultJSON;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +32,20 @@ public interface MkAddressApi extends Serializable {
      * @return
      */
     @ApiOperation(value = "MK行政地区详情接口", notes = "MK行政地区详情接口")
-    @ApiImplicitParams({})
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "name", value = "行政名称")
+    })
     @PostMapping(value = "/mk/api/china/getInfo")
     public ResultJSON<?> getInfo(@RequestParam("name") String name);
+
+
+    /**
+     * 行政地区详情获取
+     * @return
+     */
+    @ApiOperation(value = "MK行政地区接口", notes = "MK获取下级行政地区接口")
+    @ApiImplicitParams({})
+    @PostMapping(value = "/mk/api/china/getChilds")
+    public ResultJSON<?> getChilds(@RequestParam("code") String code);
 
 }
