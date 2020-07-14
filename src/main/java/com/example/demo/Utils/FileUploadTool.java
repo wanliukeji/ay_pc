@@ -187,8 +187,9 @@ public class FileUploadTool {
             //保存本地项目
             String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
 
-            String logoRealPathDir = path + "/src/main/resources/static" + logoPathDir;
+            String logoRealPathDir = path + "/static" + logoPathDir;
             File logoSaveFile = new File(logoRealPathDir);
+
 
             if (!logoSaveFile.exists()) {
                 logoSaveFile.mkdirs();
@@ -241,7 +242,13 @@ public class FileUploadTool {
                 }
                 entity.setFsize(size);
 //                entity.setFpath("\\static\\upload"+File.separator + newFileName + fileEnd);
-                entity.setFpath(aviPath);
+
+                String contextPath = request.getContextPath();
+                String basePath = request.getScheme()+"://"+request.getServerName()+":"+
+                        request.getServerPort()+contextPath+"/";
+                String path2 = basePath + "static" + logoPathDir + "/" + newFileName + fileEnd;
+
+                entity.setFpath(path2);
                 entity.setFileName(name);
                 entity.setRemark(newFileName);
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -365,14 +372,14 @@ public class FileUploadTool {
         //判断文件属于什么类型
         if (fileEnd.contains("jpg") || fileEnd.contains("png") ||
                 fileEnd.contains("gif") || fileEnd.contains("jpeg")) {
-            logoPathDir = "\\upload";
+            logoPathDir = "/upload";
         } else if (fileEnd.contains("mp4") || fileEnd.contains("rmvb") ||
                 fileEnd.contains("avi") || fileEnd.contains("flv")) {
-            logoPathDir = "\\video";
+            logoPathDir = "/video";
         } else if (fileEnd.contains("mp3") || fileEnd.contains("ogg")) {
-            logoPathDir = "\\audio";
+            logoPathDir = "/audio";
         } else {
-            logoPathDir = "\\file";
+            logoPathDir = "/file";
         }
         return logoPathDir;
     }

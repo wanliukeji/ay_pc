@@ -3,12 +3,15 @@ package com.example.demo.service.mk;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.mk.MkContractMapper;
+import com.example.demo.entity.mk.MkApartment;
 import com.example.demo.entity.mk.MkContract;
+import com.example.demo.entity.mk.MkListing;
 import com.example.demo.entity.mk.MkUser;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.itextPdf.TestTempletTicket;
 import com.example.demo.json.ResultJSON;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
@@ -33,7 +36,13 @@ import java.util.Map;
 public class MkContractService extends ServiceImpl<MkContractMapper, MkContract> {
 
     @Resource(name = "mkUserService")
-    MkUserService userService;
+    private MkUserService userService;
+
+    @Resource
+    private MkApartService apartService;
+
+    @Autowired
+    private MkListingService fservice;
 
     public ResultJSON<?> gen(String addr, Double area, String startDate,
                              String endDate, String payDate,
@@ -59,6 +68,18 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
                 MkUser zuser = userService.getById(zuid);
                 MkUser fuser = userService.getById(fuid);
                 if (zuser != null && fuser != null) {
+                    MkListing mkListing = fservice.getById(fid);
+                    MkApartment apartment = new MkApartment();
+                    if (StringUtil.isNotEmty(mkListing)) {
+                        apartment = apartService.getById(mkListing.getApartmentId());
+                    }
+
+                    if (StringUtil.isNotEmty(apartment)) {
+                        Integer roomNum = apartment.getRoomNum();
+                        roomNum = roomNum == null ? 0 : roomNum;
+                        apartment.setRoomNum((roomNum - 1) <= 0 ? 0 : (roomNum - 1));
+                    }
+
                     boolean f = this.save(entity);
                     if (f) {
                         Calendar calendar = Calendar.getInstance();
