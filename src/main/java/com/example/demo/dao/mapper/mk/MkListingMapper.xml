@@ -228,13 +228,10 @@
         t.`otheryjId` as otheryjId,
         t.`otherfyId` as otherfyId,
         t.`bountyId` as bountyId
-FROM
-	( `mk_pointxy` JOIN `v_list_rent_addr` )
-WHERE
-   1=1
-  AND ( `mk_pointxy`.`fid` = `v_list_rent_addr`.`id` )
-
-  AND `v_list_rent_addr`.id = #{id}
+        FROM
+        v_list_rent_addr t
+        WHERE 1= 1
+        AND t.id = #{fid}
     </select>
     <select id="getByPage2" resultType="java.util.Map">
         select

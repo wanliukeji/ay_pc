@@ -49,7 +49,7 @@ public interface MkRedistApi extends Serializable {
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/redis/nearby/fy")
-    public ResultJSON<?> nearby(
+    public ResultJSON<?> nearbyfy(
             @RequestParam(required = false, value = "x") String lng,
             @RequestParam(required = false, value = "y") String lat,
             @RequestParam(required = false, value = "distance") Integer distance

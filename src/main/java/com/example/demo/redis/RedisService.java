@@ -235,7 +235,7 @@ public class RedisService {
         }
     }
 
-    public ResultJSON<?> nearby(String lng, String lat, Integer num) {
+    public ResultJSON<?> nearbyfy(String lng, String lat, Integer num) {
         Point point = new Point(lng != null ? Double.parseDouble(lng) : 0.0,lat != null ? Double.parseDouble(lat) : 0.0);
 
         Metric metric = RedisGeoCommands.DistanceUnit.KILOMETERS;
@@ -267,11 +267,8 @@ public class RedisService {
                 Point pos = content.getPoint();
                 // 距离中心点的距离
                 Distance dis = geoLocationGeoResult.getDistance();
-//                MkPointxy entity = new MkPointxy();
-
                 QueryWrapper<MkPointxy> qw = new QueryWrapper<MkPointxy>();
                 if (StringUtil.isNotEmty(name)) {
-//                     = mkListingService.getInfo(Integer.valueOf(name));
                  Map  entity = mkListingService.getInfo2(Integer.valueOf(name));
                    if (null != entity && entity.size() > 0) {
                        map.put(name,entity);
