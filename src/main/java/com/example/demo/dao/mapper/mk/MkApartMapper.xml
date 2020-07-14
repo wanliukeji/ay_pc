@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mk.MkApartMapper">
+    <select id="getByGroup" resultType="java.util.Map">
+        SELECT
+        t.x,
+        t.y,
+        t.comName,
+        t.proCode,
+        t.cityCode,
+        t.cityCode,
+        COUNT(t.comName)
+        FROM
+        v_list_rent_addr t
+        WHERE 1 = 1
+        GROUP BY t.comName
+    </select>
+</mapper>

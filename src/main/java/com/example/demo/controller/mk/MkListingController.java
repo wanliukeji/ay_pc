@@ -158,7 +158,7 @@ public class MkListingController implements MkListingApi {
                                                      mPay, jPay, bPay, nPay,
                                                     decoration, towards, supporting,
                                                     features, expectations, fidentity,
-                                                    userId,fileId, leaseType, labeles, apartmentId,
+                                                    userId,fileId, leaseType, labeles, apartment.getId(),
                                                     addr.getId(), rental.getId(), remark, bountyId, otherfyId, otheryjId);
                     if (null != enitty) {
 //                        MkPointxy pointxy = new MkPointxy();
@@ -168,7 +168,11 @@ public class MkListingController implements MkListingApi {
 //                        pointxy.setCreadDate(new Date());
 //                        pointxy.setFid(enitty.getId() + "");
 //                        pointXyService.save(pointxy);
+//                        保存房源
                         redisService.initia(apartment.getCommunityName(), x, y, String.valueOf(enitty.getId()));
+
+//                        redisService.initia(apartment.getCommunityName(), x, y, "x" + String.valueOf(apartment.getId()));
+
                         apartment.setRoomNum((apartment.getRoomNum() != null ? apartment.getRoomNum() + 1 : 1));
                         apartService.saveOrUpdate(apartment);
                         return ResultJSON.success(CodeMsg.UPDATE_SUCCESS);

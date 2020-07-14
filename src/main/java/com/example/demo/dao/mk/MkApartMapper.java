@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.mk.MkApartment;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author Chenny
  * @version 1.0
@@ -15,4 +18,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MkApartMapper extends BaseMapper<MkApartment> {
+
+    List<Map<String, Object>> getByGroup();
 }
