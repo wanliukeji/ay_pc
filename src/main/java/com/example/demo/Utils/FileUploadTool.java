@@ -35,7 +35,6 @@ public class FileUploadTool {
 //            ".bmp", ".xls", ".mp4", ".flv", ".ppt", ".avi", ".mpg", ".wmv",
 //            ".3gp", ".mov", ".asf", ".asx", ".vob", ".wmv9", ".rm", ".rmvb", ".mp3"};
 
-
     private static String[] allowFiles = {
              ".gif", ".png", ".jpg", ".jpeg"
            };
