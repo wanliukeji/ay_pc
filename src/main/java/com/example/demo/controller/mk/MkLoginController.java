@@ -48,7 +48,7 @@ public class MkLoginController implements MkLoginApi {
 
     @Override
     public ResultJSON sendSms(String phone) {
-        return null;
+        return mkUserService.sendSms(phone);
     }
 
 //    @Override

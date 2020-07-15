@@ -11,10 +11,19 @@ import com.example.demo.entity.mk.MkUser;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.wx.HttpClientUtil;
+import com.tencentcloudapi.common.Credential;
+import com.tencentcloudapi.common.exception.TencentCloudSDKException;
+import com.tencentcloudapi.common.profile.ClientProfile;
+import com.tencentcloudapi.common.profile.HttpProfile;
+import com.tencentcloudapi.sms.v20190711.SmsClient;
+import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
+import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.*;
 
 //
 //import com.tencentcloudapi.common.Credential;
@@ -26,8 +35,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 //
 //import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
 //import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
-
-import java.util.*;
 
 /**
  * @author Chenny
@@ -50,7 +57,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
 
-//
+    //
     public static final String SECRETID = "AKIDKOcdLoM0i9JUSEIez5tRpxoTtNabwp30";
 
     public static final String SECRETKEY = "qU9XeCTFhxve7JI0way6x1kEVXJr52C6";
@@ -88,16 +95,16 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     //微信 一键登录
     public ResultJSON<?> wxlogin(
             @RequestParam("code") String code,
-            @RequestParam( required = false, value = "email") String email,
-            @RequestParam( required = false, value = "name") String name,
-            @RequestParam( required = false, value = "userName") String userName,
-            @RequestParam( required = false, value = "imgUrl") String imgUrl,
-            @RequestParam( required = false, value = "sex") String sex,
-            @RequestParam( required = false, value = "phone") String phone,
-            @RequestParam( required = false, value = "iDcard") String iDcard,
-            @RequestParam( required = false, value = "ctype") Integer ctype,
-            @RequestParam( required = false, value = "openId") String openId,
-            @RequestParam( required = false, value = "age") Integer age
+            @RequestParam(required = false, value = "email") String email,
+            @RequestParam(required = false, value = "name") String name,
+            @RequestParam(required = false, value = "userName") String userName,
+            @RequestParam(required = false, value = "imgUrl") String imgUrl,
+            @RequestParam(required = false, value = "sex") String sex,
+            @RequestParam(required = false, value = "phone") String phone,
+            @RequestParam(required = false, value = "iDcard") String iDcard,
+            @RequestParam(required = false, value = "ctype") Integer ctype,
+            @RequestParam(required = false, value = "openId") String openId,
+            @RequestParam(required = false, value = "age") Integer age
     ) {
         try {
             // 配置请求参数
@@ -114,11 +121,11 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
             String open_id = jsonObject.get("openId").toString();
             // 根据返回的user实体类，判断用户是否是新用户，不是的话，更新最新登录时间，是的话，将用户信息存到数据库
             MkUser user = getUseroForOpenId(open_id);
-            if(user != null){
+            if (user != null) {
                 this.updateById(user);
-            }else{
+            } else {
                 MkUser entity = new MkUser();
-                System.out.println("entity:"+entity.toString());
+                System.out.println("entity:" + entity.toString());
                 // 添加到数据库
                 entity.setUname(name);
                 entity.setIDcard(iDcard);
@@ -132,7 +139,7 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
                 entity.setSex(sex);
                 entity.setUserName(userName);
                 boolean flag = this.save(entity);
-                if(flag){
+                if (flag) {
                     // 封装返回小程序
                     Map<String, Object> result = new HashMap<>();
                     result.put("session_key", session_key);
@@ -200,9 +207,65 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     }
 
 
+    public ResultJSON<?> sendSms(String phone) {
 
+        try {
+            Credential cred = new Credential(SECRETID, SECRETKEY);
+            HttpProfile httpProfile = new HttpProfile();
+            /* SDK 默认使用 POST 方法。
+             * 如需使用 GET 方法，可以在此处设置，但 GET 方法无法处理较大的请求 */
+            httpProfile.setReqMethod("POST");
+            httpProfile.setConnTimeout(60);
+            httpProfile.setEndpoint(SENDURL);
+            ClientProfile clientProfile = new ClientProfile();
+            clientProfile.setHttpProfile(httpProfile);
+            SmsClient client = new SmsClient(cred, "", clientProfile);
+            // String params = "{\"PhoneNumberSet\":[\"15957408879\"],\"TemplateID\":\"662375\",\"SmsSdkAppid\":\"1400399759\"}";
+            SendSmsRequest req = new SendSmsRequest();
+            /* 短信应用 ID: 在 [短信控制台] 添加应用后生成的实际 SDKAppID，例如1400006666 */
+            String appid = "1400399759";
+            req.setSmsSdkAppid(appid);
 
-    public ResultJSON<?> sendSms(String phone){
+            /* 短信签名内容: 使用 UTF-8 编码，必须填写已审核通过的签名，可登录 [短信控制台] 查看签名信息 */
+            String sign = "湖南觅客信息科技有限公司";
+            req.setSign(sign);
+
+            /* 国际/港澳台短信 senderid: 国内短信填空，默认未开通，如需开通请联系 [sms helper] */
+            String senderid = "";
+            req.setSenderId(senderid);
+
+            /* 用户的 session 内容: 可以携带用户侧 ID 等上下文信息，server 会原样返回 */
+//            String session = HttpServletRequestUtil.getSessionUser() + "";
+//            req.setSessionContext(session);
+
+            /* 短信码号扩展号: 默认未开通，如需开通请联系 [sms helper] */
+//            String extendcode = "xxx";
+//            req.setExtendCode(extendcode);
+
+            /* 模板 ID: 必须填写已审核通过的模板 ID，可登录 [短信控制台] 查看模板 ID */
+            String templateID = "662375";
+            req.setTemplateID(templateID);
+
+            /* 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号]
+             * 例如+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号*/
+            String[] phoneNumbers = {"+86" + phone};
+            req.setPhoneNumberSet(phoneNumbers);
+
+            /* 模板参数: 若无模板参数，则设置为空*/
+            int code = (int) (Math.random() * 9000 + 1000);
+            String[] templateParams = {code + ""};
+            req.setTemplateParamSet(templateParams);
+            SendSmsResponse resp = client.SendSms(req);
+            System.out.println(SendSmsResponse.toJsonString(resp));
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("code", code);
+            map.put("info", resp);
+            return ResultJSON.success(map);
+        } catch (TencentCloudSDKException e) {
+            System.err.println(e.toString());
+            return ResultJSON.error(e.toString());
+        }
 //        try{
 //            Credential cred = new Credential(SECRETID, SECRETKEY);
 //            HttpProfile httpProfile = new HttpProfile();
@@ -236,19 +299,14 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
 //            //生成4位随机数
 //            int code = (int) (Math.random() * 9000 + 1000);
 //            String params = "{\"PhoneNumberSet\":[\"+86"+phone+"\"],\"TemplateID\":\"662375\",\"Sign\":\"用户你好\",\"TemplateParamSet\":[\""+code+"\"],\"SmsSdkAppid\":\"1400399759\"}";
-//            SendSmsRequest req = SendSmsRequest.fromJsonString(params, SendSmsRequest.class);
-//            SendSmsResponse resp = client.SendSms(req);
+//            com.tencentcloudapi.sms.v20190711.models.SendSmsRequest req = com.tencentcloudapi.sms.v20190711.models.SendSmsRequest.fromJsonString(params, com.tencentcloudapi.sms.v20190711.models.SendSmsRequest.class);
+//            com.tencentcloudapi.sms.v20190711.models.SendSmsResponse resp;
+//            resp = client.SendSms(req);
 //            return ResultJSON.success(resp);
 //        } catch (TencentCloudSDKException e) {
 //            return ResultJSON.error(e.toString());
 //        }
-        return ResultJSON.error("发送失败");
     }
-
-
-
-
-
 
 
     // 用户退出
@@ -441,6 +499,70 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
             ex.printStackTrace();
             return ResultJSON.error(CodeMsg.SESSION_ERROR);
         }
+    }
+
+    public static void main(String[] args) {
+//        try{
+//            Credential cred = new Credential(SECRETID, SECRETKEY);
+//            HttpProfile httpProfile = new HttpProfile();
+//
+//            /* SDK 默认使用 POST 方法。
+//             * 如需使用 GET 方法，可以在此处设置，但 GET 方法无法处理较大的请求 */
+//            httpProfile.setReqMethod("POST");
+//            httpProfile.setConnTimeout(60);
+//            httpProfile.setEndpoint(SENDURL);
+//
+//            ClientProfile clientProfile = new ClientProfile();
+//            clientProfile.setHttpProfile(httpProfile);
+//
+//            SmsClient client = new SmsClient(cred, "", clientProfile);
+//
+////            String params = "{\"PhoneNumberSet\":[\"15957408879\"],\"TemplateID\":\"662375\",\"SmsSdkAppid\":\"1400399759\"}";
+//            SendSmsRequest req = new SendSmsRequest();
+//
+//
+//            /* 短信应用 ID: 在 [短信控制台] 添加应用后生成的实际 SDKAppID，例如1400006666 */
+//            String appid = "1400399759";
+//            req.setSmsSdkAppid(appid);
+//
+//            /* 短信签名内容: 使用 UTF-8 编码，必须填写已审核通过的签名，可登录 [短信控制台] 查看签名信息 */
+//            String sign = "湖南觅客信息科技有限公司";
+//            req.setSign(sign);
+//
+//            /* 国际/港澳台短信 senderid: 国内短信填空，默认未开通，如需开通请联系 [sms helper] */
+//            String senderid = "";
+//            req.setSenderId(senderid);
+//
+//            /* 用户的 session 内容: 可以携带用户侧 ID 等上下文信息，server 会原样返回 */
+////            String session = HttpServletRequestUtil.getSessionUser() + "";
+////            req.setSessionContext(session);
+//
+//            /* 短信码号扩展号: 默认未开通，如需开通请联系 [sms helper] */
+////            String extendcode = "xxx";
+////            req.setExtendCode(extendcode);
+//
+//            /* 模板 ID: 必须填写已审核通过的模板 ID，可登录 [短信控制台] 查看模板 ID */
+//            String templateID = "662375";
+//            req.setTemplateID(templateID);
+//
+//            /* 下发手机号码，采用 e.164 标准，+[国家或地区码][手机号]
+//             * 例如+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号，最多不要超过200个手机号*/
+//            String[] phoneNumbers = {"+8615957408879"};
+//            req.setPhoneNumberSet(phoneNumbers);
+//
+//            /* 模板参数: 若无模板参数，则设置为空*/
+//            String[] templateParams = {"5678"};
+//            req.setTemplateParamSet(templateParams);
+//
+//
+//
+//
+//            SendSmsResponse resp = client.SendSms(req);
+//
+//            System.out.println(SendSmsResponse.toJsonString(resp));
+//        } catch (TencentCloudSDKException e) {
+//            System.err.println(e.toString());
+//        }
     }
 
 }
