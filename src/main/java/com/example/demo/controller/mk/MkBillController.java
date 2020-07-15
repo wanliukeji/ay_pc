@@ -26,7 +26,7 @@ public class MkBillController implements MkBillApi {
 
     @Override
     public ResultJSON<?> add(String uid, String payUid, Integer pm, String title, String ftype, BigDecimal amount, String mark, String fid) {
-        return service.add(uid, payUid, pm, title, ftype, amount, mark, fid);
+        return service.add(uid, pm, title, ftype, amount, mark, fid);
     }
 
     @Override

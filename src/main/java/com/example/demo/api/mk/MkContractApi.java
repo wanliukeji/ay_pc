@@ -36,7 +36,8 @@ public interface MkContractApi extends Serializable {
             @ApiImplicitParam(name = "startDay", value = "提前天数"),
             @ApiImplicitParam(name = "fuid", value = "房东ID"),
             @ApiImplicitParam(name = "zuid", value = "租客ID"),
-            @ApiImplicitParam(name = "fid", value = "房源ID")
+            @ApiImplicitParam(name = "fid", value = "房源ID"),
+            @ApiImplicitParam(name = "payType", value = "付款方式(1 :月付 2 季付, 3 半年付, 4 年付)")
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/ht/gen")
@@ -52,7 +53,8 @@ public interface MkContractApi extends Serializable {
             @RequestParam(required = false, value = "startDay") Integer startDay,
             @RequestParam(required = false, value = "fuid") String fuid,
             @RequestParam(required = false, value = "zuid") String zuid,
-            @RequestParam(required = false, value = "fid") String fid
+            @RequestParam(required = false, value = "fid") String fid,
+            @RequestParam(required = false, value = "payType") Integer payType
     );
 
     /**

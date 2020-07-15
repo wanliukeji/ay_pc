@@ -29,8 +29,7 @@ public class MkBill implements Serializable {
   private BigDecimal amount;
   private BigDecimal balance;
   private String mark;
-  private long status;
+  private long fstatus;
   private Date createDate;
-  private String payUid;
   private long del;
 }

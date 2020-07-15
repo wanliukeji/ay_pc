@@ -37,5 +37,6 @@ public class MkContract implements Serializable {
   private BigDecimal amount;
   private BigDecimal yamount;
   private Integer startDay;
+  private String payType;
 
 }

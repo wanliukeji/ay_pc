@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -28,22 +29,23 @@ import java.util.List;
 @Service
 @Slf4j
 public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
-    public ResultJSON<?> add(String uid, String payUid, Integer pm, String title, String ftype,
+
+    public ResultJSON<?> add(String uid, Integer pm, String title, String ftype,
                              BigDecimal amount, String mark, String fid) {
         MkBill entity = new MkBill();
 
         try {
-            if (StringUtil.isNotEmty(uid) && StringUtil.isNotEmty(payUid)) {
+            if (StringUtil.isNotEmty(uid)) {
                 entity.setUid(uid);
-                entity.setPayUid(payUid);
                 entity.setPm(pm);
                 entity.setTitle(title);
                 entity.setFtype(ftype);
                 entity.setAmount(amount);
                 entity.setMark(mark);
-//                entity.setCreateDate(new Date());
+                entity.setCreateDate(new Date());
                 entity.setFid(fid);
                 entity.setDel(1);
+                entity.setFstatus(0);
             } else {
                 return ResultJSON.error("支付人或者收款人信息不能为空");
             }
@@ -80,6 +82,9 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
             return ResultJSON.error(CodeMsg.QUERY_ERROR);
         }
     }
+
+
+
 
 
 //    public ResultJSON<?> add(String fileCode, String userId, Integer roomNum, String cityCode, String areaCode, String townCode, String addr, String communityName) {

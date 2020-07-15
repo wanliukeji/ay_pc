@@ -6,10 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 /**
  * @author Chenny
@@ -405,8 +402,8 @@ public class DateUtil {
      */
     public static String getStringToYY_MM_DD(String time) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            // 注意格式需要与上面一致，不然会出现异常
-        return  sdf.format(time);
+        // 注意格式需要与上面一致，不然会出现异常
+        return sdf.format(time);
     }
 
 
@@ -455,12 +452,9 @@ public class DateUtil {
         return myFmt.format(dt);
     }
 
-    public static void main(String[] args) {
-//        Date time = DateUtil.strToDateLong("2019-02-10");
-    }
-
     /**
      * yyyy-MM-dd
+     *
      * @param strDate
      * @return
      */
@@ -470,6 +464,139 @@ public class DateUtil {
         Date strtodate = formatter.parse(strDate, pos);
         return strtodate;
     }
+
+    //    计算相差月数
+    public static int getDifference(String start, String end) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
+        String str1 = start.substring(0, 7);
+        String str2 = end.substring(0, 7);
+        Calendar bef = Calendar.getInstance();
+        Calendar aft = Calendar.getInstance();
+        try {
+            bef.setTime(sdf.parse(str1));
+            aft.setTime(sdf.parse(str2));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        int result = aft.get(Calendar.MONTH) - bef.get(Calendar.MONTH);
+        int month = (aft.get(Calendar.YEAR) - bef.get(Calendar.YEAR)) * 12;
+        return Math.abs(month + result);
+    }
+
+    public static long get_D_Plaus_1(Calendar c) {
+        c.set(Calendar.DAY_OF_MONTH, c.get(Calendar.DAY_OF_MONTH) + 1);
+        return c.getTimeInMillis();
+    }
+
+
+    /**
+     * 遍历两个日期之间的日、周、月
+     * @param startDateStr   开始日期字符串
+     * @param endDateStr     结束字符串
+     * @param Flag           遍历的标志，按日还是按周遍历    DAY:日  WEEK：周  MONTH：月
+     */
+    public static List<Object> dateForEach(String startDateStr, String endDateStr, Integer Flag) throws ParseException {
+          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         final int DAY = 1;       //日
+         final int WEEK = 2;      //周
+         final int MONTH = 3;     //月
+
+        //将字符串类型的日期转换为Date类型并加载到Calendar中(有异常直接抛)
+        Date startDate = sdf.parse(startDateStr);
+        Date endDate = sdf.parse(endDateStr);
+        //实例化Calendar(为什么要实例化两个Calendar，肯定是为了后面要用啊0.0)
+        Calendar startCalendar = Calendar.getInstance();
+        Calendar endCalendar = Calendar.getInstance();
+        //将两个日期加载到Calendar中
+        startCalendar.setTime(startDate);
+        endCalendar.setTime(endDate);
+        //开始遍历
+
+        List times = new ArrayList();
+
+        Map resultMap = new HashMap();
+        switch (Flag){
+            case DAY:
+                //按日遍历
+                while(true){
+                    String currentDateStr = sdf.format(startCalendar.getTime());
+                    times.add(currentDateStr);
+                    //日期加1
+                    startCalendar.add(Calendar.DAY_OF_MONTH, 1);
+                    //当前日期和结束日历日期比较，超过结束日期则终止
+                    if(startCalendar.after(endCalendar))
+                        break;
+                }
+
+                return  times;
+            case WEEK:
+                //按周输出
+                while(true){
+                    String firstAndSecondStr = "";
+                    String secondDateStr = "";
+                    String firstDateStr = sdf.format(startCalendar.getTime());
+                    startCalendar.add(Calendar.DAY_OF_MONTH, 6);
+                    secondDateStr = sdf.format(startCalendar.getTime());
+                    if (startCalendar.after(endCalendar)){
+                        startCalendar.add(Calendar.DAY_OF_MONTH, -6);
+                        if(sdf.format(startCalendar.getTime()).equals(endDateStr)){
+
+                            firstAndSecondStr = endDateStr + "~" + endDateStr;
+//                                System.out.println(firstAndSecondStr);
+                            resultMap.put(firstAndSecondStr, null);
+                            times.add(firstAndSecondStr);
+                            break;
+                        }
+                        else{
+                            firstDateStr = sdf.format(startCalendar.getTime());
+                            firstAndSecondStr = firstDateStr + "~" + endDateStr;
+//                                System.out.println(firstAndSecondStr);
+                            resultMap.put(firstAndSecondStr, null);
+                            times.add(firstAndSecondStr);
+                            break;
+                        }
+                    };
+                    firstAndSecondStr = firstDateStr + "~" + secondDateStr;
+                    resultMap.put(firstAndSecondStr, null);
+                    times.add(firstAndSecondStr);
+                    startCalendar.add(Calendar.DAY_OF_MONTH, 1);
+                    if (startCalendar.equals(endCalendar)){
+                        resultMap.put(sdf.format(startCalendar.getTime()) + "~" + endDateStr, null);
+                        break;}
+                    if (startCalendar.after(endCalendar))
+                        break;
+
+                }
+                return times;
+            case MONTH:
+                while(true){
+                    //和按日输出差不多
+                    String currentDateStr = sdf.format(startCalendar.getTime()).substring(0,10);
+                    times.add(currentDateStr);
+                    //日期加1
+                    startCalendar.add(Calendar.MONTH, 1);
+                    //当前日期和结束日历日期比较，超过结束日期则终止
+                    if(startCalendar.after(endCalendar))break;
+                }
+
+                return times;
+        }
+        return times;
+    }
+
+
+
+    public static void main(String[] args) throws Exception {
+      List times = dateForEach("2020-7-15", "2021-7-15", 3);
+        for (int i = 0; i < times.size() - 1;) {
+            System.out.println(times.get(i));
+            i += 12;
+        }
+    }
+
+
+
 
 
 

@@ -21,8 +21,8 @@ public class MkContractController implements MkContractApi {
                              String startDate, String endDate, String payDate,
                              Integer payDay, BigDecimal amount,
                              BigDecimal yamount, Integer startDay,
-                             String fuid, String zuid, String fid) {
-        return service.gen(addr,area,startDate,endDate,payDate,payDay,amount,yamount,startDay,fuid,zuid,fid);
+                             String fuid, String zuid, String fid, Integer payType) {
+        return service.gen(addr,area,startDate,endDate,payDate,payDay,amount,yamount,startDay,fuid,zuid,fid, payType);
     }
 
     @Override
