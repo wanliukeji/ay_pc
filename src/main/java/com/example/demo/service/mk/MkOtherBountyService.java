@@ -4,14 +4,17 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.StringUtil;
 import com.example.demo.dao.mk.MkOtherBountyMapper;
+import com.example.demo.entity.mk.MkAttr;
 import com.example.demo.entity.mk.MkOtherBounty;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +30,10 @@ import java.util.Map;
 @Service
 @Slf4j
 public class MkOtherBountyService extends ServiceImpl<MkOtherBountyMapper, MkOtherBounty> {
+
+
+    @Autowired
+    private MkAttrService attrService;
 
 
     public ResultJSON<?> getInfo(Integer id) {
@@ -47,6 +54,7 @@ public class MkOtherBountyService extends ServiceImpl<MkOtherBountyMapper, MkOth
     }
 
     public ResultJSON<?> add(String fname, BigDecimal amount, Integer fstatus, String remark,Integer ftype) {
+        Map <Object, Object> map = new HashMap<>();
         try {
             MkOtherBounty entity  = new MkOtherBounty();
             entity.setAmount(amount);
@@ -54,7 +62,6 @@ public class MkOtherBountyService extends ServiceImpl<MkOtherBountyMapper, MkOth
             entity.setFstatus(fstatus);
             entity.setRemark(remark);
             entity.setFtype(ftype);
-
             boolean f = this.save(entity);
             if (f) {
                 return ResultJSON.success(entity);
@@ -73,6 +80,12 @@ public class MkOtherBountyService extends ServiceImpl<MkOtherBountyMapper, MkOth
             if (StringUtil.isNotEmty(userId)) {
                 qw.eq("userId", userId).eq("ftype",ftype);
                 List<MkOtherBounty> entitys = this.list(qw);
+
+                for (int i = 0; i < entitys.size(); i++) {
+                    MkOtherBounty pojo = entitys.get(i);
+                    List<MkAttr> attrs = attrService.list(pojo.getId());
+                    pojo.setChildren(attrs);
+                }
                 return ResultJSON.success(entitys);
             }
         } catch (Exception ex) {

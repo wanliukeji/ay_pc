@@ -83,8 +83,35 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
         }
     }
 
+    public ResultJSON<?> getInfo(Integer id) {
+        QueryWrapper<MkBill> qw = new QueryWrapper<MkBill>();
+        try {
+            if (StringUtil.isNotEmty(id)) {
+                qw.eq("del", 1);
+                qw.eq("id", id);
+                MkBill entity = this.getOne(qw);
+                return ResultJSON.success(entity);
+            }
+            return ResultJSON.error(CodeMsg.QUERY_ERROR);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error(CodeMsg.QUERY_ERROR);
+        }
+    }
 
-
+    public ResultJSON<?> del(Integer id) {
+        try {
+            if (StringUtil.isNotEmty(id)) {
+                MkBill entity = this.getById(id);
+                entity.setDel(0);
+                return ResultJSON.success(CodeMsg.UPDATE_SUCCESS);
+            }
+            return ResultJSON.error(CodeMsg.QUERY_ERROR);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResultJSON.error(CodeMsg.QUERY_ERROR);
+        }
+    }
 
 
 //    public ResultJSON<?> add(String fileCode, String userId, Integer roomNum, String cityCode, String areaCode, String townCode, String addr, String communityName) {

@@ -33,4 +33,14 @@ public class MkBillController implements MkBillApi {
     public ResultJSON<?> page(String uid, Integer limit, Integer row) {
         return service.page(uid, limit, row);
     }
+
+    @Override
+    public ResultJSON<?> del(Integer id) {
+        return service.del(id);
+    }
+
+    @Override
+    public ResultJSON<?> getInfo(Integer id) {
+        return service.getInfo(id);
+    }
 }

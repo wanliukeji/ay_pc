@@ -80,13 +80,27 @@ public interface MkBillApi extends Serializable {
      * @param id
      * @return
      */
-//    @ApiOperation(value = "MK账单删除接口", notes = "MK账单删除接口")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(name = "id", value = "ID"),
-//    })
-//    @PostMapping(value = "/mk/api/bill/del")
-//    @Transactional(rollbackFor = Exception.class)
-//    public ResultJSON<?> del(@RequestParam(required = true, value = "id") Integer id);
+    @ApiOperation(value = "MK账单删除接口", notes = "MK账单删除接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "ID"),
+    })
+    @PostMapping(value = "/mk/api/bill/del")
+    @Transactional(rollbackFor = Exception.class)
+    public ResultJSON<?> del(@RequestParam(required = true, value = "id") Integer id);
+
+    /**
+     * 账单分页删除
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation(value = "MK账单详情接口", notes = "MK账单详情接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "ID"),
+    })
+    @PostMapping(value = "/mk/api/bill/getInfo")
+    @Transactional(rollbackFor = Exception.class)
+    public ResultJSON<?> getInfo(@RequestParam(required = true, value = "id") Integer id);
 
 
 }
