@@ -66,6 +66,16 @@ public interface MkUserApi extends Serializable {
 
 
     /**
+     * 获取用户信息
+     */
+    @ApiOperation(value = "获取用户信息", notes = "获取用户信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "account", value = "account")
+    })
+    @PostMapping(value = "/mk/api/user/getUserInfoAccount")
+    public ResultJSON<MkUser> getUserInfoAccount(@RequestParam("account") String account);
+
+    /**
      * 添加子账户
      */
     @ApiOperation(value = "添加子账户信息", notes = "添加子账户信息")

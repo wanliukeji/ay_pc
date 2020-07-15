@@ -565,6 +565,25 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
 //        }
     }
 
+    public ResultJSON<MkUser> getUserInfoAccount(String account) {
+        boolean flag = false;
+        //解密
+        try {
+            if (null != account) {
+                MkUser user = this.getOne(new QueryWrapper<MkUser>().eq("account", account).or().eq("uname", account).or().eq("phone", account));
+                if (null != user) {
+                    return ResultJSON.success(user);
+                } else {
+                    return ResultJSON.error(CodeMsg.LOGIN_ERROR);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
+            return ResultJSON.error(CodeMsg.QUERY_ERROR);
+        }
+        return ResultJSON.error(CodeMsg.QUERY_ERROR);
+    }
 }
 
 

@@ -37,6 +37,11 @@ public class MkUserController implements MkUserApi {
     }
 
     @Override
+    public ResultJSON<MkUser> getUserInfoAccount(String account) {
+        return service.getUserInfoAccount(account);
+    }
+
+    @Override
     public ResultJSON<?> addChilds(String userId, String name, String phone, String pwd) {
         return service.addChilds(userId, name, phone, pwd);
     }
