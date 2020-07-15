@@ -30,10 +30,16 @@ public class FileUploadTool {
     // 文件最大500M
     private static long upload_maxsize = 800 * 1024 * 1024;
     // 文件允许格式
-    private static String[] allowFiles = {".rar", ".doc", ".docx", ".zip",
-            ".pdf", ".txt", ".swf", ".xlsx", ".gif", ".png", ".jpg", ".jpeg",
-            ".bmp", ".xls", ".mp4", ".flv", ".ppt", ".avi", ".mpg", ".wmv",
-            ".3gp", ".mov", ".asf", ".asx", ".vob", ".wmv9", ".rm", ".rmvb", ".mp3"};
+//    private static String[] allowFiles = {".rar", ".doc", ".docx", ".zip",
+//            ".pdf", ".txt", ".swf", ".xlsx", ".gif", ".png", ".jpg", ".jpeg",
+//            ".bmp", ".xls", ".mp4", ".flv", ".ppt", ".avi", ".mpg", ".wmv",
+//            ".3gp", ".mov", ".asf", ".asx", ".vob", ".wmv9", ".rm", ".rmvb", ".mp3"};
+
+
+    private static String[] allowFiles = {
+             ".gif", ".png", ".jpg", ".jpeg"
+           };
+
     // 允许转码的视频格式（ffmpeg）
     private static String[] allowFLV = {".avi", ".mpg", ".wmv", ".3gp",
             ".mov", ".asf", ".asx", ".vob"};
