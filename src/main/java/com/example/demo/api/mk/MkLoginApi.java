@@ -57,16 +57,13 @@ public interface MkLoginApi extends Serializable {
 
     /**
      * 手机验证码登录
-     *
-     * @param account
-     * @param account
      */
     @ApiOperation(value = "手机验证码登录接口", notes = "手机验证码登录接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "phone", value = "手机号")
     })
     @PostMapping(value = "/mk/api/user/codelogin")
-    public ResultJSON<?> codelogin(@RequestParam("phone") String account);
+    public ResultJSON<?> codelogin(@RequestParam("phone") String phone);
 
 
     /**
@@ -75,6 +72,16 @@ public interface MkLoginApi extends Serializable {
     @ApiOperation(value = "用户退出登录", notes = "用户退出登录")
     @PostMapping(value = "/mk/api/user/loginOut")
     public ResultJSON loginOut();
+
+    /**
+     * 发送验证码
+     */
+    @ApiOperation(value = "发送验证码", notes = "发送验证码")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "phone", value = "手机号")
+    })
+    @PostMapping(value = "/mk/api/user/sendSms")
+    public ResultJSON sendSms(@RequestParam("phone") String phone);
 
     /**
      * 身份认证

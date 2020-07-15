@@ -590,7 +590,7 @@ public class DateUtil {
     public static void main(String[] args) throws Exception {
       List times = dateForEach("2020-7-15", "2021-7-15", 3);
         for (int i = 0; i < times.size() - 1;) {
-            System.out.println(times.get(i));
+            System.out.println(DateUtil.getStringToDate(times.get(i)+""));
             i += 12;
         }
     }

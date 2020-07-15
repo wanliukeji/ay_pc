@@ -32,4 +32,6 @@ public class MkBill implements Serializable {
   private long fstatus;
   private Date createDate;
   private long del;
+  private Date payDate;
+  private Long rentId;
 }

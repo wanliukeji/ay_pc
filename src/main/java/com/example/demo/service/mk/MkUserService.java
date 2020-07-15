@@ -11,12 +11,21 @@ import com.example.demo.entity.mk.MkUser;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import com.example.demo.wx.HttpClientUtil;
-import com.github.qcloudsms.SmsSingleSender;
-import com.github.qcloudsms.SmsSingleSenderResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestParam;
+
+//
+//import com.tencentcloudapi.common.Credential;
+//import com.tencentcloudapi.common.profile.ClientProfile;
+//import com.tencentcloudapi.common.profile.HttpProfile;
+//import com.tencentcloudapi.common.exception.TencentCloudSDKException;
+//
+//import com.tencentcloudapi.sms.v20190711.SmsClient;
+//
+//import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
+//import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 
 import java.util.*;
 
@@ -40,6 +49,13 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     public static final String WX_LOGIN_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
+
+//
+    public static final String SECRETID = "AKIDKOcdLoM0i9JUSEIez5tRpxoTtNabwp30";
+
+    public static final String SECRETKEY = "qU9XeCTFhxve7JI0way6x1kEVXJr52C6";
+
+    public static final String SENDURL = "sms.tencentcloudapi.com";
 
     // 账户密码 登录
     public ResultJSON<MkUser> login(String account, String password) {
@@ -140,6 +156,14 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
      */
     public static ResultJSON<?> codelogin(String phone) {
 
+//        SecretId: AKIDKOcdLoM0i9JUSEIez5tRpxoTtNabwp30
+
+//        SecretKey:qU9XeCTFhxve7JI0way6x1kEVXJr52C6
+
+//        SmsSdkAppid :1400399759
+
+//        url : https://console.cloud.tencent.com/api/explorer?Product=sms&Version=2019-07-11&Action=SendSms&SignVersion=
+
         try {
 
             // 短信应用SDK AppID
@@ -160,20 +184,72 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
             // NOTE: 这里的签名"腾讯云"只是一个示例，真实的签名需要在短信控制台中申请，另外签名参数使用的是`签名内容`，而不是`签名ID`
             String smsSign = "觅客找房";
 
-            SmsSingleSender sSender = new SmsSingleSender(APP_ID, APP_KEY);
+//            SmsSingleSender sSender = new SmsSingleSender(APP_ID, APP_KEY);
             //第一个参数0表示普通短信,1表示营销短信
-            SmsSingleSenderResult result = sSender.send(0, "86",
-                    phone,
-                    "为您的登录验证码，请于" + 10 + "分钟内填写。如非本人操作，请忽略本短信。", "", "");
-            if (result.result != 0) {
-                return ResultJSON.error(result.errMsg);
-            }
+//            SmsSingleSenderResult result = sSender.send(0, "86",
+//                    phone,
+//                    "为您的登录验证码，请于" + 10 + "分钟内填写。如非本人操作，请忽略本短信。", "", "");
+//            if (result.result != 0) {
+//                return ResultJSON.error(result.errMsg);
+//            }
         } catch (Exception ex) {
             ex.printStackTrace();
             return ResultJSON.error("发送失败");
         }
         return ResultJSON.success("验证码发送成功");
     }
+
+
+
+
+    public ResultJSON<?> sendSms(String phone){
+//        try{
+//            Credential cred = new Credential(SECRETID, SECRETKEY);
+//            HttpProfile httpProfile = new HttpProfile();
+//            httpProfile.setEndpoint(SENDURL);
+//
+//            ClientProfile clientProfile = new ClientProfile();
+//            clientProfile.setHttpProfile(httpProfile);
+//
+//            SmsClient client = new SmsClient(cred, "", clientProfile);
+//
+//            String params = "{\"PhoneNumberSet\":[\\/" + phone + "\"],\"TemplateID\":\"662375\",\"SmsSdkAppid\":\"1400399759\"}";
+//            SendSmsRequest req = SendSmsRequest.fromJsonString(params, SendSmsRequest.class);
+//
+//            SendSmsResponse resp = client.SendSms(req);
+//
+//            System.out.println(SendSmsResponse.toJsonString(resp));
+//        } catch (TencentCloudSDKException e) {
+//            System.err.println(e.toString());
+//            return ResultJSON.error("发送失败");
+//        }
+//        return ResultJSON.success("验证码发送成功");
+//
+
+//        try{
+//            Credential cred = new Credential(SECRETID, SECRETKEY);
+//            HttpProfile httpProfile = new HttpProfile();
+//            httpProfile.setEndpoint(SENDURL);
+//            ClientProfile clientProfile = new ClientProfile();
+//            clientProfile.setHttpProfile(httpProfile);
+//            SmsClient client = new SmsClient(cred, "", clientProfile);
+//            //生成4位随机数
+//            int code = (int) (Math.random() * 9000 + 1000);
+//            String params = "{\"PhoneNumberSet\":[\"+86"+phone+"\"],\"TemplateID\":\"662375\",\"Sign\":\"用户你好\",\"TemplateParamSet\":[\""+code+"\"],\"SmsSdkAppid\":\"1400399759\"}";
+//            SendSmsRequest req = SendSmsRequest.fromJsonString(params, SendSmsRequest.class);
+//            SendSmsResponse resp = client.SendSms(req);
+//            return ResultJSON.success(resp);
+//        } catch (TencentCloudSDKException e) {
+//            return ResultJSON.error(e.toString());
+//        }
+        return ResultJSON.error("发送失败");
+    }
+
+
+
+
+
+
 
     // 用户退出
     public ResultJSON loginOut() {
@@ -320,7 +396,15 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
             if (null != entity && null != entity.getCompnyChilds()) {
                 String[] ids = entity.getCompnyChilds().split(",");
                 Collection id = CollectionUtils.arrayToList(ids);
-                List item = (List) this.listByIds(id);
+                List<MkUser> item = (List) this.listByIds(id);
+                for (int i = 0; i < item.size(); i++) {
+                    MkUser user = item.get(i);
+                    if (StringUtil.isNotEmty(user)) {
+                        String pwd = EncryptUtil.Base64Decode(user.getPwd());
+                        user.setPwd(pwd);
+                    }
+
+                }
                 return ResultJSON.success(item);
             }
             return ResultJSON.error(CodeMsg.QUERY_ERROR);

@@ -3,21 +3,17 @@ package com.example.demo.service.mk;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.demo.Utils.StringUtil;
-import com.example.demo.dao.mk.MkBillMapper;
-import com.example.demo.entity.mk.MkBill;
+import com.example.demo.dao.mk.MkRentMapper;
 import com.example.demo.entity.mk.MkRent;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -30,59 +26,51 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
+public class MkRentService extends ServiceImpl<MkRentMapper, MkRent> {
 
-    @Autowired
-    private MkRentService rentService;
-
-    public ResultJSON<?> add(String uid, Integer pm, String title, String ftype,
-                             BigDecimal amount, String mark, String fid, Date payDate,Long rentId ) {
-        MkBill entity = new MkBill();
+    public MkRent add(String uid, Integer pm, String title,
+                             BigDecimal amount, String mark, String fid, Date payDate, Integer periodNum) {
+        MkRent entity = new MkRent();
 
         try {
             if (StringUtil.isNotEmty(uid)) {
+                entity.setAmount(amount);
+                entity.setCreatDate(new Date());
+                entity.setDel(1);
+                entity.setMark(mark);
+                entity.setPayDate(payDate);
+                entity.setTitle(title);
                 entity.setUid(uid);
                 entity.setPm(pm);
-                entity.setTitle(title);
-                entity.setFtype(ftype);
-                entity.setAmount(amount);
-                entity.setMark(mark);
-                entity.setCreateDate(new Date());
+                entity.setPeriodNum(periodNum);
                 entity.setFid(fid);
-                entity.setDel(1);
-                entity.setFstatus(0);
-                entity.setPayDate(payDate);
-                entity.setRentId(rentId);
             } else {
-                return ResultJSON.error("支付人或者收款人信息不能为空");
+                return null;
             }
             boolean f = this.save(entity);
             if (f) {
-                return ResultJSON.success(entity);
+                return entity;
             } else {
                 TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-                return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+                return null;
             }
         } catch (Exception e) {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             e.printStackTrace();
-            return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+            return null;
         }
     }
 
-    public ResultJSON<?> page(String uid, Integer limit, Integer row, Integer rentId) {
+    public ResultJSON<?> page(String uid, Integer limit, Integer row) {
+        QueryWrapper<MkRent> qw = new QueryWrapper<MkRent>();
         try {
-            if (StringUtil.isNotEmty(uid) && StringUtil.isNotEmty(rentId) ) {
-                limit = limit == null ? 0 : limit;
+            if (StringUtil.isNotEmty(uid)) {
+                limit = limit == null ? 10 : limit;
                 row = row == null ? 10 : row;
-                List<Map<String, Object>> maps = this.baseMapper.getByGroup(uid, limit, row, rentId);
-                Map map = new HashMap();
-                MkRent rent = rentService.getById(rentId);
-                if (StringUtil.isNotEmty(rent)) {
-                    map.put("rent", rent);
-                    map.put("items", maps);
-                }
-                return ResultJSON.success(map);
+                qw.eq("uid", uid);
+                qw.eq("del", 1);
+                List items = this.list(qw);
+                return ResultJSON.success(items);
             }
             return ResultJSON.error(CodeMsg.QUERY_ERROR);
         } catch (Exception ex) {
@@ -92,12 +80,12 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
     }
 
     public ResultJSON<?> getInfo(Integer id) {
-        QueryWrapper<MkBill> qw = new QueryWrapper<MkBill>();
+        QueryWrapper<MkRent> qw = new QueryWrapper<MkRent>();
         try {
             if (StringUtil.isNotEmty(id)) {
                 qw.eq("del", 1);
                 qw.eq("id", id);
-                MkBill entity = this.getOne(qw);
+                MkRent entity = this.getOne(qw);
                 return ResultJSON.success(entity);
             }
             return ResultJSON.error(CodeMsg.QUERY_ERROR);
@@ -110,8 +98,7 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
     public ResultJSON<?> del(Integer id) {
         try {
             if (StringUtil.isNotEmty(id)) {
-                MkBill entity = this.getById(id);
-                entity.setDel(0);
+                MkRent entity = this.getById(id);
                 return ResultJSON.success(CodeMsg.UPDATE_SUCCESS);
             }
             return ResultJSON.error(CodeMsg.QUERY_ERROR);
@@ -124,7 +111,7 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
 
 //    public ResultJSON<?> add(String fileCode, String userId, Integer roomNum, String cityCode, String areaCode, String townCode, String addr, String communityName) {
 //
-//        MkBill entity = new MkBill();
+//        MkRent entity = new MkRent();
 //
 //        try {
 //            entity.setFileCode(fileCode);
@@ -162,7 +149,7 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
 //    }
 //
 //    public ResultJSON<?> page(String val, Integer limit, Integer row) {
-//        QueryWrapper<MkBill> qw = new QueryWrapper<MkBill>();
+//        QueryWrapper<MkRent> qw = new QueryWrapper<MkRent>();
 //        try {
 //            if (StringUtil.isNotEmty(val)) {
 //                qw.like("communityName", val);
@@ -173,9 +160,9 @@ public class MkBillService extends ServiceImpl<MkBillMapper, MkBill> {
 //            }
 //
 //            qw.eq("del", 1);
-//            List<MkBill> infos = this.list(qw);
+//            List<MkRent> infos = this.list(qw);
 //
-//            PageInfo<MkBill> page = new PageInfo<MkBill>(infos);
+//            PageInfo<MkRent> page = new PageInfo<MkRent>(infos);
 //            return ResultJSON.success(page);
 //        } catch (Exception ex) {
 //            ex.printStackTrace();

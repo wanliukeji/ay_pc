@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.mk.MkBillMapper">
+    <select id="getByGroup" resultType="java.util.Map">
+        select
+            `t`.`id` AS `id`,
+            `t`.`uid` AS `uid`,
+            `t`.`pm` AS `pm`,
+            `t`.`title` AS `title`,
+            `t`.`category` AS `category`,
+            `t`.`ftype` AS `ftype`,
+            `t`.`amount` AS `amount`,
+            `t`.`balance` AS `balance`,
+            `t`.`mark` AS `mark`,
+            `t`.`fstatus` AS `fstatus`,
+            `t`.`createDate` AS `createDate`,
+            `t`.`fid` AS `fid`,
+            `t`.`del` AS `del`,
+            `t`.`account` AS `account`,
+            `t`.`pwd` AS `pwd`,
+            `t`.`uname` AS `uname`,
+            `t`.`userName` AS `userName`,
+            `t`.`imgUrl` AS `imgUrl`,
+            `t`.`sex` AS `sex`,
+            `t`.`phone` AS `phone`,
+            `t`.`iDcard` AS `iDcard`,
+            `t`.`utype` AS `utype`,
+            `t`.`email` AS `email`,
+            `t`.`openId` AS `openId`,
+            `t`.`compnyName` AS `compnyName`,
+            `t`.`compnyAddr` AS `compnyAddr`,
+            `t`.`age` AS `age`,
+            `t`.`compnyChilds` AS `compnyChilds`,
+            `t`.`pOpenid` AS `pOpenid`,
+            `t`.`dayNum` AS `dayNum`,
+            `t`.`rentId` AS `rentId`
+            FROM
+                v_user_bill t
+            WHERE
+            1=1
+            AND
+                t.uid = #{uid}
+            <if test="rentId != null">
+              AND  t.rentId = #{rentId}
+            </if>
+            LIMIT #{limit}, #{row}
+    </select>
+</mapper>

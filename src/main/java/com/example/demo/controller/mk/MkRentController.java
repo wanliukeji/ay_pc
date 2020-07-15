@@ -1,13 +1,12 @@
 package com.example.demo.controller.mk;
 
-import com.example.demo.api.mk.MkBillApi;
+import com.example.demo.api.mk.MkRentApi;
 import com.example.demo.json.ResultJSON;
-import com.example.demo.service.mk.MkBillService;
+import com.example.demo.service.mk.MkRentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 
 /**
  * @author Chenny
@@ -19,19 +18,19 @@ import java.math.BigDecimal;
  */
 @RestController
 @Slf4j
-public class MkBillController implements MkBillApi {
+public class MkRentController implements MkRentApi {
 
     @Resource
-    private MkBillService service;
+    private MkRentService service;
+
+//    @Override
+//    public ResultJSON<?> add(String uid, String payUid, Integer pm, String title, String ftype, BigDecimal amount, String mark, String fid) {
+//        return null;
+//    }
 
     @Override
-    public ResultJSON<?> add(String uid, String payUid, Integer pm, String title, String ftype, BigDecimal amount, String mark, String fid) {
-        return null;
-    }
-
-    @Override
-    public ResultJSON<?> page(String uid, Integer limit, Integer row, Integer rentId) {
-        return service.page(uid, limit, row, rentId);
+    public ResultJSON<?> page(String uid, Integer limit, Integer row) {
+        return service.page(uid, limit, row);
     }
 
     @Override

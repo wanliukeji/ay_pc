@@ -3,6 +3,10 @@ package com.example.demo.dao.mk;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.demo.entity.mk.MkBill;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Chenny
@@ -15,4 +19,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MkBillMapper extends BaseMapper<MkBill> {
+
+    List<Map<String, Object>> getByGroup(
+            @Param("uid") String uid,
+            @Param("limit") Integer limit,
+            @Param("row") Integer row,
+            @Param("rentId") Integer rentId
+
+    );
 }

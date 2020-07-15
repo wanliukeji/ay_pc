@@ -46,6 +46,11 @@ public class MkLoginController implements MkLoginApi {
         return mkUserService.loginOut();
     }
 
+    @Override
+    public ResultJSON sendSms(String phone) {
+        return null;
+    }
+
 //    @Override
 //    public ResultJSON<MkUser> getUserInfo(Integer id) {
 //        return mkUserService.getUserInfo(id);

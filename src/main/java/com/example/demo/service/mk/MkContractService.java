@@ -48,6 +48,9 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
     @Autowired
     private MkAddrService addrService;
 
+    @Autowired
+    private MkRentService rentService;
+
     public ResultJSON<?> gen(String addr, Double area, String startDate,
                              String endDate, String payDate,
                              Integer payDay, BigDecimal amount,
@@ -122,7 +125,17 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
                             billTitel = StringUtil.toString(mkAddr.getComName() + mkAddr.getDong() + "号" + mkAddr.getUnit() + "单元" + mkAddr.getRoomNo());
                         }
 
-                        // 生成账单
+                        // 生成主账单
+
+                        MkRent frent = rentService.add(fuid, 1, billTitel, amount, null, fid, null, null);
+                        MkRent zrent = rentService.add(zuid, 0, billTitel, amount, null, fid, null, null);
+
+                        if (null == frent || null == zrent) {
+                            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                            return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+                        }
+
+                        // 生成账单详情
                         if (StringUtil.isNotEmty(payType)) {
                             String remark = "";
                             //  月付
@@ -130,12 +143,30 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
                                 case 1:
                                     List ms = DateUtil.dateForEach(startDate, endDate, 3);
                                     for (int i = 0; i < ms.size() - 1; i++) {
+                                        Date payTime = DateUtil.getStringToDate(ms.get(i)+"");
+
                                         remark = "应付日"+ ms.get(i);
                                         // 房东账单
-                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid);
+
+                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid, payTime, frent.getId());
 
                                         // 房客账单
-                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid, payTime, zrent.getId());
+                                    }
+
+                                    frent.setPayDate(DateUtil.getStringToDate(ms.get(0)+""));
+                                    frent.setMark(remark);
+                                    frent.setPeriodNum(ms.size());
+                                    boolean fd1 = rentService.saveOrUpdate(frent);
+
+                                    zrent.setPayDate(DateUtil.getStringToDate(ms.get(0)+""));
+                                    zrent.setMark(remark);
+                                    zrent.setPeriodNum(ms.size());
+                                    boolean zk1 = rentService.saveOrUpdate(zrent);
+
+                                    if (!fd1 || !zk1) {
+                                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                                        return ResultJSON.error(CodeMsg.UPDATE_ERROR);
                                     }
                                     break;
 //                                    季度
@@ -143,13 +174,28 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
 
                                     List js = DateUtil.dateForEach(startDate, endDate, 3);
                                     for (int i = 0; i < js.size() - 1;) {
+                                        Date payTime = DateUtil.getStringToDate(js.get(i)+"");
                                         remark = "应付日"+ js.get(i);
                                         // 房东账单
-                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid, payTime, frent.getId());
 
                                         // 房客账单
-                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid, payTime, zrent.getId());
                                         i =+ 3;
+                                    }
+                                    frent.setPayDate(DateUtil.getStringToDate(js.get(0)+""));
+                                    frent.setMark(remark);
+                                    frent.setPeriodNum(js.size());
+                                    boolean fd2 = rentService.saveOrUpdate(frent);
+
+                                    frent.setPayDate(DateUtil.getStringToDate(js.get(0)+""));
+                                    zrent.setMark(remark);
+                                    zrent.setPeriodNum(js.size());
+                                    boolean zk2 = rentService.saveOrUpdate(zrent);
+
+                                    if (!fd2 || !zk2) {
+                                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                                        return ResultJSON.error(CodeMsg.UPDATE_ERROR);
                                     }
                                     break;
 //                                    半年付
@@ -157,31 +203,60 @@ public class MkContractService extends ServiceImpl<MkContractMapper, MkContract>
 
                                     List bs = DateUtil.dateForEach(startDate, endDate, 3);
                                     for (int i = 0; i < bs.size() - 1;) {
+                                        Date payTime = DateUtil.getStringToDate(bs.get(i)+"");
                                         remark = "应付日"+ bs.get(i);
                                         // 房东账单
-                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid, payTime, frent.getId());
 
                                         // 房客账单
-                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid, payTime, zrent.getId());
                                         i =+ 6;
                                     }
 
+                                    frent.setPayDate(DateUtil.getStringToDate(bs.get(0)+""));
+                                    frent.setMark(remark);
+                                    frent.setPeriodNum(bs.size());
+                                    boolean fd3 = rentService.saveOrUpdate(frent);
+
+                                    frent.setPayDate(DateUtil.getStringToDate(bs.get(0)+""));
+                                    zrent.setMark(remark);
+                                    zrent.setPeriodNum(bs.size());
+                                    boolean zk3 = rentService.saveOrUpdate(zrent);
+
+                                    if (!fd3 || !zk3) {
+                                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                                        return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+                                    }
                                     break;
 //                                    年付
                                 case 4:
 
                                     List ys = DateUtil.dateForEach(startDate, endDate, 3);
                                     for (int i = 0; i < ys.size() - 1;) {
+                                        Date payTime = DateUtil.getStringToDate(ys.get(i)+"");
                                         remark = "应付日"+ ys.get(i);
                                         // 房东账单
-                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(fuid, 1, billTitel, (i+1) + "期", amount, remark, fid, payTime, frent.getId());
 
                                         // 房客账单
-                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid);
+                                        billService.add(zuid, 0, billTitel, (i+1) + "期", amount, remark, fid, payTime, zrent.getId());
                                         i =+ 12;
                                     }
-                                    break;
+                                    frent.setPayDate(DateUtil.getStringToDate(ys.get(0)+""));
+                                    frent.setMark(remark);
+                                    frent.setPeriodNum(ys.size());
+                                    boolean fd4 = rentService.saveOrUpdate(frent);
 
+                                    frent.setPayDate(DateUtil.getStringToDate(ys.get(0)+""));
+                                    zrent.setMark(remark);
+                                    zrent.setPeriodNum(ys.size());
+                                    boolean zk4 = rentService.saveOrUpdate(zrent);
+
+                                    if (!fd4 || !zk4) {
+                                        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+                                        return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+                                    }
+                                    break;
                             }
                         }
 
