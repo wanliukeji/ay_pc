@@ -45,6 +45,7 @@ public class MkListing implements Serializable {
   private Integer fstatus;
   private Integer jstatus;
   private Integer tstatus;
+  private Integer sstatus;
   private Integer sortNo;
   private Integer del;
   private Integer bountyId;

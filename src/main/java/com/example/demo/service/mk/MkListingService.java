@@ -321,6 +321,25 @@ public class MkListingService extends ServiceImpl<MkListingMapper, MkListing> {
         }
     }
 
+    public ResultJSON<?> sj(Integer id, Integer sstatus) {
+        QueryWrapper<MkListing> qw = new QueryWrapper<MkListing>();
+        try {
+            MkListing  entity = this.getOne(qw.eq("del",1));
+            if (StringUtil.isNotEmty(entity)) {
+                entity.setSstatus(sstatus);
+                boolean f = this.updateById(entity);
+
+                if (f) {
+                    return ResultJSON.success(entity);
+                }
+            }
+            return ResultJSON.error(CodeMsg.UPDATE_ERROR);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      * 获取页面数据
      * 查询数据

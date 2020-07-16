@@ -302,6 +302,11 @@ public class MkListingController implements MkListingApi {
         return ResultJSON.error(CodeMsg.UPDATE_ERROR);
     }
 
+    @Override
+    public ResultJSON<?> sj(Integer id, Integer sstatus) {
+        return fservice.sj(id, sstatus);
+    }
+
 //    public ResultJSON<?> page(Integer leaseType, Integer areaCode, Integer townCode, Integer maxPrice, Integer minPrice, String unitTypeA, Integer limit, Integer row,Integer longCode, Double area, String hostType,Integer apartmentId,String decoration) {
 //        return fservice.page(leaseType, areaCode, townCode, maxPrice, minPrice, unitTypeA, limit, row, longCode, area, hostType, apartmentId, decoration );
 //    }

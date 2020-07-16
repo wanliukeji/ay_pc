@@ -304,14 +304,16 @@ public interface MkListingApi extends Serializable {
      * leaseType 1 整租 2 合租 3短租
      * @return
      */
-//    @ApiOperation(value = "MK房屋基本配置分页接口", notes = "MK房屋基本配置添加接口")
-//    @ApiImplicitParams({
-//            @ApiImplicitParam(name = "id", value = "房源ID")
-//    })
-//    @PostMapping(value = "/mk/api/listing/page")
-//    public ResultJSON<?> page(
-//            @RequestParam(required = false, value = "leaseType") Integer leaseType
-//    );
+    @ApiOperation(value = "MK房源上架下架接口", notes = "MK房源上架下架接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", required = true, value = "房源ID"),
+            @ApiImplicitParam(name = "sstatus", value = "(上架状态 0 未上架 1 已上架)")
+    })
+    @PostMapping(value = "/mk/api/listing/sj")
+    public ResultJSON<?> sj(
+            @RequestParam(required = true, value = "id") Integer id,
+            @RequestParam(required = true, value = "sstatus") Integer sstatus
+    );
 
 //    /**
 //     * 收入明细分页删除
