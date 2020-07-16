@@ -14,7 +14,6 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,7 +27,7 @@ import java.util.*;
 @Api(value = "MK微信小程序支付模块", description = "MK微信小程序支付模块")
 @Controller
 @Slf4j
-public class WeiXinPaymentController {
+public class WeChatPayController {
 //    private final String MCH_ID = "填写商户号";//商户号
 //    private final String SPBILL_CREATE_IP = "填写终端IP";//终端IP
 //    private final String NOTIFY_URL = "域名/weixin/paycallback.do";//通知地址
@@ -55,7 +54,7 @@ public class WeiXinPaymentController {
      * @throws DocumentException
      */
 
-    @ApiOperation(value = "MK微信小程序支付接口", notes = "MK微信小程序支付接口")
+    @ApiOperation(value = "MK微信小程序支付(统一下单接口)接口", notes = "MK微信小程序支付(统一下单接口  (out_trade_no -> 最终生成订单号))接口")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "openId", required = true, value = "用户openid"),
             @ApiImplicitParam(name = "total_fee", required = true, value = "商品金额(整数)"),
@@ -66,8 +65,7 @@ public class WeiXinPaymentController {
             @ApiImplicitParam(name = "spbill_create_ip", required = true, value = "用户终端IP"),
     })
 
-
-    @PostMapping("/wechat/pay")
+    @PostMapping("/mk/api/wechat/pay")
     @ResponseBody
     public ResultJSON<?> payment(@RequestParam(required = true) String openId,
                                  @RequestParam(required = true) String total_fee,
@@ -224,7 +222,7 @@ public class WeiXinPaymentController {
      *
      * @param request
      */
-    @RequestMapping("/weixin/paycallback.do")
+    @PostMapping("/weixin/paycallback.do")
     @ResponseBody
     public void paycallback(HttpServletRequest request) {
         try {
