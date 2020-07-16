@@ -2,7 +2,9 @@ package com.example.demo.pay;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.entity.mk.MkWxPay;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.service.mk.MkWxPayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -12,6 +14,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,6 +39,9 @@ public class WeChatPayController {
 //    private final String KEY = "&key=填写商户支付密钥"; // 商户支付密钥
 //    private final String APPID = "填写小程序AppId";
 
+
+    @Autowired
+    private MkWxPayService mkWxPayService;
 
     //    private final String MCH_ID = "填写商户号";//商户号
 //    private final String SPBILL_CREATE_IP = "119.45.50.208";//终端IP
@@ -84,39 +90,39 @@ public class WeChatPayController {
             String out_trade_no = mch_id + today + code;//商户订单号
 
             String openid = openId;//用户标识
-            PaymentDto paymentPo = new PaymentDto();
-            paymentPo.setAppid(appid);
-            paymentPo.setMch_id(mch_id);
-            paymentPo.setNonce_str(nonce_str);
-            String newbody = new String(body.getBytes("ISO-8859-1"), "UTF-8");//以utf-8编码放入paymentPo，微信支付要求字符编码统一采用UTF-8字符编码
-            paymentPo.setBody(newbody);
-            paymentPo.setOut_trade_no(out_trade_no);
-            paymentPo.setTotal_fee(total_fee);
-            paymentPo.setSpbill_create_ip(spbill_create_ip);
-            paymentPo.setNotify_url(NOTIFY_URL);
-            paymentPo.setTrade_type(TRADE_TYPE);
-            paymentPo.setOpenid(openid);
+            MkWxPay entity = new MkWxPay();
+            entity.setAppid(appid);
+            entity.setMch_id(mch_id);
+            entity.setNonce_str(nonce_str);
+            String newbody = new String(body.getBytes("ISO-8859-1"), "UTF-8");//以utf-8编码放入entity，微信支付要求字符编码统一采用UTF-8字符编码
+            entity.setBody(newbody);
+            entity.setOut_trade_no(out_trade_no);
+            entity.setTotal_fee(total_fee);
+            entity.setSpbill_create_ip(spbill_create_ip);
+            entity.setNotify_url(NOTIFY_URL);
+            entity.setTrade_type(TRADE_TYPE);
+            entity.setOpenid(openid);
             // 把请求参数打包成数组
             Map<String, Object> sParaTemp = new HashMap();
-            sParaTemp.put("appid", paymentPo.getAppid());
-            sParaTemp.put("mch_id", paymentPo.getMch_id());
-            sParaTemp.put("nonce_str", paymentPo.getNonce_str());
-            sParaTemp.put("body", paymentPo.getBody());
-            sParaTemp.put("out_trade_no", paymentPo.getOut_trade_no());
-            sParaTemp.put("total_fee", paymentPo.getTotal_fee());
-            sParaTemp.put("spbill_create_ip", paymentPo.getSpbill_create_ip());
-            sParaTemp.put("notify_url", paymentPo.getNotify_url());
-            sParaTemp.put("trade_type", paymentPo.getTrade_type());
-            sParaTemp.put("openid", paymentPo.getOpenid());
+            sParaTemp.put("appid", entity.getAppid());
+            sParaTemp.put("mch_id", entity.getMch_id());
+            sParaTemp.put("nonce_str", entity.getNonce_str());
+            sParaTemp.put("body", entity.getBody());
+            sParaTemp.put("out_trade_no", entity.getOut_trade_no());
+            sParaTemp.put("total_fee", entity.getTotal_fee());
+            sParaTemp.put("spbill_create_ip", entity.getSpbill_create_ip());
+            sParaTemp.put("notify_url", entity.getNotify_url());
+            sParaTemp.put("trade_type", entity.getTrade_type());
+            sParaTemp.put("openid", entity.getOpenid());
             // 除去数组中的空值和签名参数
             Map sPara = PayUtil.paraFilter(sParaTemp);
             String prestr = PayUtil.createLinkString(sPara); // 把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
 
             //MD5运算生成签名
             String mysign = PayUtil.sign(prestr, "&key=" + key, "utf-8").toUpperCase();
-            paymentPo.setSign(mysign);
+            entity.setSign(mysign);
             //打包要发送的xml
-            String respXml = XmlUtil.messageToXML(paymentPo);
+            String respXml = XmlUtil.messageToXML(entity);
             // 打印respXml发现，得到的xml中有“__”不对，应该替换成“_”
             respXml = respXml.replace("__", "_");
             String param = respXml;
@@ -145,7 +151,7 @@ public class WeChatPayController {
 
             System.out.println("请求微信预支付接口，返回 code：" + return_code);
             System.out.println("请求微信预支付接口，返回 msg：" + return_msg);
-            if ("SUCCESS".equals(return_code)) {
+            if (!"SUCCESS".equals(return_code)) {
                 // 业务结果
                 String prepay_id = map.get("prepay_id").toString();//返回的预付单信息
                 String nonceStr = UUIDHexGenerator.generate();
@@ -158,6 +164,8 @@ public class WeChatPayController {
                 String paySign = PayUtil.sign(stringSignTemp, "&key=" + key, "utf-8").toUpperCase();
                 JsonObject.put("paySign", paySign);
                 JsonObject.put("data", map);
+                mkWxPayService.save(entity);
+                JsonObject.put("payInfo", entity);
                 return ResultJSON.success(JsonObject);
             } else {
                 return ResultJSON.success(map);
