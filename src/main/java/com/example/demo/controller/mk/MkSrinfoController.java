@@ -27,8 +27,8 @@ public class MkSrinfoController implements MkSrinfoApi {
 
 
     @Override
-    public ResultJSON<MkSrinfo> add(String ftype, String payType, String details, BigDecimal amount, String userId, String remark) {
-        return service.add(ftype, payType, details, amount, userId, remark);
+    public ResultJSON<MkSrinfo> add(String ftype, String payType, String details, BigDecimal amount, String userId, String remark, String payId) {
+        return service.add(ftype, payType, details, amount, userId, remark, payId);
     }
 
     @Override

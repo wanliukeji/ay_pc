@@ -35,7 +35,8 @@ public interface MkSrinfoApi extends Serializable {
             @ApiImplicitParam(name = "details", value = "交易详情"),
             @ApiImplicitParam(name = "amount", value = "交易金额"),
             @ApiImplicitParam(name = "userId", value = "用户ID"),
-            @ApiImplicitParam(name = "remark", value = "备注")
+            @ApiImplicitParam(name = "remark", value = "备注"),
+            @ApiImplicitParam(name = "payId", value = "微信小程序支付详情ID")
     })
     @Transactional(rollbackFor = Exception.class)
     @PostMapping(value = "/mk/api/srinfo/add")
@@ -44,7 +45,8 @@ public interface MkSrinfoApi extends Serializable {
                              @RequestParam(required = false, value = "details") String details,
                              @RequestParam(required = false, value = "amount") BigDecimal amount,
                              @RequestParam(required = false, value = "userId") String userId,
-                             @RequestParam(required = false, value = "remark") String remark);
+                             @RequestParam(required = false, value = "remark") String remark,
+                             @RequestParam(required = false, value = "payId") String payId);
 
     /**
      * 收入明细分页获取

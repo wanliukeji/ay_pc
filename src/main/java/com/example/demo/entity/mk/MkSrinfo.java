@@ -32,4 +32,5 @@ public class MkSrinfo implements Serializable {
   private String userId;
   private Integer del;
   private String fid;
+  private String payId;
 }

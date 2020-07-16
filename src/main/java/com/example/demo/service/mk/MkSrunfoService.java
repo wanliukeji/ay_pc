@@ -40,7 +40,7 @@ public class MkSrunfoService extends ServiceImpl<MkSrinfoMapper, MkSrinfo> {
      * @param remark
      * @return
      */
-    public ResultJSON<MkSrinfo> add(String ftype, String payType, String details, BigDecimal amount, String userId, String remark) {
+    public ResultJSON<MkSrinfo> add(String ftype, String payType, String details, BigDecimal amount, String userId, String remark, String payId) {
         try {
             if (userId == null) {
                 return ResultJSON.error("用户ID不能为空");
@@ -54,6 +54,7 @@ public class MkSrunfoService extends ServiceImpl<MkSrinfoMapper, MkSrinfo> {
             srinfo.setRemark(remark);
             srinfo.setDel(1);
             srinfo.setCreateDate(new Date());
+            srinfo.setPayId(payId);
             boolean f = this.save(srinfo);
             if (f) {
                 return ResultJSON.error(CodeMsg.UPDATE_SUCCESS);
