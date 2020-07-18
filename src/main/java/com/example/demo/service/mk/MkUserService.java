@@ -3,6 +3,7 @@ package com.example.demo.service.mk;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.demo.Utils.DateUtil;
 import com.example.demo.Utils.EncryptUtil;
 import com.example.demo.Utils.HttpServletRequestUtil;
 import com.example.demo.Utils.StringUtil;
@@ -10,6 +11,7 @@ import com.example.demo.dao.mk.MkUSerMapper;
 import com.example.demo.entity.mk.MkUser;
 import com.example.demo.exception.CodeMsg;
 import com.example.demo.json.ResultJSON;
+import com.example.demo.redis.RedisUtil;
 import com.example.demo.wx.HttpClientUtil;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
@@ -21,7 +23,6 @@ import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
@@ -51,9 +52,9 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     // 请求的网址
     public static final String WX_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
     // 你的appid
-    public static final String WX_LOGIN_APPID = "xxxxxxxxxxxxxxxxxx";
+    public static final String WX_LOGIN_APPID = "";
     // 你的密匙
-    public static final String WX_LOGIN_SECRET = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+    public static final String WX_LOGIN_SECRET = "";
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
 
@@ -92,70 +93,24 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         return ResultJSON.error(CodeMsg.LOGIN_ERROR);
     }
 
-    //微信 一键登录
-    public ResultJSON<?> wxlogin(
-            @RequestParam("code") String code,
-            @RequestParam(required = false, value = "email") String email,
-            @RequestParam(required = false, value = "name") String name,
-            @RequestParam(required = false, value = "userName") String userName,
-            @RequestParam(required = false, value = "imgUrl") String imgUrl,
-            @RequestParam(required = false, value = "sex") String sex,
-            @RequestParam(required = false, value = "phone") String phone,
-            @RequestParam(required = false, value = "iDcard") String iDcard,
-            @RequestParam(required = false, value = "ctype") Integer ctype,
-            @RequestParam(required = false, value = "openId") String openId,
-            @RequestParam(required = false, value = "age") Integer age
-    ) {
+    //微信 一键获取用户登录凭证
+    public JSONObject getUserWXLoginInfo(String wxcode) {
         try {
             // 配置请求参数
             Map<String, String> param = new HashMap<>();
             param.put("appid", WX_LOGIN_APPID);
             param.put("secret", WX_LOGIN_SECRET);
-            param.put("js_code", code);
+            param.put("js_code", wxcode);
             param.put("grant_type", WX_LOGIN_GRANT_TYPE);
             // 发送请求
             String wxResult = HttpClientUtil.doGet(WX_LOGIN_URL, param);
             JSONObject jsonObject = JSONObject.parseObject(wxResult);
-            // 获取参数返回的
-            String session_key = jsonObject.get("session_key").toString();
-            String open_id = jsonObject.get("openId").toString();
-            // 根据返回的user实体类，判断用户是否是新用户，不是的话，更新最新登录时间，是的话，将用户信息存到数据库
-            MkUser user = getUseroForOpenId(open_id);
-            if (user != null) {
-                this.updateById(user);
-            } else {
-                MkUser entity = new MkUser();
-                System.out.println("entity:" + entity.toString());
-                // 添加到数据库
-                entity.setUname(name);
-                entity.setIDcard(iDcard);
-                entity.setUtype(ctype);
-                entity.setEmail(email);
-                entity.setImgUrl(imgUrl);
-                entity.setOpenId(openId);
-                entity.setCreateDate(new Date());
-                entity.setPhone(phone);
-                entity.setAge(age);
-                entity.setSex(sex);
-                entity.setUserName(userName);
-                boolean flag = this.save(entity);
-                if (flag) {
-                    // 封装返回小程序
-                    Map<String, Object> result = new HashMap<>();
-                    result.put("session_key", session_key);
-                    result.put("open_id", open_id);
-                    result.put("entity", entity);
-                    return ResultJSON.success(result);
-                }
-                return ResultJSON.error("登录失败");
-            }
-            return ResultJSON.error("登录失败");
+            return jsonObject;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return ResultJSON.error("登录失败");
+            return null;
         }
     }
-
 
     /**
      * @param phone
@@ -205,7 +160,6 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         }
         return ResultJSON.success("验证码发送成功");
     }
-
 
     public ResultJSON<?> sendSms(String phone) {
 
@@ -307,7 +261,6 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
 //            return ResultJSON.error(e.toString());
 //        }
     }
-
 
     // 用户退出
     public ResultJSON loginOut() {
@@ -584,6 +537,47 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         }
         return ResultJSON.error(CodeMsg.QUERY_ERROR);
     }
+
+    public ResultJSON<?> wxlogin(String wxCode) {
+        try {
+            //请求微信api获取用户的openid和sessionKey
+            JSONObject jsonObject = getUserWXLoginInfo(wxCode);
+            if (jsonObject != null && !jsonObject.containsKey("openid")) {
+                return ResultJSON.error("授权失败");
+            }
+            String openid = (String) jsonObject.get("openid");
+            String sessionKey = (String) jsonObject.get("session_key");
+            //通过openid查询数据库是否有此用户
+            MkUser user = getUseroForOpenId(openid);
+            if (user != null) {//用户已存在
+                if (user.getPhone() == null) {
+                    jsonObject.put("phone", "");
+                } else {
+                    jsonObject.put("phone", user.getPhone());
+                }
+                RedisUtil.set(openid, sessionKey, 60 * 60);//存到redis中,设置失效时间
+                jsonObject.put("userId", user.getId());
+                jsonObject.put("dateTime", DateUtil.format(new Date()));
+                return ResultJSON.success(jsonObject);
+            }
+            MkUser entity = new MkUser();
+            user.setOpenId(openid);
+            this.save(user);
+            entity = getUseroForOpenId(openid);
+            if (entity == null) {
+                jsonObject.put("phone", "");
+            } else {
+                jsonObject.put("phone", entity.getPhone());
+            }
+            RedisUtil.set(openid, sessionKey, 60 * 60);//存到redis中,设置失效时间
+            jsonObject.put("userId", user.getId());
+            jsonObject.put("dateTime", DateUtil.format(new Date()));
+            return ResultJSON.success(jsonObject);
+        } catch (Exception ex) {
+            return ResultJSON.error(ex.getMessage());
+        }
+    }
+
 }
 
 
