@@ -94,13 +94,13 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     }
 
     //微信 一键获取用户登录凭证
-    public JSONObject getUserWXLoginInfo(String wxcode) {
+    public JSONObject getUserWXLoginInfo(String wxCode, String appid, String secret) {
         try {
             // 配置请求参数
             Map<String, String> param = new HashMap<>();
-            param.put("appid", WX_LOGIN_APPID);
-            param.put("secret", WX_LOGIN_SECRET);
-            param.put("js_code", wxcode);
+            param.put("appid", appid);
+            param.put("secret", secret);
+            param.put("js_code", wxCode);
             param.put("grant_type", WX_LOGIN_GRANT_TYPE);
             // 发送请求
             String wxResult = HttpClientUtil.doGet(WX_LOGIN_URL, param);
@@ -538,10 +538,14 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         return ResultJSON.error(CodeMsg.QUERY_ERROR);
     }
 
-    public ResultJSON<?> wxlogin(String wxCode) {
+    public ResultJSON<?> wxlogin(String wxCode, String appid, String secret) {
         try {
             //请求微信api获取用户的openid和sessionKey
-            JSONObject jsonObject = getUserWXLoginInfo(wxCode);
+            JSONObject jsonObject = getUserWXLoginInfo(wxCode, appid, secret);
+            if (StringUtil.isEmty(jsonObject)) {
+                return ResultJSON.error("授权失败");
+            }
+
             if (jsonObject != null && !jsonObject.containsKey("openid")) {
                 return ResultJSON.error("授权失败");
             }

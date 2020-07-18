@@ -36,10 +36,16 @@ public interface MkLoginApi extends Serializable {
      */
     @ApiOperation(value = "微信一键登录接口", notes = "微信一键登录接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "wxcode", value = "账户")
+            @ApiImplicitParam(name = "wxcode", value = "前端获取的临时code"),
+            @ApiImplicitParam(name = "appid", value = "微信小程序开发生成的APPID"),
+            @ApiImplicitParam(name = "secret", value = "微信小程序开发生成的secret"),
     })
     @PostMapping(value = "/mk/api/user/wxlogin")
-    public ResultJSON<?> wxlogin(@RequestParam("wxcode") String wxcode);
+    public ResultJSON<?> wxlogin(
+            @RequestParam("wxcode") String wxcode,
+            @RequestParam("appid") String appid,
+            @RequestParam("secret") String secret
+    );
 
 
     /**
