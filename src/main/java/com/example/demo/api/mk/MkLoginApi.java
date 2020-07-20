@@ -42,9 +42,7 @@ public interface MkLoginApi extends Serializable {
     })
     @PostMapping(value = "/mk/api/user/wxlogin")
     public ResultJSON<?> wxlogin(
-            @RequestParam("wxcode") String wxcode,
-            @RequestParam("appid") String appid,
-            @RequestParam("secret") String secret
+            @RequestParam("wxcode") String wxcode
     );
 
 

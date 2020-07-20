@@ -52,13 +52,12 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     // 请求的网址
     public static final String WX_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
     // 你的appid
-    public static final String WX_LOGIN_APPID = "";
+    public static final String WX_LOGIN_APPID = "wx99a3b6395c1e0800";
     // 你的密匙
-    public static final String WX_LOGIN_SECRET = "";
+    public static final String WX_LOGIN_SECRET = "123a06564d778f55a184b0a7b67337f7";
     // 固定参数
     public static final String WX_LOGIN_GRANT_TYPE = "authorization_code";
 
-    //
     public static final String SECRETID = "AKIDKOcdLoM0i9JUSEIez5tRpxoTtNabwp30";
 
     public static final String SECRETKEY = "qU9XeCTFhxve7JI0way6x1kEVXJr52C6";
@@ -94,12 +93,12 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
     }
 
     //微信 一键获取用户登录凭证
-    public JSONObject getUserWXLoginInfo(String wxCode, String appid, String secret) {
+    public JSONObject getUserWXLoginInfo(String wxCode) {
         try {
             // 配置请求参数
             Map<String, String> param = new HashMap<>();
-            param.put("appid", appid);
-            param.put("secret", secret);
+            param.put("appid", WX_LOGIN_APPID);
+            param.put("secret", WX_LOGIN_SECRET);
             param.put("js_code", wxCode);
             param.put("grant_type", WX_LOGIN_GRANT_TYPE);
             // 发送请求
@@ -538,10 +537,10 @@ public class MkUserService extends ServiceImpl<MkUSerMapper, MkUser> {
         return ResultJSON.error(CodeMsg.QUERY_ERROR);
     }
 
-    public ResultJSON<?> wxlogin(String wxCode, String appid, String secret) {
+    public ResultJSON<?> wxlogin(String wxCode) {
         try {
             //请求微信api获取用户的openid和sessionKey
-            JSONObject jsonObject = getUserWXLoginInfo(wxCode, appid, secret);
+            JSONObject jsonObject = getUserWXLoginInfo(wxCode);
             if (StringUtil.isEmty(jsonObject)) {
                 return ResultJSON.error("授权失败");
             }

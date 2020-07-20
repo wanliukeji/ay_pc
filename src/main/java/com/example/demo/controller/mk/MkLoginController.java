@@ -28,8 +28,8 @@ public class MkLoginController implements MkLoginApi {
     }
 
     @Override
-    public ResultJSON<?> wxlogin(String code, String appid, String secret) {
-        return mkUserService.wxlogin(code, appid, secret);
+    public ResultJSON<?> wxlogin(String code) {
+        return mkUserService.wxlogin(code);
     }
 
 
